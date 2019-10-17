@@ -1,0 +1,12 @@
+{
+  "app": {
+    "header": {
+      "home": "真的假的",
+      "articles": "文章",
+      "replies": "回應",
+      "editorHelp": "編輯求助區",
+      "projectIntroduction": "專案介紹",
+      
+    }
+  }
+}

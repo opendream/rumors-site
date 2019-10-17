@@ -1,0 +1,11 @@
+{
+  "app": {
+    "header": {
+      "home": "Real or Fake",
+      "articles": "Articles",
+      "replies": "Replies",
+      "editorHelp": "Editor Help",
+      "projectIntroduction": "Project Introduction"
+    }
+  }
+}

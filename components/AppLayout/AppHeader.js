@@ -4,6 +4,7 @@ import { EDITOR_FACEBOOK_GROUP, PROJECT_HACKFOLDR } from 'constants/urls';
 import { Link } from 'routes';
 import { showDialog, logout, updateName } from 'ducks/auth';
 import UserName from './UserName';
+import i18n from '../../i18n';
 
 function AppHeader({
   user,
@@ -12,17 +13,18 @@ function AppHeader({
   onLogoutClick,
   onUserNameUpdate,
 }) {
+
   return (
     <header className="root">
       <a className="logo hidden-xs" href="/">
-        <h1>真的假的</h1>
+        <h1>{i18n.t("app.header.home")}</h1>
       </a>
       <nav className="nav">
         <Link route="articles">
-          <a className="nav-item">文章</a>
+          <a className="nav-item">{i18n.t("app.header.articles")}</a>
         </Link>
         <Link route="replies">
-          <a className="nav-item">回應</a>
+          <a className="nav-item">{i18n.t("app.header.replies")}</a>
         </Link>
         <a
           href={EDITOR_FACEBOOK_GROUP}
@@ -30,7 +32,7 @@ function AppHeader({
           rel="noopener noreferrer"
           className="nav-item hidden-xs"
         >
-          FB 編輯求助區
+          FB {i18n.t("app.header.editorHelp")}
         </a>
         <a
           href={PROJECT_HACKFOLDR}
@@ -38,7 +40,7 @@ function AppHeader({
           rel="noopener noreferrer"
           className="nav-item hidden-xs"
         >
-          專案介紹
+          {i18n.t("app.header.projectIntroduction")}
         </a>
       </nav>
       <UserName
