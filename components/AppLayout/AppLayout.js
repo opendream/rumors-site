@@ -11,15 +11,27 @@ import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import LoginModal from '../Modal/LoginModal';
 import moment from 'moment';
-// import 'moment/locale/zh-tw';
 import NProgress from 'nprogress';
 
 import 'normalize.css';
 import 'nprogress/nprogress.css';
 import './AppLayout.css';
 
+import getConfig from 'next/config';
+
+const {
+  publicRuntimeConfig: { PUBLIC_MOMENT_LANGUAGE_CODE },
+} = getConfig();
+
+console.log('PUBLIC_MOMENT_LANGUAGE_CODE', PUBLIC_MOMENT_LANGUAGE_CODE)
+
+const lng = PUBLIC_MOMENT_LANGUAGE_CODE || 'zh-tw';
+if (PUBLIC_MOMENT_LANGUAGE_CODE !== 'en') {
+  require(`moment/locale/${lng}`);
+  moment.locale(PUBLIC_MOMENT_LANGUAGE_CODE);
+}
+
 let isBootstrapping = true;
-// moment.locale('zh-tw');
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
