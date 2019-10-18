@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { feedbackStyle } from './ReplyFeedback.styles';
 import Modal from './Modal';
+import i18n from '../i18n';
 
 class ReplyFeedback extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class ReplyFeedback extends Component {
 
   handleDownVote = () => {
     const { replyConnection, onVote } = this.props;
-    const comment = window.prompt('請問您為什麼覺得好心人的回應沒有幫助？');
+    const comment = window.prompt(`${i18n.t("goodResponseNotHelp")}`);
     return onVote(replyConnection, 'DOWNVOTE', comment);
   };
 
@@ -71,7 +72,7 @@ class ReplyFeedback extends Component {
       .filter(feedback => !!feedback.get('comment'))
       .map((feedback, index) => (
         <li key={index}>
-          {feedback.getIn(['user', 'name']) || '其他使用者'}：{feedback.get(
+          {feedback.getIn(['user', 'name']) || `${i18n.t("otherUsers")}`}：{feedback.get(
             'comment'
           )}
         </li>
@@ -79,7 +80,7 @@ class ReplyFeedback extends Component {
 
     return (
       <div className="reply-feedback">
-        {!isOwnArticleReply && <label>是否有幫助？</label>}
+        {!isOwnArticleReply && <label>{i18n.t("")}是否有幫助？</label>}
         <span className="vote-num">{positiveCount}</span>
         <button
           className="btn-vote"
@@ -118,7 +119,7 @@ class ReplyFeedback extends Component {
         {downVoteModalOpen && (
           <Modal onClose={this.handleModalClose}>
             <div className="down-vote-modal">
-              <h3 className="down-vote-title">使用者覺得沒有幫助的原因</h3>
+              <h3 className="down-vote-title">{i18n.t("replyComponent.unhelpfulReason")}</h3>
               <ul className="down-vote-reasons">{downVoteReasons}</ul>
             </div>
           </Modal>

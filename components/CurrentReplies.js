@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import ReplyConnection from './ReplyConnection';
+import i18n from '../i18n';
 
 class DeletedItems extends React.Component {
   static defaultProps = {
@@ -39,7 +40,7 @@ class DeletedItems extends React.Component {
           transform: 'none',
         }}
       >
-        <h1>被刪除的回應</h1>
+        <h1>{i18n.t("deletedResponse")}</h1>
         <ul className="items">
           {items.map(conn => (
             <ReplyConnection
@@ -47,7 +48,7 @@ class DeletedItems extends React.Component {
               replyConnection={conn}
               onAction={this.handleRestore}
               disabled={disabled}
-              actionText="恢復回應"
+              actionText={i18n.t("recoveryResponse")}
             />
           ))}
         </ul>
@@ -72,10 +73,10 @@ class DeletedItems extends React.Component {
     return (
       <li>
         <span className="prompt">
-          有{' '}
+          {i18n.t("have")}{' '}
           <a href="javascript:;" onClick={this.handleOpen}>
-            {items.length} 則回應
-          </a>被作者自行刪除。
+            {items.length} {i18n.t("thenReply")}
+          </a> {i18n.t("deleteByAuthor")}.
         </span>
         {this.renderModal()}
 
@@ -101,7 +102,7 @@ export default function CurrentReplies({
   onVote = () => {},
 }) {
   if (!replyConnections.size) {
-    return <p>目前尚無回應</p>;
+    return <p>{i18n.t("noReplyYet")}</p>;
   }
 
   const { validConnections, deletedConnections } = replyConnections.reduce(

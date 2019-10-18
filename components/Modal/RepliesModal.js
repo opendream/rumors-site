@@ -6,6 +6,7 @@ import ExpandableText from '../ExpandableText';
 import { Link } from '../../routes';
 import { linkify, nl2br } from '../../util/text';
 import { sectionStyle } from '../ReplyConnection.styles';
+import i18n from '../../i18n';
 
 export default function RepliesModal({ replies, onConnect, onModalClose }) {
   return (
@@ -18,7 +19,7 @@ export default function RepliesModal({ replies, onConnect, onModalClose }) {
           return (
             <li key={replyId} className="root">
               <header className="section">
-                被標示為：<strong title={TYPE_DESC[replyType]}>
+                {i18n.t('markAs')}：<strong title={TYPE_DESC[replyType]}>
                   {TYPE_NAME[replyType]}
                 </strong>
               </header>
@@ -32,7 +33,7 @@ export default function RepliesModal({ replies, onConnect, onModalClose }) {
                   <a title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
                 </Link>
                 ・<button type="button" value={replyId} onClick={onConnect}>
-                  將這份回應加進此文章的回應
+                  {i18n.t('repliesModal.buttonText')}
                 </button>
               </footer>
             </li>

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'routes';
 import LEVEL_NAMES from 'constants/levelNames';
 import Modal from '../Modal';
+import i18n from '../../i18n';
 
 class ProgressBar extends PureComponent {
   static defaultProps = {
@@ -234,7 +235,7 @@ class UserName extends PureComponent {
                   padding: '30px 30px 20px',
                 }}
               >
-                恭喜! 您升等了!
+                {i18n.sentence.t('congratulationsPromoted')}
               </p>
             </Modal>
           )}

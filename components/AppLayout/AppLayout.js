@@ -11,7 +11,7 @@ import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import LoginModal from '../Modal/LoginModal';
 import moment from 'moment';
-import 'moment/locale/zh-tw';
+// import 'moment/locale/zh-tw';
 import NProgress from 'nprogress';
 
 import 'normalize.css';
@@ -19,7 +19,7 @@ import 'nprogress/nprogress.css';
 import './AppLayout.css';
 
 let isBootstrapping = true;
-moment.locale('zh-tw');
+// moment.locale('zh-tw');
 
 Router.onRouteChangeStart = () => {
   NProgress.start();

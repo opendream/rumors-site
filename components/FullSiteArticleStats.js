@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from '../i18n';
 
 /**
  * @param {Map} props.stats
@@ -11,13 +12,13 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
 
   return (
     <div className="full-site-stat">
-      全站未回訊息： {stats.get('notRepliedCount')}
-      <p>總篇數: {stats.get('repliedCount') + stats.get('notRepliedCount')}</p>
+      {i18n.t("noReturnMessage")}： {stats.get('notRepliedCount')}
+      <p>{i18n.t("totalArticles")}: {stats.get('repliedCount') + stats.get('notRepliedCount')}</p>
       {typeof repliedArticleCount === 'number' && (
         <div>
           <p>
-            其他人回應的: {stats.get('repliedCount') - repliedArticleCount} /
-            你回應的: {repliedArticleCount}
+            {i18n.t("othersResponded")}: {stats.get('repliedCount') - repliedArticleCount} /
+            {i18n.t("whatYouRespondedTo")}: {repliedArticleCount}
           </p>
           <div className="progress">
             <i

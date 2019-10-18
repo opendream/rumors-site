@@ -1,6 +1,7 @@
 import React from 'react';
 import { PROJECT_HACKFOLDR, CONTACT_EMAIL } from '../../constants/urls';
 import GoogleWebsiteTranslator from 'components/GoogleWebsiteTranslator';
+import i18n from '../../i18n';
 
 export default function AppFooter() {
   return (
@@ -17,10 +18,10 @@ export default function AppFooter() {
       </a>
       <p>
         <a href={PROJECT_HACKFOLDR} target="_blank" rel="noopener noreferrer">
-          專案介紹
+          {i18n.t("projectIntroduction")}
         </a>
         ・
-        <a href={`mailto:${CONTACT_EMAIL}`}>連絡信箱</a>
+        <a href={`mailto:${CONTACT_EMAIL}`}>{i18n.t("contactEmail")}</a>
       </p>
       <GoogleWebsiteTranslator />
       <style jsx>{`

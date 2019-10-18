@@ -3,6 +3,7 @@ import { Link } from '../routes';
 import moment from 'moment';
 import { listItemStyle } from './ListItem.styles';
 import { TYPE_ICON, TYPE_NAME } from '../constants/replyType';
+import i18n from 'i18n';
 
 export default function ReplyItem({ reply, showUser = true }) {
   const replyType = reply.get('type');
@@ -14,11 +15,11 @@ export default function ReplyItem({ reply, showUser = true }) {
         <div title={TYPE_NAME[replyType]}>{TYPE_ICON[replyType]}</div>
         <div className="item-content">
           <div className="item-text">
-            {showUser ? `${reply.getIn(['user', 'name'], '有人')}：` : ''}
+            {showUser ? `${reply.getIn(['user', 'name'], i18n.t("someone"))}：` : ''}
             {reply.get('text')}
           </div>
           <div className="item-info">
-            使用於 {reply.get('replyConnectionCount')} 篇
+            {i18n.t("usedIn")} {reply.get('replyConnectionCount')} {i18n.t("article")}
             {createdAt.isValid() ? (
               <span title={createdAt.format('lll')}>
                 ・{createdAt.fromNow()}

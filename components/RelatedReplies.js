@@ -5,6 +5,7 @@ import ExpandableText from './ExpandableText';
 import { linkify, nl2br } from '../util/text';
 import { Link } from '../routes';
 import { sectionStyle } from './ReplyConnection.styles';
+import i18n from '../i18n';
 
 /**
  * @param {Map} props.article - {id, text} of the article text
@@ -19,15 +20,15 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
     <li className="root">
       <header className="section">
         <Link route="article" params={{ id: articleId }}>
-          <a>相關訊息</a>
-        </Link>被標示為：<strong title={TYPE_DESC[reply.get('type')]}>
+          <a>{i18n.t("relatedInformation")}</a>
+        </Link> {i18n.t("markedAs")}：<strong title={TYPE_DESC[reply.get('type')]}>
           {TYPE_NAME[reply.get('type')]}
         </strong>
       </header>
       <section className="section">
         <h3>
-          相關訊息原文<span className="similarity">
-            （關聯度 ：<strong>{similarityPercentage} %</strong>）
+          {i18n.t("relatedInformation")}<span className="similarity">
+            （{i18n.t("correlation")} ：<strong>{similarityPercentage} %</strong>）
           </span>
         </h3>
         <blockquote>
@@ -41,7 +42,7 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
         </blockquote>
       </section>
       <section className="section">
-        <h3>回應</h3>
+        <h3>{i18n.t("respond")}</h3>
         <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
       </section>
       <footer>
@@ -49,7 +50,7 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
           <a title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
         </Link>
         ・<button type="button" value={reply.get('id')} onClick={onConnect}>
-          將這份回應加進此文章的回應
+          {i18n.t("relatedReplies.buttonText")}
         </button>
       </footer>
 
@@ -87,7 +88,7 @@ export default function RelatedReplies({
   onConnect,
 }) {
   if (!relatedReplies.size) {
-    return <p>目前沒有相關的回應</p>;
+    return <p>{i18n.t("relatedReplies.noRelevantReply")}</p>;
   }
 
   return (

@@ -1,3 +1,5 @@
+import i18n from '../i18n';
+
 export const TYPE_ICON = {
   NOT_ARTICLE: '⚠️️',
   OPINIONATED: '💬',
@@ -6,43 +8,69 @@ export const TYPE_ICON = {
 };
 
 export const TYPE_NAME = {
-  NOT_ARTICLE: '⚠️️ 不在查證範圍',
-  OPINIONATED: '💬 含有個人意見',
-  NOT_RUMOR: '⭕ 含有正確訊息',
-  RUMOR: '❌ 含有不實訊息',
+  NOT_ARTICLE: `⚠️️ ${i18n.t('replyType.name.NOT_ARTICLE')}`,
+  OPINIONATED: `💬 ${i18n.t('replyType.name.OPINIONATED')}`,
+  NOT_RUMOR: `⭕ ${i18n.t('replyType.name.NOT_RUMOR')}`,
+  RUMOR: `❌ ${i18n.t('replyType.name.RUMOR')}`,
 };
 
 export const TYPE_DESC = {
-  NOT_ARTICLE: '這篇訊息不是編輯能夠處理、或 Cofacts 不應該受理此類文章。',
-  NOT_RUMOR: '轉傳訊息或網路文章有一部分內容查證屬實。',
-  OPINIONATED:
-    '轉傳訊息或網路文章含有個人感想、假說猜測、陰謀論、尚無共識的研究、對政策的推論等等。',
-  RUMOR: '轉傳訊息或網路文章有一部分含有不實資訊。',
+  NOT_ARTICLE: `${i18n.t('replyType.desc.NOT_ARTICLE')}`,
+  OPINIONATED: `${i18n.t('replyType.desc.OPINIONATED')}`,
+  NOT_RUMOR: `${i18n.t('replyType.desc.NOT_RUMOR')}`,
+  RUMOR: `${i18n.t('replyType.desc.RUMOR')}`,
 };
 
 export const TYPE_INSTRUCTION = {
-  NOT_ARTICLE: '請簡單說明您為何認為這不是完整文章：',
-  NOT_RUMOR: '請簡單說明他哪個部分是正確的，作為「資料來源」的導讀：',
-  OPINIONATED: '請簡單說明含有主觀意見之處，並且提醒讀者其並非客觀事實：',
-  RUMOR: '請簡單說明不實之處，作為「資料來源」的導讀：',
+  NOT_ARTICLE: `${i18n.t('replyType.instruction.NOT_ARTICLE')}`,
+  OPINIONATED: `${i18n.t('replyType.instruction.OPINIONATED')}`,
+  NOT_RUMOR: `${i18n.t('replyType.instruction.NOT_RUMOR')}`,
+  RUMOR: `${i18n.t('replyType.instruction.RUMOR')}`,
 };
 
 export const TYPE_SUGGESTION_OPTIONS = {
   OPINIONATED: [
-    { label: '陰謀論', value: '⋯⋯的部分含有無法查證的陰謀論，因為⋯⋯' },
-    { label: '滑坡謬誤', value: '⋯⋯的部分含有滑坡謬誤，因為⋯⋯' },
-    { label: '尚無共識', value: '⋯⋯的部分，社會尚無共識。' },
-    { label: '個人價值', value: '⋯⋯的部分純屬個人價值觀，並非客觀事實。' },
+    { 
+      label: `${i18n.t('replyType.suggestion.opinion1.label')}`, 
+      value:`${i18n.t('replyType.suggestion.opinion1.value')}`
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.opinion2.label')}`, 
+      value:`${i18n.t('replyType.suggestion.opinion2.value')}`
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.opinion3.label')}`, 
+      value:`${i18n.t('replyType.suggestion.opinion3.value')}`
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.opinion4.label')}`, 
+      value:`${i18n.t('replyType.suggestion.opinion4.value')}`
+    },
   ],
   NOT_ARTICLE: [
     {
-      label: '長度太短',
-      value: '文字長度太短，疑似為使用者手動輸入之查詢語句，不像轉傳文章。',
+      label: `${i18n.t('replyType.suggestion.not_article1.label')}`,
+      value: `${i18n.t('replyType.suggestion.not_article1.value')}`,
     },
-    { label: '商業促銷', value: '這是商業活動廣告，活動期間到⋯⋯' },
-    { label: '無查證需要', value: '訊息與謠言查證無關。' },
-    { label: '聊天', value: '送出文章的人在嘗試與機器人聊天。' },
-    { label: '意見回饋', value: '對 Cofacts 真的假的的建言。' },
-    { label: '無意義測試', value: '測試用之無意義訊息。' },
+    { 
+      label: `${i18n.t('replyType.suggestion.not_article2.label')}`, 
+      value: `${i18n.t('replyType.suggestion.not_article2.value')}` 
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.not_article3.label')}`, 
+      value: `${i18n.t('replyType.suggestion.not_article3.value')}` 
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.not_article4.label')}`, 
+      value: `${i18n.t('replyType.suggestion.not_article4.value')}` 
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.not_article5.label')}`,
+      value: `${i18n.t('replyType.suggestion.not_article5.value Cofacts')}` 
+    },
+    { 
+      label: `${i18n.t('replyType.suggestion.not_article6.label')}`, 
+      value: `${i18n.t('replyType.suggestion.not_article6.value')}` 
+    }
   ],
 };

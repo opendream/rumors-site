@@ -7,6 +7,7 @@ import {
 } from '../constants/replyType';
 
 import { EDITOR_FACEBOOK_GROUP, EDITOR_REFERENCE } from '../constants/urls';
+import i18n from '../i18n';
 
 const localStorage = typeof window === 'undefined' ? {} : window.localStorage;
 const formInitialState = {
@@ -108,7 +109,7 @@ export default class ReplyForm extends React.PureComponent {
 
     return (
       <p>
-        常用回應樣板 ——&nbsp;
+        {i18n.t("replyComponent.commonReplyTemplate")} ——&nbsp;
         {TYPE_SUGGESTION_OPTIONS[replyType].map(({ label, value }) => (
           <button
             key={label}
@@ -139,10 +140,10 @@ export default class ReplyForm extends React.PureComponent {
     if (replyType === 'NOT_ARTICLE') {
       return (
         <p>
-          查證範圍請參考{' '}
+          {i18n.t("replyComponent.referToScope")}{' '}
           <a href={EDITOR_REFERENCE} target="_blank" rel="noopener noreferrer">
-            《Cofacts 編輯規則》
-          </a>。
+            {i18n.t("replyComponent.editingRules")}
+          </a>{i18n.t("fullStop")}
         </p>
       );
     }
@@ -151,14 +152,14 @@ export default class ReplyForm extends React.PureComponent {
       <p>
         <label htmlFor="reference">
           {replyType === 'OPINIONATED'
-            ? '請提供與原文「不同觀點」的文章連結，促使讀者接觸不同意見：'
-            : '資料來源：'}
+            ? `${i18n.t("sentence.referenceInput")}`
+            : `${i18n.t("dataSource")} :`}
         </label>
         <br />
         <textarea
           required
           id="reference"
-          placeholder="超連結與連結說明文字"
+          placeholder={i18n.t('replyComponent.descriptionTextLink')}
           onChange={this.handleReferenceChange}
           value={reference}
         />
@@ -178,21 +179,21 @@ export default class ReplyForm extends React.PureComponent {
   renderHelp() {
     return (
       <span className="help">
-        不知道從何下手嗎？<a
+        {i18n.t("replyComponent.formHelp")} <a
           href={EDITOR_REFERENCE}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Cofacts 編輯規則
-        </a>、
+          {i18n.t("replyComponent.editingRules")}
+        </a>
         <a
           href={EDITOR_FACEBOOK_GROUP}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Facebook 編輯求助區
+          Facebook {i18n.t("replyComponent.facebookHelp")}
         </a>
-        歡迎您 :)
+        {i18n.t("welcome")} :)
         <style jsx>{`
           .help {
             font-size: 12px;
@@ -221,7 +222,7 @@ export default class ReplyForm extends React.PureComponent {
             required
             ref={el => (this._textEl = el)}
             id="text"
-            placeholder="140 字以內"
+            placeholder={i18n.t("replyComponent.countWord")}
             onChange={this.handleTextChange}
             value={text}
           />
@@ -230,7 +231,7 @@ export default class ReplyForm extends React.PureComponent {
         {this.renderReferenceInput()}
 
         <button className="submit" type="submit" disabled={disabled}>
-          送出回應
+          {i18n.t("replyComponent.submitButton")}
         </button>
 
         {this.renderHelp()}

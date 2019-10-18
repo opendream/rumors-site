@@ -1,5 +1,6 @@
 import React from 'react';
 import { truncate } from '../util/text';
+import i18n from '../i18n';
 
 export default class ExpandableText extends React.Component {
   static defaultProps = {
@@ -23,7 +24,7 @@ export default class ExpandableText extends React.Component {
         className="more"
         onClick={this.toggleExapnd}
       >
-        {isExpanded ? '隱藏全文' : '閱讀更多'}
+        {isExpanded ? `${i18n.t("hideFullText")}` : `${i18n.t("readmore")}`}
         <style jsx>{`
           .more {
             border: 0;

@@ -15,6 +15,8 @@ import ListPage from 'components/ListPage';
 import Pagination from 'components/Pagination';
 import ReplyItem from 'components/ReplyItem';
 
+import i18n from '../i18n';
+
 import { mainStyle } from './articles.styles';
 
 class ReplyList extends ListPage {
@@ -90,7 +92,7 @@ class ReplyList extends ListPage {
           onChange={this.handleMyReplyOnlyCheck}
           checked={!!mine}
         />
-        只顯示我寫的
+        {i18n.t("pageReplies.onlyMine")}
       </label>
     );
   }
@@ -174,9 +176,9 @@ class ReplyList extends ListPage {
       <AppLayout>
         <main>
           <Head>
-            <title>回應列表</title>
+            <title>{i18n.t("pageReplies.replyList")}</title>
           </Head>
-          <h2>回應列表</h2>
+          <h2>{i18n.t("pageReplies.replyList")}</h2>
           {this.renderSearch()}
           <br />
           Order By:

@@ -7,6 +7,7 @@ import { Link } from '../../routes';
 import ExpandableText from '../ExpandableText';
 import RepliesModal from '../Modal/RepliesModal';
 import { sectionStyle } from '../ReplyConnection.styles';
+import i18n from '../../i18n';
 
 export default class SearchArticleItem extends PureComponent {
   state = {
@@ -37,7 +38,7 @@ export default class SearchArticleItem extends PureComponent {
     return (
       <li className="root">
         <button className="btn-sticky" onClick={this.handleModalOpen}>
-          查看{article.get('replyCount')}則回覆
+          {i18n.t("view")} {article.get('replyCount')} {i18n.t("reply")}
           <svg
             className="icon-extend"
             xmlns="http://www.w3.org/2000/svg"

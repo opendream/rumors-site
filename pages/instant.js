@@ -3,6 +3,7 @@ import Head from 'next/head';
 import gql from '../util/gql';
 import style from '../components/AppLayout/AppLayout.css';
 import querystring from 'querystring';
+import i18n from 'i18n';
 
 const POLLING_INTERVAL = 5000;
 
@@ -14,75 +15,75 @@ const SPECIAL_PROPS = {
     bottom: '8+9',
   },
   21: {
-    top: '每天只有',
-    bottom: '小時，剩下 3 小時是用來睡覺的',
+    top: `${i18n.t("pageInstant.onlyDaily")}`,
+    bottom: `${i18n.t("pageInstant.threeHoursRemaining")}`,
   },
   44: {
-    bottom: '隻石獅子',
+    bottom: `${i18n.t("pageInstant.stoneLion")}`,
   },
   56: {
-    bottom: '不能亡',
+    bottom: `${i18n.t("pageInstant.notDead")}`,
   },
   64: {
-    top: '勿忘',
+    top: `${i18n.t("pageInstant.forget")}`,
   },
   77: {
-    top: '森',
+    top: `${i18n.t("pageInstant.forest")}`,
   },
   87: {
-    bottom: '不能再高了',
+    bottom: `${i18n.t("pageInstant.cannotHigher")}`,
   },
   92: {
-    top: '沒有共識的',
-    bottom: '共識',
+    top: `${i18n.t("pageInstant.noConsensus")}`,
+    bottom: `${i18n.t("pageInstant.consensus")}`,
   },
   94: {
-    bottom: '狂',
+    bottom: `${i18n.t("pageInstant.mad")}`,
   },
   101: {
-    bottom: '大樓',
+    bottom: `${i18n.t("pageInstant.building")}`,
   },
   118: {
-    top: '看到',
-    bottom: '就跪了',
+    top: `${i18n.t("pageInstant.see")}`,
+    bottom: `${i18n.t("pageInstant.gone")}`,
   },
   123: {
-    bottom: '木頭人',
+    bottom: `${i18n.t("pageInstant.blockhead")}`,
   },
   133: {
-    top: '法定最低時薪',
+    top: `${i18n.t("pageInstant.minimumWage")}`,
   },
   158: {
     top: 'mini',
   },
   165: {
-    top: '警政署',
-    bottom: '反詐騙專線',
+    top: `${i18n.t("pageInstant.policeDepartment")}`,
+    bottom: `${i18n.t("pageInstant.antiFraudLine")}`,
   },
   183: {
     bottom: 'CLUB',
   },
   193: {
-    bottom: '縣道',
+    bottom: `${i18n.t("pageInstant.countyRoad")}`,
   },
   200: {
-    top: '意外撿到',
-    bottom: '元',
+    top: `${i18n.t("pageInstant.unexpectedly")}`,
+    bottom: `${i18n.t("pageInstant.yuan")}`,
   },
   228: {
-    bottom: '二二八',
+    bottom: `${i18n.t("pageInstant.228")}`,
   },
   261: {
-    top: '說好不提',
+    top: `${i18n.t("pageInstant.noMention")}`,
   },
   318: {
-    bottom: '學運',
+    bottom: `${i18n.t("learning")}`,
   },
   377: {
     bottom: '森七七',
   },
   500: {
-    top: '下去領',
+    top: `${i18n.t("pageInstant.goDown")}`,
   },
 };
 
@@ -145,10 +146,10 @@ function Hit({ number = 0, top = '', bottom = '' }) {
 function Instant({ number = 0, total = 0 }) {
   return (
     <FullScreenResizer listen={number}>
-      <div className="present">目前已回覆 {total} 篇文章</div>
-      <div className="verb">增加了</div>
+      <div className="present">{i18n.t("pageInstant.currentReply")} {total} {i18n.t("article")}</div>
+      <div className="verb">{i18n.t("increased")}</div>
       <div className="number">{number}</div>
-      <div className="paragraph">篇新回覆文章</div>
+      <div className="paragraph">{i18n.t("pageInstant.newReplyArticle")}</div>
       <style jsx>{`
         .present {
           font-size: 36px;
@@ -324,7 +325,7 @@ export default class InstantWrapper extends React.Component {
     return (
       <div>
         <Head>
-          <title>{number} 篇新回覆文章 - cofacts</title>
+          <title>{number} {i18n.t("pageInstant.newReplyArticle")} - cofacts</title>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           <style
             dangerouslySetInnerHTML={{

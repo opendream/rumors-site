@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from '../../routes';
+import i18n from '../../i18n';
 
 const UPVOTE = 'UPVOTE';
 const DOWNVOTE = 'DOWNVOTE';
@@ -18,7 +19,7 @@ const LinkAuthorList = ({ articleId }) => (
     }}
   >
     <a className="link-author">
-      查看該用戶回報的所有文章
+      {i18n.t("sentence.viewAllArticlesThisAuthor")}
       <style jsx>{`
         .link-author {
           color: #5e7d8f;

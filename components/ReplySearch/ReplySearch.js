@@ -5,6 +5,7 @@ import RelatedReplies from '../RelatedReplies';
 import SearchArticleItem from './SearchArticleItem.js';
 
 import { tabMenuStyle } from '../../pages/article.styles';
+import i18n from '../../i18n';
 
 const SearchArticles = ({ onConnect, searchArticles }) => {
   return (
@@ -65,10 +66,10 @@ export default class ReplySearch extends PureComponent {
           }`}
         >
           {replisCount === 0 ? (
-            '查無相關文章'
+            `${i18n.t('sentence.noRelatedArticles')}`
           ) : (
             <span>
-              使用相關回應 <span className="badge">{replisCount}</span>
+              {i18n.t('sentence.useRelavantReplies')} <span className="badge">{replisCount}</span>
             </span>
           )}
         </li>
@@ -79,10 +80,10 @@ export default class ReplySearch extends PureComponent {
           }`}
         >
           {articlesCount === 0 ? (
-            '查無相關文章'
+            `${i18n.t('sentence.noRelatedArticles')}`
           ) : (
             <span>
-              瀏覽相關文章 <span className="badge">{articlesCount}</span>
+              {i18n.t('sentence.browseRelatedArticles')} <span className="badge">{articlesCount}</span>
             </span>
           )}
         </li>
@@ -131,7 +132,7 @@ export default class ReplySearch extends PureComponent {
     return (
       <div>
         <label htmlFor="replySeach">
-          搜尋相關回應：
+          {i18n.t('sentence.searchForRelevantReplies')}{' : '}
           <input id="replySeach" type="search" onKeyUp={this.handleSearch} />
         </label>
 
@@ -144,7 +145,7 @@ export default class ReplySearch extends PureComponent {
           </Fragment>
         ) : (
           search && (
-            <div className="search-none">{`- 找無${search}相關的回覆與文章 -`}</div>
+            <div className="search-none">{`- ${i18n.t("replySearch.findNo")}${search}${i18n.t('replySearch.relatedRepliesAndArticles')} -`}</div>
           )
         )}
 

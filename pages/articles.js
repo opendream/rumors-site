@@ -15,6 +15,8 @@ import ArticleItem from 'components/ArticleItem';
 import FullSiteArticleStats from 'components/FullSiteArticleStats';
 import { load, loadAuthFields } from 'ducks/articleList';
 
+import i18n from '../i18n';
+
 import { mainStyle, hintStyle } from './articles.styles';
 
 class Articles extends ListPage {
@@ -114,7 +116,7 @@ class Articles extends ListPage {
 
     return (
       <h2 className="header">
-        文章列表
+        {i18n.t("articleList")}
         <FullSiteArticleStats
           stats={stats}
           repliedArticleCount={repliedArticleCount}
@@ -140,13 +142,13 @@ class Articles extends ListPage {
     );
     return (
       <h2>
-        和{' '}
+        {i18n.t("with")}{' '}
         <mark>
           {searchedArticle
             ? searchedArticle.get('text')
             : `Article ID: ${searchUserByArticleId}`}
         </mark>{' '}
-        此篇相同回報者之文章列表
+        {i18n.t("pageArticles.listArticlesSameReturnee")}
         <style jsx>{`
           mark {
             text-overflow: ellipsis;
@@ -214,7 +216,7 @@ class Articles extends ListPage {
             checked={+replyRequestCount === 1}
             onChange={this.handleReplyRequestCountCheck}
           />{' '}
-          列出包括僅有 1 人回報的文章
+          {i18n.t("pageArticles.listArticlesIncludeOne")}
         </label>
         <style jsx>
           {`
@@ -292,7 +294,7 @@ class Articles extends ListPage {
       <AppLayout>
         <main>
           <Head>
-            <title>Cofacts 真的假的 - 轉傳訊息查證</title>
+            <title>{i18n.t("pageArticles.reallyFake")}</title>
           </Head>
           {searchUserByArticleId
             ? this.renderSearchedArticleHeader()
@@ -304,9 +306,9 @@ class Articles extends ListPage {
           <span />
           {+replyRequestCount !== 1 ? (
             <span className="hint">
-              預設僅會顯示 2 人以上回報的文章。
+              {i18n.t("pageArticles.listArticlesMoreThanTwoPeople")}{' '}
               <Link route="articles" params={{ replyRequestCount: 1 }}>
-                <a>按這裡加入僅 1 人回報的文章</a>
+                <a>{i18n.t("pageArticles.clickHere")}</a>
               </Link>
             </span>
           ) : null}

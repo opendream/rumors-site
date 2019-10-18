@@ -5,6 +5,8 @@ import Router from 'next/router';
 
 import AppLayout from 'components/AppLayout';
 
+import i18n from '../i18n';
+
 class CreateArticlePage extends React.Component {
   state = {
     isSubmitting: false,
@@ -56,20 +58,20 @@ class CreateArticlePage extends React.Component {
       <AppLayout>
         <div className="root">
           <Head>
-            <title>送出新訊息到資料庫 | Cofacts 真的假的</title>
+            <title>{i18n.t("pageCreate.title")} | Cofacts {i18n.t("realOrFake")}</title>
           </Head>
           <form onSubmit={this.handleSubmit}>
-            <h2>訊息原文</h2>
+            <h2>{i18n.t("originalMessage")}</h2>
             <textarea name="text" rows="6" />
-            <h2>理由</h2>
+            <h2>{i18n.t("reason")}</h2>
             <textarea name="reason" row="2" />
-            <h2>訊息來源網址</h2>
+            <h2>{i18n.t("pageCreate.messageSource")}</h2>
             <input type="text" name="references" />
 
             <hr />
 
             <button type="submit" disabled={isSubmitting}>
-              送出新訊息
+              {i18n.t("pageCreate.sendMessage")}
             </button>
           </form>
           <style jsx>{`

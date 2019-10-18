@@ -16,6 +16,8 @@ import ReplyConnection from 'components/ReplyConnection';
 import EditorName from 'components/EditorName';
 import Hyperlinks from 'components/Hyperlinks';
 
+import i18n from '../i18n';
+
 import { detailStyle } from './article.styles';
 import { listItemStyle } from 'components/ListItem.styles';
 
@@ -31,11 +33,11 @@ function UsedArticleItem({ article, replyConnection }) {
         <div className="item-text">{article.get('text')}</div>
         <div className="info">
           <EditorName editorName={userName} editorLevel={userLevel} />
-          在 <span title={createdAt.format('lll')}>
+          {i18n.t("in")} <span title={createdAt.format('lll')}>
             {createdAt.fromNow()}
           </span>{' '}
-          加的
-          {otherReplyCount ? ` · 另有 ${otherReplyCount} 篇回應` : ''}
+          {i18n.t("plus")}
+          {otherReplyCount ? ` · ${i18n.t("another")} ${otherReplyCount} ${i18n.t("reply")}` : ''}
         </div>
 
         <style jsx>{listItemStyle}</style>
@@ -102,8 +104,8 @@ class ReplyPage extends React.Component {
 
     const prompt =
       originalArticle.get('replyCount') > 1
-        ? `查看文章與其他 ${originalArticle.get('replyCount') - 1} 則回覆`
-        : '查看文章頁面';
+        ? `${i18n.t("pageReply.viewOtherArticle")} ${originalArticle.get('replyCount') - 1} ${i18n.t("replies")}`
+        : `${i18n.t("pageReply.viewArticle")}`;
 
     return (
       <Link route="article" params={{ id: originalArticle.get('id') }}>
@@ -126,11 +128,11 @@ class ReplyPage extends React.Component {
 
     return (
       <section className="section">
-        <h2>本則回應</h2>
+        <h2>{i18n.t("pageReply.thisReply")}</h2>
         <ul className="items">
           <ReplyConnection
             replyConnection={originalReplyConnection}
-            actionText={isDeleted ? '恢復回應' : '刪除回應'}
+            actionText={isDeleted ? `${i18n.t("pageReply.recoveryReply")}` : `${i18n.t("pageReply.deleteReply")}`}
             onVote={this.handleReplyConnectionVote}
             onAction={
               isDeleted
@@ -142,7 +144,7 @@ class ReplyPage extends React.Component {
           />
         </ul>
         {isDeleted ? (
-          <p className="deleted-prompt">此回應已被作者刪除。</p>
+          <p className="deleted-prompt">{i18n.t("pageReply.removed")}</p>
         ) : (
           ''
         )}
@@ -172,7 +174,7 @@ class ReplyPage extends React.Component {
 
     return (
       <section className="section">
-        <h2>這則回應也被加在這些文章</h2>
+        <h2>{i18n.t("pageReply.added")}</h2>
         <div>
           {otherReplyConnections.map(conn => (
             <UsedArticleItem
@@ -203,12 +205,12 @@ class ReplyPage extends React.Component {
       <AppLayout>
         <div className="root">
           <Head>
-            <title>{reply.get('text').slice(0, 15)}⋯⋯ - 回應</title>
+            <title>{reply.get('text').slice(0, 15)}⋯⋯ - {i18n.t("reply")}</title>
           </Head>
 
           <section className="section">
             <header className="header">
-              <h2>訊息原文</h2>
+              <h2>{i18n.t("originalMessage")}</h2>
               {this.renderArticleLink()}
             </header>
             <div className="message">

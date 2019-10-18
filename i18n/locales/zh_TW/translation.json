@@ -1,12 +1,252 @@
 {
-  "app": {
-    "header": {
-      "home": "真的假的",
-      "articles": "文章",
-      "replies": "回應",
-      "editorHelp": "編輯求助區",
-      "projectIntroduction": "專案介紹",
-      
+  "fullStop": "。",
+  "realOrFake": "真的假的",
+  "article": "篇",
+  "articles": "文章",
+  "articleList": "文章列表",
+  "reply": "則回覆",
+  "replyVerb": "回應",
+  "replies": "回應",
+  "editorHelp": "編輯求助區",
+  "projectIntroduction": "專案介紹",
+  "contactEmail": "連絡信箱",
+  "haveRead": "已讀",
+  "nonVerification": "非查證",
+  "view": "查看",
+  "return": "人回報",
+  "thenReply": "則回應",
+  "copied": "複製成功",
+  "copyToClipboard": "複製到剪貼簿",
+  "deletedResponse": "被刪除的回應",
+  "recoveryResponse": "恢復回應",
+  "have": "有",
+  "deleteByAuthor": "被作者自行刪除。",
+  "noReplyYet": "目前尚無回應",
+  "hideFullText": "隱藏全文",
+  "readmore": "閱讀更多",
+  "noReturnMessage": "全站未回訊息",
+  "totalArticles": "總篇數",
+  "othersResponded": "其他人回應的",
+  "whatYouRespondedTo": "你回應的",
+  "relatedInformation": "相關訊息",
+  "markedAs": "被標示為",
+  "correlation": "關聯度",
+  "respond": "回應",
+  "use": "使用",
+  "come": "來",
+  "differentOpinions": "不同意見",
+  "source": "出處",
+  "markArticleAs": "標記此篇為",
+  "reason": "理由",
+  "deleteReply": "刪除回應",
+  "otherUsers": "其他使用者",
+  "dataSource": "資料來源",
+  "welcome": "歡迎您",
+  "someone": "有人",
+  "usedIn": "使用於",
+  "originalMessage": "訊息原文",
+  "existingResponse": "現有回應",
+  "addNewResponse": "增加新回應",
+  "with": "和",
+  "in": "在",
+  "plus": "加的",
+  "another": "另有",
+  "increased": "增加了",
+  "yuan": "元",
+
+  "sentence": {
+    "congratulationsPromoted": "恭喜! 您升等了!",
+    "viewAllArticlesThisAuthor": "查看該用戶回報的所有文章",
+    "noRelatedArticles": "查無相關文章",
+    "useRelavantReplies": "使用相關回應",
+    "browseRelatedArticles": "瀏覽相關文章",
+    "searchForRelevantReplies": "搜尋相關回應",
+    "responseHasNoSource": "此回應沒有出處，請自行斟酌回應真實性。",
+    "goodResponseNotHelp": "請問您為什麼覺得好心人的回應沒有幫助？",
+    "referenceInput": "請提供與原文「不同觀點」的文章連結，促使讀者接觸不同意見：",
+    "similarArticles": "你可能也會對這些類似文章有興趣"
+  },
+
+  "replySearch": {
+    "findNo": "找無",
+    "relatedRepliesAndArticles": "相關的回覆與文章"
+  },
+
+  "repliesModal": {
+    "buttonText": "將這份回應加進此文章的回應"
+  },
+
+  "relatedReplies": {
+    "buttonText": "將這份回應加進此文章的回應",
+    "noRelevantReply": "目前沒有相關的回應"
+  },
+
+  "replyComponent": {
+    "referToScope": "查證範圍請參考",
+    "userGuide": "《使用者指南》",  
+    "unhelpfulReason": "使用者覺得沒有幫助的原因",
+    "commonReplyTemplate": "常用回應樣板",
+    "editingRules": "《Cofacts 編輯規則》",
+    "isItHelpfull": "是否有幫助?",
+    "descriptionTextLink": "超連結與連結說明文字",
+    "formHelp": "不知道從何下手嗎？",
+    "facebookHelp": "編輯求助區",
+    "countWord": "140 字以內",
+    "submitButton": "送出回應"
+  },
+
+  "replyType": {
+    "name": {
+      "NOT_ARTICLE": "不在查證範圍",
+      "OPINIONATED": "含有個人意見",
+      "NOT_RUMOR": "含有正確訊息",
+      "RUMOR": "含有不實訊息"
+    },
+    "desc": {
+      "NOT_ARTICLE": "這篇訊息不是編輯能夠處理、或 Cofacts 不應該受理此類文章。",
+      "OPINIONATED": "轉傳訊息或網路文章有一部分內容查證屬實。",
+      "NOT_RUMOR": "轉傳訊息或網路文章含有個人感想、假說猜測、陰謀論、尚無共識的研究、對政策的推論等等。",
+      "RUMOR": "轉傳訊息或網路文章有一部分含有不實資訊。"
+    },
+    "instruction": {
+      "NOT_ARTICLE": "請簡單說明您為何認為這不是完整文章：",
+      "NOT_RUMOR": "請簡單說明他哪個部分是正確的，作為「資料來源」的導讀：",
+      "OPINIONATED": "請簡單說明含有主觀意見之處，並且提醒讀者其並非客觀事實：",
+      "RUMOR": "請簡單說明不實之處，作為「資料來源」的導讀：",
+    },
+    "suggestion": {
+      "opinion1": {
+        "label": "陰謀論",
+        "value": "⋯⋯的部分含有無法查證的陰謀論，因為⋯⋯"
+      },
+      "opinion2": {
+        "label": "滑坡謬誤",
+        "value": "⋯⋯的部分含有滑坡謬誤，因為⋯⋯"
+      },
+      "opinion3": {
+        "label": "尚無共識",
+        "value": "⋯⋯的部分，社會尚無共識。"
+      },
+      "opinion4": {
+        "label": "個人價值",
+        "value": "⋯⋯的部分純屬個人價值觀，並非客觀事實。"
+      },
+
+      "not_article1": {
+        "label": "長度太短",
+        "value": "文字長度太短，疑似為使用者手動輸入之查詢語句，不像轉傳文章。"
+      },
+      "not_article2": {
+        "label": "商業促銷",
+        "value": "這是商業活動廣告，活動期間到⋯⋯"
+      },
+      "not_article3": {
+        "label": "無查證需要",
+        "value": "訊息與謠言查證無關。"
+      },
+      "not_article4": {
+        "label": "聊天",
+        "value": "送出文章的人在嘗試與機器人聊天。"
+      },
+      "not_article5": {
+        "label": "意見回饋",
+        "value": "對 Cofacts 真的假的的建言。"
+      },
+      "not_article6": {
+        "label": "無意義測試",
+        "value": "測試用之無意義訊息。"
+      }
     }
+  },
+
+  "lv0": "從零開始的主人公",
+  "lv1": "鄉民",
+  "lv2": "站得前面一點的鄉民",
+  "lv3": "好心人",
+  "lv4": "很好心的人",
+  "lv5": "好人",
+  "lv6": "大好人",
+  "lv7": "謠民",
+  "lv8": "童貞魔法師",
+  "lv9": "老司機",
+  "lv10": "闢謠天行者",
+  "lv11": "魔法少女",
+  "lv12": "闢謠天師",
+  "lv13": "謠言大覺者",
+  "lv14": "謠言終結者",
+  "lv15": "滅謠師太",
+  "lv16": "闢謠小女警",
+  "lv17": "闢謠小飛俠",
+  "lv18": "闢謠鐵金剛",
+  "lv19": "從零開始的魔法旋轉花花",
+  "lv20": "變態的好人",
+  "lv21": "超能孟獲",
+  "lv22": "熱血傲嬌律師",
+  "lv23": "初號機",
+  "lv24": "貳號機",
+  "lv25": "好心神",
+
+  "pageArticle": {
+    "tabMenu1": "撰寫回應",
+    "tabMenu2": "無相關回應"
+  },
+
+  "pageArticles": {
+    "listArticlesSameReturnee": "此篇相同回報者之文章列表",
+    "listArticlesIncludeOne": "列出包括僅有 1 人回報的文章",
+    "reallyFake": "真的假的 - 轉傳訊息查證",
+    "listArticlesMoreThanTwoPeople": "預設僅會顯示 2 人以上回報的文章。",
+    "clickHere": "按這裡加入僅 1 人回報的文章"
+  },
+
+  "pageCreate": {
+    "title": "送出新訊息到資料庫",
+    "messageSource": "訊息來源網址",
+    "sendMessage": "送出新訊息"
+  },
+
+  "pageReply": {
+    "viewOtherArticle": "查看文章與其他",
+    "viewArticle": "查看文章頁面",
+    "thisReply": "本則回應",
+    "recoveryReply": "恢復回應",
+    "deleteReply": "刪除回應",
+    "removed": "此回應已被作者刪除。",
+    "added": "這則回應也被加在這些文章"
+  },
+
+  "pageReplies": {
+    "onlyMine": "只顯示我寫的",
+    "replyList": "回應列表"
+  },
+
+  "pageInstant": {
+    "onlyDaily": "每天只有",
+    "threeHoursRemaining": "小時，剩下 3 小時是用來睡覺的",
+    "stoneLion": "隻石獅子",
+    "notDead": "不能亡",
+    "forget": "勿忘",
+    "forest": "森",
+    "cannotHigher": "不能再高了",
+    "noConsensus": "沒有共識的",
+    "consensus": "共識",
+    "mad": "狂",
+    "building": "大樓",
+    "see": "看到",
+    "gone": "就跪了",
+    "blockhead": "木頭人",
+    "minimumWage": "法定最低時薪",
+    "policeDepartment": "警政署",
+    "antiFraudLine": "反詐騙專線",
+    "countyRoad": "縣道",
+    "unexpectedly": "意外撿到",
+    "228": "二二八",
+    "noMention": "說好不提",
+    "learning": "學運",
+    "angry": "森七七",
+
+    "goDown": "下去領",
+    "newReplyArticle": "篇新回覆文章",
+    "currentReply": "目前已回覆"
   }
 }

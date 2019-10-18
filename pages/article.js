@@ -26,6 +26,7 @@ import {
   reset,
   voteReplyRequest,
 } from 'ducks/articleDetail';
+import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
 
@@ -129,7 +130,7 @@ class ArticlePage extends React.Component {
           onClick={this.handleTabChange('new')}
           className={`tab ${tab === 'new' ? 'active' : ''}`}
         >
-          撰寫回應
+          {i18n.t("pageArticle.tabMenu1")}
         </li>
         <li
           onClick={this.handleTabChange('related')}
@@ -138,10 +139,10 @@ class ArticlePage extends React.Component {
           }`}
         >
           {relatedReplyCount === 0 ? (
-            '無相關回應'
+            `${i18n.t("pageArticle.tabMenu2")}`
           ) : (
             <span>
-              使用相關回應 <span className="badge">{relatedReplyCount}</span>
+              {i18n.t("sentence.useRelavantReplies")} <span className="badge">{relatedReplyCount}</span>
             </span>
           )}
         </li>
@@ -149,7 +150,7 @@ class ArticlePage extends React.Component {
           onClick={this.handleTabChange('search')}
           className={`tab ${tab === 'search' ? 'active' : ''}`}
         >
-          搜尋
+          {i18n.t("search")}
         </li>
         <li className="empty" />
         <style jsx>{tabMenuStyle}</style>
@@ -221,11 +222,11 @@ class ArticlePage extends React.Component {
       <AppLayout>
         <div className="root">
           <Head>
-            <title>{slicedArticleTitle}⋯⋯ | Cofacts 真的假的</title>
+            <title>{slicedArticleTitle}⋯⋯ | Cofacts {i18n.t("realOrFake")}</title>
           </Head>
           <section className="section">
             <header className="header">
-              <h2>訊息原文</h2>
+              <h2>{i18n.t("originalMessage")}</h2>
               <div className="trendline">
                 <Trendline id={article.get('id')} />
               </div>
@@ -261,7 +262,7 @@ class ArticlePage extends React.Component {
             className="section"
             ref={replySectionEl => (this._replySectionEl = replySectionEl)}
           >
-            <h2>現有回應</h2>
+            <h2>{i18n.t("existingResponse")}</h2>
             <CurrentReplies
               replyConnections={replyConnections}
               disabled={isReplyLoading}
@@ -271,13 +272,13 @@ class ArticlePage extends React.Component {
             />
           </section>
           <section className="section">
-            <h2>增加新回應</h2>
+            <h2>{i18n.t("addNewResponse")}</h2>
             {this.renderTabMenu()}
             <div className="tab-content">{this.renderNewReplyTab()}</div>
           </section>
           {relatedArticles.size ? (
             <section className="section">
-              <h2>你可能也會對這些類似文章有興趣</h2>
+              <h2>{i18n.t("sentence.similarArticles")}</h2>
               <div>
                 {relatedArticles.map(article => (
                   <ArticleItem key={article.get('id')} article={article} />

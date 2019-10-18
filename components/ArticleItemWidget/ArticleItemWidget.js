@@ -7,6 +7,7 @@ import gql from '../../util/gql';
 
 import WidgetItem from './WidgetItem.js';
 import NotArticleExtendSelection from './NotArticleExtendSelection.js';
+import i18n from '../../i18n';
 
 // TODO: Click out for touch
 
@@ -190,7 +191,7 @@ export default class ArticleItemWidget extends PureComponent {
       >
         <WidgetItem
           name="read"
-          description="已讀"
+          description={i18n.t('haveRead')}
           color="#cfcfcf"
           hover={hoverTargetName === 'read'}
           index={0}
@@ -200,7 +201,7 @@ export default class ArticleItemWidget extends PureComponent {
         />
         <WidgetItem
           name="notArticle"
-          description="非查證"
+          description={i18n.t('nonVerification')}
           color="orange"
           hover={hoverTargetName === 'notArticle'}
           index={1}

@@ -1,6 +1,7 @@
 import React from 'react';
 import ClipboardJS from 'clipboard';
 import 'balloon-css/balloon.css';
+import i18n from '../i18n';
 
 export default class CopyButton extends React.PureComponent {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class CopyButton extends React.PureComponent {
       const self = this;
       this.setState({
         tooltipAttrs: {
-          'data-balloon': '複製成功！',
+          'data-balloon': `${i18n.t("copied")}!`,
           'data-balloon-visible': '',
           'data-balloon-pos': 'up',
         },
@@ -39,7 +40,7 @@ export default class CopyButton extends React.PureComponent {
     const { tooltipAttrs } = this.state;
     return (
       <button ref={this.copyBtnRef} className="btn-copy" {...tooltipAttrs}>
-        複製到剪貼簿
+        {i18n.t('copyToClipboard')}
         <style jsx>{`
           .btn-copy {
             margin-left: 10px;

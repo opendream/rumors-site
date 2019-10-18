@@ -1,13 +1,14 @@
 import React from 'react';
 import moment from 'moment';
+import i18n from '../i18n';
 
 export default function ArticleInfo({ article }) {
   const createdAt = moment(article.get('createdAt'));
   return (
     <div className="root">
-      {article.get('replyRequestCount')} 人回報
+      {article.get('replyRequestCount')} {i18n.t("return")}
       {article.get('replyCount') > 0 ? (
-        <span>・{article.get('replyCount')} 則回應</span>
+        <span>・{article.get('replyCount')} {i18n.t("thenReply")}</span>
       ) : (
         ''
       )}

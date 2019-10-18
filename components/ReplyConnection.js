@@ -11,6 +11,7 @@ import ReplyFeedback from './ReplyFeedback';
 import EditorName from './EditorName';
 import Hyperlinks from './Hyperlinks';
 import CopyButton from './CopyButton';
+import i18n from '../i18n';
 
 export default class ReplyConnection extends React.PureComponent {
   static defaultProps = {
@@ -18,7 +19,7 @@ export default class ReplyConnection extends React.PureComponent {
     disabled: false,
     onAction() {},
     onVote() {},
-    actionText: '刪除回應',
+    actionText: `${i18n.t("deleteReply")}`,
     linkToReply: true,
   };
 
@@ -35,10 +36,10 @@ export default class ReplyConnection extends React.PureComponent {
 
     return (
       <aside className="not-in-range-info">
-        ／ 查證範圍請參考
+        ／ {i18n.t("replyComponent.referToScope")}
         <a href={USER_REFERENCE} target="_blank" rel="noopener noreferrer">
-          《使用者指南》
-        </a>。
+          {i18n.t("replyComponent.userGuide")}
+        </a>{i18n.t("fullStop")}
         <style jsx>{`
           .not-in-range-info {
             display: inline-block; /* line-break as a whole in small screen */
@@ -130,7 +131,7 @@ export default class ReplyConnection extends React.PureComponent {
       return (
         <span>
           {connectionAuthorName}
-          使用{' '}
+          {i18n.t("use")}{' '}
           <Link
             route="reply"
             params={{ id: replyConnection.getIn(['reply', 'id']) }}
@@ -140,9 +141,8 @@ export default class ReplyConnection extends React.PureComponent {
                 editorName={replyAuthor.get('name')}
                 editorLevel={replyAuthor.get('level')}
               />{' '}
-              的回應
             </a>
-          </Link>來
+          </Link>{i18n.t("reply")} {i18n.t("come")}{' '}
         </span>
       );
     }
@@ -158,10 +158,10 @@ export default class ReplyConnection extends React.PureComponent {
     const reference = replyConnection.getIn(['reply', 'reference']);
     return (
       <section className="section">
-        <h3>{replyType === 'OPINIONATED' ? '不同意見' : '出處'}</h3>
+        <h3>{replyType === 'OPINIONATED' ? `${i18n.t("differentOpinions")}` : `${i18n.t("source")}`}</h3>
         {reference
           ? nl2br(linkify(reference))
-          : '⚠️️ 此回應沒有出處，請自行斟酌回應真實性。'}
+          : `⚠️️ ${i18n.t("sentence.responseHasNoSource")}`}
 
         <Hyperlinks
           hyperlinks={replyConnection.getIn(['reply', 'hyperlinks'])}
@@ -180,13 +180,13 @@ export default class ReplyConnection extends React.PureComponent {
       <li className="root">
         <header className="section">
           {this.renderAuthor()}
-          標記此篇為：<strong title={TYPE_DESC[replyType]}>
+          {i18n.t("markArticleAs")}：<strong title={TYPE_DESC[replyType]}>
             {TYPE_NAME[replyType]}
           </strong>
           {this.renderHint()}
         </header>
         <section className="section">
-          <h3>理由</h3>
+          <h3>{i18n.t("reason")}</h3>
           <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
         </section>
 

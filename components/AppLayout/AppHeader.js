@@ -17,14 +17,14 @@ function AppHeader({
   return (
     <header className="root">
       <a className="logo hidden-xs" href="/">
-        <h1>{i18n.t("app.header.home")}</h1>
+        <h1>{i18n.t("realOrFake")}</h1>
       </a>
       <nav className="nav">
         <Link route="articles">
-          <a className="nav-item">{i18n.t("app.header.articles")}</a>
+          <a className="nav-item">{i18n.t("articles")}</a>
         </Link>
         <Link route="replies">
-          <a className="nav-item">{i18n.t("app.header.replies")}</a>
+          <a className="nav-item">{i18n.t("replies")}</a>
         </Link>
         <a
           href={EDITOR_FACEBOOK_GROUP}
@@ -32,7 +32,7 @@ function AppHeader({
           rel="noopener noreferrer"
           className="nav-item hidden-xs"
         >
-          FB {i18n.t("app.header.editorHelp")}
+          FB {i18n.t("editorHelp")}
         </a>
         <a
           href={PROJECT_HACKFOLDR}
@@ -40,7 +40,7 @@ function AppHeader({
           rel="noopener noreferrer"
           className="nav-item hidden-xs"
         >
-          {i18n.t("app.header.projectIntroduction")}
+          {i18n.t("projectIntroduction")}
         </a>
       </nav>
       <UserName
