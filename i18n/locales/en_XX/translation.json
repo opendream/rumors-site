@@ -53,6 +53,11 @@
   "another": "Another",
   "increased": "Increased",
   "yuan": "End",
+  "mostRecentlyAsked": "Most recently asked",
+  "mostAsked": "Most asked",
+  "notRepliedYet": "No responded yet",
+  "replied": "Responded",
+  "all": "All",
 
   "sentence": {
     "congratulationsPromoted": "Congratulations! You just advanced a level",

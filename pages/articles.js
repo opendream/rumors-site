@@ -177,8 +177,8 @@ class Articles extends ListPage {
         onChange={this.handleOrderByChange}
         value={orderBy || 'createdAt'}
       >
-        <option value="createdAt">Most recently asked</option>
-        <option value="replyRequestCount">Most asked</option>
+        <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
+        <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
       </select>
     );
   };
@@ -196,17 +196,17 @@ class Articles extends ListPage {
         >
           <li>
             <label>
-              <Radio value="unsolved" />Not replied yet
+              <Radio value="unsolved" />{i18n.t('notRepliedYet')}
             </label>
           </li>
           <li>
             <label>
-              <Radio value="solved" />Replied
+              <Radio value="solved" />{i18n.t('replied')}
             </label>
           </li>
           <li>
             <label>
-              <Radio value="all" />All
+              <Radio value="all" />{i18n.t('all')}
             </label>
           </li>
         </RadioGroup>
