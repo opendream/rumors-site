@@ -1,1 +1,252 @@
-{}
+{
+  "fullStop": ".",
+  "realOrFake": "Real or Fake",
+  "article": "Article",
+  "articles": "Articles",
+  "articleList": "List of Article",
+  "reply": "Reply",
+  "replyVerb": "Reply",
+  "replies": "Replies",
+  "editorHelp": "Editor Help",
+  "projectIntroduction": "Project Introduction",
+  "contactEmail": "Contact Email",
+  "haveRead": "Read",
+  "nonVerification": "Unverified",
+  "view": "View",
+  "return": "Report",
+  "thenReply": "Response",
+  "copied": "Copied",
+  "copyToClipboard": "Copied to clip board",
+  "deletedResponse": "Deleted response",
+  "recoveryResponse": "Recover response",
+  "have": "Have",
+  "deleteByAuthor": "Deleted by author",
+  "noReplyYet": "No response yet",
+  "hideFullText": "Hide text",
+  "readmore": "Read more",
+  "noReturnMessage": "Messages yet to be responded",
+  "totalArticles": "Total number of articles",
+  "othersResponded": "Others’ responded",
+  "whatYouRespondedTo": "Your responded",
+  "relatedInformation": "Related Information",
+  "markedAs": "Marked as",
+  "correlation": "Relevance",
+  "respond": "Respond",
+  "use": "Use",
+  "come": "Come",
+  "differentOpinions": "Different Opinion",
+  "source": "Source",
+  "markArticleAs": "Mark article as",
+  "reason": "Reason",
+  "deleteReply": "Delete response",
+  "otherUsers": "Other users",
+  "dataSource": "Data Source",
+  "welcome": "Welcome",
+  "someone": "Someone",
+  "usedIn": "Used in",
+  "originalMessage": "Original Message",
+  "existingResponse": "Existing Response",
+  "addNewResponse": "Add New Response",
+  "with": "and",
+  "in": "in",
+  "plus": "Add",
+  "another": "Another",
+  "increased": "Increased",
+  "yuan": "End",
+
+  "sentence": {
+    "congratulationsPromoted": "Congratulations! You just advanced a level",
+    "viewAllArticlesThisAuthor": "View all articles reported by this user",
+    "noRelatedArticles": "No related articles",
+    "useRelavantReplies": "Use related responses",
+    "browseRelatedArticles": "Browse related articles",
+    "searchForRelevantReplies": "Search for related responses",
+    "responseHasNoSource": "This response has no source. Please assess its credibility",
+    "goodResponseNotHelp": "Please explain why responses from users with good intention are unhelpful",
+    "referenceInput": "Please provide link(s) to article(s) with different viewpoints from the original text to help expose readers to different opinions",
+    "similarArticles": "You may be interested in these similar articles"
+  }, 
+
+  "replySearch": {
+    "findNo": "Not Found ",
+    "relatedRepliesAndArticles": "Related responses and articles"
+  },
+
+  "repliesModal": {
+    "buttonText": "Add this response to the response section of this article"
+  },
+
+  "relatedReplies": {
+    "buttonText": "Add this response to the response section of this article",
+    "noRelevantReply": "No relevant response for now"
+  },
+
+  "replyComponent": {
+    "referToScope": "Reference for scope of verification",
+    "userGuide": "《 User Guide 》",
+    "unhelpfulReason": "Unhelpful Reason",
+    "commonReplyTemplate": "Common response template",
+    "editingRules": "《 Cofacts editor rules 》",
+    "isItHelpfull": "Is it helpful",
+    "descriptionTextLink": "Description text for hyperlink and link",
+    "formHelp": "Unsure where to start?",
+    "facebookHelp": "Editor Help",
+    "countWord": "Within 140 words",
+    "submitButton": "Submit Response"
+  },
+
+  "replyType": {
+    "name": {
+      "NOT_ARTICLE": "Not in scope of verification",
+      "OPINIONATED": "Include personal opinion",
+      "NOT_RUMOR": "Include verified information",
+      "RUMOR": "Include unverified information"
+    },
+    "desc": {
+      "NOT_ARTICLE": "This article cannot be handled by editor or Cofacts should not handle this type of article",
+      "OPINIONATED": "Forwarded message or article is partially verified",
+      "NOT_RUMOR": "Forwarded message or article contains personal opinion, hypothesis, conspiracy theories, research findings yet to reach consensus, policy inference, etc.",
+      "RUMOR": "Forwarded message or article contains misinformation"
+    },
+    "instruction": {
+      "NOT_ARTICLE": "Please explain briefly why you believe this article is incomplete",
+      "NOT_RUMOR": "Please explain briefly which part is correct or verified so as to provide reference to data source",
+      "OPINIONATED": "Please explain briefly which part contains subjective opinion and remind other readers it is not an objective fact",
+      "RUMOR": "Please explain briefly which part is inaccurate so as to provide reference to data source"
+    },
+    "suggestion": {
+      "opinion1": {
+        "label": "Conspiracy",
+        "value": "… of the article contains conspiracy theories that cannot be verified because…"
+      },
+      "opinion2": {
+        "label": "Fallacy",
+        "value": " … of the article contains fallacy because…"
+      },
+      "opinion3": {
+        "label": "Lack of consensus",
+        "value": "There is still no consensus in the society in regards to … of the article"
+      },
+      "opinion4": {
+        "label": "Personal values",
+        "value": " … of the article is only personal views instead of objective fact" 
+      },
+
+      "not_article1": {
+        "label": "Text too short",
+        "value": "The length of the text is too short. It is suspected to be a query generated by user instead of article forwarded"
+      },
+      "not_article2": {
+        "label": "Commercial promotion",
+        "value": "This is a commercial advertisement. The activity period is …"
+      },
+      "not_article3": {
+        "label": "No need verification",
+        "value": "The information is not related to rumours"
+      },
+      "not_article4": {
+        "label": "Chat",
+        "value": "User forwarding article is trying to chat with chatbot"
+      },
+      "not_article5": {
+        "label": "Feedback",
+        "value": "Feedback for Cofacts"
+      },
+      "not_article6": {
+        "label": "Testing",
+        "value": "Message for testing"
+      }
+    }
+  },
+
+  "lv0": "Ground zero",
+  "lv1": "Civilian",
+  "lv2": "Civilian on the frontline",
+  "lv3": "Kind person",
+  "lv4": "Very kind person",
+  "lv5": "Good person",
+  "lv6": "Very good person",
+  "lv7": "Rumormonger",
+  "lv8": "Magician",
+  "lv9": "Old driver",
+  "lv10": "Skywalker",
+  "lv11": "Sorceress",
+  "lv12": "Wizard",
+  "lv13": "The clear-minded",
+  "lv14": "Rumour crusher",
+  "lv15": "Rumour destroyer",
+  "lv16": "Lady police",
+  "lv17": "Peter pan",
+  "lv18": "Mazinga Z.",
+  "lv19": "Magical rotatory flower",
+  "lv20": "Exceptionally good person",
+  "lv21": "Superman",
+  "lv22": "Lawyer",
+  "lv23": "Number 1",
+  "lv24": "Number 2",
+  "lv25": "Good heart",
+
+  "pageArticle": {
+    "tabMenu1": "Write a response",
+    "tabMenu2": "No related response"
+  },
+
+  "pageArticles": {
+    "listArticlesSameReturnee": "List of articles reported by the same user",
+    "listArticlesIncludeOne": "List of articles reported by only 1 user",
+    "reallyFake": "Real of fake - verification of forwarded messages",
+    "listArticlesMoreThanTwoPeople": "Preset setting to display only articles reported by 2 users or above",
+    "clickHere": "Click here to add articles reported by only 1 user"
+  },
+
+  "pageCreate": {
+    "title": "Send new message to database",
+    "messageSource": "Link to source of message",
+    "sendMessage": "Send new message"
+  },
+
+  "pageReply": {
+    "viewOtherArticle": "View other articles",
+    "viewArticle": "View article page",
+    "thisReply": "This response",
+    "recoveryReply": "Recover response",
+    "deleteReply": "Delete response",
+    "removed": "This response was deleted by its author",
+    "added": "This response is also added to these articles"
+  },
+
+  "pageReplies": {
+    "onlyMine": "Show only my responses",
+    "replyList": "Response list"
+  },
+
+  "pageInstant": {
+    "onlyDaily": "Every day only",
+    "threeHoursRemaining": "The remaining 3 hours is for sleeping",
+    "stoneLion": "Stone lion",
+    "notDead": "Cannot die",
+    "forget": "Will not forget",
+    "forest": "Forest",
+    "cannotHigher": "Cannot be higher",
+    "noConsensus": "No consensus",
+    "consensus": "Consensus",
+    "mad": "Crazy",
+    "building": "Building",
+    "see": "See",
+    "gone": "To bow",
+    "blockhead": "Blockhead",
+    "minimumWage": "Minimum wage",
+    "policeDepartment": "Police department",
+    "antiFraudLine": "Anti-fraud hotline",
+    "countyRoad": "County road",
+    "unexpectedly": "Unexpected discovery",
+    "228": "228 (memorial date for a revolution in Taiwan)",
+    "noMention": "Agreed not the mention",
+    "learning": "Student movement",
+    "angry": "Angry",
+
+    "goDown": "Refer to those who spread rumours or fake news because of certain benefits",
+    "newReplyArticle": " … new articles responded",
+    "currentReply": "Already responded"
+  }
+}
