@@ -23,7 +23,7 @@ export default function AppFooter() {
         ・
         <a href={`mailto:${CONTACT_EMAIL}`}>{i18n.t("contactEmail")}</a>
       </p>
-      <GoogleWebsiteTranslator />
+      {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
           margin: 0 20px 44px;
