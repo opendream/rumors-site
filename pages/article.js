@@ -222,7 +222,7 @@ class ArticlePage extends React.Component {
       <AppLayout>
         <div className="root">
           <Head>
-            <title>{slicedArticleTitle}⋯⋯ | Cofacts {i18n.t("realOrFake")}</title>
+            <title>{slicedArticleTitle}⋯⋯ | {i18n.t("SiteName")} {i18n.t("realOrFake")}</title>
           </Head>
           <section className="section">
             <header className="header">
