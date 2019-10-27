@@ -20,6 +20,7 @@ class ProgressBar extends PureComponent {
             padding: 1px;
             height: 8px;
             border-radius: 3px;
+            background-color: white;
           }
 
           i {
@@ -136,6 +137,16 @@ class UserName extends PureComponent {
           .user {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+          }
+          @media screen and (max-width: 320px) {
+            .user a {
+              max-width: 120px;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              word-break: keep-all;
+            }
           }
 
           .edit {
@@ -145,6 +156,7 @@ class UserName extends PureComponent {
             cursor: pointer;
             border: 0;
             background: transparent;
+            margin-right: auto;
           }
 
           .edit:hover {
@@ -213,7 +225,7 @@ class UserName extends PureComponent {
 
     if (user) {
       return (
-        <div>
+        <div className={`user-profile`}>
           {isEditingUserName ? (
             <UserNameForm
               name={user.get('name')}
@@ -239,6 +251,21 @@ class UserName extends PureComponent {
               </p>
             </Modal>
           )}
+          <style jsx>{`
+          .user-profile {
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 1px 1px 4px -3px #000000;
+            box-sizing: border-box;
+            margin-top: 1rem;
+          }
+          @media screen and (max-width: 575px) {
+            width: 100%;
+            margin-top: 0;
+          }
+          `}</style>
         </div>
       );
     }

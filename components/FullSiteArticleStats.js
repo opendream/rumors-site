@@ -12,13 +12,12 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
 
   return (
     <div className="full-site-stat">
-      {i18n.t("noReturnMessage")}： {stats.get('notRepliedCount')}
-      <p>{i18n.t("totalArticles")}: {stats.get('repliedCount') + stats.get('notRepliedCount')}</p>
+      {i18n.t("noReturnMessage")}: <strong>{stats.get('notRepliedCount')}</strong>
+      <p>{i18n.t("totalArticles")}: <strong>{stats.get('repliedCount') + stats.get('notRepliedCount')}</strong></p>
       {typeof repliedArticleCount === 'number' && (
         <div>
           <p>
-            {i18n.t("othersResponded")}: {stats.get('repliedCount') - repliedArticleCount} /
-            {i18n.t("whatYouRespondedTo")}: {repliedArticleCount}
+            {i18n.t("othersResponded")}: <strong>{stats.get('repliedCount') - repliedArticleCount}</strong> / {i18n.t("whatYouRespondedTo")}: <strong>{repliedArticleCount}</strong>
           </p>
           <div className="progress">
             <i
@@ -33,12 +32,16 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
       <style jsx>{`
         .full-site-stat {
           font-size: 12px;
+          padding: .75rem;
+          border-radius: .25rem;
+          border: 1px solid rgba(0,0,0,0.3);
         }
         .progress {
           border: 1px solid khaki;
           padding: 1px;
           height: 8px;
           border-radius: 3px;
+          background-color: white;
         }
 
         i {
