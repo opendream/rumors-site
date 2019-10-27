@@ -26,8 +26,13 @@ export default function AppFooter() {
       {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
-          margin: 0 20px 44px;
+          padding: 30px 30px;
           text-align: center;
+          color: white;
+          border-top: 1px solid rgba(52, 58, 64, 0.3);
+        }
+        footer p {
+          margin-bottom: 0;
         }
         img {
           width: 100%;

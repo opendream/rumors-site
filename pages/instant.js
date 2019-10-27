@@ -77,10 +77,10 @@ const SPECIAL_PROPS = {
     top: `${i18n.t("pageInstant.noMention")}`,
   },
   318: {
-    bottom: `${i18n.t("learning")}`,
+    bottom: `${i18n.t("pageInstant.learning")}`,
   },
   377: {
-    bottom: '森七七',
+    bottom: `${i18n.t("pageInstant.angry")}`,
   },
   500: {
     top: `${i18n.t("pageInstant.goDown")}`,

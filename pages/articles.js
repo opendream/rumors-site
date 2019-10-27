@@ -116,7 +116,7 @@ class Articles extends ListPage {
 
     return (
       <h2 className="header">
-        {i18n.t("articleList")}
+        <span>{i18n.t("articleList")}</span>
         <FullSiteArticleStats
           stats={stats}
           repliedArticleCount={repliedArticleCount}
@@ -124,8 +124,17 @@ class Articles extends ListPage {
         <style jsx>{`
           .header {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+          }
+          @media screen and (min-width: 576px) {
+            .header {
+              flex-direction: row;
+              align-items: flex-end;
+            }
           }
         `}</style>
       </h2>
@@ -173,6 +182,7 @@ class Articles extends ListPage {
     }
 
     return (
+      <>
       <select
         onChange={this.handleOrderByChange}
         value={orderBy || 'createdAt'}
@@ -180,6 +190,16 @@ class Articles extends ListPage {
         <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
         <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
       </select>
+      <style jsx>{`
+        ul {
+          list-style: none;
+          padding-left: 1rem;
+        }
+        ul li input {
+          margin-right: 0.5rem;
+        }
+      `}</style>
+      </>
     );
   };
 
@@ -253,7 +273,7 @@ class Articles extends ListPage {
     const { localEditorHelperList } = this.state;
     const { articles = null, totalCount, authFields } = this.props;
     return (
-      <div>
+      <div className={`article-wrapper`}>
         <p>{totalCount} articles</p>
         {this.renderPagination()}
         <ul className="article-list">
@@ -274,9 +294,17 @@ class Articles extends ListPage {
         {this.renderPagination()}
         <style jsx>
           {`
+            .article-wrapper {
+              border-top: 1px solid rgba(0,0,0,0.3);
+              margin-top: 1rem;
+            }
             .article-list {
-              padding: 0;
               list-style: none;
+              display: flex;
+              -ms-flex-direction: column;
+              flex-direction: column;
+              padding-left: 0;
+              margin-bottom: 0;
             }
           `}
         </style>

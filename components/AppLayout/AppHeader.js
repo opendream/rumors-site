@@ -17,6 +17,9 @@ function AppHeader({
   return (
     <header className="root">
       <a className="logo hidden-xs" href="/">
+        <div>
+          <img src={`${require('./images/logo.png')}`}></img>
+        </div>
         <h1>{i18n.t("realOrFake")}</h1>
       </a>
       <nav className="nav">
@@ -53,11 +56,52 @@ function AppHeader({
       <style jsx>{`
         .root {
           display: flex;
-          align-items: center;
-          padding: 0 24px;
+          padding: 1rem 1rem;
+          border-bottom: 1px solid rgba(0,0,0,0.4);
+          flex-direction: column;
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+        @media screen and (min-width: 576px) {
+          .root {
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+          }
+        }
+        h1 {
+          display: block;
+          text-indent: -999em;
+          overflow: hidden;
+          line-height: 1.2;
+          height: 0;
+          margin: 0;
         }
         .logo {
           margin-right: 16px;
+          width: 100%;
+          max-width: 100px;
+        }
+        .logo > div {
+          position: relative;
+          display: block;
+          width: 100%;
+          padding: 0;
+          overflow: hidden;
+        }
+        .logo > div:before {
+          content: "";
+          display: block;
+          padding-top: 81%;
+        }
+        .logo > div > img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: auto;
         }
         .nav {
           margin-right: auto;
@@ -70,7 +114,7 @@ function AppHeader({
 
         @media screen and (min-width: 768px) {
           .root {
-            padding: 0 40px;
+            padding: 1rem 40px;
           }
         }
       `}</style>
