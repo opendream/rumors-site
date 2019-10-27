@@ -80,7 +80,7 @@ class ReplyFeedback extends Component {
 
     return (
       <div className="reply-feedback">
-        {!isOwnArticleReply && <label>{i18n.t("")}是否有幫助？</label>}
+        {!isOwnArticleReply && <label>{i18n.t("replyComponent.isItHelpfull")}</label>}
         <span className="vote-num">{positiveCount}</span>
         <button
           className="btn-vote"
