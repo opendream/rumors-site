@@ -128,17 +128,17 @@ h2 {
 }
 .phone-container .phone-img {
   width: 100%;
-  padding-bottom: 150%;
-  background: url("img/phone.png") top left;
+  padding-bottom: 200%;
+  background: url("img/phone-th.png") top center;
   background-size: cover;
   position: relative;
   align-self: flex-end;
 }
 .phone-container video {
   position: absolute;
-  width: 78%;
-  left: 11%;
-  top: 14%;
+  width: 84%;
+  left: 8.2%;
+  top: 9.2%;
 }
 .section-why {
   background: #fff url("img/cofacts-db-bg.jpg") bottom left no-repeat;
