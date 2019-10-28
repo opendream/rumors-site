@@ -92,7 +92,7 @@ function AppHeader({
         .logo > div:before {
           content: "";
           display: block;
-          padding-top: 81%;
+          padding-top: 100%;
         }
         .logo > div > img {
           position: absolute;

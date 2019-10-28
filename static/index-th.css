@@ -144,6 +144,7 @@ h2 {
   background: #fff url("img/cofacts-db-bg.jpg") bottom left no-repeat;
 }
 .section-why p {
+  padding: 1rem;
   background: rgba(255,255,255,0.6);
 }
 .section-photos {
