@@ -28,7 +28,7 @@ h5 {
 .jumbotron {
   margin-bottom: 0;
   position: relative;
-  background: url("img/jumbotron.jpg") center center no-repeat #222;
+  background: url("img/cofact-th-bg.jpg") center center no-repeat #222;
   background-size: cover;
   border-radius: 0;
   display: flex;
@@ -141,7 +141,7 @@ h2 {
   top: 14%;
 }
 .section-why {
-  background: #fff url("img/cofacts-db-bg.jpg") bottom left no-repeat;
+  background: #fff url("img/cofact-th-db-bg.jpg") bottom left no-repeat;
 }
 .section-why p {
   background: rgba(255,255,255,0.6);
