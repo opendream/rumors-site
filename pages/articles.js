@@ -31,6 +31,10 @@ class Articles extends ListPage {
   };
 
   static async getInitialProps({ store, query }) {
+
+    if (typeof(query.replyRequestCount) === 'undefined') {
+      query.replyRequestCount = 1
+    }
     await store.dispatch(load(query));
     return { query };
   }
@@ -233,7 +237,7 @@ class Articles extends ListPage {
         <label>
           <input
             type="checkbox"
-            checked={+replyRequestCount === 1}
+            checked={+replyRequestCount === 1 || typeof(replyRequestCount) === 'undefined'}
             onChange={this.handleReplyRequestCountCheck}
           />{' '}
           {i18n.t("pageArticles.listArticlesIncludeOne")}
@@ -332,7 +336,7 @@ class Articles extends ListPage {
           {this.renderFilter()}
           {isLoading ? <p>Loading...</p> : this.renderList()}
           <span />
-          {+replyRequestCount !== 1 ? (
+          {(+replyRequestCount !== 1 && typeof(replyRequestCount) !== 'undefined') ? (
             <span className="hint">
               {i18n.t("pageArticles.listArticlesMoreThanTwoPeople")}{' '}
               <Link route="articles" params={{ replyRequestCount: 1 }}>
