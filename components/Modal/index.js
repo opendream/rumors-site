@@ -5,54 +5,33 @@ export default class Modal extends PureComponent {
     const { children, style = {}, onClose = () => {} } = this.props;
     return (
       <div className="root">
-        <div className="container">
-          <div className="backdrop" onClick={onClose} />
-          <div className="modal" style={style}>
-            {children}
-            <div className="close" onClick={onClose}>
-              X
-            </div>
+        <div className="">
+          <div className="backdrop">
           </div>
+
+          <div className="modal fade d-block show">
+            <div className="modal-dialog modal-dialog-centered modal-sm">
+              <div className="modal-content">
+                <div className="modal-body">
+                  <button type="button" className="close" onClick={onClose}>
+                    <span>&times;</span>
+                  </button>
+                  {children}
+                </div>
+              </div>
+            </div>  
+          </div>
+
         </div>
 
         <style jsx>{`
-          .root {
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            overflow-y: auto;
-          }
-          .container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
           .backdrop {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
+            position: fixed;
+            background: rgba(0, 0, 0, 0.8);
             left: 0;
             top: 0;
             right: 0;
             bottom: 0;
-          }
-          .modal {
-            position: relative;
-            display: inline-block;
-            margin: 16% 0;
-            background: #fff;
-            border-radius: 3px;
-            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
-              0 15px 12px rgba(0, 0, 0, 0.22);
-            z-index: 1;
-          }
-          .close {
-            position: absolute;
-            cursor: pointer;
-            right: 16px;
-            top: 16px;
           }
         `}</style>
       </div>

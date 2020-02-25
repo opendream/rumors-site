@@ -16,26 +16,49 @@ function LoginModal({ isDialogShown, onModalClose }) {
     new RegExp(`^${location.origin}`),
     ''
   );
-  const title = isDialogShown;
-  console.log('title', title)
+  const title = isDialogShown? isDialogShown: `${i18n.t('login')} / ${i18n.t('signup')}`;
+
+  const onSubmit = () => {
+
+  }
 
   return (
     <Modal onClose={onModalClose}>
       <div className="root">
-        <h1>{title? title: `${i18n.t('login')} / ${i18n.t('signup')}`}</h1>
-        <a href={`${PUBLIC_API_URL}/login/facebook?redirect=${redirectUrl}`}>
-          Facebook
-        </a>・
-        <a href={`${PUBLIC_API_URL}/login/twitter?redirect=${redirectUrl}`}>
-          Twitter
-        </a>・
-        <a href={`${PUBLIC_API_URL}/login/github?redirect=${redirectUrl}`}>
-          Github
-        </a>
+        <h4 className={`mb-4`}>{title}</h4>
+
+        <div>
+          <form onSubmit={onSubmit}>
+            <div className="form-group">
+              <input type="email" className={`form-control`} placeholder={i18n.t(`email`)} />
+            </div>
+            <div className="form-group">
+              <input type="password" className={`form-control`} placeholder={i18n.t(`password`)} autoComplete="false"/>
+            </div>
+            <button type="submit" className="btn btn-secondary btn-block">{title}</button>
+          </form>
+        </div>
+
+        <div className={`text-center mt-2 mb-3`}>
+          <small className={`text-secondary`}>{i18n.t(`or Connect with Social Media`)}</small>
+        </div>
+
+        <div>
+          <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/facebook?redirect=${redirectUrl}`}>
+            {i18n.t(`Connect with Facebook`)}
+          </a>
+          {/* <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/twitter?redirect=${redirectUrl}`}>
+            Twitter
+          </a>
+          <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/github?redirect=${redirectUrl}`}>
+            Github
+          </a> */}
+        </div>
+
       </div>
       <style jsx>{`
         .root {
-          padding: 40px;
+          padding: 20px;
         }
       `}</style>
     </Modal>
