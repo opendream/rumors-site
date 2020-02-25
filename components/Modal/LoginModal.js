@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import getConfig from 'next/config';
 import Modal from './';
 import { hideDialog } from 'ducks/auth';
+import i18n from 'i18n';
 
 const {
   publicRuntimeConfig: { PUBLIC_API_URL },
@@ -15,10 +16,13 @@ function LoginModal({ isDialogShown, onModalClose }) {
     new RegExp(`^${location.origin}`),
     ''
   );
+  const title = isDialogShown;
+  console.log('title', title)
+
   return (
     <Modal onClose={onModalClose}>
       <div className="root">
-        <h1>Login / Signup</h1>
+        <h1>{title? title: `${i18n.t('login')} / ${i18n.t('signup')}`}</h1>
         <a href={`${PUBLIC_API_URL}/login/facebook?redirect=${redirectUrl}`}>
           Facebook
         </a>・

@@ -96,7 +96,7 @@ class Articles extends ListPage {
     } = this.props;
     return (
       <label className="label-search">
-        Search For:{' '}
+        {i18n.t("pageArticles.searchFor")}:{' '}
         <input
           type="search"
           onBlur={this.handleKeywordChange}
@@ -182,7 +182,7 @@ class Articles extends ListPage {
       query: { orderBy, q },
     } = this.props;
     if (q) {
-      return <span> Relevance</span>;
+      return <span> {i18n.t("pageArticles.relevance")}</span>;
     }
 
     return (
@@ -278,7 +278,7 @@ class Articles extends ListPage {
     const { articles = null, totalCount, authFields } = this.props;
     return (
       <div className={`article-wrapper`}>
-        <p>{totalCount} articles</p>
+        <p>{totalCount} {i18n.t("pageArticles.articles")}</p>
         {this.renderPagination()}
         <ul className="article-list">
           {articles.map(article => {
@@ -331,7 +331,7 @@ class Articles extends ListPage {
           {searchUserByArticleId
             ? this.renderSearchedArticleHeader()
             : this.renderHeader()}
-          {this.renderSearch()} Order By:
+          {this.renderSearch()} {i18n.t("pageArticles.orderBy")}:
           {this.renderOrderBy()}
           {this.renderFilter()}
           {isLoading ? <p>Loading...</p> : this.renderList()}

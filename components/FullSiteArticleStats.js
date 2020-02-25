@@ -12,13 +12,13 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
 
   return (
     <div className="full-site-stat">
-      {i18n.t("noReturnMessage")}: <strong>{stats.get('notRepliedCount')}</strong>
-      <p>{i18n.t("totalArticles")}: <strong>{stats.get('repliedCount') + stats.get('notRepliedCount')}</strong></p>
+      <div>{i18n.t("noReturnMessage")}: <strong>{stats.get('notRepliedCount')}</strong></div>
+      <div>{i18n.t("totalArticles")}: <strong>{stats.get('repliedCount') + stats.get('notRepliedCount')}</strong></div>
       {typeof repliedArticleCount === 'number' && (
-        <div>
-          <p>
+        <>
+          <div>
             {i18n.t("othersResponded")}: <strong>{stats.get('repliedCount') - repliedArticleCount}</strong> / {i18n.t("whatYouRespondedTo")}: <strong>{repliedArticleCount}</strong>
-          </p>
+          </div>
           <div className="progress">
             <i
               style={{
@@ -27,7 +27,7 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
               }}
             />
           </div>
-        </div>
+        </>
       )}
       <style jsx>{`
         .full-site-stat {

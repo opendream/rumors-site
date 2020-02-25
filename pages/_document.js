@@ -37,6 +37,8 @@ class MyDocument extends Document {
               `,
             }}
           />
+          <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"></link>
+          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"></link>
           <script async src="https://www.google-analytics.com/analytics.js" />
           <script async src={`/static/${AUTOTRACK_FILENAME}`} />
         </Head>

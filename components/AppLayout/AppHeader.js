@@ -131,8 +131,8 @@ function mapStateToProps({ auth }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onLoginClick() {
-      dispatch(showDialog());
+    onLoginClick(title) {
+      dispatch(showDialog(title));
     },
     onLogoutClick() {
       dispatch(logout());

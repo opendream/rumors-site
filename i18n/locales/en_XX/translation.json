@@ -58,6 +58,8 @@
   "notRepliedYet": "No responded yet",
   "replied": "Responded",
   "all": "All",
+  "login": "Log In",
+  "signup": "Sign Up",
 
   "sentence": {
     "congratulationsPromoted": "Congratulations! You just advanced a level",
@@ -201,7 +203,11 @@
     "listArticlesIncludeOne": "List of articles reported by only 1 user",
     "reallyFake": "Real of fake - verification of forwarded messages",
     "listArticlesMoreThanTwoPeople": "Preset setting to display only articles reported by 2 users or above",
-    "clickHere": "Click here to add articles reported by only 1 user"
+    "clickHere": "Click here to add articles reported by only 1 user",
+    "searchFor": "Search for",
+    "orderBy": "Order by",
+    "articles": "articles",
+    "relevance": "Relevance"
   },
 
   "pageCreate": {

@@ -171,9 +171,15 @@ class UserName extends PureComponent {
     const { onLoginClick } = this.props;
 
     return (
-      <button type="button" onClick={onLoginClick}>
-        Login
-      </button>
+      <>
+        <button type="button" className={`btn btn-outline-secondary btn-sm`} onClick={() => onLoginClick(i18n.t('login'))}>
+          {i18n.t("login")}
+        </button>
+        &nbsp;
+        <button type="button" className={`btn btn-outline-secondary btn-sm`} onClick={() => onLoginClick(i18n.t("signup"))}>
+          {i18n.t("signup")}
+        </button>
+      </>
     );
   };
 

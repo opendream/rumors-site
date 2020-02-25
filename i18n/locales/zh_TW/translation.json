@@ -53,6 +53,8 @@
   "another": "另有",
   "increased": "增加了",
   "yuan": "元",
+  "login": "Log In",
+  "signup": "Sign Up",
 
   "sentence": {
     "congratulationsPromoted": "恭喜! 您升等了!",
@@ -196,7 +198,11 @@
     "listArticlesIncludeOne": "列出包括僅有 1 人回報的文章",
     "reallyFake": "真的假的 - 轉傳訊息查證",
     "listArticlesMoreThanTwoPeople": "預設僅會顯示 2 人以上回報的文章。",
-    "clickHere": "按這裡加入僅 1 人回報的文章"
+    "clickHere": "按這裡加入僅 1 人回報的文章",
+    "searchFor": "Search for",
+    "orderBy": "Order by",
+    "articles": "articles",
+    "relevance": "Relevance"
   },
 
   "pageCreate": {

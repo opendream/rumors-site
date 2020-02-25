@@ -27,7 +27,8 @@ export const waitForAuth = new Promise(resolve => {
 
 export const setState = createAction(SET_STATE);
 
-export const showDialog = () => setState({ key: 'isDialogShown', value: true });
+export const showDialog = (title) => setState({ key: 'isDialogShown', value: title });
+
 export const hideDialog = () =>
   setState({ key: 'isDialogShown', value: false });
 
