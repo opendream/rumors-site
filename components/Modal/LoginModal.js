@@ -16,7 +16,9 @@ function LoginModal({ isDialogShown, onModalClose }) {
     new RegExp(`^${location.origin}`),
     ''
   );
+  const nextUrl = location.href;
   const title = isDialogShown? isDialogShown: `${i18n.t('login')} / ${i18n.t('signup')}`;
+  const action = isDialogShown == i18n.t('login')? 'login': 'signup';
 
   const onSubmit = () => {
 
@@ -28,13 +30,18 @@ function LoginModal({ isDialogShown, onModalClose }) {
         <h4 className={`mb-4`}>{title}</h4>
 
         <div>
-          <form onSubmit={onSubmit}>
+          <form action={`${PUBLIC_API_URL}/login/local?action=${action}&redirect=/&next=${nextUrl}`} method="post">
             <div className="form-group">
-              <input type="email" className={`form-control`} placeholder={i18n.t(`email`)} />
+              <input name="email" type="email" className={`form-control`} placeholder={i18n.t(`email`)} />
             </div>
             <div className="form-group">
-              <input type="password" className={`form-control`} placeholder={i18n.t(`password`)} autoComplete="false"/>
+              <input name="password" type="password" className={`form-control`} placeholder={i18n.t(`password`)} autoComplete="false"/>
             </div>
+
+            <input type="hidden" name="next" value={nextUrl} />
+            <input type="hidden" name="redirect" value={`/`} />
+            <input type="hidden" name="action" value={action} />
+
             <button type="submit" className="btn btn-secondary btn-block">{title}</button>
           </form>
         </div>
@@ -42,6 +49,7 @@ function LoginModal({ isDialogShown, onModalClose }) {
         <div className={`text-center mt-2 mb-3`}>
           <small className={`text-secondary`}>{i18n.t(`or Connect with Social Media`)}</small>
         </div>
+
 
         <div>
           <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/facebook?redirect=${redirectUrl}`}>
