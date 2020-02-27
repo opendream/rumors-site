@@ -44,6 +44,7 @@ export const load = ({
           id
           name
           email
+          belongTo
           createdAt
           updatedAt
         }

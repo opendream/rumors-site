@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 // https://github.com/yannickcr/eslint-plugin-react/issues/1200
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Head from 'next/head';
@@ -16,6 +16,129 @@ import Pagination from 'components/Pagination';
 import i18n from '../i18n';
 
 import { mainStyle } from './articles.styles';
+import gql from 'util/gql';
+
+
+class UserBelongToForm extends PureComponent {
+
+
+  constructor(props) {
+    super(props);
+
+    this.  state = {
+      mode: 'display',
+      belongTo: props.user.get('belongTo')
+    }
+  
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const {user} = this.props;
+
+    if (!this.inputEl) return;
+    const newBelongTo = this.inputEl.value;
+
+    gql`
+      mutation($name: String!, $belongTo: String, $id: String) {
+        UpdateUser(name: $name, belongTo: $belongTo, id: $id) {
+          name
+          belongTo
+        }
+      }
+    `({
+      id: user.get('id'),
+      name: user.get('name'),
+      belongTo: newBelongTo,
+    }).then(resp => {
+      this.setState({belongTo: newBelongTo, mode: 'display'})
+    })
+
+  }
+
+  handleEdit = e => {
+    e.preventDefault();
+    this.setState({mode: 'edit'});
+
+    setTimeout(() => {
+      if (this.inputEl) {
+        this.inputEl.select();
+      }
+    }, 0);
+  }
+
+  onCancel = e => {
+    e.preventDefault();
+    this.setState({mode: 'display'});
+  }
+
+  render() {
+    const { user } = this.props;
+    const { mode, belongTo } = this.state;
+
+    if (mode == 'display') {
+      return (
+        <div>
+          {belongTo}
+          <button className="edit" onClick={this.handleEdit}>
+            <img
+              src={require('../components/AppLayout/images/edit.svg')}
+              width={12}
+              height={12}
+              alt="edit"
+            />
+          </button>
+          <style jsx>{`
+
+            .edit {
+              padding: 4px;
+              margin: 0 12px 0 4px;
+              opacity: 0.4;
+              cursor: pointer;
+              border: 0;
+              background: transparent;
+              margin-right: auto;
+            }
+
+            .edit:hover {
+              opacity: 0.7;
+            }
+          `}</style>
+        </div>
+      )
+    } else {
+
+      
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="name-input"
+            type="text"
+            defaultValue={user.get('belongTo')}
+            ref={el => (this.inputEl = el)}
+          />
+          <button className="submit" type="submit">
+            Save
+          </button>
+          <button type="button" onClick={this.onCancel}>
+            Cancel
+          </button>
+
+          <style jsx>{`
+            .name-input {
+              width: 6em;
+            }
+
+            .submit {
+              margin: 0 8px;
+            }
+          `}</style>
+        </form>
+      )
+    }
+  }
+}
 
 class UserList extends ListPage {
   static async getInitialProps({ store, query, isServer }) {
@@ -123,7 +246,7 @@ class UserList extends ListPage {
                   {moment(user.get('createdAt')).fromNow()}
                 </td>
                 <td>
-                  -
+                  <UserBelongToForm user={user} />
                 </td>
               </tr>
             ))}
