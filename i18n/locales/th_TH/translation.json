@@ -61,6 +61,15 @@
   "all": "ทั้งหมด",
   "login": "เข้าสู่ระบบ",
   "signup": "สมัครสมาชิก",
+  "searchFor": "ค้นหา",
+  "orderBy": "เรียงตาม",
+  "users": "ผู้ใช้",
+  "newestFirst": "ใหม่ไปเก่า",
+  "oldestFirst": "เก่าไปใหม่",
+  "name": "ชื่อ",
+  "email": "อีเมล",
+  "createdAt": "สร้างเมื่อ",
+  "belongTo": "สังกัด",
 
   "sentence": {
     "congratulationsPromoted": "เย้! คุณได้อัปเวลจ้า",
@@ -261,5 +270,9 @@
     "goDown": "Refer to those who spread rumours or fake news because of certain benefits",
     "newReplyArticle": " … new articles responded",
     "currentReply": "Already responded"
+  },
+
+  "pageUsers": {
+    "userList": "รายการผู้ใช้"
   }
 }

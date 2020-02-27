@@ -60,6 +60,15 @@
   "all": "All",
   "login": "Log In",
   "signup": "Sign Up",
+  "searchFor": "Search for",
+  "orderBy": "Order by",
+  "users": "users",
+  "newestFirst": "newest first",
+  "oldestFirst": "oldest first",
+  "name": "Name",
+  "email": "Email",
+  "createdAt": "Created at",
+  "belongTo": "Belong to",
 
   "sentence": {
     "congratulationsPromoted": "Congratulations! You just advanced a level",
@@ -259,5 +268,9 @@
     "goDown": "Refer to those who spread rumours or fake news because of certain benefits",
     "newReplyArticle": " … new articles responded",
     "currentReply": "Already responded"
+  },
+
+  "pageUsers": {
+    "userList": "User List"
   }
 }

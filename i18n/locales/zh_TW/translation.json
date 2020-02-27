@@ -55,6 +55,15 @@
   "yuan": "元",
   "login": "Log In",
   "signup": "Sign Up",
+  "searchFor": "Search for",
+  "orderBy": "Order by",
+  "users": "ีusers",
+  "newestFirst": "newest first",
+  "oldestFirst": "oldest first",
+  "name": "Name",
+  "email": "Email",
+  "createdAt": "Created at",
+  "belongTo": "Belong to",
 
   "sentence": {
     "congratulationsPromoted": "恭喜! 您升等了!",
@@ -254,5 +263,9 @@
     "goDown": "下去領",
     "newReplyArticle": "篇新回覆文章",
     "currentReply": "目前已回覆"
+  },
+
+  "pageUsers": {
+    "userList": "User List"
   }
 }
