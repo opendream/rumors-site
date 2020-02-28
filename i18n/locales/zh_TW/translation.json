@@ -64,6 +64,7 @@
   "email": "Email",
   "createdAt": "Created at",
   "belongTo": "Belong to",
+  "someone": "有人",
 
   "sentence": {
     "congratulationsPromoted": "恭喜! 您升等了!",

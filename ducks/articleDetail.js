@@ -48,6 +48,7 @@ const fragments = {
       id
       name
       avatarUrl
+      belongTo
       level
     }
     fragment articleReplyFields on ArticleReply {

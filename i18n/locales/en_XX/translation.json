@@ -69,6 +69,7 @@
   "email": "Email",
   "createdAt": "Created at",
   "belongTo": "Belong to",
+  "someone": "Someone",
 
   "sentence": {
     "congratulationsPromoted": "Congratulations! You just advanced a level",

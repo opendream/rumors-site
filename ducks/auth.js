@@ -51,6 +51,8 @@ export const load = () => dispatch => {
         id
         name
         avatarUrl
+        belongTo
+        isStaff
         ${levelFields}
       }
     }

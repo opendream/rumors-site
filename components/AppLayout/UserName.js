@@ -120,6 +120,7 @@ class UserName extends PureComponent {
           <a>{user.get('name')}</a>
         </Link>
 
+
         <button className="edit" onClick={this.handleEdit}>
           <img
             src={require('./images/edit.svg')}
@@ -129,6 +130,12 @@ class UserName extends PureComponent {
           />
         </button>
 
+
+        {user.get('belongTo')?
+        `(${user.get('belongTo')})`
+        : ``}
+        &nbsp;
+        
         <button type="button" onClick={onLogoutClick}>
           Logout
         </button>

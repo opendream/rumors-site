@@ -118,11 +118,15 @@ export default class ReplyConnection extends React.PureComponent {
 
     const connectionAuthorName =
       (
-        <EditorName
-          editorName={connectionAuthor.get('name')}
-          editorLevel={connectionAuthor.get('level')}
-        />
-      ) || '有人';
+        <>
+          <EditorName
+            editorName={connectionAuthor.get('name')}
+            editorLevel={connectionAuthor.get('level')}
+            editorBelongTo={connectionAuthor.get('belongTo')}
+          />
+          {' '}
+        </>
+      ) || i18n.t('someone');
 
     if (
       replyAuthor.get('name') &&
@@ -140,6 +144,7 @@ export default class ReplyConnection extends React.PureComponent {
               <EditorName
                 editorName={replyAuthor.get('name')}
                 editorLevel={replyAuthor.get('level')}
+                editorBelongTo={connectionAuthor.get('belongTo')}
               />{' '}
             </a>
           </Link>{i18n.t("reply")} {i18n.t("come")}{' '}

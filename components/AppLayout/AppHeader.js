@@ -29,9 +29,11 @@ function AppHeader({
         <Link route="replies">
           <a className="nav-item">{i18n.t("replies")}</a>
         </Link>
+        {user && user.get('isStaff')?
         <Link route="users">
           <a className="nav-item">{i18n.t("users")}</a>
         </Link>
+        : ``}
         <a
           href={EDITOR_FACEBOOK_GROUP}
           target="_blank"
