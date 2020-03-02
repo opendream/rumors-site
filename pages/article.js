@@ -262,7 +262,6 @@ class ArticlePage extends React.Component {
             className="section"
             ref={replySectionEl => (this._replySectionEl = replySectionEl)}
           >
-            <h2>{i18n.t("existingResponse")}</h2>
             <CurrentReplies
               replyConnections={replyConnections}
               disabled={isReplyLoading}

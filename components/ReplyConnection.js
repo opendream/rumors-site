@@ -180,9 +180,10 @@ export default class ReplyConnection extends React.PureComponent {
     const { replyConnection } = this.props;
     const reply = replyConnection.get('reply');
     const replyType = reply.get('type');
+    const user = replyConnection.get('user');
 
     return (
-      <li className="root">
+      <li className={`root ${user && user.get('belongTo')? 'verified': ''}`}>
         <header className="section">
           {this.renderAuthor()}
           {i18n.t("markArticleAs")}：<strong title={TYPE_DESC[replyType]}>
@@ -208,7 +209,14 @@ export default class ReplyConnection extends React.PureComponent {
             border-top: 1px solid #ccc;
           }
           .root:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+
+          .root.verified {
+            background-color: rgba(228, 255, 228, 0.6);
+          }
+          .root.verified:hover {
+            background-color: rgba(228, 255, 228, 1);
           }
         `}</style>
         <style jsx>{sectionStyle}</style>

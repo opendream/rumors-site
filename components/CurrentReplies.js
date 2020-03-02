@@ -105,41 +105,65 @@ export default function CurrentReplies({
     return <p>{i18n.t("noReplyYet")}</p>;
   }
 
-  const { validConnections, deletedConnections } = replyConnections.reduce(
+  const { expertConnections, validConnections, deletedConnections } = replyConnections.reduce(
     (agg, conn) => {
       if (conn.get('status') === 'DELETED') {
         agg.deletedConnections.push(conn);
       } else {
-        agg.validConnections.push(conn);
+        if (conn.get('user') && conn.get('user').get('belongTo')) {
+          agg.expertConnections.push(conn);
+        } else {
+          agg.validConnections.push(conn);
+        }
       }
 
       return agg;
     },
-    { validConnections: [], deletedConnections: [] }
+    { expertConnections: [], validConnections: [], deletedConnections: [] }
   );
 
   return (
-    <ul className="items">
-      {validConnections.map(conn => (
-        <ReplyConnection
-          key={`${conn.get('articleId')}__${conn.get('replyId')}`}
-          replyConnection={conn}
-          onAction={onDelete}
-          onVote={onVote}
+    <>
+      {expertConnections.length > 0?
+      <>
+        <h2>{i18n.t("expertResponse")}</h2>
+        <ul className="items mb-5">
+          {expertConnections.map(conn => (
+            <ReplyConnection
+              key={`${conn.get('articleId')}__${conn.get('replyId')}`}
+              replyConnection={conn}
+              onAction={onDelete}
+              onVote={onVote}
+              disabled={disabled}
+            />
+          ))}
+        </ul>
+      </>
+      : ``}
+      <h2>{i18n.t("existingResponse")}</h2>
+      <ul className="items">
+        {validConnections.map(conn => (
+          <ReplyConnection
+            key={`${conn.get('articleId')}__${conn.get('replyId')}`}
+            replyConnection={conn}
+            onAction={onDelete}
+            onVote={onVote}
+            disabled={disabled}
+          />
+        ))}
+        <DeletedItems
+          items={deletedConnections}
+          onRestore={onRestore}
           disabled={disabled}
         />
-      ))}
-      <DeletedItems
-        items={deletedConnections}
-        onRestore={onRestore}
-        disabled={disabled}
-      />
+
+      </ul>
       <style jsx>{`
         .items {
           list-style-type: none;
           padding-left: 0;
         }
       `}</style>
-    </ul>
+    </>
   );
 }
