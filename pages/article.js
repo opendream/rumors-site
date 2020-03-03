@@ -25,10 +25,13 @@ import {
   voteReply,
   reset,
   voteReplyRequest,
+  submitArticleCategories,
+  categoriesEdit,
 } from 'ducks/articleDetail';
 import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
+import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
 
 class ArticlePage extends React.Component {
   state = {
@@ -106,6 +109,23 @@ class ArticlePage extends React.Component {
       tab,
     });
   };
+
+  handleCategoriesEdit = (isEdit=true) => {
+
+    const { dispatch, id } = this.props;
+    return dispatch(categoriesEdit(isEdit));
+  }
+
+  handleCategoriesSubmit = categories => {
+    const { dispatch, id } = this.props;
+    return dispatch(
+      submitArticleCategories({
+        categories,
+        articleId: id,
+      })
+    );
+  };
+
 
   scrollToReplySection = () => {
     if (!this._replySectionEl) return;
@@ -202,7 +222,7 @@ class ArticlePage extends React.Component {
   };
 
   render() {
-    const { data, isLoading, isReplyLoading } = this.props;
+    const { data, isLoading, isReplyLoading, categoriesEditMode:_categoriesEditMode } = this.props;
 
     const article = data.get('article');
     const replyConnections = data.get('replyConnections');
@@ -217,6 +237,9 @@ class ArticlePage extends React.Component {
     }
 
     const slicedArticleTitle = article.get('text').slice(0, 15);
+    const categories = article.get('categories');
+
+    let categoriesEditMode = _categoriesEditMode ? _categoriesEditMode: (!categories || categories.size === 0);
 
     return (
       <AppLayout>
@@ -227,9 +250,9 @@ class ArticlePage extends React.Component {
           <section className="section">
             <header className="header">
               <h2>{i18n.t("originalMessage")}</h2>
-              <div className="trendline">
+              {/* <div className="trendline">
                 <Trendline id={article.get('id')} />
-              </div>
+              </div> */}
               <ArticleInfo article={article} />
             </header>
             <article className="message">
@@ -255,7 +278,66 @@ class ArticlePage extends React.Component {
                   />
                 );
               })}
+
+              <div className={`mt-3`}>
+                {categoriesEditMode?
+                <div className={`card`}>
+                  <div className="card-body">
+                    <div>
+                      <div>
+                        <h5>{i18n.t(`specifyArticleCategory`)}</h5>
+                        <div className={`text-secondary`}>{i18n.t(`selectMinimum`)}</div>
+                      </div>
+                      <form className={`mt-2`} ref={categoriesEl => (this._categoriesEl = categoriesEl)} onSubmit={(e) => {
+                        e.preventDefault();
+                        const checkboxArray = Array.prototype.slice.call(this._categoriesEl);
+                        const checkedCheckboxes = checkboxArray.filter(input => input.checked);
+                        const categories = checkedCheckboxes.map(input => input.value);
+                        this.handleCategoriesSubmit(categories);
+                      }}>
+                        <div>
+                          {TYPE_ARTICLE_OPTIONS.map((item, i) =>
+                            <div key={i} className="form-check form-check-inline">
+                              <input className="form-check-input" type="checkbox" name="categories" id={`article-category-${i}`} value={item} defaultChecked={categories && categories.filter(c => c === item).size > 0} />
+                              <label className="form-check-label" htmlFor={`article-category-${i}`}>{item}</label>
+                            </div>
+                          )}
+                        </div>
+                        <div className={`mt-3`}>
+                          <button>{i18n.t(`save`)}</button>
+                          <button className={`btn btn-link`} onClick={(e) => {
+                            e.preventDefault();
+                            this.handleCategoriesEdit(false)
+                          }}>
+                            {i18n.t(`cancel`)}
+                          </button>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                :
+                <h4>
+                  <span>
+                    {categories.map((item, i) => <span key={i} className="badge badge-secondary mr-2">{item}</span>)}
+                  </span>
+                  
+                  <button className={`btn btn-link`} onClick={() => this.handleCategoriesEdit()}>
+                    <img
+                      src={require('../components/AppLayout/images/edit.svg')}
+                      width={12}
+                      height={12}
+                      alt="edit"
+                    />
+                  </button>
+                </h4>
+                }
+
+              </div>
+
             </footer>
+            
           </section>
           <section
             id="current-replies"
@@ -305,6 +387,7 @@ function mapStateToProps({ articleDetail }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
+    categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
   };
 }

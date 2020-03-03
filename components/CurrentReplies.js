@@ -123,7 +123,7 @@ export default function CurrentReplies({
   );
 
   return (
-    <>
+    <div>
       {expertConnections.length > 0?
       <>
         <h2>{i18n.t("expertResponse")}</h2>
@@ -164,6 +164,6 @@ export default function CurrentReplies({
           padding-left: 0;
         }
       `}</style>
-    </>
+    </div>
   );
 }

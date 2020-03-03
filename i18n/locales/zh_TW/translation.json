@@ -5,6 +5,7 @@
   "articles": "文章",
   "articleList": "文章列表",
   "reply": "則回覆",
+  "replyOf": "reply of",
   "replyVerb": "回應",
   "replies": "回應",
   "editorHelp": "編輯求助區",
@@ -66,6 +67,9 @@
   "createdAt": "Created at",
   "belongTo": "Belong to",
   "someone": "有人",
+  "search": "search",
+  "at": "at",
+  "addBy": "Add by",
 
   "sentence": {
     "congratulationsPromoted": "恭喜! 您升等了!",
@@ -269,5 +273,19 @@
 
   "pageUsers": {
     "userList": "User List"
-  }
+  },
+
+  "articleCategory": {
+    "beauty": "Beauty",
+    "cancer": "Cancer",
+    "loseWeight": "Lose Weight",
+    "herbalMedicine": "Herbal Medicine"
+  },
+
+  "specifyArticleCategory": "Please, specify article category",
+  "selectMinimum": "Select to a minimum",
+  "save": "Save",
+  "edit": "Edit",
+  "cancel": "Cancel"
+
 }

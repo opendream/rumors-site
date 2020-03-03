@@ -6,20 +6,21 @@
   "articles": "บทความ",
   "articleList": "รายการบทความ",
   "reply": "ความเห็น",
-  "replyVerb": "Response",
+  "replyOf": "ความเห็นของ",
+  "replyVerb": "ความเห็น",
   "replies": "ความเห็น",
   "editorHelp": "Editor Help",
   "projectIntroduction": "แนะนำโครงการ",
   "contactEmail": "ติดต่อทางอีเมล",
   "haveRead": "อ่านแล้ว",
   "nonVerification": "ยังไม่ยืนยัน",
-  "view": "View",
+  "view": "ดู",
   "return": "รายงาน",
-  "thenReply": "Response",
-  "copied": "Copied",
-  "copyToClipboard": "Copied to clip board",
-  "deletedResponse": "Deleted response",
-  "recoveryResponse": "Recover response",
+  "thenReply": "ความเห็น",
+  "copied": "คัดลอกแล้ว",
+  "copyToClipboard": "คัดลอกไปยังคลิปบอร์ด",
+  "deletedResponse": "ความเห็นที่ถูกลบ",
+  "recoveryResponse": "กู้คืนความเห็นนี้",
   "have": "Have",
   "deleteByAuthor": "เจ้าของลบไปแล้ว",
   "noReplyYet": "ยังไม่มีใครตอบ",
@@ -32,12 +33,12 @@
   "relatedInformation": "ข้อมูลที่เกี่ยวข้อง",
   "markedAs": "Marked as",
   "correlation": "ความใกล้เคียง",
-  "respond": "Respond",
-  "use": "Use",
-  "come": "Come",
+  "respond": "ความเห็น",
+  "use": "ใช้",
+  "come": "มา",
   "differentOpinions": "ความเห็นต่าง",
   "source": "ที่มา",
-  "markArticleAs": "ตั้งให้บทความเป็น",
+  "markArticleAs": "เลือกให้บทความนี้",
   "reason": "เหตุผล",
   "deleteReply": "ลบความเห็น",
   "otherUsers": "Other users",
@@ -51,9 +52,9 @@
   "addNewResponse": "เพิ่มความเห็นใหม่",
   "with": "และ",
   "in": "ใน",
-  "plus": "Add",
-  "another": "Another",
-  "increased": "Increased",
+  "plus": "เพิ่ม",
+  "another": "กับอีก",
+  "increased": "เพิ่ม",
   "yuan": "End",
   "mostRecentlyAsked": "คำถามล่าสุด",
   "mostAsked": "ถามบ่อยที่สุด",
@@ -72,6 +73,9 @@
   "createdAt": "สร้างเมื่อ",
   "belongTo": "สังกัด",
   "someone": "บางคน",
+  "search": "ค้นหา",
+  "at": "เมื่อ",
+  "addBy": "เพิ่มโดย",
 
   "sentence": {
     "congratulationsPromoted": "เย้! คุณได้อัปเวลจ้า",
@@ -81,7 +85,7 @@
     "browseRelatedArticles": "เรียกดูบทความที่เกี่ยวข้อง",
     "searchForRelevantReplies": "ค้นหาความเห็นที่เกี่ยวข้อง",
     "responseHasNoSource": "ความเห็นนี้ไม่ได้ระบุที่มา โปรดคำนึงถึงความน่าเชื่อถือ",
-    "goodResponseNotHelp": "Please explain why responses from users with good intention are unhelpful",
+    "goodResponseNotHelp": "ช่วยบอกเราทีว่าทำไมความเห็นที่มีคนตั้งใจส่งเข้ามานี้ ไม่ช่วยอะไรคุณเลย",
     "referenceInput": "โปรดระบุลิงก์ไปยังเนื้อหาในมุมมองต่างๆ เพื่อช่วยให้ผู้อ่านได้พิจารณาความเห็นที่ต่างกัน",
     "similarArticles": "คุณอาจจะสนใจบทความเหล่านี้ที่คล้ายคลึงกัน"
   }, 
@@ -276,5 +280,19 @@
 
   "pageUsers": {
     "userList": "รายการผู้ใช้"
-  }
+  },
+
+  "articleCategory": {
+    "beauty": "ความสวยความงาม",
+    "cancer": "มะเร็ง",
+    "loseWeight": "ลดความอ้วน",
+    "herbalMedicine": "ยาสมุนไพร"
+  },
+
+  "specifyArticleCategory": "ช่วยระบุหมวดหมู่ของบทความนี้ให้หน่อย",
+  "selectMinimum": "เลือกให้น้อยที่สุด (ถ้าเป็นไปได้)",
+  "save": "บันทึก",
+  "edit": "แก้ไข",
+  "cancel": "ยกเลิก"
+
 }

@@ -32,11 +32,12 @@ function UsedArticleItem({ article, replyConnection }) {
       <a classLevel="item">
         <div className="item-text">{article.get('text')}</div>
         <div className="info">
-          <EditorName editorName={userName} editorLevel={userLevel} />
-          {i18n.t("in")} <span title={createdAt.format('lll')}>
+          {i18n.t("addBy")}&nbsp;
+          <EditorName editorName={userName} editorLevel={userLevel} />&nbsp;
+          {i18n.t("at")} <span title={createdAt.format('lll')}>
             {createdAt.fromNow()}
           </span>{' '}
-          {i18n.t("plus")}
+          
           {otherReplyCount ? ` · ${i18n.t("another")} ${otherReplyCount} ${i18n.t("reply")}` : ''}
         </div>
 

@@ -5,6 +5,7 @@
   "articles": "Articles",
   "articleList": "List of Article",
   "reply": "Response",
+  "replyOf": "reply of",
   "replyVerb": "Response",
   "replies": "Responses",
   "editorHelp": "Editor Help",
@@ -71,6 +72,9 @@
   "createdAt": "Created at",
   "belongTo": "Belong to",
   "someone": "Someone",
+  "search": "search",
+  "at": "at",
+  "addBy": "Add by",
 
   "sentence": {
     "congratulationsPromoted": "Congratulations! You just advanced a level",
@@ -274,5 +278,19 @@
 
   "pageUsers": {
     "userList": "User List"
-  }
+  },
+
+  "articleCategory": {
+    "beauty": "Beauty",
+    "cancer": "Cancer",
+    "loseWeight": "Lose Weight",
+    "herbalMedicine": "Herbal Medicine"
+  },
+
+  "specifyArticleCategory": "Please, specify article category",
+  "selectMinimum": "Select to a minimum",
+  "save": "Save",
+  "edit": "Edit",
+  "cancel": "Cancel"
+
 }

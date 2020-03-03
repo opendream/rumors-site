@@ -123,6 +123,7 @@ export const load = id => dispatch => {
             score
           }
         }
+        categories
       }
     }
     ${fragments.articleFields}
@@ -190,6 +191,24 @@ export const connectReply = (articleId, replyId) => dispatch => {
     NProgress.done();
   });
 };
+
+export const reloadArticleCategories = articleId => dispatch =>
+  gql`
+    query($id: String!) {
+      GetArticle(id: $id) {
+        categories
+        replyConnections: articleReplies {
+          ...articleReplyFields
+        }
+      }
+    }
+    ${fragments.articleReplyAndUserFields}
+    ${fragments.hyperlinkFields}
+
+  `({ id: articleId }).then(resp => {
+    dispatch(loadData(resp.getIn(['data', 'GetArticle'])));
+    dispatch(setState({ key: 'categoriesEditMode', value: false }));
+  });
 
 export const updateArticleReplyStatus = (
   articleId,
@@ -266,6 +285,33 @@ export const voteReply = (articleId, replyId, vote, comment) => dispatch => {
     }
   `({ articleId, replyId, vote, comment }).then(() => {
     dispatch(reloadReply(articleId));
+    NProgress.done();
+  });
+};
+
+
+export const categoriesEdit = (isEdit) => dispatch => {
+  dispatch(setState({ key: 'categoriesEditMode', value: isEdit }));
+}
+
+export const submitArticleCategories = params => dispatch => {
+  dispatch(setState({ key: 'categoriesEditMode', value: true }));
+  NProgress.start();
+  return gql`
+    mutation(
+      $articleId: String!
+      $categories: [String]
+    ) {
+      UpdateArticleCategories(
+        id: $articleId
+        categories: $categories
+      ) {
+        id
+        categories
+      }
+    }
+  `(params).then((resp) => {
+    dispatch(reloadArticleCategories(params.articleId));
     NProgress.done();
   });
 };
@@ -390,7 +436,7 @@ export const searchRepiedArticle = ({ q }) => dispatch => {
         like: q,
         minimumShouldMatch: '0',
       },
-      replyCount: { GT: '1' },
+      replyCount: { GT: 1 },
     },
     orderBy: {
       _score: 'DESC',

@@ -74,6 +74,7 @@ export const load = ({
           references {
             type
           }
+          categories
         }
         cursor
       }

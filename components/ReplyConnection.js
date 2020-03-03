@@ -135,7 +135,7 @@ export default class ReplyConnection extends React.PureComponent {
       return (
         <span>
           {connectionAuthorName}
-          {i18n.t("use")}{' '}
+          {i18n.t("use")}{i18n.t("replyOf")}{' '}
           <Link
             route="reply"
             params={{ id: replyConnection.getIn(['reply', 'id']) }}
@@ -144,10 +144,10 @@ export default class ReplyConnection extends React.PureComponent {
               <EditorName
                 editorName={replyAuthor.get('name')}
                 editorLevel={replyAuthor.get('level')}
-                editorBelongTo={connectionAuthor.get('belongTo')}
+                editorBelongTo={replyAuthor.get('belongTo')}
               />{' '}
             </a>
-          </Link>{i18n.t("reply")} {i18n.t("come")}{' '}
+          </Link>{i18n.t("come")}{' '}
         </span>
       );
     }
