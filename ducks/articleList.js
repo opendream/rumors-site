@@ -24,7 +24,7 @@ let lastStringifiedFilter;
 export const load = ({
   q,
   searchUserByArticleId,
-  filter = 'unsolved',
+  filter = 'all',
   replyRequestCount = 2,
   orderBy = 'createdAt',
   before,
@@ -127,6 +127,7 @@ export const load = ({
 export const loadAuthFields = ({
   q,
   filter = 'all',
+  categories = null,
   orderBy = 'replyRequestCount',
   replyRequestCount = 2,
   before,
@@ -159,6 +160,7 @@ export const loadAuthFields = ({
       }
     `({
       filter: getFilterObject(filter, q, replyRequestCount),
+      categories: [],
       orderBy: [{ [orderBy]: 'DESC' }],
       before,
       after,

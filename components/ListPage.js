@@ -36,6 +36,13 @@ export default class ListPage extends React.Component {
     });
   };
 
+  handleCategoriesChange = value => {
+
+    this.goToQuery({
+      categories: value.join(','),
+    });
+  };
+
   handleKeywordChange = e => {
     const { q = '' } = this.props.query;
     const { value } = e.target;

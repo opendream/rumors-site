@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { List } from 'immutable';
 import { Link } from '../routes';
 import { RadioGroup, Radio } from 'react-radio-group';
+import { CheckboxGroup, Checkbox} from 'react-checkbox-group';
 
 import AppLayout from 'components/AppLayout';
 import ListPage from 'components/ListPage';
@@ -18,6 +19,7 @@ import { load, loadAuthFields } from 'ducks/articleList';
 import i18n from '../i18n';
 
 import { mainStyle, hintStyle } from './articles.styles';
+import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
 
 class Articles extends ListPage {
   state = {
@@ -186,68 +188,104 @@ class Articles extends ListPage {
     }
 
     return (
-      <>
-      <select
-        onChange={this.handleOrderByChange}
-        value={orderBy || 'createdAt'}
-      >
-        <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
-        <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
-      </select>
-      <style jsx>{`
-        ul {
-          list-style: none;
-          padding-left: 1rem;
-        }
-        ul li input {
-          margin-right: 0.5rem;
-        }
-      `}</style>
-      </>
+      <span>
+        <select
+          onChange={this.handleOrderByChange}
+          value={orderBy || 'createdAt'}
+        >
+          <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
+          <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
+        </select>
+      </span>
     );
   };
 
   renderFilter = () => {
     const {
-      query: { filter, replyRequestCount },
+      query: { categories:_categories, filter, replyRequestCount },
     } = this.props;
+
+    console.log('categories', categories);
+    let categories = _categories? _categories.split(','): [];
+
     return (
       <div>
-        <RadioGroup
-          onChange={this.handleFilterChange}
-          selectedValue={filter || 'unsolved'}
-          Component="ul"
-        >
-          <li>
+        <div className={`row`}>
+          {/* TODO: waiting for backend */}
+          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3  d-none`}>
+            <div className={`card`}>
+              <div className={`card-body`}>
+                <h5>{i18n.t('categories')}</h5>
+                <CheckboxGroup checkboxDepth={3} name="categories" value={categories} onChange={this.handleCategoriesChange} Component="ul">
+                  {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                    <li key={i}>
+                      <label>
+                        <Checkbox value={item} />{item}
+                      </label>
+                    </li>
+                  ))}
+                </CheckboxGroup>
+              </div>
+            </div>
+          </div>
+
+          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
+            <div className={`card`}>
+              <div className={`card-body`}>
+                <h5>{i18n.t('reply')}</h5>
+                <RadioGroup
+                  onChange={this.handleFilterChange}
+                  selectedValue={filter || 'all'}
+                  Component="ul"
+                >
+                  <li>
+                    <label>
+                      <Radio value="unsolved" />{i18n.t('notRepliedYet')}
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <Radio value="solved" />{i18n.t('replied')}
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <Radio value="all" />{i18n.t('all')}
+                    </label>
+                  </li>
+                </RadioGroup>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`row mt-3`}>
+          <div className={`col-12`}>
             <label>
-              <Radio value="unsolved" />{i18n.t('notRepliedYet')}
+              <input
+                type="checkbox"
+                checked={+replyRequestCount === 1 || typeof(replyRequestCount) === 'undefined'}
+                onChange={this.handleReplyRequestCountCheck}
+              />{' '}
+              {i18n.t("pageArticles.listArticlesIncludeOne")}
             </label>
-          </li>
-          <li>
-            <label>
-              <Radio value="solved" />{i18n.t('replied')}
-            </label>
-          </li>
-          <li>
-            <label>
-              <Radio value="all" />{i18n.t('all')}
-            </label>
-          </li>
-        </RadioGroup>
-        <label>
-          <input
-            type="checkbox"
-            checked={+replyRequestCount === 1 || typeof(replyRequestCount) === 'undefined'}
-            onChange={this.handleReplyRequestCountCheck}
-          />{' '}
-          {i18n.t("pageArticles.listArticlesIncludeOne")}
-        </label>
-        <style jsx>
+          </div>
+        </div>
+        
+        <style>
           {`
             .reply-request-count {
               width: 2em;
             }
-          `}
+            ul {
+              list-style: none;
+              padding-left: 0;
+              margin-bottom: 0;
+            }
+            ul li input {
+              margin-right: 0.5rem;
+            }
+        `}
         </style>
       </div>
     );

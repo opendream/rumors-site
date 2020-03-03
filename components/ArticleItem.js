@@ -25,8 +25,8 @@ export default function ArticleItem({
           <div className="item-text">{article.get('text')}</div>
           {article.get('categories')?
           <div className={`mt-1 mb-1`}>
-            {article.get('categories').map(item =>
-            <span className="badge badge-secondary mr-2">{item}</span>
+            {article.get('categories').map((item, i) =>
+            <span key={i} className="badge badge-secondary mr-2">{item}</span>
             )}
           </div>
           : ``}
