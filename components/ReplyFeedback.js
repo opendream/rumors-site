@@ -20,7 +20,7 @@ class ReplyFeedback extends Component {
 
   handleDownVote = () => {
     const { replyConnection, onVote } = this.props;
-    const comment = window.prompt(`${i18n.t("goodResponseNotHelp")}`);
+    const comment = window.prompt(`${i18n.t("sentence.goodResponseNotHelp")}`);
     return onVote(replyConnection, 'DOWNVOTE', comment);
   };
 

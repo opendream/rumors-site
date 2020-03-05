@@ -18,6 +18,7 @@ import 'nprogress/nprogress.css';
 import './AppLayout.css';
 
 import getConfig from 'next/config';
+import i18n from 'i18n';
 
 const {
   publicRuntimeConfig: { PUBLIC_MOMENT_LANGUAGE_CODE },
@@ -45,7 +46,7 @@ class AppLayout extends React.Component {
     super(props);
 
     if (typeof window !== 'undefined') {
-      setLogin(() => props.dispatch(showDialog()));
+      setLogin(() => props.dispatch(showDialog(i18n.t('login'))));
     }
   }
 

@@ -292,6 +292,9 @@
   "save": "Save",
   "edit": "Edit",
   "cancel": "Cancel",
-  "categories": "Categories"
+  "categories": "Categories",
+  
+  "feelResonable": "Feel Resonable",
+  "feelUnResonable": "Feel UnResonable"
 
 }

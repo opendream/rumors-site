@@ -259,6 +259,7 @@ class ArticlePage extends React.Component {
               {/* <div className="trendline">
                 <Trendline id={article.get('id')} />
               </div> */}
+              &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
             <article className="message">

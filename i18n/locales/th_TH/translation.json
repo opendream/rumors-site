@@ -300,5 +300,8 @@
   "cancel": "ยกเลิก",
   "categories": "หมวดหมู่",
   "or Connect with Social Media": "หรือ เชื่อมต่อด้วย Social Media",
-  "Connect with Facebook": "เชื่อมต่อด้วย Facebook"
+  "Connect with Facebook": "เชื่อมต่อด้วย Facebook",
+    
+  "feelResonable": "รู้สึกว่ามีเหตุผล",
+  "feelUnResonable": "รู้สึกว่าไม่มีเหตุผล"
 }

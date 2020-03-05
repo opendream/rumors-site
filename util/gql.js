@@ -2,7 +2,8 @@ import fetchAPI from './fetchAPI';
 
 import { fromJS } from 'immutable';
 
-let login = () => {};
+let login = () => {
+};
 
 // Usage:
 //
@@ -37,7 +38,8 @@ export default (query, ...substitutions) => variables => {
         const shouldLogin = resp.errors.some(err => err.authError);
         if (shouldLogin) {
           login();
-          throw new Error('請先登入以繼續');
+          return fromJS({});
+          throw new Error('Please login');
         }
         if (status === 400) {
           throw new Error(

@@ -287,6 +287,9 @@
   "save": "Save",
   "edit": "Edit",
   "cancel": "Cancel",
-  "categories": "Categories"
+  "categories": "Categories",
+
+  "feelResonable": "覺得合理",
+  "feelUnResonable": "覺得不合理"
 
 }
