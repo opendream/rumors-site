@@ -128,12 +128,12 @@ class ReplyRequestReason extends PureComponent {
             opacity: 1;
           }
           .btn-up-vote::after {
-            content: '覺得合理';
+            content: '${i18n.t('feelResonable')}';
             bottom: 100%;
             transform: translateY(100%);
           }
           .btn-down-vote::after {
-            content: '覺得不合理';
+            content: '${i18n.t('feelUnresonable')}';
             top: 100%;
             transform: translateY(-100%);
           }
