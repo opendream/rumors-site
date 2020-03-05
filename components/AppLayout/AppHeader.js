@@ -16,64 +16,68 @@ function AppHeader({
 
   return (
     <header className="root">
-      <a className="logo hidden-xs" href="/">
-        <div>
-          <img src={`${require('./images/logo.png')}`}></img>
-        </div>
-        <h1>{i18n.t("realOrFake")}</h1>
-      </a>
-      <nav className="nav">
-        <Link route="articles">
-          <a className="nav-item">{i18n.t("articles")}</a>
-        </Link>
-        <Link route="replies">
-          <a className="nav-item">{i18n.t("replies")}</a>
-        </Link>
-        {user && user.get('isStaff')?
-        <Link route="users">
-          <a className="nav-item">{i18n.t("users")}</a>
-        </Link>
-        : ``}
-        <a
-          href={EDITOR_FACEBOOK_GROUP}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-item hidden-xs"
-        >
-          FB {i18n.t("editorHelp")}
+      <div className={`head-left`}>
+        <a className="logo d-none d-sm-block" href="/">
+          <div>
+            <img src={`${require('./images/logo.png')}`}></img>
+          </div>
+          <h1>{i18n.t("realOrFake")}</h1>
         </a>
-        <a
-          href={PROJECT_HACKFOLDR}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-item hidden-xs"
-        >
-          {i18n.t("projectIntroduction")}
-        </a>
-      </nav>
-      <UserName
-        isLoading={isLoadingAuth}
-        user={user}
-        onLoginClick={onLoginClick}
-        onLogoutClick={onLogoutClick}
-        onUpdate={onUserNameUpdate}
-      />
+        <nav className="nav">
+          <Link route="articles">
+            <a className="nav-item">{i18n.t("articles")}</a>
+          </Link>
+          <Link route="replies">
+            <a className="nav-item">{i18n.t("replies")}</a>
+          </Link>
+          {user && user.get('isStaff')?
+          <Link route="users">
+            <a className="nav-item">{i18n.t("users")}</a>
+          </Link>
+          : ``}
+          {EDITOR_FACEBOOK_GROUP?
+          <a
+            href={EDITOR_FACEBOOK_GROUP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-item hidden-xs"
+          >
+            FB {i18n.t("editorHelp")}
+          </a>
+          : ``}
+          {PROJECT_HACKFOLDR?
+          <a
+            href={PROJECT_HACKFOLDR}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-item hidden-xs"
+          >
+            {i18n.t("projectIntroduction")}
+          </a>
+          : ``}
+        </nav>
+      </div>
+      <div className={`head-right`}>
+        <UserName
+          isLoading={isLoadingAuth}
+          user={user}
+          onLoginClick={onLoginClick}
+          onLogoutClick={onLogoutClick}
+          onUpdate={onUserNameUpdate}
+        />
+      </div>
       <style jsx>{`
-        .root {
-          display: flex;
-          padding: 1rem 1rem;
-          border-bottom: 1px solid rgba(0,0,0,0.4);
-          flex-direction: column;
-          align-items: flex-start;
-          flex-wrap: wrap;
+
+        .head-left {
+          display: inline-block;
         }
-        @media screen and (min-width: 576px) {
-          .root {
-            flex-direction: row;
-            align-items: center;
-            flex-wrap: nowrap;
-          }
+        .head-right {
+          display: inline-block;
+          float: right;
+          margin-top: 30px;
+          margin-right: 15px;
         }
+
         h1 {
           display: block;
           text-indent: -999em;
@@ -83,9 +87,14 @@ function AppHeader({
           margin: 0;
         }
         .logo {
+          display: inline-block;
           margin-right: 16px;
-          width: 100%;
+          width: 10%;
           max-width: 100px;
+          min-width: 50px;
+          float: left;
+          margin-left: 15px;
+          margin-top: 15px;
         }
         .logo > div {
           position: relative;
@@ -109,19 +118,19 @@ function AppHeader({
           height: auto;
         }
         .nav {
-          margin-right: auto;
-          display: flex;
+          display: inline-block;
+          float: left;
+          margin-top: 30px;
         }
         .nav-item {
           padding: 8px;
           border-left: 1px dashed #ccc;
         }
-
-        @media screen and (min-width: 768px) {
-          .root {
-            padding: 1rem 40px;
-          }
+        .nav-item:first-child {
+          padding: 8px;
+          border-left: none 0px;
         }
+
       `}</style>
     </header>
   );

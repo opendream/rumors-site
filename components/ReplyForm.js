@@ -179,13 +179,19 @@ export default class ReplyForm extends React.PureComponent {
   renderHelp() {
     return (
       <span className="help">
-        {i18n.t("replyComponent.formHelp")} <a
-          href={EDITOR_REFERENCE}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {i18n.t("replyComponent.editingRules")}
-        </a>
+        {EDITOR_REFERENCE?
+        <>
+          {i18n.t("replyComponent.formHelp")} <a
+            href={EDITOR_REFERENCE}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {i18n.t("replyComponent.editingRules")}
+          </a>
+        </>
+        : ``}
+
+        {EDITOR_FACEBOOK_GROUP?
         <a
           href={EDITOR_FACEBOOK_GROUP}
           target="_blank"
@@ -193,6 +199,7 @@ export default class ReplyForm extends React.PureComponent {
         >
           Facebook {i18n.t("replyComponent.facebookHelp")}
         </a>
+        : ``}
         {i18n.t("welcome")} :)
         <style jsx>{`
           .help {
