@@ -137,7 +137,7 @@ class UserName extends PureComponent {
         &nbsp;
         
         <button type="button" onClick={onLogoutClick}>
-          Logout
+          {i18n.t("logout")}
         </button>
 
         <style jsx>{`

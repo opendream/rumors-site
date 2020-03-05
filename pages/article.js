@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import stringSimilarity from 'string-similarity';
 import { nl2br, linkify } from '../util/text';
+import { showDialog } from 'ducks/auth';
 
 import AppLayout from 'components/AppLayout';
 import ArticleInfo from 'components/ArticleInfo';
@@ -221,8 +222,13 @@ class ArticlePage extends React.Component {
     }
   };
 
+  onLoginClick = (title) => {
+    const {dispatch} = this.props
+    dispatch(showDialog(title));
+  }
+
   render() {
-    const { data, isLoading, isReplyLoading, categoriesEditMode:_categoriesEditMode } = this.props;
+    const { data, isLoading, isReplyLoading, categoriesEditMode:_categoriesEditMode, user } = this.props;
 
     const article = data.get('article');
     const replyConnections = data.get('replyConnections');
@@ -354,8 +360,22 @@ class ArticlePage extends React.Component {
           </section>
           <section className="section">
             <h2>{i18n.t("addNewResponse")}</h2>
-            {this.renderTabMenu()}
-            <div className="tab-content">{this.renderNewReplyTab()}</div>
+
+            {user?
+            <div>
+              {this.renderTabMenu()}
+              <div className="tab-content">{this.renderNewReplyTab()}</div>
+            </div>
+            :
+            <div>
+              {i18n.t("please")} &nbsp;
+              <a href="#" className={``} onClick={(e) => {e.preventDefault(); this.onLoginClick(i18n.t('login'))}}>{i18n.t("login")}</a>&nbsp;
+              {i18n.t("or")}&nbsp;
+              <a href="#" className={``} onClick={(e) => {e.preventDefault(); this.onLoginClick(i18n.t('signup'))}}>{i18n.t("signup")}</a>&nbsp;
+              {i18n.t("first")}
+            </div>
+            }
+
           </section>
           {relatedArticles.size ? (
             <section className="section">
@@ -383,12 +403,14 @@ class ArticlePage extends React.Component {
   }
 }
 
-function mapStateToProps({ articleDetail }) {
+function mapStateToProps({ articleDetail, auth }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
     categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
+    user: auth.get('user'),
+    isLoadingAuth: auth.getIn(['state', 'isLoading']),
   };
 }
 
