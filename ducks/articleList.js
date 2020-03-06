@@ -25,6 +25,7 @@ export const load = ({
   q,
   searchUserByArticleId,
   filter = 'all',
+  categories = '',
   replyRequestCount = 2,
   orderBy = 'createdAt',
   before,
@@ -32,6 +33,7 @@ export const load = ({
 }) => dispatch => {
   const filterObject = getFilterObject(
     filter,
+    categories,
     q,
     replyRequestCount,
     searchUserByArticleId
@@ -127,7 +129,7 @@ export const load = ({
 export const loadAuthFields = ({
   q,
   filter = 'all',
-  categories = null,
+  categories = '',
   orderBy = 'replyRequestCount',
   replyRequestCount = 2,
   before,
@@ -159,8 +161,8 @@ export const loadAuthFields = ({
         }
       }
     `({
-      filter: getFilterObject(filter, q, replyRequestCount),
-      categories: [],
+      filter: getFilterObject(filter, categories, q, replyRequestCount),
+      categories: '',
       orderBy: [{ [orderBy]: 'DESC' }],
       before,
       after,
@@ -244,7 +246,7 @@ function resetCooldown() {
   isInCooldown = false;
 }
 
-function getFilterObject(filter, q, replyRequestCount, searchUserByArticleId) {
+function getFilterObject(filter, categories, q, replyRequestCount, searchUserByArticleId) {
   const filterObj = {};
   if (q) {
     filterObj.moreLikeThis = { like: q, minimumShouldMatch: '0' };
@@ -258,6 +260,10 @@ function getFilterObject(filter, q, replyRequestCount, searchUserByArticleId) {
     filterObj.replyCount = { GT: 0 };
   } else if (filter === 'unsolved') {
     filterObj.replyCount = { EQ: 0 };
+  }
+
+  if (categories) {
+    filterObj.categories = categories;
   }
 
   if (searchUserByArticleId) {

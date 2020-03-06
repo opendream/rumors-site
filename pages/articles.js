@@ -205,14 +205,13 @@ class Articles extends ListPage {
       query: { categories:_categories, filter, replyRequestCount },
     } = this.props;
 
-    console.log('categories', categories);
     let categories = _categories? _categories.split(','): [];
 
     return (
       <div>
         <div className={`row`}>
           {/* TODO: waiting for backend */}
-          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3  d-none`}>
+          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
             <div className={`card`}>
               <div className={`card-body`}>
                 <h5>{i18n.t('categories')}</h5>
