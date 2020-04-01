@@ -41,12 +41,12 @@ app.prepare().then(() => {
   //
   server.use(async (ctx, next) => {
     switch (ctx.path) {
-      case '/': {
-        const lang = ctx.acceptsLanguages(['zh', 'en']) || 'en';
-        // await send(ctx, `./static/index-${lang}.html`);
-        await send(ctx, `./static/index-en.html`);
-        break;
-      }
+      // case '/': {
+      //   const lang = ctx.acceptsLanguages(['zh', 'en']) || 'en';
+      //   await send(ctx, `./static/index-${lang}.html`);
+      //   await send(ctx, `/page/articlel`);
+        // break;
+      // }
       case '/en':
         await send(ctx, './static/index-en.html');
         break;
