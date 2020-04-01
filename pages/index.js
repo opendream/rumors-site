@@ -2,8 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 
-import FrontPageLayout from 'components/FrontPageLayout';
-import {indexStyle, jumbotronStyle, sectionStyle} from "./index.styles";
+import AppLayout from 'components/AppLayout';
+import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 
 import i18n from '../i18n';
 
@@ -26,7 +26,7 @@ class IndexPage extends React.Component {
     const { isSubmitting } = this.state;
 
     return (
-      <FrontPageLayout>
+      <AppLayout>
         <div className="root">
           <Head>
             <title>
@@ -69,20 +69,31 @@ class IndexPage extends React.Component {
         <div className="section bg-warning section-line">
           <div className="inner">
             <div className="content">
-              <p>Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ" ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
-                ข้อความน่าสงสัย เพื่อให้ Chat Bot ของเราช่วยตรวจสอบความน่าเชื่อถือของข้อความเหล่านั้น!</p>
-              <p><img src="/static/img/qr-code.png"/></p>
+              <p>
+                Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ"
+                ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
+                ข้อความน่าสงสัย เพื่อให้ Chat Bot
+                ของเราช่วยตรวจสอบความน่าเชื่อถือของข้อความเหล่านั้น!
+              </p>
+              <p>
+                <img src="/static/img/qr-code.png" />
+              </p>
             </div>
             <div className="phone-container">
               <div className="phone-img">
-                <video poster="/static/img/recording-still-th.gif" src="/static/img/recording-th.mp4" autoPlay
-                       loop muted></video>
+                <video
+                  poster="/static/img/recording-still-th.gif"
+                  src="/static/img/recording-th.mp4"
+                  autoPlay
+                  loop
+                  muted
+                />
               </div>
             </div>
           </div>
-          <style> {sectionStyle}</style>
+          <style> {sectionStyle} </style>
         </div>
-      </FrontPageLayout>
+      </AppLayout>
     );
   }
 }

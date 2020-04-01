@@ -13,48 +13,55 @@ function AppHeader({
   onLogoutClick,
   onUserNameUpdate,
 }) {
-
   return (
     <header className="root">
       <div className={`head-left`}>
-        <a className="logo d-none d-sm-block" href="/">
-          <div>
-            <img src={`${require('./images/logo.png')}`}></img>
-          </div>
-          <h1>{i18n.t("realOrFake")}</h1>
-        </a>
+        <Link route="index">
+          <a className="logo d-none d-sm-block" href="/">
+            <div>
+              <img src={`${require('./images/logo.png')}`} />
+            </div>
+            <h1>{i18n.t('realOrFake')}</h1>
+          </a>
+        </Link>
         <nav className="nav">
           <Link route="articles">
-            <a className="nav-item">{i18n.t("articles")}</a>
+            <a className="nav-item">{i18n.t('articles')}</a>
           </Link>
           <Link route="replies">
-            <a className="nav-item">{i18n.t("replies")}</a>
+            <a className="nav-item">{i18n.t('replies')}</a>
           </Link>
-          {user && user.get('isStaff')?
-          <Link route="users">
-            <a className="nav-item">{i18n.t("users")}</a>
-          </Link>
-          : ``}
-          {EDITOR_FACEBOOK_GROUP?
-          <a
-            href={EDITOR_FACEBOOK_GROUP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-item hidden-xs"
-          >
-            FB {i18n.t("editorHelp")}
-          </a>
-          : ``}
-          {PROJECT_HACKFOLDR?
-          <a
-            href={PROJECT_HACKFOLDR}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-item hidden-xs"
-          >
-            {i18n.t("projectIntroduction")}
-          </a>
-          : ``}
+          {user && user.get('isStaff') ? (
+            <Link route="users">
+              <a className="nav-item">{i18n.t('users')}</a>
+            </Link>
+          ) : (
+            ``
+          )}
+          {EDITOR_FACEBOOK_GROUP ? (
+            <a
+              href={EDITOR_FACEBOOK_GROUP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-item hidden-xs"
+            >
+              FB {i18n.t('editorHelp')}
+            </a>
+          ) : (
+            ``
+          )}
+          {PROJECT_HACKFOLDR ? (
+            <a
+              href={PROJECT_HACKFOLDR}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-item hidden-xs"
+            >
+              {i18n.t('projectIntroduction')}
+            </a>
+          ) : (
+            ``
+          )}
         </nav>
       </div>
       <div className={`head-right`}>
@@ -67,7 +74,6 @@ function AppHeader({
         />
       </div>
       <style jsx>{`
-
         .head-left {
           display: inline-block;
         }
@@ -104,7 +110,7 @@ function AppHeader({
           overflow: hidden;
         }
         .logo > div:before {
-          content: "";
+          content: '';
           display: block;
           padding-top: 100%;
         }
@@ -130,7 +136,6 @@ function AppHeader({
           padding: 8px;
           border-left: none 0px;
         }
-
       `}</style>
     </header>
   );

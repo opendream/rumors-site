@@ -44,8 +44,8 @@ app.prepare().then(() => {
       // case '/': {
       //   const lang = ctx.acceptsLanguages(['zh', 'en']) || 'en';
       //   await send(ctx, `./static/index-${lang}.html`);
-      //   await send(ctx, `/page/articlel`);
-        // break;
+      //   await send(ctx, `./static/index-en.html`);
+      //   break;
       // }
       case '/en':
         await send(ctx, './static/index-en.html');

@@ -2,6 +2,7 @@ const routes = (module.exports = require('next-routes')());
 
 routes
   // routes.add(name, pattern = /name, page = name)
+  .add('index', '/')
   .add('articles', '/articles', 'articles')
   .add('replies', '/replies', 'replies')
   .add('users', '/users', 'users')
