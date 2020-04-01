@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 
 import FrontPageLayout from 'components/FrontPageLayout';
+import {indexStyle, jumbotronStyle, sectionStyle} from "./index.styles";
 
 import i18n from '../i18n';
 
@@ -33,6 +34,7 @@ class IndexPage extends React.Component {
             </title>
           </Head>
 
+          {/*Section#1*/}
           <div className="jumbotron text-light">
             <div className="text-center">
               <h1 className="mb-2 h2">
@@ -50,10 +52,7 @@ class IndexPage extends React.Component {
               <div className="align-items-center">
                 <div id="SearchQueryField">
                   <form onSubmit={this.handleSubmit}>
-                    <h2>Search here</h2>
                     <input type="text" name="query" />
-                    <hr />
-
                     <button type="submit" disabled={isSubmitting}>
                       Search
                     </button>
@@ -63,16 +62,25 @@ class IndexPage extends React.Component {
             </div>
           </div>
 
-          <style jsx>{`
-            .root {
-              padding: 0 40px 40px;
-            }
+          <style>{jumbotronStyle}</style>
+        </div>
 
-            textarea,
-            input {
-              width: 100%;
-            }
-          `}</style>
+        {/*Section#2*/}
+        <div className="section bg-warning section-line">
+          <div className="inner">
+            <div className="content">
+              <p>Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ" ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
+                ข้อความน่าสงสัย เพื่อให้ Chat Bot ของเราช่วยตรวจสอบความน่าเชื่อถือของข้อความเหล่านั้น!</p>
+              <p><img src="/static/img/qr-code.png"/></p>
+            </div>
+            <div className="phone-container">
+              <div className="phone-img">
+                <video poster="/static/img/recording-still-th.gif" src="/static/img/recording-th.mp4" autoPlay
+                       loop muted></video>
+              </div>
+            </div>
+          </div>
+          <style> {sectionStyle}</style>
         </div>
       </FrontPageLayout>
     );
