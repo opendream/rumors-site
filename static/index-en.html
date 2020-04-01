@@ -30,12 +30,23 @@
                    placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ" >
           </div>
           <div class="col-auto">
-            <a class="btn btn-primary mb-2" onclick="this.href='articles?q='+document.getElementById('query_field').value">ค้นหา</a>
+            <a class="btn btn-primary mb-2" id="queryLink" onclick="this.href='articles?q='+document.getElementById('query_field').value">ค้นหา</a>
           </div>
         </div>
      </div>
   </div>
 </div>
+
+<!-- EnterEventListener script for query_Field-->
+<script>
+  var input = document.getElementById("query_field");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("queryLink").click();
+    }
+  });
+</script>
 
 <div class="section bg-warning section-line">
   <div class="inner">
