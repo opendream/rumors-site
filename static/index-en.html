@@ -1,6 +1,187 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"><a href="/" class="navbar-brand">Cofacts</a><button
+        type="button" data-toggle="collapse" data-target="#navbarSupportedContent" class="navbar-toggler"
+        onclick="toggleNav()"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active"><a href="/articles" class="nav-link">ค้นหาข่าวลวง</a></li>
+      <li class="nav-item active"><a href="/replies" class="nav-link">รายการความเห็น</a></li>
+      <!--//
+      <li class="nav-item active"><a href="https://www.facebook.com/groups/cofacts/permalink/1959641497601003/"
+          class="nav-link">Facebook</a></li>
+      <li class="nav-item active"><a href="https://beta.hackfoldr.org/cofacts" class="nav-link">Hackfoldr</a></li>
+      //-->
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron text-light">
+  <div class="text-center">
+    <h1 class="mb-2 h2">Cofacts - พื้นที่เปิดเพื่อการตรวจสอบข่าวลวงร่วมกัน</h1>
+    <h2 class="mb-2 h4">คนใกล้ชิดของคุณอาจจะส่งต่อ<em class="emphasis">ข่าวลวงบนอินเทอร์เน็ต</em>โดยไม่รู้ตัว?</h2>
+    <div style="border-bottom:1px solid rgba(255,255,255,0.3);margin:20px"></div>
+    <p>ติดตาม LINE Bot หรือเข้าร่วมทีมบรรณาธิการเพื่อช่วยกันปกป้องคนที่คุณห่วงใยจากข่าวลวงออนไลน์!</p>
+    <div id="frontPageSearch"></div>
+  </div>
+</div>
+
+<div class="section bg-warning section-line">
+  <div class="inner">
+    <div class="content">
+      <p>Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ" ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
+        ข้อความน่าสงสัย เพื่อให้ Chat Bot ของเราช่วยตรวจสอบความน่าเชื่อถือของข้อความเหล่านั้น!</p>
+      <!-- <p><a href="https://g0v.hackmd.io/s/rkVVQDmqQ" target="_blank"><small>ดูวิธีใช้งาน <i
+              class="fa fa-arrow-right"></i></small></a></p> -->
+      <p><img src="/static/img/qr-code.png"></p>
+    </div>
+    <div class="phone-container">
+      <div class="phone-img">
+        <video poster="/static/img/recording-still-th.gif" src="/static/img/recording-th.mp4" autoplay
+               loop muted></video>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-why bg-light" style="background-size: cover">
+  <div class="inner">
+    <div class="text-center">
+      <h2>เขียนและแบ่งปันความเห็นของคุณเพื่อเรียนรู้ร่วมกัน!</h2>
+    </div>
+    <p>ที่ Cofact เราเป็นพื้นที่เปิดในการมีส่วนร่วม ความเห็นที่คุณเห็นก็เป็นความจากผู้ใช้ท่านอื่นเพราะเราไม่อยากให้มีแค่ผู้รู้สารพัดแค่ไม่กี่คนตัดสินใจแทนเราในทุกเรื่อง
+      เราเป็นพื้นที่ที่สนับสนุนให้ Active Citizen ทำงานร่วมกันและแบ่งปันความรู้ให้กัน ถ้าคุณคิดว่าความเห็นของผู้ใช้ท่านอื่นยังดีได้กว่านี้ หรือ มีบางเรื่องที่คุณอยากรู้เองแต่ยังไม่มีใครมาให้ความเห็น
+      ลองเริ่มเขียนความเห็นของคุณเองดู มันไม่มีถูกหรือผิดหรอกจ้า</p>
+    <p>ทุกๆ ข้อความน่าสงสัยในระบบก็ส่งมาจากผู้ใช้ Cofact ซึ่งเปิดให้สาธารณะตรวจสอบและให้ความเห็น
+      ข้อความหนึ่งอาจจะมีความเห็นหลากหลายจากผู้ใช้หลายคน ซึ่งเป็นกระบวนการสำคัญที่จะทำให้เราทุกคนช่วยกันเปิดเผยความจริงได้</p>
+    <div class="text-center"><a href="/articles" class="btn btn-secondary btn-lg mr-2">ค้นหาข่าวลวง <i
+            class="fa fa-database"></i></a></div>
+  </div>
+</div>
+
+<div class="section" style="background-color: rgba(0,0,0,0.5);">
+  <div class="inner">
+
+    <div class="text-center text-white">
+      <h2>Partners</h2>
+    </div>
+
+    <style>
+      .partner-list .item {
+        width: 180px;
+      }
+      .partner-list .item a {
+        display: block;
+      }
+      .partner-list .item a img {
+        max-width: 100%;
+      }
+    </style>
+
+    <div class="partner-list">
+      <div class="d-flex flex-wrap justify-content-center align-items-center text-center p-3" style="background: rgba(255,255,255,1)">
+        <div class="item p-2">
+          <a href="https://thaihealth.or.th" target="_blank">
+            <img class="img-fluid" src="/static/img/thaihealth.png" alt="สสส." width="80" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://thaihealth.or.th" target="_blank">
+            <img class="img-fluid" src="/static/img/CHD.jpg" alt="Center​ for​ Humanitarian​ Dialogue" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://thaihealth.or.th" target="_blank">
+            <img class="img-fluid" src="/static/img/FNF.jpg" alt="Friedrich Naumann Foundation" width="80" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://changefusion.org" target="_blank">
+            <img class="img-fluid" src="/static/img/ChangeFusion.png" alt="ChangeFusion​" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://www.opendream.co.th" target="_blank">
+            <img class="img-fluid" src="/static/img/od-logo@2x.png" srcset="/static/img/od-logo.png 1x, /static/img/od-logo@2x.png 2x" alt="Opendream" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://thaihealth.or.th" target="_blank">
+            <img class="img-fluid" src="/static/img/wisesight.png" alt="Wisesight" />
+          </a>
+        </div>
+        <div class="item p-2">
+          <a href="https://thaihealth.or.th" target="_blank">
+            <img class="img-fluid" src="/static/img/consumerthai.jpg" alt="มูลนิธิเพื่อผู้บริโภค" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-footer bg-dark text-light">
+  <div class="inner">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="row">
+          <div class="col-6 col-md-4">
+            <label>Cofacts</label>
+            <!--//
+            <div class="item"><a href="https://bit.ly/cofacts-quickstart">Program Introduction</a></div>
+            <div class="item"><a href="https://grants.g0v.tw/projects/588fa7b382223f001e022944">Original Program</a>
+            </div>
+            <div class="item"><a href="https://github.com/cofacts">Source code</a></div>
+            <div class="item"><a href="https://www.facebook.com/groups/cofacts/">Facebook Club</a></div>
+            //-->
+            <div class="item"><a href="https://discord.gg/GEqX7gy">เข้าร่วมชุมชน Cofact</a></div>
+          </div>
+          <div class="col-6 col-md-4">
+            <label>Notices</label>
+            <div class="item"><a
+                    href="https://beta.hackfoldr.org/cofacts/https%253A%252F%252Fhackmd.io%252Fs%252FryE0G6rxG">Cofacts
+              Copyrights</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 text-center">
+        <img src="/static/img/g0v-bg-dark.svg" style="width:100px">
+        <div>powered by g0v</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Front Page Search React Component-->
+<script type="text/babel">
+  class Greeting extends React.Component {
+    render() {
+      return (
+              <div>
+                <form action="/articles" method="GET">
+                  <input
+                          className="form-control"
+                          name="query"
+                          placeholder="พิมพ์ข้อความเพื่อตรวจสอบความจริง"
+                  />
+                  <input
+                          type="submit"
+                          className="btn btn-danger btn-lg"
+                          value="ลุยกันเลย!"
+                          onClick={()=>useDispatch(frontPageQuery(term))}
+                  />
+                </form>
+              </div>
+      );
+    }
+  }ReactDOM.render(
+          <Greeting />,
+          document.getElementById('frontPageSearch')
+  );
+</script>
+</body>
+
 <head>
   <meta charset="utf-8">
   <title>Cofact - พื้นที่เปิดเพื่อการตรวจสอบข่าวลวงร่วมกัน</title>
@@ -16,6 +197,10 @@
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975024-1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -40,157 +225,5 @@
   <link rel="stylesheet" type="text/css" href="/static/index-th.css">
   <link href="//fonts.googleapis.com/css?family=Kanit:300,500,700" rel="stylesheet" type="text/css">
 </head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top"><a href="/" class="navbar-brand">Cofacts</a><button
-      type="button" data-toggle="collapse" data-target="#navbarSupportedContent" class="navbar-toggler"
-      onclick="toggleNav()"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a href="/articles" class="nav-link">ค้นหาข่าวลวง</a></li>
-        <li class="nav-item active"><a href="/replies" class="nav-link">รายการความเห็น</a></li>
-        <!--//
-        <li class="nav-item active"><a href="https://www.facebook.com/groups/cofacts/permalink/1959641497601003/"
-            class="nav-link">Facebook</a></li>
-        <li class="nav-item active"><a href="https://beta.hackfoldr.org/cofacts" class="nav-link">Hackfoldr</a></li>
-        //-->
-      </ul>
-    </div>
-  </nav>
-  <div class="jumbotron text-light">
-    <div class="text-center">
-      <h1 class="mb-2 h2">Cofacts - พื้นที่เปิดเพื่อการตรวจสอบข่าวลวงร่วมกัน</h1>
-      <h2 class="mb-2 h4">คนใกล้ชิดของคุณอาจจะส่งต่อ<em class="emphasis">ข่าวลวงบนอินเทอร์เน็ต</em>โดยไม่รู้ตัว?</h2>
-      <div style="border-bottom:1px solid rgba(255,255,255,0.3);margin:20px"></div>
-      <p>ติดตาม LINE Bot หรือเข้าร่วมทีมบรรณาธิการเพื่อช่วยกันปกป้องคนที่คุณห่วงใยจากข่าวลวงออนไลน์!</p>
-      <a href="/articles" class="btn btn-danger btn-lg">ลุยกันเลย!</a>
-    </div>
-  </div>
-
-  <div class="section bg-warning section-line">
-    <div class="inner">
-      <div class="content">
-        <p>Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ" ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
-          ข้อความน่าสงสัย เพื่อให้ Chat Bot ของเราช่วยตรวจสอบความน่าเชื่อถือของข้อความเหล่านั้น!</p>
-        <!-- <p><a href="https://g0v.hackmd.io/s/rkVVQDmqQ" target="_blank"><small>ดูวิธีใช้งาน <i
-                class="fa fa-arrow-right"></i></small></a></p> -->
-        <p><img src="/static/img/qr-code.png"></p>
-      </div>
-      <div class="phone-container">
-        <div class="phone-img">
-          <video poster="/static/img/recording-still-th.gif" src="/static/img/recording-th.mp4" autoplay
-            loop muted></video>
-          </div>
-      </div>
-    </div>
-  </div>
-  <div class="section section-why bg-light" style="background-size: cover">
-    <div class="inner">
-      <div class="text-center">
-        <h2>เขียนและแบ่งปันความเห็นของคุณเพื่อเรียนรู้ร่วมกัน!</h2>
-      </div>
-      <p>ที่ Cofact เราเป็นพื้นที่เปิดในการมีส่วนร่วม ความเห็นที่คุณเห็นก็เป็นความจากผู้ใช้ท่านอื่นเพราะเราไม่อยากให้มีแค่ผู้รู้สารพัดแค่ไม่กี่คนตัดสินใจแทนเราในทุกเรื่อง 
-        เราเป็นพื้นที่ที่สนับสนุนให้ Active Citizen ทำงานร่วมกันและแบ่งปันความรู้ให้กัน ถ้าคุณคิดว่าความเห็นของผู้ใช้ท่านอื่นยังดีได้กว่านี้ หรือ มีบางเรื่องที่คุณอยากรู้เองแต่ยังไม่มีใครมาให้ความเห็น
-        ลองเริ่มเขียนความเห็นของคุณเองดู มันไม่มีถูกหรือผิดหรอกจ้า</p>
-      <p>ทุกๆ ข้อความน่าสงสัยในระบบก็ส่งมาจากผู้ใช้ Cofact ซึ่งเปิดให้สาธารณะตรวจสอบและให้ความเห็น
-        ข้อความหนึ่งอาจจะมีความเห็นหลากหลายจากผู้ใช้หลายคน ซึ่งเป็นกระบวนการสำคัญที่จะทำให้เราทุกคนช่วยกันเปิดเผยความจริงได้</p>
-      <div class="text-center"><a href="/articles" class="btn btn-secondary btn-lg mr-2">ค้นหาข่าวลวง <i
-            class="fa fa-database"></i></a></div>
-    </div>
-  </div>
-
-  <div class="section" style="background-color: rgba(0,0,0,0.5);">
-    <div class="inner">
-
-      <div class="text-center text-white">
-        <h2>Partners</h2>
-      </div>
-    
-      <style>
-      .partner-list .item {
-        width: 180px;
-      }
-      .partner-list .item a {
-        display: block;
-      }
-      .partner-list .item a img {
-        max-width: 100%;
-      }
-      </style>
-
-      <div class="partner-list">
-        <div class="d-flex flex-wrap justify-content-center align-items-center text-center p-3" style="background: rgba(255,255,255,1)">
-          <div class="item p-2">
-            <a href="https://thaihealth.or.th" target="_blank">
-              <img class="img-fluid" src="/static/img/thaihealth.png" alt="สสส." width="80" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://thaihealth.or.th" target="_blank">
-              <img class="img-fluid" src="/static/img/CHD.jpg" alt="Center​ for​ Humanitarian​ Dialogue" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://thaihealth.or.th" target="_blank">
-              <img class="img-fluid" src="/static/img/FNF.jpg" alt="Friedrich Naumann Foundation" width="80" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://changefusion.org" target="_blank">
-              <img class="img-fluid" src="/static/img/ChangeFusion.png" alt="ChangeFusion​" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://www.opendream.co.th" target="_blank">
-              <img class="img-fluid" src="/static/img/od-logo@2x.png" srcset="/static/img/od-logo.png 1x, /static/img/od-logo@2x.png 2x" alt="Opendream" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://thaihealth.or.th" target="_blank">
-              <img class="img-fluid" src="/static/img/wisesight.png" alt="Wisesight" />
-            </a>
-          </div>
-          <div class="item p-2">
-            <a href="https://thaihealth.or.th" target="_blank">
-              <img class="img-fluid" src="/static/img/consumerthai.jpg" alt="มูลนิธิเพื่อผู้บริโภค" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section section-footer bg-dark text-light">
-    <div class="inner">
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <div class="row">
-            <div class="col-6 col-md-4">
-              <label>Cofacts</label>
-              <!--//
-              <div class="item"><a href="https://bit.ly/cofacts-quickstart">Program Introduction</a></div>
-              <div class="item"><a href="https://grants.g0v.tw/projects/588fa7b382223f001e022944">Original Program</a>
-              </div>
-              <div class="item"><a href="https://github.com/cofacts">Source code</a></div>
-              <div class="item"><a href="https://www.facebook.com/groups/cofacts/">Facebook Club</a></div>
-              //-->
-              <div class="item"><a href="https://discord.gg/GEqX7gy">เข้าร่วมชุมชน Cofact</a></div>
-            </div>
-            <div class="col-6 col-md-4">
-              <label>Notices</label>
-              <div class="item"><a
-                  href="https://beta.hackfoldr.org/cofacts/https%253A%252F%252Fhackmd.io%252Fs%252FryE0G6rxG">Cofacts
-                  Copyrights</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 text-center">
-          <img src="/static/img/g0v-bg-dark.svg" style="width:100px">
-          <div>powered by g0v</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
 
 </html>
