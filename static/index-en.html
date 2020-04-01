@@ -23,7 +23,17 @@
     <h2 class="mb-2 h4">คนใกล้ชิดของคุณอาจจะส่งต่อ<em class="emphasis">ข่าวลวงบนอินเทอร์เน็ต</em>โดยไม่รู้ตัว?</h2>
     <div style="border-bottom:1px solid rgba(255,255,255,0.3);margin:20px"></div>
     <p>ติดตาม LINE Bot หรือเข้าร่วมทีมบรรณาธิการเพื่อช่วยกันปกป้องคนที่คุณห่วงใยจากข่าวลวงออนไลน์!</p>
-    <div id="frontPageSearch"></div>
+    <div class="align-items-center">
+       <div class="form-row justify-content-center">
+          <div class="col-auto" style="width:500px">
+            <input type="text" class="form-control mb-2" id="query_field"
+                   placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ" >
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-primary mb-2" onclick="this.href='articles?q='+document.getElementById('query_field').value">ค้นหา</a>
+          </div>
+        </div>
+     </div>
   </div>
 </div>
 
@@ -152,34 +162,6 @@
     </div>
   </div>
 </div>
-
-<!-- Front Page Search React Component-->
-<script type="text/babel">
-  class Greeting extends React.Component {
-    render() {
-      return (
-              <div>
-                <form action="/articles" method="GET">
-                  <input
-                          className="form-control"
-                          name="query"
-                          placeholder="พิมพ์ข้อความเพื่อตรวจสอบความจริง"
-                  />
-                  <input
-                          type="submit"
-                          className="btn btn-danger btn-lg"
-                          value="ลุยกันเลย!"
-                          onClick={()=>useDispatch(frontPageQuery(term))}
-                  />
-                </form>
-              </div>
-      );
-    }
-  }ReactDOM.render(
-          <Greeting />,
-          document.getElementById('frontPageSearch')
-  );
-</script>
 </body>
 
 <head>
