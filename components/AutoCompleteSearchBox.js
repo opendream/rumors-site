@@ -1,15 +1,29 @@
 import React from 'react';
 import Router from 'next/router';
-import './AutoCompleteText.css';
+import './AutoCompleteSearchBox.css';
 
 export default class AutoCompleteSearchBox extends React.Component {
   constructor(props) {
     super(props);
-    this.items = ['test', 't', 'no', 'why'];
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
       suggestions: [],
       queryText: '',
+      cursor: 0,
     };
+  }
+
+  handleKeyDown(e) {
+    const { cursor, suggestions } = this.state;
+    if (e.keyCode === 38 && cursor > 0) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor - 1,
+      }));
+    } else if (e.keyCode === 40 && cursor < suggestions.length - 1) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor + 1,
+      }));
+    }
   }
 
   handleSubmit = e => {
@@ -23,12 +37,13 @@ export default class AutoCompleteSearchBox extends React.Component {
   };
 
   handleQueryChange = e => {
+    const { items } = this.props;
     const query = e.target.value;
 
     let suggestions = [];
     if (query.length > 0) {
       const regex = new RegExp(`^${query}`, 'i');
-      suggestions = this.items.sort().filter(v => regex.test(v));
+      suggestions = items.sort().filter(v => regex.test(v));
     }
 
     this.setState(() => ({ suggestions, queryText: query }));
@@ -40,7 +55,13 @@ export default class AutoCompleteSearchBox extends React.Component {
     if (suggestions.length === 0) {
       return null;
     }
-    return <ul>{suggestions.map(item => <li onClick={()=>this.suggestionSelected(item)}>{item}</li>)}</ul>;
+    return (
+      <ul>
+        {suggestions.map(item => (
+          <li onClick={() => this.suggestionSelected(item)}>{item}</li>
+        ))}
+      </ul>
+    );
   }
 
   suggestionSelected(value) {
@@ -51,17 +72,25 @@ export default class AutoCompleteSearchBox extends React.Component {
     const { queryText } = this.state;
     return (
       <div className="align-items-center">
-        <div id="SearchQueryField" className="AutoCompleteText">
+        <div id="SearchQueryField" className="AutoCompleteSearchBox">
           <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              value={queryText}
-              onChange={this.handleQueryChange}
-              name="query"
-            />
-            <button type="submit">Search</button>
+            <div>
+              <input
+                type="text"
+                value={queryText}
+                onChange={this.handleQueryChange}
+                onKeyDown={this.handleKeyDown}
+                name="query"
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck="off"
+              />
+              {this.renderSuggestion()}
+            </div>
+            <div>
+              <button type="submit">Search</button>
+            </div>
           </form>
-          {this.renderSuggestion()}
         </div>
       </div>
     );

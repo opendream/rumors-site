@@ -1,11 +1,10 @@
-.AutoCompleteText {
+.AutoCompleteSearchBox {
     width: 100%;
     border: 1px solid grey;
-    /*boxsha*/
     text-align: center;
 }
 
-.AutoCompleteText input {
+.AutoCompleteSearchBox input {
     width: 100%;
     border:none;
     box-sizing: border-box;
@@ -13,7 +12,7 @@
 }
 
 
-.AutoCompleteText ul {
+.AutoCompleteSearchBox ul {
     list-style-type: none;
     text-align: left;
     margin: 0;
@@ -21,16 +20,16 @@
     border-top: 1px solid grey;
 }
 
-.AutoCompleteText ul::before{
+.AutoCompleteSearchBox ul::before{
     content: "";
 }
 
-.AutoCompleteText li{
+.AutoCompleteSearchBox li{
     padding: 10px 5px;
     cursor: pointer;
 }
 
-.AutoCompleteText li:hover{
+.AutoCompleteSearchBox li:hover{
     text-decoration: underline;
     background-color: #2299dd;
 }
