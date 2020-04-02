@@ -55,37 +55,41 @@ class CreateArticlePage extends React.Component {
     const { isSubmitting } = this.state;
 
     return (
-      <AppLayout>
-        <div className="root">
-          <Head>
-            <title>{i18n.t("pageCreate.title")} | Cofacts {i18n.t("realOrFake")}</title>
-          </Head>
-          <form onSubmit={this.handleSubmit}>
-            <h2>{i18n.t("originalMessage")}</h2>
-            <textarea name="text" rows="6" />
-            <h2>{i18n.t("reason")}</h2>
-            <textarea name="reason" row="2" />
-            <h2>{i18n.t("pageCreate.messageSource")}</h2>
-            <input type="text" name="references" />
+      <body>
+        <AppLayout>
+          <div className="root">
+            <Head>
+              <title>
+                {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
+              </title>
+            </Head>
+            <form onSubmit={this.handleSubmit}>
+              <h2>{i18n.t('originalMessage')}</h2>
+              <textarea name="text" rows="6" />
+              <h2>{i18n.t('reason')}</h2>
+              <textarea name="reason" row="2" />
+              <h2>{i18n.t('pageCreate.messageSource')}</h2>
+              <input type="text" name="references" />
 
-            <hr />
+              <hr />
 
-            <button type="submit" disabled={isSubmitting}>
-              {i18n.t("pageCreate.sendMessage")}
-            </button>
-          </form>
-          <style jsx>{`
-            .root {
-              padding: 0 40px 40px;
-            }
+              <button type="submit" disabled={isSubmitting}>
+                {i18n.t('pageCreate.sendMessage')}
+              </button>
+            </form>
+            <style jsx>{`
+              .root {
+                padding: 0 40px 40px;
+              }
 
-            textarea,
-            input {
-              width: 100%;
-            }
-          `}</style>
-        </div>
-      </AppLayout>
+              textarea,
+              input {
+                width: 100%;
+              }
+            `}</style>
+          </div>
+        </AppLayout>
+      </body>
     );
   }
 }
