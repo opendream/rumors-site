@@ -280,7 +280,6 @@ class UserName extends PureComponent {
             border: 1px solid rgba(0, 0, 0, 0.3);
             box-shadow: 1px 1px 4px -3px #000000;
             box-sizing: border-box;
-            margin-top: 1rem;
           }
           @media screen and (max-width: 575px) {
             width: 100%;

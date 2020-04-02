@@ -97,7 +97,7 @@ class IndexPage extends React.Component {
         </div>
         
         <style jsx>{`
-            .jumbotron { background-color: transparent; }
+            
           
           `}
         </style>

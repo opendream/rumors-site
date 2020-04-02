@@ -139,17 +139,17 @@ function AppHeader({
           height: auto;
         }
         .nav {
-          display: inline-block;
-          float: left;
+          // display: inline-block;
+          // float: left;
           // margin-top: 30px;
         }
         .nav-item {
-          padding: 8px;
-          border-left: 1px dashed #ccc;
+          // padding: 8px;
+          // border-left: 1px dashed #ccc;
         }
         .nav-item:first-child {
-          padding: 8px;
-          border-left: none 0px;
+          // padding: 8px;
+          // border-left: none 0px;
         }
       `}</style>
     </header>
