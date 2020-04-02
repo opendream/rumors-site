@@ -1,0 +1,39 @@
+.AutoCompleteText {
+    width: 100%;
+    /* border: 1px solid grey; */
+    /*boxsha*/
+    text-align: center;
+}
+
+.AutoCompleteText input {
+    width: 100%;
+    border:none;
+    box-sizing: border-box;
+    outline:none;
+}
+
+
+.AutoCompleteText ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 10px 0 0;
+    padding:0;
+    /* border-top: 1px solid rgba(255,255,255,0.5); */
+}
+
+.AutoCompleteText ul::before{
+    content: "";
+}
+
+.AutoCompleteText li{
+    padding: 10px;
+    cursor: pointer;
+    text-shadow: none;
+    font-size: 1.25rem;
+    border: 1px solid #F0B4D0;
+}
+
+.AutoCompleteText li:hover{
+    text-decoration: underline;
+    background-color: #F0B4D0;
+}

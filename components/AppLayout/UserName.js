@@ -179,17 +179,29 @@ class UserName extends PureComponent {
 
     return (
       <>
-        <div className={`btn-group`}>
-          <a className={``} href="" onClick={() => onLoginClick(i18n.t('login'))}>
+        <div className={`link-group`}>
+          <a className={`link link-list`} href="" onClick={() => onLoginClick(i18n.t('login'))}>
             {i18n.t("login")}
           </a>
-          &nbsp;
-          <a className={``} href="" onClick={() => onLoginClick(i18n.t("signup"))}>
+          <a className={`link link-list`} href="" onClick={() => onLoginClick(i18n.t("signup"))}>
             {i18n.t("signup")}
           </a>
           <style jsx>{`
-            .btn-group {
-
+            .link-group {
+              border: 1px solid #fff;
+              border-radius: 15px;
+              padding: 5px 10px;
+            }
+            .link-list {
+              border-right: 1px solid #fff;
+              margin-right: 10px;
+              padding-right: 10px;
+              color: #fff;
+            }
+            .link-list:last-child { 
+              border-right: 0; 
+              padding: 0;
+              margin: 0;
             }
           `}</style>
         </div>

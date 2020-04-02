@@ -17,7 +17,7 @@ function AppHeader({
     <header className={`navbar navbar-expand-lg navbar-dark`}>
       <div className={`container-fluid`}>
         <div className={`d-flex align-items-start w-100`}>
-          <div className={`head-left d-flex w-100`}>
+          <div className={`head-left d-flex align-items-center w-100`}>
             <Link route="index">
               <a className="logo" href="/">
                 <div>
@@ -142,12 +142,17 @@ function AppHeader({
           // display: inline-block;
           // float: left;
           // margin-top: 30px;
+          font-size: 1.25rem;
+          padding: 5px 10px;
         }
         .nav-item {
+          margin-right: 1.5em;
+          color: #fff;
           // padding: 8px;
           // border-left: 1px dashed #ccc;
         }
-        .nav-item:first-child {
+        .nav-item:last-child {
+         
           // padding: 8px;
           // border-left: none 0px;
         }
