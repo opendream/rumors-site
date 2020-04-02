@@ -1,34 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
-import Router from 'next/router';
-
+import AutoCompleteSearchBox from '../components/AutoCompleteSearchBox';
 import AppLayout from 'components/AppLayout';
 import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
-
 
 import i18n from '../i18n';
 
 class IndexPage extends React.Component {
-  state = {
-    isSubmitting: false,
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ isSubmitting: true });
-    const searchQuery = e.target.query.value.trim();
-
-    this.setState({ isSubmitting: false });
-
-    Router.push(`/articles?q=${searchQuery}`);
-  };
-
+  
   render() {
-    const { isSubmitting } = this.state;
 
     return (
       <AppLayout>
-
         <div className="root wrapper">
           <Head>
             <title>
@@ -53,17 +36,12 @@ class IndexPage extends React.Component {
               </p>
               <div className="align-items-center">
                 <div id="SearchQueryField">
-                  <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="query" />
-                    <button type="submit" disabled={isSubmitting}>
-                      Search
-                    </button>
-                  </form>
+                  <AutoCompleteSearchBox />
                 </div>
               </div>
             </div>
           </div>
-          
+
           <style>{jumbotronStyle}</style>
         </div>
 
@@ -95,21 +73,20 @@ class IndexPage extends React.Component {
           </div>
           <style> {sectionStyle} </style>
         </div>
-        
-        <style jsx>{`
-            .jumbotron { background-color: transparent; }
-          
+
+        <style jsx>
+          {`
+            .jumbotron {
+              background-color: transparent;
+            }
           `}
         </style>
 
-
-
         <style jsx global>{`
           body {
-            font-family: 'Kanit', sans-serif; 
+            font-family: 'Kanit', sans-serif;
           }
         `}</style>
-        
       </AppLayout>
     );
   }
