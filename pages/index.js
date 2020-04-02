@@ -29,7 +29,7 @@ class IndexPage extends React.Component {
     return (
       <AppLayout>
 
-        <div className="root">
+        <div className="root wrapper">
           <Head>
             <title>
               {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
@@ -63,7 +63,7 @@ class IndexPage extends React.Component {
               </div>
             </div>
           </div>
-
+          
           <style>{jumbotronStyle}</style>
         </div>
 
@@ -95,10 +95,19 @@ class IndexPage extends React.Component {
           </div>
           <style> {sectionStyle} </style>
         </div>
+        
+        <style jsx>{`
+            .jumbotron { background-color: transparent; }
+          
+          `}
+        </style>
+
+
+
         <style jsx global>{`
-        body {
-          font-family: kanit;
-        }
+          body {
+            font-family: 'Kanit', sans-serif; 
+          }
         `}</style>
         
       </AppLayout>

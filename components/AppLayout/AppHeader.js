@@ -14,14 +14,14 @@ function AppHeader({
   onUserNameUpdate,
 }) {
   return (
-    <header className="root header">
-      <div className={"container-fluid"}>
-        <div className="d-flex align-items-center">
+    <header className={`navbar navbar-expand-lg navbar-dark`}>
+      <div className={`container-fluid`}>
+        <div className={`d-flex align-items-start w-100`}>
           <div className={`head-left d-flex w-100`}>
             <Link route="index">
               <a className="logo" href="/">
                 <div>
-                  <img src={`${require('./images/logo.png')}`} className="img-fluid" />
+                  <img src={`${require('./images/logo.png')}`} className={`img-fluid`} />
                 </div>
                 <h1>{i18n.t('realOrFake')}</h1>
               </a>
@@ -65,8 +65,6 @@ function AppHeader({
                 ``
               )}
             </nav>
-          </div>
-          <div className={`head-right d-flex`}>
             <UserName
               isLoading={isLoadingAuth}
               user={user}
@@ -75,12 +73,20 @@ function AppHeader({
               onUpdate={onUserNameUpdate}
             />
           </div>
+          {/* <div className={`head-right d-flex`}>
+            
+          </div> */}
         </div>
       </div>
 
       <style jsx>{`
+        .navbar {
+          // text-shadow: 0 0 2px rgba(0,0,0,0.3);
+          // font-size: 0.9em;
+          // background-color: rgba(52, 58, 64, 0.5);
+        }
         .header {
-          margin: 1rem 0;
+  
         }
         .head-left {
           // display: inline-block;
@@ -110,7 +116,6 @@ function AppHeader({
           // margin-left: 15px;
           // margin-top: 15px;
           width: 95px;
-          float: left;
         }
         .logo > div {
           position: relative;

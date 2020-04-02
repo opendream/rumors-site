@@ -65,10 +65,19 @@ class AppLayout extends React.Component {
 
     return (
       <Fragment>
-        <AppHeader />
-        {children}
-        <LoginModal />
-        <AppFooter />
+        <div className="wrapper-page">
+          <AppHeader />
+          {children}
+          <LoginModal />
+          <AppFooter />
+        </div>
+        <style jsx global>{`
+          .wrapper-page {
+            background: url("static/img/bg-banner@2x.jpg") no-repeat top center;
+            background-size: 100%;
+          }
+        `}</style>
+        
       </Fragment>
     );
   }

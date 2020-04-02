@@ -179,13 +179,21 @@ class UserName extends PureComponent {
 
     return (
       <>
-        <button type="button" className={`btn btn-outline-secondary btn-sm`} onClick={() => onLoginClick(i18n.t('login'))}>
-          {i18n.t("login")}
-        </button>
-        &nbsp;
-        <button type="button" className={`btn btn-outline-secondary btn-sm`} onClick={() => onLoginClick(i18n.t("signup"))}>
-          {i18n.t("signup")}
-        </button>
+        <div className={`btn-group`}>
+          <a className={``} href="" onClick={() => onLoginClick(i18n.t('login'))}>
+            {i18n.t("login")}
+          </a>
+          &nbsp;
+          <a className={``} href="" onClick={() => onLoginClick(i18n.t("signup"))}>
+            {i18n.t("signup")}
+          </a>
+          <style jsx>{`
+            .btn-group {
+
+            }
+          `}</style>
+        </div>
+        
       </>
     );
   };
