@@ -88,10 +88,44 @@ export default class AutoCompleteSearchBox extends React.Component {
               {this.renderSuggestion()}
             </div>
             <div>
-              <button type="submit">Search</button>
+              <button className="btn btn-primary my-2 my-sm-0" type="submit">
+                Search
+              </button>
             </div>
           </form>
         </div>
+        <style jsx>
+          {`
+            .form-inline .form-control {
+              padding: 15px;
+              font-size: 20px;
+              height: auto;
+              font-weight: 300;
+            }
+            .form-inline .form-control {
+              width: 79%;
+              margin-right: 1%;
+            }
+            .form-inline .btn {
+              width: 20%;
+              padding: 15px;
+            }
+            .btn-primary {
+              background-color: #f0b4d0;
+              border-color: #f0b4d0;
+              font-size: 20px;
+              color: #000;
+            }
+            .btn-primary:hover,
+            .btn-primary:active,
+            .btn-primary:focus {
+              background-color: #ff79ac;
+              border-color: #ff79ac;
+              font-size: 20px;
+              color: #000;
+            }
+          `}
+        </style>
       </div>
     );
   }

@@ -7,12 +7,10 @@ import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 import i18n from '../i18n';
 
 class IndexPage extends React.Component {
-  
   render() {
-
     return (
       <AppLayout>
-        <div className="root wrapper">
+        <div className="root">
           <Head>
             <title>
               {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
@@ -22,21 +20,23 @@ class IndexPage extends React.Component {
           {/*Section#1*/}
           <div className="jumbotron text-light">
             <div className="text-center">
-              <h1 className="mb-2 h2">
-                Cofacts - พื้นที่เปิดเพื่อการตรวจสอบข่าวลวงร่วมกัน
+              <h1 className="mb-3">
+                Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง
               </h1>
-              <h2 className="mb-2 h4">
-                คนใกล้ชิดของคุณอาจจะส่งต่อ<em className="emphasis">
-                  ข่าวลวงบนอินเทอร์เน็ต
-                </em>โดยไม่รู้ตัว?
+              <h2 className="mt-3 mb-5">
+                คนใกล้ชิดของคุณ อาจ<em className="emphasis">
+                  ตกเป็นเหยื่อของข่าวลวง
+                </em>{' '}
+                หรือ <br className={`d-none d-md-block`} />
+                <em className="emphasis">
+                  ส่งต่อข่าวลวง
+                </em>บนอินเทอร์เน็ตโดยไม่รู้ตัว
               </h2>
-              <p>
-                ติดตาม LINE Bot
-                หรือเข้าร่วมทีมบรรณาธิการเพื่อช่วยกันปกป้องคนที่คุณห่วงใยจากข่าวลวงออนไลน์!
-              </p>
-              <div className="align-items-center">
-                <div id="SearchQueryField">
-                  <AutoCompleteSearchBox />
+              <div className="row justify-content-md-center">
+                <div className={`col col-md-8 col-lg-6`}>
+                  <div id="SearchQueryField">
+                    <AutoCompleteSearchBox items={['t', 'this', 'no', 'co', 'Cov']} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@ class IndexPage extends React.Component {
         </div>
 
         {/*Section#2*/}
-        <div className="section bg-warning section-line">
+        <div className="section section-line">
           <div className="inner">
             <div className="content">
               <p>
@@ -78,6 +78,20 @@ class IndexPage extends React.Component {
           {`
             .jumbotron {
               background-color: transparent;
+              color: #fff;
+              text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+              border-radius: 0;
+            }
+            .jumbotron .emphasis {
+              color: #ff79ac;
+              font-weight: 500;
+              font-style: normal;
+            }
+            .jumbotron h2 {
+              font-weight: 400;
+            }
+            .section-line {
+              background-color: #f0b4d0;
             }
           `}
         </style>
