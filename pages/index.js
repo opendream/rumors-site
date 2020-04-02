@@ -95,6 +95,11 @@ class IndexPage extends React.Component {
           </div>
           <style> {sectionStyle} </style>
         </div>
+        <style jsx global>{`
+        body {
+          font-family: kanit;
+        }
+        `}</style>
         
       </AppLayout>
     );
