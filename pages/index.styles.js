@@ -19,6 +19,7 @@ export const indexStyle = css`
 `;
 
 export const jumbotronStyle = css`
+
   .jumbotron {
     margin-bottom: 0;
     position: relative;

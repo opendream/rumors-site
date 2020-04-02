@@ -5,6 +5,7 @@ import Router from 'next/router';
 import AppLayout from 'components/AppLayout';
 import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 
+
 import i18n from '../i18n';
 
 class IndexPage extends React.Component {
@@ -27,6 +28,7 @@ class IndexPage extends React.Component {
 
     return (
       <AppLayout>
+
         <div className="root">
           <Head>
             <title>
@@ -93,6 +95,7 @@ class IndexPage extends React.Component {
           </div>
           <style> {sectionStyle} </style>
         </div>
+        
       </AppLayout>
     );
   }

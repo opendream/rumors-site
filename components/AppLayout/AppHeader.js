@@ -14,74 +14,82 @@ function AppHeader({
   onUserNameUpdate,
 }) {
   return (
-    <header className="root">
-      <div className={`head-left`}>
-        <Link route="index">
-          <a className="logo d-none d-sm-block" href="/">
-            <div>
-              <img src={`${require('./images/logo.png')}`} />
-            </div>
-            <h1>{i18n.t('realOrFake')}</h1>
-          </a>
-        </Link>
-        <nav className="nav">
-          <Link route="articles">
-            <a className="nav-item">{i18n.t('articles')}</a>
-          </Link>
-          <Link route="replies">
-            <a className="nav-item">{i18n.t('replies')}</a>
-          </Link>
-          {user && user.get('isStaff') ? (
-            <Link route="users">
-              <a className="nav-item">{i18n.t('users')}</a>
+    <header className="root header">
+      <div className={"container-fluid"}>
+        <div className="d-flex align-items-center">
+          <div className={`head-left d-flex w-100`}>
+            <Link route="index">
+              <a className="logo" href="/">
+                <div>
+                  <img src={`${require('./images/logo.png')}`} className="img-fluid" />
+                </div>
+                <h1>{i18n.t('realOrFake')}</h1>
+              </a>
             </Link>
-          ) : (
-            ``
-          )}
-          {EDITOR_FACEBOOK_GROUP ? (
-            <a
-              href={EDITOR_FACEBOOK_GROUP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-item hidden-xs"
-            >
-              FB {i18n.t('editorHelp')}
-            </a>
-          ) : (
-            ``
-          )}
-          {PROJECT_HACKFOLDR ? (
-            <a
-              href={PROJECT_HACKFOLDR}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-item hidden-xs"
-            >
-              {i18n.t('projectIntroduction')}
-            </a>
-          ) : (
-            ``
-          )}
-        </nav>
+            <nav className="nav ml-auto">
+              <Link route="articles">
+                <a className="nav-item">{i18n.t('articles')}</a>
+              </Link>
+              <Link route="replies">
+                <a className="nav-item">{i18n.t('replies')}</a>
+              </Link>
+              {user && user.get('isStaff') ? (
+                <Link route="users">
+                  <a className="nav-item">{i18n.t('users')}</a>
+                </Link>
+              ) : (
+                ``
+              )}
+              {EDITOR_FACEBOOK_GROUP ? (
+                <a
+                  href={EDITOR_FACEBOOK_GROUP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-item hidden-xs"
+                >
+                  FB {i18n.t('editorHelp')}
+                </a>
+              ) : (
+                ``
+              )}
+              {PROJECT_HACKFOLDR ? (
+                <a
+                  href={PROJECT_HACKFOLDR}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-item hidden-xs"
+                >
+                  {i18n.t('projectIntroduction')}
+                </a>
+              ) : (
+                ``
+              )}
+            </nav>
+          </div>
+          <div className={`head-right d-flex`}>
+            <UserName
+              isLoading={isLoadingAuth}
+              user={user}
+              onLoginClick={onLoginClick}
+              onLogoutClick={onLogoutClick}
+              onUpdate={onUserNameUpdate}
+            />
+          </div>
+        </div>
       </div>
-      <div className={`head-right`}>
-        <UserName
-          isLoading={isLoadingAuth}
-          user={user}
-          onLoginClick={onLoginClick}
-          onLogoutClick={onLogoutClick}
-          onUpdate={onUserNameUpdate}
-        />
-      </div>
+
       <style jsx>{`
+        .header {
+          margin: 1rem 0;
+        }
         .head-left {
-          display: inline-block;
+          // display: inline-block;
         }
         .head-right {
-          display: inline-block;
-          float: right;
-          margin-top: 30px;
-          margin-right: 15px;
+          // display: inline-block;
+          // float: right;
+          // margin-top: 30px;
+          // margin-right: 15px;
         }
 
         h1 {
@@ -93,14 +101,16 @@ function AppHeader({
           margin: 0;
         }
         .logo {
-          display: inline-block;
-          margin-right: 16px;
-          width: 10%;
-          max-width: 100px;
-          min-width: 50px;
+          // display: inline-block;
+          // margin-right: 16px;
+          // width: 10%;
+          // max-width: 100px;
+          // min-width: 50px;
+          // float: left;
+          // margin-left: 15px;
+          // margin-top: 15px;
+          width: 95px;
           float: left;
-          margin-left: 15px;
-          margin-top: 15px;
         }
         .logo > div {
           position: relative;
@@ -126,7 +136,7 @@ function AppHeader({
         .nav {
           display: inline-block;
           float: left;
-          margin-top: 30px;
+          // margin-top: 30px;
         }
         .nav-item {
           padding: 8px;

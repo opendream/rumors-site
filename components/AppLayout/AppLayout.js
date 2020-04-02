@@ -13,9 +13,11 @@ import LoginModal from '../Modal/LoginModal';
 import moment from 'moment';
 import NProgress from 'nprogress';
 
+import 'static/css/style.css';
 import 'normalize.css';
 import 'nprogress/nprogress.css';
 import './AppLayout.css';
+
 
 import getConfig from 'next/config';
 import i18n from 'i18n';
