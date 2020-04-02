@@ -5,8 +5,19 @@ import AppLayout from 'components/AppLayout';
 import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 
 import i18n from '../i18n';
+import Router from 'next/router';
 
 class IndexPage extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ isSubmitting: true });
+    const searchQuery = e.target.query.value.trim();
+
+    this.setState({ isSubmitting: false });
+
+    Router.push(`/articles?q=${searchQuery}`);
+  };
+
   render() {
     return (
       <AppLayout>
@@ -35,7 +46,11 @@ class IndexPage extends React.Component {
               <div className="row justify-content-md-center">
                 <div className={`col col-md-8 col-lg-6`}>
                   <div id="SearchQueryField">
-                    <AutoCompleteSearchBox items={['t', 'this', 'no', 'co', 'Cov']} />
+                    <form onSubmit={this.handleSubmit}>
+                      <input type="text" name="query" />
+                      <button type="submit">Search</button>
+                    </form>
+                    {/*<AutoCompleteSearchBox items={['t', 'this', 'no', 'co', 'Cov']} />*/}
                   </div>
                 </div>
               </div>
