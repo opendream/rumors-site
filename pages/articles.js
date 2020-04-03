@@ -15,7 +15,7 @@ import Pagination from 'components/Pagination';
 import ArticleItem from 'components/ArticleItem';
 import FullSiteArticleStats from 'components/FullSiteArticleStats';
 import articleList, { load, loadAuthFields } from 'ducks/articleList';
-
+import CreateArticleButton from '../components/CreateArticleButton';
 import i18n from '../i18n';
 
 import { mainStyle, hintStyle } from './articles.styles';
@@ -30,6 +30,7 @@ class Articles extends ListPage {
         notArticleReplied: false, // false ||
       },
     },
+    user: null,
   };
 
   static async getInitialProps({ store, query }) {
@@ -326,12 +327,6 @@ class Articles extends ListPage {
     const { localEditorHelperList } = this.state;
     const { articles = null, totalCount, authFields } = this.props;
 
-    console.log(
-      articles.map(article => {
-        article.get('text');
-      })
-    );
-
     return (
       <div className={`article-wrapper`}>
         <p>
@@ -380,6 +375,8 @@ class Articles extends ListPage {
       query: { replyRequestCount, searchUserByArticleId },
     } = this.props;
 
+    const { user } = this.props;
+
     return (
       <body>
         <AppLayout>
@@ -387,6 +384,7 @@ class Articles extends ListPage {
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>
+            <CreateArticleButton user={user} />
             {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()}
@@ -427,6 +425,7 @@ function mapStateToProps({ articleList, auth }) {
     firstCursorOfPage: articleList.getIn(['edges', 0, 'cursor']),
     lastCursorOfPage: articleList.getIn(['edges', -1, 'cursor']),
     repliedArticleCount: auth.getIn(['user', 'repliedArticleCount']),
+    user: auth.get('user'),
   };
 }
 
