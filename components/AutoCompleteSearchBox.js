@@ -56,10 +56,28 @@ export default class AutoCompleteSearchBox extends React.Component {
       return null;
     }
     return (
-      <ul>
+      <ul className="item">
         {suggestions.map(item => (
-          <li onClick={() => this.suggestionSelected(item)}>{item}</li>
+          <li className="list" onClick={() => this.suggestionSelected(item)}>{item}</li>
         ))}
+        <style jsx>
+          {`
+            .item {
+              list-style: none;
+              margin: 1rem 0 0;
+              padding: 0;
+              float: left;
+            }
+            .item .list {
+              display: inline-block;
+              border: 1px solid #ccc;
+              margin-right: 5px;
+              border-radius: 10px;
+              padding: 7px 15px;
+              cursor: pointer
+            }
+          `}
+        </style>
       </ul>
     );
   }
@@ -73,10 +91,10 @@ export default class AutoCompleteSearchBox extends React.Component {
     return (
       <div className="align-items-center">
         <div id="SearchQueryField" className="AutoCompleteSearchBox">
-          <form onSubmit={this.handleSubmit} className="form-inline">
-            <div className="form-group w-100">
+          <form onSubmit={this.handleSubmit} className="row no-gutters justify-content-center">
+            <div className="pr-2 col-9 col-md-10">
               <input
-                className="form-control"
+                className="form-control text-field "
                 type="text"
                 value={queryText}
                 onChange={this.handleQueryChange}
@@ -85,26 +103,33 @@ export default class AutoCompleteSearchBox extends React.Component {
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck="off"
+                placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ"
               />
               {this.renderSuggestion()}
-              <button className="btn btn-primary my-2 my-sm-0" type="submit">
-                Search
+            </div>
+            <div className="col-3 col-md-2">
+              <button className="btn btn-primary w-100" type="submit">
+                ค้นหา
               </button>
             </div>
           </form>
         </div>
         <style jsx>
           {`
-            .form-inline .form-control {
+
+            .form-inline .form-control,
+            .text-field {
               padding: 15px;
               font-size: 20px;
               height: auto;
               font-weight: 300;
+              border-radius: 10px
             }
             .form-inline .form-control {
               width: 79%;
               margin-right: 1%;
             }
+            .btn { padding: 15px; }
             .form-inline .btn {
               width: 20%;
               padding: 15px;
@@ -114,6 +139,7 @@ export default class AutoCompleteSearchBox extends React.Component {
               border-color: #f0b4d0;
               font-size: 20px;
               color: #000;
+              border-radius: 10px;
             }
             .btn-primary:hover,
             .btn-primary:active,

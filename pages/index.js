@@ -22,7 +22,7 @@ class IndexPage extends React.Component {
     return (
       <body className={`home`}>
         <AppLayout>
-          <div className="root">
+          <div className="root wrapper-page">
             <Head>
               <title>
                 {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
@@ -45,7 +45,7 @@ class IndexPage extends React.Component {
                   </em>บนอินเทอร์เน็ตโดยไม่รู้ตัว
                 </h2>
                 <div className="row justify-content-md-center">
-                  <div className={`col col-md-8 col-lg-6`}>
+                  <div className={`col col-lg-8 col-xl-6`}>
                     <div id="SearchQueryField">
                       {/*<form onSubmit={this.handleSubmit}>*/}
                       {/*  <input type="text" name="query" />*/}
@@ -96,6 +96,12 @@ class IndexPage extends React.Component {
                 color: #fff;
                 text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
                 border-radius: 0;
+                margin-bottom: 0;
+              }
+              @media screen and (min-width: 768px) {
+                .jumbotron {
+                  padding: 6rem 2rem;
+                }
               }
               .jumbotron .emphasis {
                 color: #ff79ac;

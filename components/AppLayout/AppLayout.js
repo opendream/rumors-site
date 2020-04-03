@@ -65,7 +65,7 @@ class AppLayout extends React.Component {
 
     return (
       <Fragment>
-        <div className="wrapper-page">
+        <div>
           <AppHeader />
           {children}
           <LoginModal />
@@ -82,14 +82,40 @@ class AppLayout extends React.Component {
           body:not(.home) .nav-item {
             color: #000;
           }
+          body:not(.home) .link-group {
+            border: 1px solid #000;
+          }
+          body:not(.home) .link-list {
+            border-right: 1px solid #000;
+            color: #000;
+          }
 
-          
+
+
+        
+          body.home .wrapper-page {
+            background: url("static/img/bg-banner@2x.jpg") no-repeat center center;
+            background-size: cover;
+            margin: -120px 0 0;
+            padding: 120px 0 0px;
+          }
+          @media screen and (min-width: 769px) {
+            body.home .wrapper-page {
+              background: url("static/img/bg-banner@2x.jpg") no-repeat top center;
+              background-size: cover;
+              margin: -160px 0 0;
+              padding: 160px 0 0px;
+            }
+          }
           body.home .nav-item {
             color: #fff;
           }
-          body.home .wrapper-page {
-            background: url("static/img/bg-banner@2x.jpg") no-repeat top center;
-            background-size: 100%;
+          body.home .link-group {
+            border: 1px solid #fff;
+          }
+          body.home .link-list {
+            border-right: 1px solid #fff;
+            color: #fff;
           }
         `}</style>
         

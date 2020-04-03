@@ -188,15 +188,12 @@ class UserName extends PureComponent {
           </a>
           <style jsx>{`
             .link-group {
-              border: 1px solid #fff;
               border-radius: 15px;
               padding: 5px 10px;
             }
             .link-list {
-              border-right: 1px solid #fff;
               margin-right: 10px;
               padding-right: 10px;
-              color: #fff;
             }
             .link-list:last-child { 
               border-right: 0; 
