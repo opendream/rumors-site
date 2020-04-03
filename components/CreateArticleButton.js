@@ -11,10 +11,13 @@ export default class CreateArticleButton extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        <button onClick={this.handleOnClick}>test</button>
-      </div>
-    );
+    const { user } = this.props;
+    if (user != null) {
+      return (
+        <div>
+          <button onClick={this.handleOnClick}>test</button>
+        </div>
+      );
+    } else return null;
   }
 }
