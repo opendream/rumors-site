@@ -1,9 +1,6 @@
 import React from 'react';
 import Router from 'next/router';
 import './AutoCompleteSearchBox.css';
-import { load } from '../ducks/frontPageSearchQuery';
-import { connect } from 'react-redux';
-import { List } from 'immutable';
 import gql from '../util/gql';
 
 export default class AutoCompleteSearchBox extends React.Component {
@@ -72,6 +69,33 @@ export default class AutoCompleteSearchBox extends React.Component {
     }).then(resp => {
       this.setState({ isSubmitting: false });
       console.log('response: ' + resp);
+
+      const retrievedArticlesNode = resp.getIn([
+        'data',
+        'ListArticles',
+        'edges',
+      ]);
+
+      retrievedArticlesNode.map(item => {
+        this.setState({
+          retrievedArticleTextArray: [
+            this.state.retrievedArticleTextArray,
+            item,
+          ],
+        });
+        console.log(item.get('node').get('text'));
+      });
+
+      // const retrievedArticleTextArray = this.state;
+
+      // let suggestions = [];
+      // if (like.length > 0) {
+      //   const regex = new RegExp(`^${like}`, 'i');
+      //   suggestions = retrievedArticleTextArray
+      //     .filter(v => regex.test(v));
+      // }
+
+      // console.log(suggestions);
 
       if (resp.get('errors')) {
         console.error(resp.get('errors'));
