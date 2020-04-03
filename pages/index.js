@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <body className={`wrapper-index`}>
+      <body className={`home`}>
         <AppLayout>
           <div className="root">
             <Head>
@@ -110,12 +110,6 @@ class IndexPage extends React.Component {
               }
             `}
           </style>
-
-          <style jsx global>{`
-            body {
-              font-family: 'Kanit', sans-serif;
-            }
-          `}</style>
         </AppLayout>
       </body>
     );

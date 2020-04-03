@@ -72,7 +72,22 @@ class AppLayout extends React.Component {
           <AppFooter />
         </div>
         <style jsx global>{`
-          .wrapper-page {
+          body {
+            font-family: 'Kanit', sans-serif;
+          }
+
+          body:not(.home) .wrapper-page {
+            background: transparent;
+          }
+          body:not(.home) .nav-item {
+            color: #000;
+          }
+
+          
+          body.home .nav-item {
+            color: #fff;
+          }
+          body.home .wrapper-page {
             background: url("static/img/bg-banner@2x.jpg") no-repeat top center;
             background-size: 100%;
           }

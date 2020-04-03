@@ -118,8 +118,8 @@ export default class AutoCompleteSearchBox extends React.Component {
             .btn-primary:hover,
             .btn-primary:active,
             .btn-primary:focus {
-              background-color: #ff79ac;
-              border-color: #ff79ac;
+              background-color: #ff79ac !important;
+              border-color: #ff79ac !important;
               font-size: 20px;
               color: #000;
             }

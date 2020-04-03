@@ -80,23 +80,7 @@ function AppHeader({
       </div>
 
       <style jsx>{`
-        .navbar {
-          // text-shadow: 0 0 2px rgba(0,0,0,0.3);
-          // font-size: 0.9em;
-          // background-color: rgba(52, 58, 64, 0.5);
-        }
-        .header {
-  
-        }
-        .head-left {
-          // display: inline-block;
-        }
-        .head-right {
-          // display: inline-block;
-          // float: right;
-          // margin-top: 30px;
-          // margin-right: 15px;
-        }
+
 
         h1 {
           display: block;
@@ -107,41 +91,30 @@ function AppHeader({
           margin: 0;
         }
         .logo {
-          // display: inline-block;
-          // margin-right: 16px;
-          // width: 10%;
-          // max-width: 100px;
-          // min-width: 50px;
-          // float: left;
-          // margin-left: 15px;
-          // margin-top: 15px;
           width: 95px;
         }
-        .logo > div {
-          position: relative;
-          display: block;
-          width: 100%;
-          padding: 0;
-          overflow: hidden;
-        }
-        .logo > div:before {
-          content: '';
-          display: block;
-          padding-top: 100%;
-        }
-        .logo > div > img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          height: auto;
-        }
+        // .logo > div {
+        //   position: relative;
+        //   display: block;
+        //   width: 100%;
+        //   padding: 0;
+        //   overflow: hidden;
+        // }
+        // .logo > div:before {
+        //   content: '';
+        //   display: block;
+        //   padding-top: 100%;
+        // }
+        // .logo > div > img {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   right: 0;
+        //   bottom: 0;
+        //   width: 100%;
+        //   height: auto;
+        // }
         .nav {
-          // display: inline-block;
-          // float: left;
-          // margin-top: 30px;
           font-size: 1.25rem;
           padding: 5px 10px;
         }
