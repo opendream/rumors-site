@@ -1,6 +1,10 @@
 import React from 'react';
 import Router from 'next/router';
 import './AutoCompleteSearchBox.css';
+import { load } from '../ducks/frontPageSearchQuery';
+import { connect } from 'react-redux';
+import { List } from 'immutable';
+import gql from '../util/gql';
 
 export default class AutoCompleteSearchBox extends React.Component {
   constructor(props) {
@@ -37,17 +41,56 @@ export default class AutoCompleteSearchBox extends React.Component {
   };
 
   handleQueryChange = e => {
-    const { items } = this.props;
-    const query = e.target.value;
+    this.setState({ isSubmitting: true });
+    const like = e.target.value.trim();
+    this.setState(() => ({ queryText: like }));
+    /////GraphQL Query
+    // query {
+    //   ListArticles(filter: { moreLikeThis: { like: "test" } }) {
+    //     edges {
+    //       node {
+    //         text
+    //       }
+    //     }
+    //   }
+    // }
+    console.log(like);
+    // get the data, put the filter query in $text
 
-    let suggestions = [];
-    if (query.length > 0) {
-      const regex = new RegExp(`^${query}`, 'i');
-      suggestions = items.sort().filter(v => regex.test(v));
-    }
+    gql`
+      query($like: String){
+        ListArticles(filter: { moreLikeThis: { like: $like } }) {
+          edges {
+            node {
+              text
+            }
+          }
+        }
+      }
+    `({
+      like,
+    }).then(resp => {
+      this.setState({ isSubmitting: false });
+      console.log('response: ' + resp);
 
-    this.setState(() => ({ suggestions, queryText: query }));
-    console.log(suggestions);
+      if (resp.get('errors')) {
+        console.error(resp.get('errors'));
+        return;
+      }
+    });
+
+    // const { items } = this.props;
+    // const articles = this.state;
+    // console.log(articles);
+    //
+    // let suggestions = [];
+    // if (query.length > 0) {
+    //   const regex = new RegExp(`^${query}`, 'i');
+    //   suggestions = items.sort().filter(v => regex.test(v));
+    // }
+    //
+
+    // console.log(suggestions);
   };
 
   renderSuggestion() {
