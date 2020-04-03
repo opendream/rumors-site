@@ -15,7 +15,7 @@ export default class CreateArticleButton extends React.Component {
     if (user != null) {
       return (
         <div>
-          <button onClick={this.handleOnClick}>test</button>
+          <button onClick={this.handleOnClick}>Create Article</button>
         </div>
       );
     } else return null;

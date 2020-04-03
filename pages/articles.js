@@ -325,10 +325,7 @@ class Articles extends ListPage {
 
   renderList = () => {
     const { localEditorHelperList } = this.state;
-    const { user } = this.props;
     const { articles = null, totalCount, authFields } = this.props;
-
-    console.log('listUser :' + user);
 
     return (
       <div className={`article-wrapper`}>
