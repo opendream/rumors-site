@@ -62,8 +62,13 @@ class IndexPage extends React.Component {
           </div>
           {/*Section#2*/}
           <div className="section section-line">
-            <div className="inner">
+            <div className="container">
               <div className="content">
+                <div className="add-line d-flex align-items-end mb-2 mb-md-4">
+                  <h2 className="mr-2 mb-0">เช็คข่าวลวง<br />ชวน Add LINE</h2>
+                  <img src="/static/img/btn-line-cofact.png" alt="@cofact" width="250px" className="img-fluid" />
+                </div>
+                
                 <p>
                   Add LINE @cofact หรือ QR Code แล้ว "ส่งต่อ"
                   ข้อความที่คุณคิดว่าเป็น ข่าวลวง ข่าวลือ ข้อความหลอก หรือ
@@ -123,9 +128,26 @@ class IndexPage extends React.Component {
               .jumbotron h2 {
                 font-weight: 400;
               }
+
+
               .section-line {
                 background-color: #f0b4d0;
               }
+              .section-line .content {
+                padding: 2rem;
+              }
+                .add-line h2 {
+                  font-size: 3.5rem;
+                }
+              @media screen and (min-width: 768px) {
+                .section-line .content {
+                  padding: 4rem;
+                }
+                .add-line h2 {
+                  font-size: 2.5rem;
+                }
+              }
+
             `}
           </style>
         </AppLayout>
