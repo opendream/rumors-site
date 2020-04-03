@@ -98,9 +98,21 @@ class IndexPage extends React.Component {
                 border-radius: 0;
                 margin-bottom: 0;
               }
+              .jumbotron h1 {
+                font-size: 2rem;
+              }
+              .jumbotron h2 {
+                font-size: 1.5rem;
+              }
               @media screen and (min-width: 768px) {
                 .jumbotron {
                   padding: 6rem 2rem;
+                }
+                .jumbotron h1 {
+                  font-size: 2.5rem
+                }
+                .jumbotron h2 {
+                  font-size: 2rem;
                 }
               }
               .jumbotron .emphasis {
