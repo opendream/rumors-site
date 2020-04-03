@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <body>
+      <body className={`wrapper-index`}>
         <AppLayout>
           <div className="root">
             <Head>

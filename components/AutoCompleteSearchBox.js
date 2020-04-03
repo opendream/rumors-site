@@ -73,9 +73,10 @@ export default class AutoCompleteSearchBox extends React.Component {
     return (
       <div className="align-items-center">
         <div id="SearchQueryField" className="AutoCompleteSearchBox">
-          <form onSubmit={this.handleSubmit}>
-            <div>
+          <form onSubmit={this.handleSubmit} className="form-inline">
+            <div className="form-group w-100">
               <input
+                className="form-control"
                 type="text"
                 value={queryText}
                 onChange={this.handleQueryChange}
@@ -86,8 +87,6 @@ export default class AutoCompleteSearchBox extends React.Component {
                 spellCheck="off"
               />
               {this.renderSuggestion()}
-            </div>
-            <div>
               <button className="btn btn-primary my-2 my-sm-0" type="submit">
                 Search
               </button>
