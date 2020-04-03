@@ -177,34 +177,30 @@ class UserName extends PureComponent {
   renderLogin = () => {
     const { onLoginClick } = this.props;
 
-    return (
-      <>
-        <div className={`link-group`}>
-          <a className={`link link-list`} href="" onClick={() => onLoginClick(i18n.t('login'))}>
-            {i18n.t("login")}
-          </a>
-          <a className={`link link-list`} href="" onClick={() => onLoginClick(i18n.t("signup"))}>
-            {i18n.t("signup")}
-          </a>
-          <style jsx>{`
-            .link-group {
-              border-radius: 15px;
-              padding: 5px 10px;
-            }
-            .link-list {
-              margin-right: 10px;
-              padding-right: 10px;
-            }
-            .link-list:last-child { 
-              border-right: 0; 
-              padding: 0;
-              margin: 0;
-            }
-          `}</style>
-        </div>
-        
-      </>
-    );
+    return <>
+				<div className={`link-group`}>
+					<a className={`link link-list`} onClick={() => onLoginClick(i18n.t("login"))}>
+						{i18n.t("login")}
+					</a>
+					<a className={`link link-list`} onClick={() => onLoginClick(i18n.t("signup"))}>
+						{i18n.t("signup")}
+					</a>
+					<style jsx>{`
+						.link-group {
+							border-radius: 15px;
+							padding: 5px 10px;
+						}
+						.link-list {
+							margin-right: 10px;
+							padding-right: 10px;
+						}
+						.link-list:last-child {
+							border-right: 0;
+							padding: 0;
+							margin: 0;
+						}`}</style>
+				</div>
+			</>;
   };
 
   renderLevel = () => {
