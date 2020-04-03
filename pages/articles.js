@@ -15,7 +15,7 @@ import Pagination from 'components/Pagination';
 import ArticleItem from 'components/ArticleItem';
 import FullSiteArticleStats from 'components/FullSiteArticleStats';
 import articleList, { load, loadAuthFields } from 'ducks/articleList';
-
+import CreateArticleButton from "../components/CreateArticleButton";
 import i18n from '../i18n';
 
 import { mainStyle, hintStyle } from './articles.styles';
@@ -387,6 +387,7 @@ class Articles extends ListPage {
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>
+            <CreateArticleButton />
             {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()}
