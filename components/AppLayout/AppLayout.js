@@ -77,17 +77,17 @@ class AppLayout extends React.Component {
           }
 
           body:not(.home) .wrapper-page {
-            background: transparent;
+            background: transparent !important;
           }
           body:not(.home) .nav-item {
-            color: #000;
+            color: #000 !important;
           }
           body:not(.home) .link-group {
-            border: 1px solid #000;
+            border: 1px solid #000 !important;
           }
           body:not(.home) .link-list {
-            border-right: 1px solid #000;
-            color: #000;
+            border-right: 1px solid #000 !important;
+            color: #000 !important;
           }
 
 

@@ -68,7 +68,7 @@ class IndexPage extends React.Component {
                   <div className="col-12 col-lg-8 col-xl-6">
                     <div className="add-line d-flex align-items-end mb-3 mb-lg-4">
                       <h2 className="mr-2 mr-lg-3 mb-0">เช็คข่าวลวง<br />ชวน Add LINE</h2>
-                      <img src="/static/img/btn-line-cofact.png" alt="@cofact" className="btn-line img-fluid" />
+                      <a href="https://line.me/R/ti/p/%40Cofact" target="_blank"><img src="/static/img/btn-line-cofact.png" alt="@cofact" className="btn-line img-fluid" /></a>
                     </div>
                     <div className="add-line-detail">
                       <p>หากคุณสงสัยว่าข้อความที่พบเป็น<strong>ข่าวลวง ข่าวลือ</strong> หรือ<br className="d-none d-md-block" />
@@ -83,7 +83,7 @@ class IndexPage extends React.Component {
                 <div className="d-flex align-items-start pl-5">
                   <div className="d-flex flex-column align-items-center p-4">
                     <h4>โดยเข้าไป<br />Add LINE</h4>
-                    <img src="/static/img/btn-line-cofact.png" alt="@cofact" width="150px" className="btn-line img-fluid" />
+                    <a href="https://line.me/R/ti/p/%40Cofact" target="_blank"><img src="/static/img/btn-line-cofact.png" alt="@cofact" width="150px" className="btn-line img-fluid" /></a>
                   </div>
                   <p className="align-self-center txt1-5 px-4">หรือ</p>
                   <div className="d-flex flex-column align-items-center p-4">
@@ -102,8 +102,9 @@ class IndexPage extends React.Component {
                     />
                   </div>
                 </div>
+                <h4 className="d-none d-lg-block">คุณก็สามารถเริ่มตรวจสอบข้อความหรือข่าวนั้นได้ทันที</h4>
               </div>
-              <h4 className="d-none d-lg-block">คุณก็สามารถเริ่มตรวจสอบข้อความหรือข่าวนั้นได้ทันที</h4>
+              
               <div className="phone-container d-block d-lg-none">
                 <div className="container">
                   <div className="row justify-content-center">
@@ -130,12 +131,15 @@ class IndexPage extends React.Component {
 
 
             <div className="container mt-5 mt-lg-0">
-              <div className="row justify-content-center">
-                <div className="col-12 col-sm-10 col-md-8  col-lg-6">
+              <div className="row justify-content-center align-items-lg-center">
+                <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 order-lg-2">
                   <h2 className="f-xl lh1 px-3">ร่วมแบ่งปันความเห็น<br />ชวน Post และ Comment</h2>
                   <p className="f-md px-3">ข่าวลวงบนเว็บไซต์ Cofact</p>
+                  <div className="text-center text-lg-left px-lg-3 my-5 d-none d-lg-block">
+                    <a href="/articles" className="btn-white btn-lg btn">ค้นหาข่าวลวง</a>
+                  </div>
                 </div>
-                <div className="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                   <div className="text-black card card-white d-flex flex-row mx-2 mx-lg-4 mt-4 mt-lg-0">
                     <div className="ic-post mr-3 mt-2">
                       <img src="/static/img/ic-post.png" alt="" width="90px"  className="img-fluid" />
@@ -159,50 +163,110 @@ class IndexPage extends React.Component {
                     </div>
                   </div>
                   <div className="text-center my-5 d-block d-lg-none">
-                    <a href="#" className="btn-white btn-lg btn">ค้นหาข่าวลวง</a>
+                    <a href="/articles" className="btn-white btn-lg btn">ค้นหาข่าวลวง</a>
                   </div>
                 </div>
               </div>
             </div>
+            
+          
           </div>
-            <style> {sectionStyle} </style>
+          {/*Section#3*/}
+          <div className="section section-partner py-3 py-lg-4 bg-white">
+            <h2 className="text-center my-4">Partners</h2>
+            <div className="container">
+              <ul className="partner-list">
+                <li>
+                  <a href="https://www.thaihealth.or.th/" target="_blank"><img src="/static/img/partner/logo-thaihealth@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="https://www.hdcentre.org/" target="_blank"><img src="/static/img/partner/logo-hd@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="" target="_blank"><img src="/static/img/partner/logo-f@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="http://www.thaimediafund.or.th/" target="_blank"><img src="/static/img/partner/logo-tmf@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="https://changefusion.org/" target="_blank"><img src="/static/img/partner/logo-cf@2x.png" alt="สสส" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="https://www.opendream.co.th/" target="_blank"><img src="/static/img/partner/logo-od@2x.png" alt="สสส" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="https://wisesight.com/" target="_blank"><img src="/static/img/partner/logo-wisesight@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="https://www.consumerthai.org/" target="_blank"><img src="/static/img/partner/logo-ffc@2x.png" alt="" className="img-fluid" /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+          <style> {sectionStyle} </style>
        
 
           <style jsx>
             {`
 
               .txt1-5 { font-size: 1.5rem; }
-              .f-xl { font-size: 1.85rem; font-weight: 600; }
-              .f-lg { font-size: 1.5rem; font-weight: 500; }
-              .f-md { font-size: 1.25rem }
+              .lh1 { line-height: 1.1;}
 
+              .f-xl { font-size: 1.75rem; font-weight: 600; }
+              .f-lg { font-size: 1.4rem; font-weight: 500; }
+              .f-md { font-size: 1.35rem; line-height: 1.5em; }
 
               @media screen and (min-width: 768px) {
                 .f-xl { font-size: 2.25rem; font-weight: 600; }
                 .f-lg { font-size: 1.75rem; font-weight: 500; }
                 .f-md { font-size: 1.35rem }
               }
-              .lh1 { line-height: 1.1;}
+
+              @media screen and (min-width: 992px) {
+                .f-xl { font-size: 2.25rem; font-weight: 600; }
+                .f-lg { font-size: 1.75rem; font-weight: 500; }
+                .f-md { font-size: 1.5rem }
+              }
+
+              video { max-width: 100%; }
+              
+              
               .btn-white {
                 background: #fff;
                 color: #FF79AC;
                 font-weight: 600;
-                padding-left: 2rem;
-                padding-right: 2rem;
+                padding: 1rem 2rem;
+                font-size: 1.35rem;
               }
               .btn-white:hover {
                 background: #FF79AC;
                 color: #fff;
               }
+
+
               .card {
                 border: 0;
                 padding: 1rem;
+                margin-right: 2rem !important
               }
-              .card p { font-size: 1.25rem; } 
+              .card p { 
+                font-size: 1.15rem; 
+              } 
+
+              @media screen and (min-width: 1200px) {
+                .card { padding: 1.5rem; }
+                .card p {
+                  font-size: 1.4rem;
+                }
+              }
+
               .card-pink {
                 background: rgba(236,126,177,0.75);
                 margin-top: -1rem;
                 margin-left: 2rem;
+                margin-right: 0 !important
               }
               @media screen and (min-width: 768px) {
                 .card-pink {
@@ -255,22 +319,22 @@ class IndexPage extends React.Component {
                 font-weight: 400;
               }
               
-              video { 
-                max-width: 100%;  
-              }
-
+            
+              /* Section LINE */
 
               .section-line {
                 background: #f0b4d0 url("static/img/bg-gp-cofact.png") no-repeat left center ;
                 background-size: 90%;
                 min-height: 100vh;
-                
               }
+
               @media screen and (min-width: 768px) {
                 .section-line {
-                  background-size: 50%;
+                  background-size: 40%;
+                  padding-bottom: 5rem;
                 }
               }
+
               .section-line .content {
                 padding: 2rem 0.5rem;
               }
@@ -291,6 +355,18 @@ class IndexPage extends React.Component {
                   margin-bottom: 1rem;
                   position: relative;
                 }
+
+                @media screen and (min-width: 992px) {
+                  .add-line-qr {
+                    margin-bottom: 8rem;
+                  }
+                }
+
+                @media screen and (min-width: 1200px) {
+                  .add-line-qr {
+                    margin-bottom: 15rem;
+                  }
+                }
                 
                 .add-line-qr .phone-container {
                   right: 11rem;
@@ -305,7 +381,7 @@ class IndexPage extends React.Component {
                 .phone-container .phone-img:before {
                   content: "";
                   width: 85%;
-                  height: 100%;
+                  height: 103%;
                   background: url("static/img/bg-frame-iphone.png") no-repeat top center;
                   background-size: 100%;
                   position: absolute;
@@ -420,6 +496,25 @@ class IndexPage extends React.Component {
                 }
                 .phone-container .phone-img video {
                   width: 90%;
+                }
+              }
+
+              /* Parner List */
+              .partner-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: center;
+              }
+              .partner-list li {
+                flex: 0 0 50%;
+              }
+              @media screen and (min-width: 768px) {
+                .partner-list li {
+                  flex: 0 0 240px;
                 }
               }
 

@@ -87,7 +87,7 @@ function AppHeader({
                 </div>
               </nav>
             </div>
-            <div className="ml-auto d-none d-md-block">
+            <div className="ml-auto d-none d-md-flex align-items-center">
               <div className="nav">
                 <Link route="articles">
                     <a className="nav-item">{i18n.t('articles')}</a>
