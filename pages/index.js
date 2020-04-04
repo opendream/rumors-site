@@ -65,7 +65,7 @@ class IndexPage extends React.Component {
             <div className="container">
               <div className="content">
                 <div className="row">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-8 col-xl-6">
                     <div className="add-line d-flex align-items-end mb-3 mb-lg-4">
                       <h2 className="mr-2 mr-lg-3 mb-0">เช็คข่าวลวง<br />ชวน Add LINE</h2>
                       <img src="/static/img/btn-line-cofact.png" alt="@cofact" className="btn-line img-fluid" />
@@ -82,13 +82,13 @@ class IndexPage extends React.Component {
               <div className="add-line-qr d-none d-lg-block">
                 <div className="d-flex align-items-start pl-5">
                   <div className="d-flex flex-column align-items-center p-4">
-                    <h3>โดยเข้าไป<br />Add LINE</h3>
+                    <h4>โดยเข้าไป<br />Add LINE</h4>
                     <img src="/static/img/btn-line-cofact.png" alt="@cofact" width="150px" className="btn-line img-fluid" />
                   </div>
                   <p className="align-self-center txt1-5 px-4">หรือ</p>
                   <div className="d-flex flex-column align-items-center p-4">
-                    <h3>สแกน QR Code</h3>
-                    <img src="/static/img/qr-code.png" alt="QR" width="150px" className="img-fluid" />
+                    <h4>สแกน QR Code</h4>
+                    <img src="/static/img/qr-code.png" alt="QR" width="120px" className="img-qr img-fluid" />
                   </div>
                 </div>
                 <div className="phone-container">
@@ -105,26 +105,66 @@ class IndexPage extends React.Component {
               </div>
               <h4 className="d-none d-lg-block">คุณก็สามารถเริ่มตรวจสอบข้อความหรือข่าวนั้นได้ทันที</h4>
               <div className="phone-container d-block d-lg-none">
-                  <div className="phone-img">
-                    <video
-                      poster="/static/img/recording-still-th.gif"
-                      src="/static/img/recording-th.mp4"
-                      autoPlay
-                      loop
-                      muted
-                    />
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div className="col-12 col-md-8">
+                      <div className="phone-img">
+                        <video
+                          poster="/static/img/recording-still-th.gif"
+                          src="/static/img/recording-th.mp4"
+                          autoPlay
+                          loop
+                          muted
+                        />
+                      </div>
+                    </div>
+                    <div className="col-12 col-md-8">
+                      <p className="add-line-sm"><span className="mr-2">โดยเข้าไป Add LINE</span> <img src="/static/img/btn-line-cofact.png" alt="@cofact" width="120px" className="btn-line img-fluid" /></p>
+                    </div>
                   </div>
                 </div>
+                  
+                  
+                </div>
             </div>
-            
-                
-                
-                
-                
-                
-              
-              
+
+
+            <div className="container mt-5 mt-lg-0">
+              <div className="row justify-content-center">
+                <div className="col-12 col-sm-10 col-md-8  col-lg-6">
+                  <h2 className="f-xl lh1 px-3">ร่วมแบ่งปันความเห็น<br />ชวน Post และ Comment</h2>
+                  <p className="f-md px-3">ข่าวลวงบนเว็บไซต์ Cofact</p>
+                </div>
+                <div className="col-12 col-sm-10 col-md-8 col-lg-6">
+                  <div className="text-black card card-white d-flex flex-row mx-2 mx-lg-4 mt-4 mt-lg-0">
+                    <div className="ic-post mr-3 mt-2">
+                      <img src="/static/img/ic-post.png" alt="" width="90px"  className="img-fluid" />
+                    </div>
+                    <div className="">
+                      <div className="lh1 mb-3">
+                        <span className="f-xl">Post</span><br /><span className="f-lg">ข้อความที่อยากตรวจสอบ</span>
+                      </div>
+                      <p>เพื่อให้ทุกคนได้เข้ามาแบ่งปันความคิดเห็นและให้ข้อมูลเกี่ยวกับข่าวลวงนั้น</p>
+                    </div>
+                  </div>
+                  <div className="text-white card card-pink d-flex flex-row">
+                    <div className="ic-comment mr-3 mt-2">
+                      <img src="/static/img/ic-comment.png" alt="" width="90px" className="img-fluid" />
+                    </div>
+                    <div className="">
+                      <div className="lh1 mb-3">
+                        <span className="f-xl">Comment</span><br /><span className="f-lg">ว่าข้อความนั้นจริงหรือไม่</span>
+                      </div>
+                      <p>หากมีแหล่งอ้างอิงที่น่าเชื่อถือ เพื่อเป็นข้อมูลให้นำไปตัดสินใจว่าควรเชื่อหรือไม่</p>
+                    </div>
+                  </div>
+                  <div className="text-center my-5 d-block d-lg-none">
+                    <a href="#" className="btn-white btn-lg btn">ค้นหาข่าวลวง</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
             <style> {sectionStyle} </style>
        
 
@@ -132,6 +172,56 @@ class IndexPage extends React.Component {
             {`
 
               .txt1-5 { font-size: 1.5rem; }
+              .f-xl { font-size: 1.85rem; font-weight: 600; }
+              .f-lg { font-size: 1.5rem; font-weight: 500; }
+              .f-md { font-size: 1.25rem }
+
+
+              @media screen and (min-width: 768px) {
+                .f-xl { font-size: 2.25rem; font-weight: 600; }
+                .f-lg { font-size: 1.75rem; font-weight: 500; }
+                .f-md { font-size: 1.35rem }
+              }
+              .lh1 { line-height: 1.1;}
+              .btn-white {
+                background: #fff;
+                color: #FF79AC;
+                font-weight: 600;
+                padding-left: 2rem;
+                padding-right: 2rem;
+              }
+              .btn-white:hover {
+                background: #FF79AC;
+                color: #fff;
+              }
+              .card {
+                border: 0;
+                padding: 1rem;
+              }
+              .card p { font-size: 1.25rem; } 
+              .card-pink {
+                background: rgba(236,126,177,0.75);
+                margin-top: -1rem;
+                margin-left: 2rem;
+              }
+              @media screen and (min-width: 768px) {
+                .card-pink {
+                  background: rgba(236,126,177,0.75);
+                  margin-top: -1rem;
+                  margin-left: 4rem;
+                }
+              }
+              .card-pink:after {
+                content: " ";
+                position: absolute;
+                right: 20px;
+                bottom: -15px;
+                border-top: 15px solid rgba(236,126,177,0.75);
+                border-right: 0px solid transparent;
+                border-left: 20px solid transparent;
+                border-bottom: none;
+              }
+
               .jumbotron {
                 background-color: transparent;
                 color: #fff;
@@ -166,16 +256,20 @@ class IndexPage extends React.Component {
               }
               
               video { 
-                max-width: 100%; 
-                
+                max-width: 100%;  
               }
 
 
               .section-line {
                 background: #f0b4d0 url("static/img/bg-gp-cofact.png") no-repeat left center ;
-                background-size: 50%;
+                background-size: 90%;
                 min-height: 100vh;
                 
+              }
+              @media screen and (min-width: 768px) {
+                .section-line {
+                  background-size: 50%;
+                }
               }
               .section-line .content {
                 padding: 2rem 0.5rem;
@@ -203,36 +297,91 @@ class IndexPage extends React.Component {
                   position: absolute;
                   top: -18rem;
                 }
+
                 .phone-container { position: relative; }
+                .phone-container .phone-img {
+                  text-align: center;
+                }
                 .phone-container .phone-img:before {
                   content: "";
-                  width: 350px;
-                  height: 750px;
-                  background: url("static/img/bg-frame-iphone.png") no-repeat left top;
+                  width: 85%;
+                  height: 100%;
+                  background: url("static/img/bg-frame-iphone.png") no-repeat top center;
                   background-size: 100%;
                   position: absolute;
-                  left: -15px;
+                  left: 8%;
+                }
+                .phone-container .phone-img video {
+                  width: 87%;
                 }
 
-                .phone-container .phone-img video {
-                  // width: 96%;
-                  // width: auto;
-                  // margin-left: -10px;
-                  width: 320px;
+                .add-line-sm {
+                  background: url("static/img/bg-white-sm.png") no-repeat top right;
+                  background-size: 100%;
+                  padding: 0 0 0 2rem;
+                  margin-right: -30px;
+                  margin-top: -20%;
+                  min-height: 65px;
+                  overflow: hidden;
+                  display: flex;
+                  align-items: center;
                 }
+                .add-line-sm {
+                  font-weight: 600;
+                }
+
+              @media screen and (min-width: 375px) {
+                .add-line-sm {
+                  height: 70px;
+                  padding: 0 0 0 3rem;
+                }
+                .add-line-sm span {
+                  font-size: 1.2rem;
+                }
+              }
 
               @media screen and (min-width: 768px) {
+                .add-line-sm {
+                  height: 85px;
+                  padding: 0 0 0 3rem;
+                }
+                .add-line-sm span {
+                  font-size: 1.45rem;
+                }
                 .section-line .content {
                   padding: 2rem;
                 }
                 .add-line h2 {
-                  font-size: 2rem;
+                  font-size: 2.25rem;
                 }
                 .add-line-detail p {
-                  font-size: 1.5rem
+                  font-size: 1.65rem
                 }
                 .add-line img {
                   width: 200px;
+                }
+                .phone-container .phone-img video {
+                  width: 83%;
+                }
+              }
+
+              @media screen and (min-width: 992px) {
+                .add-line h2 {
+                  font-size: 2rem;
+                }
+                .add-line-detail p {
+                  font-size: 1.35rem
+                }
+                .add-line img {
+                  width: 180px;
+                }
+                .add-line-qr .phone-container {
+                  right: 0;
+                  position: absolute;
+                  top: -20rem;
+                }
+                .phone-container .phone-img video {
+                  width: 77%;
                 }
               }
 
@@ -240,14 +389,37 @@ class IndexPage extends React.Component {
                 .section-line .content {
                   padding: 4rem 0;
                 }
+                .add-line-qr {
+                  height: 220px;
+                }
+                
                 .add-line h2 {
                   font-size: 2.5rem;
                 }
                 .add-line-detail p {
-                  font-size: 1.5rem
+                  font-size: 1.65rem
                 }
                 .add-line img {
                   width: 250px;
+                }
+                
+              }
+              @media screen and (min-width: 1200px) {
+                .add-line img {
+                  width: 250px;
+                }
+                .add-line-qr .img-qr { width: 150px !important;}
+                .add-line-qr .phone-container {
+                  right: 12rem;
+                  position: absolute;
+                  top: -20rem;
+                }
+                .phone-container .phone-img:before {
+                  width: 100%;
+                  left: 0;
+                }
+                .phone-container .phone-img video {
+                  width: 90%;
                 }
               }
 
