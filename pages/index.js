@@ -47,13 +47,17 @@ class IndexPage extends React.Component {
                 <div className="row justify-content-md-center">
                   <div className={`col col-lg-8 col-xl-6`}>
                     <div id="SearchQueryField">
-                      <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="query" />
-                        <button type="submit">Search</button>
+                      <form onSubmit={this.handleSubmit} className="row no-gutters justify-content-center">
+                        <div className="pr-2 col-9 col-md-10">
+                          <input className="form-control text-field" type="text" name="query" placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ" />
+                        </div>
+                        <div className="col-3 col-md-2">
+                          <button type="submit" className="btn btn-primary w-100">ค้นหา</button>
+                        </div>
                       </form>
-                      {/*<AutoCompleteSearchBox*/}
-                      {/*  items={['t', 'this', 'no', 'co', 'Cov']}*/}
-                      {/*/>*/}
+                      {/* <AutoCompleteSearchBox */}
+                      {/* items={['t', 'this', 'no', 'co', 'Cov']} */}
+                      {/* /> */}
                     </div>
                   </div>
                 </div>
@@ -521,6 +525,50 @@ class IndexPage extends React.Component {
                 .partner-list li {
                   flex: 0 0 240px;
                 }
+              }
+
+              /* Static Search */
+
+              #SearchQueryField .form-inline .form-control,
+              #SearchQueryField .text-field {
+                padding: 15px;
+                font-size: 16px;
+                height: auto;
+                font-weight: 300;
+                border-radius: 10px
+              }
+              @media screen and (min-width: 768px) {
+                #SearchQueryField .text-field {
+                  font-size: 20px;
+                }
+              }
+              #SearchQueryField .form-inline .form-control {
+                width: 79%;
+                margin-right: 1%;
+              }
+              #SearchQueryField .btn { padding: 15px; }
+              #SearchQueryField .form-inline .btn {
+                width: 20%;
+                padding: 15px;
+              }
+              #SearchQueryField .btn-primary {
+                background-color: #f0b4d0;
+                border-color: #f0b4d0;
+                font-size: 16px;
+                color: #000;
+                border-radius: 10px;
+              }
+              @media screen and (min-width: 768px) {
+                #SearchQueryField .btn-primary {
+                  font-size: 20px;
+                }
+              }
+              #SearchQueryField .btn-primary:hover,
+              #SearchQueryField .btn-primary:active,
+              #SearchQueryField .btn-primary:focus {
+                background-color: #ff79ac !important;
+                border-color: #ff79ac !important;
+                color: #000;
               }
 
             `}
