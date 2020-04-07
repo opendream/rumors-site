@@ -39,19 +39,28 @@ export default function AppFooter() {
       {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
-          background: #343A40;
+          // background: #343A40;
+          background: #343A40 url("static/img/bg-fill-footer@2x.png") no-repeat 180% -15px;
+          background-size: 70%;
           padding: 3rem 1rem;
           text-align: center;
           color: white;
         }
         .logo {
-          flex: 0 0 100%;
+          // flex: 0 0 100%;
+          flex: 0 0 auto;
           text-align: left;
         }
         .logo-footer {
-          width: 120px;
+          width: 70px;
           margin-right: 1rem;
-          
+        }
+        @media screen and (min-width: 768px) {
+          .logo-footer {
+            width: 120px;
+            margin-right: 1rem;
+            
+          }
         }
 
         .logo-powerby {
@@ -74,7 +83,7 @@ export default function AppFooter() {
           color: #fff;
         }
 
-        @media screen and (min-width: 992px) {
+        @media screen and (min-width: 768px) {
           footer {
             background: #343A40 url("static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
             background-size: contain;
