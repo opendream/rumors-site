@@ -21,7 +21,10 @@ function AppHeader({
             <Link route="index">
               <a className="logo" href="/">
                 <div>
-                  <img src={`${require('./images/logo.png')}`} className={`img-fluid`} />
+                  <img
+                    src={`${require('./images/logo.png')}`}
+                    className={`img-fluid`}
+                  />
                 </div>
                 <h1>{i18n.t('realOrFake')}</h1>
               </a>
@@ -30,50 +33,54 @@ function AppHeader({
               <nav role="navigation">
                 <div id="menuToggle">
                   <input type="checkbox" />
-                
-                  <span></span>
-                  <span></span>
-                  <span></span>
+
+                  <span />
+                  <span />
+                  <span />
 
                   <div id="menu">
                     <ul className="nav">
                       <Link route="articles">
-                          <a className="nav-item">{i18n.t('articles')}</a>
+                        <a className="nav-item">{i18n.t('articles')}</a>
+                      </Link>
+                      <Link route="replies">
+                        <a className="nav-item">{i18n.t('replies')}</a>
+                      </Link>
+                      <Link route="about">
+                        {/*//TODO:: Change to About Text*/}
+                        <a className="nav-item">ABOUT</a>
+                      </Link>
+                      {user && user.get('isStaff') ? (
+                        <Link route="users">
+                          <a className="nav-item">{i18n.t('users')}</a>
                         </Link>
-                        <Link route="replies">
-                          <a className="nav-item">{i18n.t('replies')}</a>
-                        </Link>
-                        {user && user.get('isStaff') ? (
-                          <Link route="users">
-                            <a className="nav-item">{i18n.t('users')}</a>
-                          </Link>
-                        ) : (
-                          ``
-                        )}
-                        {EDITOR_FACEBOOK_GROUP ? (
-                          <a
-                            href={EDITOR_FACEBOOK_GROUP}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="nav-item hidden-xs"
-                          >
-                            FB {i18n.t('editorHelp')}
-                          </a>
-                        ) : (
-                          ``
-                        )}
-                        {PROJECT_HACKFOLDR ? (
-                          <a
-                            href={PROJECT_HACKFOLDR}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="nav-item hidden-xs"
-                          >
-                            {i18n.t('projectIntroduction')}
-                          </a>
-                        ) : (
-                          ``
-                        )}
+                      ) : (
+                        ``
+                      )}
+                      {EDITOR_FACEBOOK_GROUP ? (
+                        <a
+                          href={EDITOR_FACEBOOK_GROUP}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="nav-item hidden-xs"
+                        >
+                          FB {i18n.t('editorHelp')}
+                        </a>
+                      ) : (
+                        ``
+                      )}
+                      {PROJECT_HACKFOLDR ? (
+                        <a
+                          href={PROJECT_HACKFOLDR}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="nav-item hidden-xs"
+                        >
+                          {i18n.t('projectIntroduction')}
+                        </a>
+                      ) : (
+                        ``
+                      )}
                     </ul>
                     <UserName
                       isLoading={isLoadingAuth}
@@ -82,7 +89,6 @@ function AppHeader({
                       onLogoutClick={onLogoutClick}
                       onUpdate={onUserNameUpdate}
                     />
-                  
                   </div>
                 </div>
               </nav>
@@ -90,42 +96,50 @@ function AppHeader({
             <div className="ml-auto d-none d-md-flex align-items-center">
               <div className="nav">
                 <Link route="articles">
-                    <a className="nav-item">{i18n.t('articles')}</a>
+                  <a className="nav-item">{i18n.t('articles')}</a>
+                </Link>
+                <Link route="replies">
+                  <a className="nav-item">{i18n.t('replies')}</a>
+                </Link>
+                <Link route="about">
+                  {/*//TODO:: Change to About Text*/}
+                  <a className="nav-item">ABOUT</a>
+                </Link>
+                <Link route="policy">
+                  {/*//TODO:: Change to Policy Text*/}
+                  <a className="nav-item">POLICY</a>
+                </Link>
+                {user && user.get('isStaff') ? (
+                  <Link route="users">
+                    <a className="nav-item">{i18n.t('users')}</a>
                   </Link>
-                  <Link route="replies">
-                    <a className="nav-item">{i18n.t('replies')}</a>
-                  </Link>
-                  {user && user.get('isStaff') ? (
-                    <Link route="users">
-                      <a className="nav-item">{i18n.t('users')}</a>
-                    </Link>
-                  ) : (
-                    ``
-                  )}
-                  {EDITOR_FACEBOOK_GROUP ? (
-                    <a
-                      href={EDITOR_FACEBOOK_GROUP}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="nav-item hidden-xs"
-                    >
-                      FB {i18n.t('editorHelp')}
-                    </a>
-                  ) : (
-                    ``
-                  )}
-                  {PROJECT_HACKFOLDR ? (
-                    <a
-                      href={PROJECT_HACKFOLDR}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="nav-item hidden-xs"
-                    >
-                      {i18n.t('projectIntroduction')}
-                    </a>
-                  ) : (
-                    ``
-                  )}
+                ) : (
+                  ``
+                )}
+                {EDITOR_FACEBOOK_GROUP ? (
+                  <a
+                    href={EDITOR_FACEBOOK_GROUP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-item hidden-xs"
+                  >
+                    FB {i18n.t('editorHelp')}
+                  </a>
+                ) : (
+                  ``
+                )}
+                {PROJECT_HACKFOLDR ? (
+                  <a
+                    href={PROJECT_HACKFOLDR}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-item hidden-xs"
+                  >
+                    {i18n.t('projectIntroduction')}
+                  </a>
+                ) : (
+                  ``
+                )}
               </div>
               <UserName
                 isLoading={isLoadingAuth}
@@ -136,9 +150,7 @@ function AppHeader({
               />
             </div>
           </div>
-
         </div>
-
       </div>
 
       <style jsx>{`
