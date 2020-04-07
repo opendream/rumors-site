@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '../routes';
 import ArticleInfo from './ArticleInfo';
-import ArticleTruthMeter from './ArticleTruthMeter';
+import ArticleTruthMeter from './ArticleTruthMeter/ArticleTruthMeter';
 import { listItemStyle } from './ListItem.styles';
 import ArticleItemWidget from './ArticleItemWidget/ArticleItemWidget.js';
 import cx from 'classnames';
