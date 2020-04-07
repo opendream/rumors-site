@@ -95,32 +95,54 @@ class AppLayout extends React.Component {
             color: #B4195D;
           }
 
+          .btn-primary {
+            background-color: #f0b4d0;
+            border-color: #f0b4d0;
+            font-size: 16px;
+            color: #000;
+            border-radius: 10px;
+          }
+
+          @media screen and (min-width: 768px) {
+            .btn-primary {
+              font-size: 20px;
+            }
+          }
+
+          .btn-primary:hover,
+          .btn-primary:active,
+          .btn-primary:focus {
+            background-color: #ff79ac !important;
+            border-color: #ff79ac !important;
+            color: #000;
+          }
+
 
 
         
           body.home .wrapper-page {
-            background: url("static/img/bg-banner@2x.jpg") no-repeat center center;
-            background-size: cover;
+            background: url("static/img/bg-banner@2x.jpg") no-repeat center center !important;
+            background-size: cover !important;
             margin: -120px 0 0;
             padding: 120px 0 0px;
           }
           @media screen and (min-width: 769px) {
             body.home .wrapper-page {
-              background: url("static/img/bg-banner@2x.jpg") no-repeat top center;
-              background-size: cover;
+              background: url("static/img/bg-banner@2x.jpg") no-repeat top center !important;
+              background-size: cover !important;
               margin: -160px 0 0;
               padding: 160px 0 0px;
             }
           }
           body.home .nav-item {
-            color: #fff;
+            color: #fff !important;
           }
           body.home .link-group {
-            border: 1px solid #fff;
+            border: 1px solid #fff !important;
           }
           body.home .link-list {
-            border-right: 1px solid #fff;
-            color: #fff;
+            border-right: 1px solid #fff !important;
+            color: #fff !important;
           }
         `}</style>
         

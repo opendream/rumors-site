@@ -120,7 +120,7 @@ class IndexPage extends React.Component {
                       </div>
                     </div>
                     <div className="col-12 col-md-8">
-                      <p className="add-line-sm"><span className="mr-2">โดยเข้าไป Add LINE</span> <img src="/static/img/btn-line-cofact.png" alt="@cofact" width="120px" className="btn-line img-fluid" /></p>
+                      <p className="add-line-sm"><span className="mr-2">โดยเข้าไป Add LINE</span> <a href="https://line.me/R/ti/p/%40Cofact" target="_blank"><img src="/static/img/btn-line-cofact.png" alt="@cofact" width="120px" className="btn-line img-fluid" /></a></p>
                     </div>
                   </div>
                 </div>

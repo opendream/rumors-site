@@ -195,7 +195,7 @@ class UserName extends PureComponent {
 							padding-right: 10px;
 						}
 						.link-list:last-child {
-							border-right: 0;
+							border-right: 0 !important;
 							padding: 0;
 							margin: 0;
 						}`}</style>

@@ -120,10 +120,15 @@ export default class AutoCompleteSearchBox extends React.Component {
             .form-inline .form-control,
             .text-field {
               padding: 15px;
-              font-size: 20px;
+              font-size: 16px;
               height: auto;
               font-weight: 300;
               border-radius: 10px
+            }
+            @media screen and (min-width: 768px) {
+              .text-field {
+                font-size: 20px;
+              }
             }
             .form-inline .form-control {
               width: 79%;
@@ -137,16 +142,20 @@ export default class AutoCompleteSearchBox extends React.Component {
             .btn-primary {
               background-color: #f0b4d0;
               border-color: #f0b4d0;
-              font-size: 20px;
+              font-size: 16px;
               color: #000;
               border-radius: 10px;
+            }
+            @media screen and (min-width: 768px) {
+              .btn-primary {
+                font-size: 20px;
+              }
             }
             .btn-primary:hover,
             .btn-primary:active,
             .btn-primary:focus {
               background-color: #ff79ac !important;
               border-color: #ff79ac !important;
-              font-size: 20px;
               color: #000;
             }
           `}
