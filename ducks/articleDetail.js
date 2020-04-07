@@ -334,9 +334,12 @@ export const reloadArticleHyperlinks = articleId => dispatch =>
 
   `({ id: articleId }).then(resp => {
     dispatch(loadData(resp.getIn(['data', 'GetArticle'])));
+    dispatch(setState({ key: 'aticleHyperlinkLoading', value: false }));
   });
 
 export const fetchArticleHyperlink = params => dispatch => {
+  dispatch(setState({ key: 'aticleHyperlinkLoading', value: params.hyperlink.get('url') }));
+
   NProgress.start();
   return gql`
     mutation(

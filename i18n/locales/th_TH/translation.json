@@ -81,6 +81,7 @@
   "first": "ก่อน",
   "or": "หรือ",
   "fetchLinkAgain": "อัพเดทข้อมูลลิงก์อีกครั้ง",
+  "fetching": "กำลังดึงข้อมูล..",
 
   "sentence": {
     "congratulationsPromoted": "เย้! คุณได้อัปเวลจ้า",

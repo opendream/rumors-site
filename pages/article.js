@@ -250,6 +250,7 @@ class ArticlePage extends React.Component {
       isLoading,
       isReplyLoading,
       categoriesEditMode: _categoriesEditMode,
+      aticleHyperlinkLoading,
       user,
     } = this.props;
 
@@ -300,7 +301,7 @@ class ArticlePage extends React.Component {
                   },
                 })
               )}
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} />
+              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} aticleHyperlinkLoading={aticleHyperlinkLoading} />
             </article>
             <footer>
               {expanded
@@ -495,6 +496,7 @@ function mapStateToProps({ articleDetail, auth }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
+    aticleHyperlinkLoading: articleDetail.getIn(['state', 'aticleHyperlinkLoading']),
     categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
     user: auth.get('user'),
