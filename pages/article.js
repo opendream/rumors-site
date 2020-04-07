@@ -27,6 +27,7 @@ import {
   reset,
   voteReplyRequest,
   submitArticleCategories,
+  fetchArticleHyperlink,
   categoriesEdit,
 } from 'ducks/articleDetail';
 import i18n from '../i18n';
@@ -122,6 +123,17 @@ class ArticlePage extends React.Component {
     return dispatch(
       submitArticleCategories({
         categories,
+        articleId: id,
+      })
+    );
+  };
+
+  handleFetchHyperlink = hyperlink => {
+
+    const { dispatch, id } = this.props;
+    return dispatch(
+      fetchArticleHyperlink({
+        hyperlink,
         articleId: id,
       })
     );
@@ -270,7 +282,7 @@ class ArticlePage extends React.Component {
                   },
                 })
               )}
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} />
+              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} />
             </article>
             <footer>
               {article.get('replyRequests').map((replyRequest, index) => {

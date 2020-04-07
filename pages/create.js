@@ -64,12 +64,21 @@ class CreateArticlePage extends React.Component {
               </title>
             </Head>
             <form onSubmit={this.handleSubmit}>
-              <h2>{i18n.t('originalMessage')}</h2>
+
+              <h2>{i18n.t('pageCreate.articleTitle')}</h2>
+              <input type="text" name="title" />
+
+              <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
               <textarea name="text" rows="6" />
-              <h2>{i18n.t('reason')}</h2>
-              <textarea name="reason" row="2" />
+
               <h2>{i18n.t('pageCreate.messageSource')}</h2>
               <input type="text" name="references" />
+
+              <h2>{i18n.t('reason')}</h2>
+              <div class="form-text text-muted">
+                {i18n.t('pageCreate.reasonDetail')}
+              </div>
+              <textarea name="reason" row="2" />
 
               <hr />
 

@@ -70,14 +70,14 @@ export default class ReplyConnection extends React.PureComponent {
 
     const getReferenceText = () => {
       const hyperlinks = reply.get('reference');
-      return `\n↓出處↓\n${hyperlinks}`;
+      return `\n${i18n.t('source')}\n${hyperlinks}`;
     };
 
     const copyText =
       typeof window !== 'undefined'
-        ? `${TYPE_NAME[reply.get('type')]} \n【理由】${reply
+        ? `${TYPE_NAME[reply.get('type')]} \n"${i18n.t('reason')}" ${reply
             .get('text')
-            .trim()}\n↓詳細解釋↓\n${window.location.href}${getReferenceText()}`
+            .trim()}\n${i18n.t('article')}\n${window.location.href}${getReferenceText()}`
         : '';
 
     return (
@@ -192,7 +192,7 @@ export default class ReplyConnection extends React.PureComponent {
           {this.renderHint()}
         </header>
         <section className="section">
-          <h3>{i18n.t("reason")}</h3>
+          <h3>{i18n.t(`reason`)}</h3>
           <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
         </section>
 

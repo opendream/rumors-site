@@ -80,12 +80,13 @@
   "please": "กรุณา",
   "first": "ก่อน",
   "or": "หรือ",
+  "fetchLinkAgain": "อัพเดทข้อมูลลิงก์อีกครั้ง",
 
   "sentence": {
     "congratulationsPromoted": "เย้! คุณได้อัปเวลจ้า",
     "viewAllArticlesThisAuthor": "ดูทุกบทความที่ผู้ใช้คนนี้รายงาน",
     "noRelatedArticles": "ไม่พบบทความที่เกี่ยวข้อง",
-    "useRelavantReplies": "ไม่มีความเห็นที่เกี่ยวข้อง",
+    "useRelavantReplies": "ความเห็นที่อาจจะเกี่ยวข้อง",
     "browseRelatedArticles": "เรียกดูบทความที่เกี่ยวข้อง",
     "searchForRelevantReplies": "ค้นหาความเห็นที่เกี่ยวข้อง",
     "responseHasNoSource": "ความเห็นนี้ไม่ได้ระบุที่มา โปรดคำนึงถึงความน่าเชื่อถือ",
@@ -234,7 +235,10 @@
   "pageCreate": {
     "title": "ส่งบทความใหม่เข้าฐานข้อมูล",
     "messageSource": "ลิงก์ไปยังต้นทางบทความ",
-    "sendMessage": "ส่งบทความใหม่"
+    "reasonDetail": "โปรดอธิบายว่าทำไมคุณถึงสงสัยบทความนี้",
+    "sendMessage": "ส่งบทความใหม่",
+    "articleTitle": "หัวข้อ",
+    "articleBody": "เนื้อหา"
   },
 
   "pageReply": {
@@ -304,5 +308,5 @@
   "Connect with Facebook": "เชื่อมต่อด้วย Facebook",
     
   "feelResonable": "รู้สึกว่ามีเหตุผล",
-  "feelUnResonable": "รู้สึกว่าไม่มีเหตุผล"
+  "feelUnresonable": "รู้สึกว่าไม่มีเหตุผล"
 }

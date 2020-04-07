@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Map } from 'immutable';
+import i18n from '../i18n';
 
 /**
  *
@@ -23,23 +24,25 @@ function getErrorText(error) {
 
 /**
  * @param {Map} props.hyperlink
+ * @param {Function} props.fetchCallback
  */
-function Hyperlink({ hyperlink = Map() }) {
+function Hyperlink({ hyperlink = Map(), fetchCallback }) {
   const title = hyperlink.get('title');
   const summary = (hyperlink.get('summary') || '').slice(0, 200);
   const topImageUrl = hyperlink.get('topImageUrl');
   const error = hyperlink.get('error');
+  const url = hyperlink.get('url');
 
   return (
     <article className="link">
       <h1 title={title}>{title}</h1>
       <a
         className="url"
-        href={hyperlink.get('url')}
+        href={url}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {hyperlink.get('url')}
+        {url}
       </a>
       <div className="preview__container">
         <p className="preview__summary" title={summary}>
@@ -53,6 +56,14 @@ function Hyperlink({ hyperlink = Map() }) {
         )}
         {error && <p className="error">{getErrorText(error)}</p>}
       </div>
+
+      {fetchCallback? 
+      <div className="">
+        <a className="text-secondary" href="" onClick={(e)=> {e.preventDefault(); fetchCallback(hyperlink);}}>
+          <small>{i18n.t('fetchLinkAgain')}</small>
+        </a>
+      </div>
+      : ``}
 
       <style jsx>{`
         .link {
@@ -125,13 +136,13 @@ function Hyperlink({ hyperlink = Map() }) {
 /**
  * @param {List} props.hyperlinks
  */
-function Hyperlinks({ hyperlinks = List() }) {
+function Hyperlinks({ hyperlinks = List(), fetchCallback }) {
   if (!hyperlinks || hyperlinks.size === 0) return null;
 
   return (
     <section className="links">
       {hyperlinks
-        .map((hyperlink, idx) => <Hyperlink key={idx} hyperlink={hyperlink} />)
+        .map((hyperlink, idx) => <Hyperlink key={idx} hyperlink={hyperlink} fetchCallback={fetchCallback} />)
         .toArray()}
       <style jsx>{`
         .links {

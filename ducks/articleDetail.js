@@ -316,6 +316,47 @@ export const submitArticleCategories = params => dispatch => {
   });
 };
 
+
+export const reloadArticleHyperlinks = articleId => dispatch =>
+  gql`
+    query($id: String!) {
+      GetArticle(id: $id) {
+        hyperlinks {
+          ...hyperlinkFields
+        }
+        replyConnections: articleReplies {
+          ...articleReplyFields
+        }
+      }
+    }
+    ${fragments.articleReplyAndUserFields}
+    ${fragments.hyperlinkFields}
+
+  `({ id: articleId }).then(resp => {
+    dispatch(loadData(resp.getIn(['data', 'GetArticle'])));
+  });
+
+export const fetchArticleHyperlink = params => dispatch => {
+  NProgress.start();
+  return gql`
+    mutation(
+      $articleId: String!
+      $url: String!
+    ) {
+      UpdateArticleHyperlink(
+        articleId: $articleId
+        url: $url
+      ) {
+        id
+      }
+    }
+  `({ articleId: params.articleId, url: params.hyperlink.get('url')}).then(() => {
+    dispatch(reloadArticleHyperlinks(params.articleId));
+    NProgress.done();
+  });
+
+}
+
 export const updateReplyRequest = createAction(UPDATE_REPLY_REQUESTS);
 
 export const voteReplyRequest = (
