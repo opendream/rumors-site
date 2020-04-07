@@ -17,10 +17,10 @@ export default function AppFooter() {
             </a>
           </Link>
           <ul className="menu-footer">
-            <li><a href="/articles">ค้นหาข่าวลวง</a></li>
-            <li><a href="/replies">รายการความคิดเห็น</a></li>
-            <li><a href="/" className="d-none">นโยบายการใช้งาน</a></li>
-            <li><a href="/" className="d-none">เกี่ยวกับเรา</a></li>
+            <li><Link route="articles"><a>ค้นหาข่าวลวง</a></Link></li>
+            <li><Link route="replies"><a>รายการความคิดเห็น</a></Link></li>
+            <li><Link route="index"><a className="d-none">นโยบายการใช้งาน</a></Link></li>
+            <li><Link route="index"><a className="d-none">เกี่ยวกับเรา</a></Link></li>
           </ul>
           <div className="ml-auto">
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
