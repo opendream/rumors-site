@@ -19,8 +19,8 @@ export default function AppFooter() {
           <ul className="menu-footer">
             <li><Link route="articles"><a>ค้นหาข่าวลวง</a></Link></li>
             <li><Link route="replies"><a>รายการความคิดเห็น</a></Link></li>
-            <li><Link route="about"><a>ABOUT</a></Link></li>
-            <li><Link route="policy"><a>POLICY</a></Link></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/policy">POLICY</a></li>
             <li><Link route="index"><a className="d-none">นโยบายการใช้งาน</a></Link></li>
             <li><Link route="index"><a className="d-none">เกี่ยวกับเรา</a></Link></li>
           </ul>
