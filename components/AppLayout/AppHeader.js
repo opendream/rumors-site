@@ -155,6 +155,13 @@ function AppHeader({
         .logo {
           width: 95px;
         }
+        .logo img { width: 70px; }
+
+        @media screen and (min-width: 768px) {
+          .logo img {
+            width: 95px;
+          }
+        }
      
         .nav {
           font-size: 1.25rem;

@@ -345,6 +345,11 @@ class IndexPage extends React.Component {
                 .add-line img {
                   width: 100px;
                 }
+                @media screen and (min-width: 340px) {
+                  .add-line img {
+                    width: 120px;
+                  }
+                }
                 .add-line-detail p {
                   font-size: 1.25rem
                 }
@@ -355,7 +360,7 @@ class IndexPage extends React.Component {
                   margin-bottom: 1rem;
                   position: relative;
                 }
-
+                
                 @media screen and (min-width: 992px) {
                   .add-line-qr {
                     margin-bottom: 8rem;

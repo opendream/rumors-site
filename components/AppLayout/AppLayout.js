@@ -90,6 +90,11 @@ class AppLayout extends React.Component {
             color: #000 !important;
           }
 
+          a { color: #FF6DAD; }
+          a:hover, a:active, a:focus {
+            color: #B4195D;
+          }
+
 
 
         
