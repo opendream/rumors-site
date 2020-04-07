@@ -38,6 +38,7 @@ import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
 class ArticlePage extends React.Component {
   state = {
     tab: 'search', // 'new, 'related', 'search'
+    isExpanded: false,
   };
 
   static async getInitialProps({ store: { dispatch }, query: { id } }) {
@@ -112,11 +113,10 @@ class ArticlePage extends React.Component {
     });
   };
 
-  handleCategoriesEdit = (isEdit=true) => {
-
+  handleCategoriesEdit = (isEdit = true) => {
     const { dispatch, id } = this.props;
     return dispatch(categoriesEdit(isEdit));
-  }
+  };
 
   handleCategoriesSubmit = categories => {
     const { dispatch, id } = this.props;
@@ -138,7 +138,6 @@ class ArticlePage extends React.Component {
       })
     );
   };
-
 
   scrollToReplySection = () => {
     if (!this._replySectionEl) return;
@@ -163,7 +162,7 @@ class ArticlePage extends React.Component {
           onClick={this.handleTabChange('new')}
           className={`tab ${tab === 'new' ? 'active' : ''}`}
         >
-          {i18n.t("pageArticle.tabMenu1")}
+          {i18n.t('pageArticle.tabMenu1')}
         </li>
         <li
           onClick={this.handleTabChange('related')}
@@ -172,10 +171,11 @@ class ArticlePage extends React.Component {
           }`}
         >
           {relatedReplyCount === 0 ? (
-            `${i18n.t("pageArticle.tabMenu2")}`
+            `${i18n.t('pageArticle.tabMenu2')}`
           ) : (
             <span>
-              {i18n.t("sentence.useRelavantReplies")} <span className="badge">{relatedReplyCount}</span>
+              {i18n.t('sentence.useRelavantReplies')}{' '}
+              <span className="badge">{relatedReplyCount}</span>
             </span>
           )}
         </li>
@@ -183,7 +183,7 @@ class ArticlePage extends React.Component {
           onClick={this.handleTabChange('search')}
           className={`tab ${tab === 'search' ? 'active' : ''}`}
         >
-          {i18n.t("search")}
+          {i18n.t('search')}
         </li>
         <li className="empty" />
         <style jsx>{tabMenuStyle}</style>
@@ -234,13 +234,24 @@ class ArticlePage extends React.Component {
     }
   };
 
-  onLoginClick = (title) => {
-    const {dispatch} = this.props
+  onLoginClick = title => {
+    const { dispatch } = this.props;
     dispatch(showDialog(title));
-  }
+  };
+
+  onArticleClick = () => {
+    const isExpanded = this.state.isExpanded;
+    this.setState({ isExpanded: !isExpanded });
+  };
 
   render() {
-    const { data, isLoading, isReplyLoading, categoriesEditMode:_categoriesEditMode, user } = this.props;
+    const {
+      data,
+      isLoading,
+      isReplyLoading,
+      categoriesEditMode: _categoriesEditMode,
+      user,
+    } = this.props;
 
     const article = data.get('article');
     const replyConnections = data.get('replyConnections');
@@ -257,24 +268,31 @@ class ArticlePage extends React.Component {
     const slicedArticleTitle = article.get('text').slice(0, 15);
     const categories = article.get('categories');
 
-    let categoriesEditMode = _categoriesEditMode ? _categoriesEditMode: (!categories || categories.size === 0);
+    let categoriesEditMode = _categoriesEditMode
+      ? _categoriesEditMode
+      : !categories || categories.size === 0;
+
+    const expanded = this.state.isExpanded;
 
     return (
       <AppLayout>
         <div className="root">
           <Head>
-            <title>{slicedArticleTitle}⋯⋯ | {i18n.t("SiteName")} {i18n.t("realOrFake")}</title>
+            <title>
+              {slicedArticleTitle}⋯⋯ | {i18n.t('SiteName')}{' '}
+              {i18n.t('realOrFake')}
+            </title>
           </Head>
           <section className="section">
             <header className="header">
-              <h2>{i18n.t("originalMessage")}</h2>
+              <h2>{i18n.t('originalMessage')}</h2>
               {/* <div className="trendline">
                 <Trendline id={article.get('id')} />
               </div> */}
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
-            <article className="message">
+            <article className="message" onClick={this.onArticleClick}>
               {nl2br(
                 linkify(article.get('text'), {
                   props: {
@@ -285,78 +303,118 @@ class ArticlePage extends React.Component {
               <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} />
             </article>
             <footer>
-              {article.get('replyRequests').map((replyRequest, index) => {
-                return (
-                  <ReplyRequestReason
-                    key={`reason-${index}`}
-                    index={index}
-                    articleId={article.get('id')}
-                    replyRequest={replyRequest}
-                    isArticleCreator={index === 0}
-                    onVoteReason={this.handleVoteReplyRequest}
-                  />
-                );
-              })}
+              {expanded
+                ? article.get('replyRequests').map((replyRequest, index) => {
+                    return (
+                      <ReplyRequestReason
+                        key={`reason-${index}`}
+                        index={index}
+                        articleId={article.get('id')}
+                        replyRequest={replyRequest}
+                        isArticleCreator={index === 0}
+                        onVoteReason={this.handleVoteReplyRequest}
+                      />
+                    );
+                  })
+                : null}
 
               <div className={`mt-3`}>
-                {categoriesEditMode?
-                <div className={`card`}>
-                  <div className="card-body">
-                    <div>
+                {categoriesEditMode ? (
+                  <div className={`card`}>
+                    <div className="card-body">
                       <div>
-                        <h5>{i18n.t(`specifyArticleCategory`)}</h5>
-                        <div className={`text-secondary`}>{i18n.t(`selectMinimum`)}</div>
-                      </div>
-                      <form className={`mt-2`} ref={categoriesEl => (this._categoriesEl = categoriesEl)} onSubmit={(e) => {
-                        e.preventDefault();
-                        const checkboxArray = Array.prototype.slice.call(this._categoriesEl);
-                        const checkedCheckboxes = checkboxArray.filter(input => input.checked);
-                        const categories = checkedCheckboxes.map(input => input.value);
-                        this.handleCategoriesSubmit(categories);
-                      }}>
                         <div>
-                          {TYPE_ARTICLE_OPTIONS.map((item, i) =>
-                            <div key={i} className="form-check form-check-inline">
-                              <input className="form-check-input" type="checkbox" name="categories" id={`article-category-${i}`} value={item} defaultChecked={categories && categories.filter(c => c === item).size > 0} />
-                              <label className="form-check-label" htmlFor={`article-category-${i}`}>{item}</label>
-                            </div>
-                          )}
+                          <h5>{i18n.t(`specifyArticleCategory`)}</h5>
+                          <div className={`text-secondary`}>
+                            {i18n.t(`selectMinimum`)}
+                          </div>
                         </div>
-                        <div className={`mt-3`}>
-                          <button>{i18n.t(`save`)}</button>
-                          <button className={`btn btn-link`} onClick={(e) => {
+                        <form
+                          className={`mt-2`}
+                          ref={categoriesEl =>
+                            (this._categoriesEl = categoriesEl)
+                          }
+                          onSubmit={e => {
                             e.preventDefault();
-                            this.handleCategoriesEdit(false)
-                          }}>
-                            {i18n.t(`cancel`)}
-                          </button>
-
-                        </div>
-                      </form>
+                            const checkboxArray = Array.prototype.slice.call(
+                              this._categoriesEl
+                            );
+                            const checkedCheckboxes = checkboxArray.filter(
+                              input => input.checked
+                            );
+                            const categories = checkedCheckboxes.map(
+                              input => input.value
+                            );
+                            this.handleCategoriesSubmit(categories);
+                          }}
+                        >
+                          <div>
+                            {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                              <div
+                                key={i}
+                                className="form-check form-check-inline"
+                              >
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  name="categories"
+                                  id={`article-category-${i}`}
+                                  value={item}
+                                  defaultChecked={
+                                    categories &&
+                                    categories.filter(c => c === item).size > 0
+                                  }
+                                />
+                                <label
+                                  className="form-check-label"
+                                  htmlFor={`article-category-${i}`}
+                                >
+                                  {item}
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                          <div className={`mt-3`}>
+                            <button>{i18n.t(`save`)}</button>
+                            <button
+                              className={`btn btn-link`}
+                              onClick={e => {
+                                e.preventDefault();
+                                this.handleCategoriesEdit(false);
+                              }}
+                            >
+                              {i18n.t(`cancel`)}
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </div>
-                :
-                <h4>
-                  <span>
-                    {categories.map((item, i) => <span key={i} className="badge badge-secondary mr-2">{item}</span>)}
-                  </span>
-                  
-                  <button className={`btn btn-link`} onClick={() => this.handleCategoriesEdit()}>
-                    <img
-                      src={require('../components/AppLayout/images/edit.svg')}
-                      width={12}
-                      height={12}
-                      alt="edit"
-                    />
-                  </button>
-                </h4>
-                }
+                ) : (
+                  <h4>
+                    <span>
+                      {categories.map((item, i) => (
+                        <span key={i} className="badge badge-secondary mr-2">
+                          {item}
+                        </span>
+                      ))}
+                    </span>
 
+                    <button
+                      className={`btn btn-link`}
+                      onClick={() => this.handleCategoriesEdit()}
+                    >
+                      <img
+                        src={require('../components/AppLayout/images/edit.svg')}
+                        width={12}
+                        height={12}
+                        alt="edit"
+                      />
+                    </button>
+                  </h4>
+                )}
               </div>
-
             </footer>
-            
           </section>
           <section
             id="current-replies"
@@ -372,27 +430,44 @@ class ArticlePage extends React.Component {
             />
           </section>
           <section className="section">
-            <h2>{i18n.t("addNewResponse")}</h2>
+            <h2>{i18n.t('addNewResponse')}</h2>
 
-            {user?
-            <div>
-              {this.renderTabMenu()}
-              <div className="tab-content">{this.renderNewReplyTab()}</div>
-            </div>
-            :
-            <div>
-              {i18n.t("please")} &nbsp;
-              <a href="#" className={``} onClick={(e) => {e.preventDefault(); this.onLoginClick(i18n.t('login'))}}>{i18n.t("login")}</a>&nbsp;
-              {i18n.t("or")}&nbsp;
-              <a href="#" className={``} onClick={(e) => {e.preventDefault(); this.onLoginClick(i18n.t('signup'))}}>{i18n.t("signup")}</a>&nbsp;
-              {i18n.t("first")}
-            </div>
-            }
-
+            {user ? (
+              <div>
+                {this.renderTabMenu()}
+                <div className="tab-content">{this.renderNewReplyTab()}</div>
+              </div>
+            ) : (
+              <div>
+                {i18n.t('please')} &nbsp;
+                <a
+                  href="#"
+                  className={``}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.onLoginClick(i18n.t('login'));
+                  }}
+                >
+                  {i18n.t('login')}
+                </a>&nbsp;
+                {i18n.t('or')}&nbsp;
+                <a
+                  href="#"
+                  className={``}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.onLoginClick(i18n.t('signup'));
+                  }}
+                >
+                  {i18n.t('signup')}
+                </a>&nbsp;
+                {i18n.t('first')}
+              </div>
+            )}
           </section>
           {relatedArticles.size ? (
             <section className="section">
-              <h2>{i18n.t("sentence.similarArticles")}</h2>
+              <h2>{i18n.t('sentence.similarArticles')}</h2>
               <div>
                 {relatedArticles.map(article => (
                   <ArticleItem key={article.get('id')} article={article} />
