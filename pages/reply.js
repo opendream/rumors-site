@@ -203,33 +203,36 @@ class ReplyPage extends React.Component {
     }
 
     return (
-      <AppLayout>
-        <div className="root">
-          <Head>
-            <title>{reply.get('text').slice(0, 15)}⋯⋯ - {i18n.t("reply")}</title>
-          </Head>
+      <div className={``}>
+        <AppLayout>
+          <div className="root">
+            <Head>
+              <title>{reply.get('text').slice(0, 15)}⋯⋯ - {i18n.t("reply")}</title>
+            </Head>
 
-          <section className="section">
-            <header className="header">
-              <h2>{i18n.t("originalMessage")}</h2>
-              {this.renderArticleLink()}
-            </header>
-            <div className="message">
-              {nl2br(
-                linkify(originalArticle.get('text'), {
-                  props: { target: '_blank' },
-                })
-              )}
-              <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} />
-            </div>
-          </section>
+            <section className="section">
+              <header className="header">
+                <h2>{i18n.t("originalMessage")}</h2>
+                {this.renderArticleLink()}
+              </header>
+              <div className="message">
+                {nl2br(
+                  linkify(originalArticle.get('text'), {
+                    props: { target: '_blank' },
+                  })
+                )}
+                <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} />
+              </div>
+            </section>
 
-          {this.renderReply()}
-          {this.renderUsedArticles()}
+            {this.renderReply()}
+            {this.renderUsedArticles()}
 
-          <style jsx>{detailStyle}</style>
-        </div>
-      </AppLayout>
+            <style jsx>{detailStyle}</style>
+          </div>
+        </AppLayout>
+      </div>
+      
     );
   }
 }

@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <body className={`home`}>
+      <div className={`home`}>
         <AppLayout>
           <div className="root wrapper-page">
             <Head>
@@ -574,7 +574,7 @@ class IndexPage extends React.Component {
             `}
           </style>
         </AppLayout>
-      </body>
+      </div>
     );
   }
 }

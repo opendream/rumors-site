@@ -76,16 +76,16 @@ class AppLayout extends React.Component {
             font-family: 'Kanit', sans-serif;
           }
 
-          body:not(.home) .wrapper-page {
+          div:not(.home) .wrapper-page {
             background: transparent !important;
           }
-          body:not(.home) .nav-item {
+          div:not(.home) .nav-item {
             color: #000 !important;
           }
-          body:not(.home) .link-group {
+          div:not(.home) .link-group {
             border: 1px solid #000 !important;
           }
-          body:not(.home) .link-list {
+          div:not(.home) .link-list {
             border-right: 1px solid #000 !important;
             color: #000 !important;
           }
@@ -120,27 +120,27 @@ class AppLayout extends React.Component {
 
 
         
-          body.home .wrapper-page {
+          div.home .wrapper-page {
             background: url("static/img/bg-banner@2x.jpg") no-repeat center center !important;
             background-size: cover !important;
             margin: -120px 0 0;
             padding: 120px 0 0px;
           }
           @media screen and (min-width: 769px) {
-            body.home .wrapper-page {
+            div.home .wrapper-page {
               background: url("static/img/bg-banner@2x.jpg") no-repeat top center !important;
               background-size: cover !important;
               margin: -160px 0 0;
               padding: 160px 0 0px;
             }
           }
-          body.home .nav-item {
+          div.home .nav-item {
             color: #fff !important;
           }
-          body.home .link-group {
+          div.home .link-group {
             border: 1px solid #fff !important;
           }
-          body.home .link-list {
+          div.home .link-list {
             border-right: 1px solid #fff !important;
             color: #fff !important;
           }
