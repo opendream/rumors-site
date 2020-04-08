@@ -47,7 +47,7 @@ function AppHeader({
                         <a className="nav-item">{i18n.t('replies')}</a>
                       </Link>
                         {/*//TODO:: Change to About Text*/}
-                        <a href="/about" className="nav-item">ABOUT</a>
+                        <a href="/about" className="nav-item d-none">ABOUT</a>
                       {user && user.get('isStaff') ? (
                         <Link route="users">
                           <a className="nav-item">{i18n.t('users')}</a>
@@ -100,10 +100,10 @@ function AppHeader({
                   <a className="nav-item">{i18n.t('replies')}</a>
                 </Link>
                   {/*//TODO:: Change to About Text*/}
-                  <a href="/about" className="nav-item">ABOUT</a>
+                  <a href="/about" className="nav-item d-none">ABOUT</a>
 
                   {/*//TODO:: Change to Policy Text*/}
-                  <a href="/policy" className="nav-item">POLICY</a>
+                  <a href="/policy" className="nav-item d-none">POLICY</a>
                 {user && user.get('isStaff') ? (
                   <Link route="users">
                     <a className="nav-item">{i18n.t('users')}</a>
