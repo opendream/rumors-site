@@ -187,6 +187,10 @@ function AppHeader({
           color: #fff;
         }
 
+        .navbar {
+          padding: 1rem;
+        }
+
         /* menu toggle */
 
           #menuToggle {
@@ -202,7 +206,7 @@ function AppHeader({
           
           #menuToggle a {
             text-decoration: none;
-            color: #232323;
+            color: #232323 !important;
             transition: color 0.3s ease;
           }
           
@@ -303,6 +307,10 @@ function AppHeader({
           #menuToggle input:checked ~ #menu {
             transform: none;
             visibility: visible;
+          }
+
+          #menuToggle #menu  {
+            box-shadow: 1px 2px 5px -2px rgba(0,0,0,0.5)
           }
         }
 

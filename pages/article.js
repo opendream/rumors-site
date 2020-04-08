@@ -14,7 +14,8 @@ import ReplySearch from 'components/ReplySearch/ReplySearch.js';
 import ReplyForm from 'components/ReplyForm';
 import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
-import Trendline from 'components/Trendline';
+import ArticleTruthMeter from "../components/ArticleTruthMeter/ArticleTruthMeter";
+
 import {
   load,
   loadAuth,
@@ -308,6 +309,8 @@ class ArticlePage extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
+
+            <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {article.get('title')?
               <div>
