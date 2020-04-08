@@ -3,15 +3,24 @@ import OutOfScopeImage from './img/ic-no-scope.png';
 import HasOpinionImage from './img/ic-comment.png';
 
 export default function ArticleTruthMeter({ replyConnections }) {
+  let totalWeight = 0;
   let maxPossibleWeight = 0;
   let minPossibleWeight = 0;
   let normalizedTotalWeight = 0;
-  let totalWeight = 0;
-  let notRumorWeight = 1;
-  let rumorWeight = -1;
+  let gaugeDegree = 0;
+  let tag = '';
+
+  const notRumorWeight = 1;
+  const rumorWeight = -1;
+
   let isOutOfScope = false;
   let hasOpinion = false;
-  let tag = '';
+
+  let notRumorCount = 0;
+  let rumorCount = 0;
+  let hasOpinionCount = 0;
+  let outOfScopeCount = 0;
+
 
   if (typeof replyConnections != 'undefined') {
     let userWeight = 0;
@@ -21,6 +30,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
 
       switch (replyType) {
         case 'NOT_RUMOR':
+          notRumorCount++;
           userWeight = calcUserWeight(userType);
           updateMinMax(userWeight);
           totalWeight += notRumorWeight * userWeight;
@@ -29,8 +39,10 @@ export default function ArticleTruthMeter({ replyConnections }) {
             maxPossibleWeight,
             minPossibleWeight
           );
+          gaugeDegree = calcDegreeFromNormalizedWeight(normalizedTotalWeight);
           break;
         case 'RUMOR':
+          rumorCount++;
           userWeight = calcUserWeight(userType);
           updateMinMax(userWeight);
           totalWeight += rumorWeight * userWeight;
@@ -39,11 +51,14 @@ export default function ArticleTruthMeter({ replyConnections }) {
             maxPossibleWeight,
             minPossibleWeight
           );
+          gaugeDegree = calcDegreeFromNormalizedWeight(normalizedTotalWeight);
           break;
         case 'NOT_ARTICLE':
+          outOfScopeCount++;
           isOutOfScope = true;
           break;
         case 'OPINIONATED':
+          hasOpinion++;
           hasOpinion = true;
           break;
       }
@@ -55,9 +70,16 @@ export default function ArticleTruthMeter({ replyConnections }) {
           ' : ' +
           normalizedTotalWeight +
           ' : ' +
-          tag
+          tag +
+          ' : ' +
+          gaugeDegree +
+          'deg'
       );
     });
+  }
+
+  function calcDegreeFromNormalizedWeight(normalizedTotalWeight) {
+    return normalizedTotalWeight * 90 + 90;
   }
 
   function convertNormalizeWeightToTags(normalizedTotalWeight) {
