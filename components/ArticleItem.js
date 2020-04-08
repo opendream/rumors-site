@@ -12,12 +12,15 @@ export default function ArticleItem({
   notArticleReplied = false, // same as top
   handleLocalEditorHelperList,
   isLogin,
+  replyConnections,
 }) {
   const id = article.get('id');
-  console.log(article);
-  const truthFactor = 1;
-  const isOutOfCofactScope = true;
-  const hasPersonalOpinion = true;
+  // const truthFactor = 1;
+  // const isOutOfCofactScope = true;
+  // const hasPersonalOpinion = true;
+  // console.log ("ITEM ARTICLE : "+article);
+  // article.map(article => {console.log(article)});
+  // console.log('article : ' + replies.get('articleReplies'));
   return (
     <li
       className={cx('item', {
@@ -40,8 +43,10 @@ export default function ArticleItem({
             ``
           )}
           {/*Vasut :: //Extend to accept truth factor */}
-          <ArticleTruthMeter truthFactor={truthFactor} isOutOfCofactScope={isOutOfCofactScope} hasPersonalOpinion={hasPersonalOpinion} />
-
+          <ArticleTruthMeter
+            articleId={id}
+            replyConnections = {replyConnections}
+          />
           <ArticleInfo article={article} />
           {isLogin && (
             <ArticleItemWidget
