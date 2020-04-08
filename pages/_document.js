@@ -37,6 +37,10 @@ class MyDocument extends Document {
               `,
             }}
           />
+          <meta property="og:title" content="Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="	https://cofact.org/" />
+          <meta property="og:image" content="/static/img/cofact-fb-share.jpg" />
           
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap" rel="stylesheet"></link>
