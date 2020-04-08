@@ -144,6 +144,21 @@ class AppLayout extends React.Component {
             border-right: 1px solid #fff !important;
             color: #fff !important;
           }
+          div.home #menuToggle a {
+            color: #000 !important;
+          }
+          div.home #menuToggle .link-group {
+            border: 1px solid #000 !important;
+            display: inline-block;
+          }
+          div.home #menuToggle .link-list {
+            border-right: 1px solid #000 !important;
+            color: #000 !important;
+          }
+          div.home #menuToggle .link-list:last-child { 
+            border-right: 0 !important;
+          }
+          
         `}</style>
         
       </Fragment>
