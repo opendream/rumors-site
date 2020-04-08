@@ -253,21 +253,6 @@ export default createReducer(
 
 // Util
 //
-
-export const reloadReply = articleId => dispatch =>
-    gql`
-    query($id: String!) {
-      GetArticle(id: $id) {
-        replyConnections: articleReplies {
-          ...articleReplyFields
-        }
-      }
-    }
-  `( {id: articleId} ).then( resp => {
-        console.log( "RELOADREPLY : " + resp );
-        dispatch( loadData( resp.getIn( ['data', 'GetArticle'] ) ) );
-    } );
-
 function resetCooldown() {
     isInCooldown = false;
 }
