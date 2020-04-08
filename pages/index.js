@@ -98,8 +98,8 @@ class IndexPage extends React.Component {
                 <div className="phone-container">
                   <div className="phone-img">
                     <video
-                      poster="/static/img/recording-still-th.gif"
-                      src="/static/img/recording-th.mp4"
+                      poster="/static/img/recording-line.gif"
+                      src="/static/img/recording-line.mp4"
                       autoPlay
                       loop
                       muted
@@ -115,8 +115,8 @@ class IndexPage extends React.Component {
                     <div className="col-12 col-md-8">
                       <div className="phone-img">
                         <video
-                          poster="/static/img/recording-still-th.gif"
-                          src="/static/img/recording-th.mp4"
+                          poster="/static/img/recording-line.gif"
+                          src="/static/img/recording-line.mp4"
                           autoPlay
                           loop
                           muted
@@ -390,14 +390,16 @@ class IndexPage extends React.Component {
                 .phone-container .phone-img:before {
                   content: "";
                   width: 85%;
-                  height: 103%;
-                  background: url("static/img/bg-frame-iphone.png") no-repeat top center;
+                  height: 130%;
+                  // background: url("static/img/bg-frame-iphone.png") no-repeat top center;
+                  background: url("static/img/frame-mobile-i7@2x.png") no-repeat top center;
                   background-size: 100%;
                   position: absolute;
                   left: 8%;
                 }
                 .phone-container .phone-img video {
-                  width: 87%;
+                  width: 83%;
+                  margin-top: 25%;
                 }
 
                 .add-line-sm {
@@ -405,7 +407,7 @@ class IndexPage extends React.Component {
                   background-size: 100%;
                   padding: 0 0 0 2rem;
                   margin-right: -30px;
-                  margin-top: -20%;
+                  margin-top: 0;
                   min-height: 65px;
                   overflow: hidden;
                   display: flex;
@@ -414,7 +416,12 @@ class IndexPage extends React.Component {
                 .add-line-sm {
                   font-weight: 600;
                 }
-
+                @media screen and (min-width: 330px) {
+                  .phone-container .phone-img video {
+                    width: 82%;
+                    margin-top: 24%;
+                  }
+                }
               @media screen and (min-width: 375px) {
                 .add-line-sm {
                   height: 70px;
@@ -446,7 +453,8 @@ class IndexPage extends React.Component {
                   width: 200px;
                 }
                 .phone-container .phone-img video {
-                  width: 83%;
+                  width: 80%;
+                  margin-top: 24%;
                 }
               }
 
@@ -466,7 +474,8 @@ class IndexPage extends React.Component {
                   top: -20rem;
                 }
                 .phone-container .phone-img video {
-                  width: 77%;
+                  width: 75%;
+                  margin-top: 22%;
                 }
               }
 
@@ -504,7 +513,8 @@ class IndexPage extends React.Component {
                   left: 0;
                 }
                 .phone-container .phone-img video {
-                  width: 90%;
+                  width: 88%;
+                  margin-top: 26%;
                 }
               }
 

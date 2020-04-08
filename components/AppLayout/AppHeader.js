@@ -203,6 +203,10 @@ function AppHeader({
             -webkit-user-select: none;
             user-select: none;
           }
+          #menuToggle .nav { margin-bottom: 1rem; }
+          #menuToggle .nav .nav-item {
+            font-size: 18px !important;
+          }
           
           #menuToggle a {
             text-decoration: none;
