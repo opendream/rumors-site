@@ -2,34 +2,42 @@ import React from 'react';
 import OutOfScopeImage from './img/ic-no-scope.png';
 import HasOpinionImage from './img/ic-comment.png';
 
-export default function ArticleTruthMeter({ articleId, replyConnections }) {
+export default function ArticleTruthMeter({ replyConnections }) {
+  let maxPossibleWeight = 0;
+  let minPossibleWeight = 0;
+  let normalizedTotalWeight = 0;
   let totalWeight = 0;
   let notRumorWeight = 1;
   let rumorWeight = -1;
   let isOutOfScope = false;
   let hasOpinion = false;
 
-
   if (typeof replyConnections != 'undefined') {
-
-    let multiplier = 0;
+    let userWeight = 0;
     replyConnections.map(connections => {
       const replyType = connections.get('reply').get('type');
       const userType = connections.get('user').get('belongTo');
-      console.log(replyType + ' : ' + userType);
-
-      if (userType == null) {
-        multiplier = 1;
-      } else {
-        multiplier = 10;
-      }
 
       switch (replyType) {
         case 'NOT_RUMOR':
-          totalWeight += notRumorWeight * multiplier;
+          userWeight = calcUserWeight(userType);
+          updateMinMax(userWeight);
+          totalWeight += notRumorWeight * userWeight;
+          normalizedTotalWeight = calcNormalizeWeight(
+            totalWeight,
+            maxPossibleWeight,
+            minPossibleWeight
+          );
           break;
         case 'RUMOR':
-          totalWeight -= rumorWeight * multiplier;
+          userWeight = calcUserWeight(userType);
+          updateMinMax(userWeight);
+          totalWeight += rumorWeight * userWeight;
+          normalizedTotalWeight = calcNormalizeWeight(
+            totalWeight,
+            maxPossibleWeight,
+            minPossibleWeight
+          );
           break;
         case 'NOT_ARTICLE':
           isOutOfScope = true;
@@ -39,17 +47,43 @@ export default function ArticleTruthMeter({ articleId, replyConnections }) {
           break;
       }
 
-
-      console.log("TOTAL WEIGHT : "+totalWeight);
-
+      console.log(
+        'TOTAL WEIGHT : ' + totalWeight + ' : ' + normalizedTotalWeight
+      );
     });
+  }
+
+  function updateMinMax(userWeight) {
+    maxPossibleWeight += userWeight;
+    minPossibleWeight = -maxPossibleWeight;
+  }
+
+  function calcNormalizeWeight(
+    totalWeight,
+    maxPossibleWeight,
+    minPossibleWeight
+  ) {
+    let normalizedWeight = 0;
+    normalizedWeight =
+      2 *
+        ((totalWeight - minPossibleWeight) /
+          (maxPossibleWeight - minPossibleWeight)) -
+      1;
+    return normalizedWeight;
+  }
+
+  function calcUserWeight(userType) {
+    let userWeight;
+    if (userType == null) userWeight = 1;
+    else userWeight = 10;
+    return userWeight;
   }
 
   return (
     <div className="">
-      <p> SCORE : {totalWeight}</p>
-      {/*{isOutOfCofactScope ? <img src={OutOfScopeImage} /> : null}*/}
-      {/*{hasPersonalOpinion ? <img src={HasOpinionImage} /> : null}*/}
+      <p>Normalized Weight (-1, 1) : {normalizedTotalWeight}</p>
+      {isOutOfScope ? <img src={OutOfScopeImage} /> : null}
+      {hasOpinion ? <img src={HasOpinionImage} /> : null}
     </div>
   );
 }
