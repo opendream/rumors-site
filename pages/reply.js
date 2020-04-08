@@ -202,6 +202,8 @@ class ReplyPage extends React.Component {
       return <div>Reply not found.</div>;
     }
 
+    const replyHyperlinkLoading = false
+
     return (
       <div className={``}>
         <AppLayout>

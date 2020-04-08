@@ -156,7 +156,7 @@ export default class ReplyConnection extends React.PureComponent {
   };
 
   renderReference = () => {
-    const { replyConnection } = this.props;
+    const { replyConnection, hyperlinkFetchCallback, replyHyperlinkLoading } = this.props;
     const replyType = replyConnection.getIn(['reply', 'type']);
     if (replyType === 'NOT_ARTICLE') return null;
 
@@ -170,6 +170,8 @@ export default class ReplyConnection extends React.PureComponent {
 
         <Hyperlinks
           hyperlinks={replyConnection.getIn(['reply', 'hyperlinks'])}
+          fetchCallback={(hyperlink) => hyperlinkFetchCallback(replyConnection.getIn(['reply', 'id']), hyperlink)} 
+          hyperlinkLoading={replyHyperlinkLoading}        
         />
         <style jsx>{sectionStyle}</style>
       </section>

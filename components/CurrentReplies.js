@@ -100,6 +100,8 @@ export default function CurrentReplies({
   onDelete = () => {},
   onRestore = () => {},
   onVote = () => {},
+  hyperlinkFetchCallback = null,
+  replyHyperlinkLoading = false,
 }) {
   if (!replyConnections.size) {
     return <p>{i18n.t("noReplyYet")}</p>;
@@ -135,6 +137,8 @@ export default function CurrentReplies({
               onAction={onDelete}
               onVote={onVote}
               disabled={disabled}
+              hyperlinkFetchCallback={hyperlinkFetchCallback}
+              replyHyperlinkLoading={replyHyperlinkLoading}
             />
           ))}
         </ul>
@@ -149,6 +153,8 @@ export default function CurrentReplies({
             onAction={onDelete}
             onVote={onVote}
             disabled={disabled}
+            hyperlinkFetchCallback={hyperlinkFetchCallback}
+            replyHyperlinkLoading={replyHyperlinkLoading}
           />
         ))}
         <DeletedItems

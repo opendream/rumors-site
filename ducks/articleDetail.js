@@ -360,6 +360,51 @@ export const fetchArticleHyperlink = params => dispatch => {
 
 }
 
+
+export const reloadReplyHyperlinks = (articleId, replyId) => dispatch =>
+  gql`
+    query($id: String!) {
+      GetArticle(id: $id) {
+        hyperlinks {
+          ...hyperlinkFields
+        }
+        replyConnections: articleReplies {
+          ...articleReplyFields
+        }
+      }
+    }
+    ${fragments.articleReplyAndUserFields}
+    ${fragments.hyperlinkFields}
+
+  `({ id: articleId }).then(resp => {
+    dispatch(loadData(resp.getIn(['data', 'GetArticle'])));
+    dispatch(setState({ key: 'replyHyperlinkLoading', value: false }));
+  });
+
+export const fetchReplyHyperlink = params => dispatch => {
+
+  dispatch(setState({ key: 'replyHyperlinkLoading', value: params.hyperlink.get('url') }));
+
+  NProgress.start();
+  return gql`
+    mutation(
+      $replyId: String!
+      $url: String!
+    ) {
+      UpdateReplyHyperlink(
+        replyId: $replyId
+        url: $url
+      ) {
+        id
+      }
+    }
+  `({ replyId: params.replyId, url: params.hyperlink.get('url')}).then((resp) => {
+    dispatch(reloadReplyHyperlinks(params.articleId, params.replyId));
+    NProgress.done();
+  });
+
+}
+
 export const updateReplyRequest = createAction(UPDATE_REPLY_REQUESTS);
 
 export const voteReplyRequest = (
