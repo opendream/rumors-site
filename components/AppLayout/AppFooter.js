@@ -8,7 +8,7 @@ export default function AppFooter() {
   return (
     <footer>
       <div className="container">
-        <div className="d-flex flex-wrap align-items-center">
+        <div className="d-flex flex-wrap align-items-center justify-content-between">
           <Link route="index">
             <a className="logo" href="/">
               <div>
@@ -19,14 +19,12 @@ export default function AppFooter() {
           <ul className="menu-footer">
             <li><Link route="articles"><a>ค้นหาข่าวลวง</a></Link></li>
             <li><Link route="replies"><a>รายการความคิดเห็น</a></Link></li>
-            <li><a href="/about">ABOUT</a></li>
-            <li><a href="/policy">POLICY</a></li>
-            <li><Link route="index"><a className="d-none">นโยบายการใช้งาน</a></Link></li>
-            <li><Link route="index"><a className="d-none">เกี่ยวกับเรา</a></Link></li>
+            <li className="d-none"><Link route="policy"><a>นโยบายการใช้งาน</a></Link></li>
+            <li><Link route="about"><a>เกี่ยวกับเรา</a></Link></li>
           </ul>
-          <div className="ml-auto">
+          {/* <div className="ml-auto">
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
-          </div>
+          </div> */}
         </div>
 
         {/* <p>
@@ -79,6 +77,7 @@ export default function AppFooter() {
           display: block;
           font-size: 1.15rem;
           margin-bottom: 0.75rem;
+          text-align: left;
           
         }
         .menu-footer li a { 
