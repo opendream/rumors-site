@@ -336,6 +336,8 @@ class Articles extends ListPage {
         <ul className="article-list">
           {articles.map(article => {
             const id = article.get('id');
+            const replyConnections = article.get('articleReplies');
+
             return (
               <ArticleItem
                 key={id}
@@ -343,6 +345,7 @@ class Articles extends ListPage {
                 isLogin={authFields.size !== 0}
                 requestedForReply={authFields.get(article.get('id'))}
                 handleLocalEditorHelperList={this.handleLocalEditorHelperList}
+                replyConnections={replyConnections}
                 {...localEditorHelperList[id]}
               />
             );
