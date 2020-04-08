@@ -25,7 +25,8 @@ class IndexPage extends React.Component {
           <div className="root wrapper-page">
             <Head>
               <title>
-                {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
+                {/* {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}  */}
+                Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง
               </title>
             </Head>
 
