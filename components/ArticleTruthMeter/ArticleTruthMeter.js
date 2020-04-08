@@ -107,7 +107,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
   }
 
   return (
-    <div className="">
+    <div className={tag}>
       <p>Normalized Weight tag : {tag}</p>
       {isOutOfScope ? <img src={OutOfScopeImage} /> : null}
       {hasOpinion ? <img src={HasOpinionImage} /> : null}
