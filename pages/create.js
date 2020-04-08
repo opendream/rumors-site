@@ -16,21 +16,24 @@ class CreateArticlePage extends React.Component {
     e.preventDefault();
     this.setState({ isSubmitting: true });
 
+    const title = e.target.title.value.trim();
     const text = e.target.text.value.trim();
     const reason = e.target.reason.value.trim();
     const reference = e.target.references.value.trim();
 
     gql`
       mutation(
+        $title: String!
         $text: String!
         $reference: ArticleReferenceInput!
         $reason: String
       ) {
-        CreateArticle(text: $text, reference: $reference, reason: $reason) {
+        CreateArticle(title: $text, text: $text, reference: $reference, reason: $reason) {
           id
         }
       }
     `({
+      title,
       text,
       reason,
       reference: {

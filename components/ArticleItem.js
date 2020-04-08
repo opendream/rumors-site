@@ -22,6 +22,9 @@ export default function ArticleItem({
     >
       <Link route="article" params={{ id }}>
         <a>
+          {article.get('title')?
+          <div className="item-title">{article.get('title')}</div>
+          : ``}
           <div className="item-text">{article.get('text')}</div>
           {article.get('categories')?
           <div className={`mt-1 mb-1`}>

@@ -309,13 +309,28 @@ class ArticlePage extends React.Component {
               <ArticleInfo article={article} />
             </header>
             <article className="message" onClick={this.onArticleClick}>
-              {nl2br(
-                linkify(article.get('text'), {
-                  props: {
-                    target: '_blank',
-                  },
-                })
-              )}
+              {article.get('title')?
+              <div>
+                <h4>
+                  {nl2br(
+                    linkify(article.get('title'), {
+                      props: {
+                        target: '_blank',
+                      },
+                    })
+                  )}
+                </h4>
+              </div>
+              :``}
+              <div>
+                {nl2br(
+                  linkify(article.get('text'), {
+                    props: {
+                      target: '_blank',
+                    },
+                  })
+                )}
+              </div>
               <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
             </article>
             <footer>
