@@ -39,7 +39,12 @@ function AppHeader({
                   <span />
 
                   <div id="menu">
-                    <ul className="nav">
+                    <div className="nav">
+                      {user && (user.get('isStaff') || user.get('belongTo')) ? 
+                      <Link route="create">
+                        <a className="nav-item">{i18n.t('createArticle')}</a>
+                      </Link>
+                      : ``}
                       <Link route="articles">
                         <a className="nav-item">{i18n.t('articles')}</a>
                       </Link>
@@ -48,13 +53,11 @@ function AppHeader({
                       </Link>
                         {/*//TODO:: Change to About Text*/}
                         <a href="/about" className="nav-item d-none">ABOUT</a>
-                      {user && user.get('isStaff') ? (
-                        <Link route="users">
-                          <a className="nav-item">{i18n.t('users')}</a>
-                        </Link>
-                      ) : (
-                        ``
-                      )}
+                      {user && user.get('isStaff') ? 
+                      <Link route="users">
+                        <a className="nav-item">{i18n.t('users')}</a>
+                      </Link>
+                      : ``}
                       {EDITOR_FACEBOOK_GROUP ? (
                         <a
                           href={EDITOR_FACEBOOK_GROUP}
@@ -79,7 +82,7 @@ function AppHeader({
                       ) : (
                         ``
                       )}
-                    </ul>
+                    </div>
                     <UserName
                       isLoading={isLoadingAuth}
                       user={user}
@@ -93,6 +96,11 @@ function AppHeader({
             </div>
             <div className="ml-auto d-none d-md-flex align-items-center">
               <div className="nav">
+                {user && (user.get('isStaff') || user.get('belongTo')) ? 
+                <Link route="create">
+                  <a className="nav-item">{i18n.t('createArticle')}</a>
+                </Link>
+                : ``}
                 <Link route="articles">
                   <a className="nav-item">{i18n.t('articles')}</a>
                 </Link>

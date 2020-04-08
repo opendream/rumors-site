@@ -406,7 +406,6 @@ class Articles extends ListPage {
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>
-            {/* <CreateArticleButton user={user} /> */}
             {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()}
