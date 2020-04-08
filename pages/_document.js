@@ -41,7 +41,7 @@ class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta property="og:url" content="	https://cofact.org/" />
           <meta property="og:image" content="/static/img/cofact-fb-share.jpg" />
-          <meta property="og:description" content="Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง คนใกล้ชิดของคุณ อาจตกเป็นเหยื่อของข่าวลวง หรือ ส่งต่อข่าวลวงบนอินเทอร์เน็ตโดยไม่รู้ตัว" />
+          <meta property="og:description" content="คนใกล้ชิดของคุณ อาจตกเป็นเหยื่อของข่าวลวง หรือ ส่งต่อข่าวลวงบนอินเทอร์เน็ตโดยไม่รู้ตัว" />
           <link rel="icon" href="/static/img/favicon.png" type="image/png" sizes="32x32"></link>
           
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
