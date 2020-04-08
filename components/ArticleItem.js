@@ -15,12 +15,6 @@ export default function ArticleItem({
   replyConnections,
 }) {
   const id = article.get('id');
-  // const truthFactor = 1;
-  // const isOutOfCofactScope = true;
-  // const hasPersonalOpinion = true;
-  // console.log ("ITEM ARTICLE : "+article);
-  // article.map(article => {console.log(article)});
-  // console.log('article : ' + replies.get('articleReplies'));
   return (
     <li
       className={cx('item', {
@@ -42,11 +36,7 @@ export default function ArticleItem({
           ) : (
             ``
           )}
-          {/*Vasut :: //Extend to accept truth factor */}
-          <ArticleTruthMeter
-            articleId={id}
-            replyConnections = {replyConnections}
-          />
+          <ArticleTruthMeter replyConnections={replyConnections} />
           <ArticleInfo article={article} />
           {isLogin && (
             <ArticleItemWidget

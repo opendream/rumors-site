@@ -11,6 +11,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
   let rumorWeight = -1;
   let isOutOfScope = false;
   let hasOpinion = false;
+  let tag = '';
 
   if (typeof replyConnections != 'undefined') {
     let userWeight = 0;
@@ -47,10 +48,36 @@ export default function ArticleTruthMeter({ replyConnections }) {
           break;
       }
 
+      tag = convertNormalizeWeightToTags(normalizedTotalWeight);
       console.log(
-        'TOTAL WEIGHT : ' + totalWeight + ' : ' + normalizedTotalWeight
+        'TOTAL WEIGHT : ' +
+          totalWeight +
+          ' : ' +
+          normalizedTotalWeight +
+          ' : ' +
+          tag
       );
     });
+  }
+
+  function convertNormalizeWeightToTags(normalizedTotalWeight) {
+    let tag = '';
+    if (normalizedTotalWeight === 1) tag = 'true';
+    else if (normalizedTotalWeight === -1) tag = 'false';
+    else if (normalizedTotalWeight > 0.01 && normalizedTotalWeight < 0.33)
+      tag = 'mostly-true--start';
+    else if (normalizedTotalWeight > 0.33 && normalizedTotalWeight < 0.66)
+      tag = 'mostly-true--middle';
+    else if (normalizedTotalWeight > 0.66 && normalizedTotalWeight < 0.99)
+      tag = 'mostly-true--last';
+    else if (normalizedTotalWeight < -0.01 && normalizedTotalWeight > -0.33)
+      tag = 'mostly-false--start';
+    else if (normalizedTotalWeight < -0.33 && normalizedTotalWeight > -0.66)
+      tag = 'mostly-false--middle';
+    else if (normalizedTotalWeight < -0.66 && normalizedTotalWeight > -0.99)
+      tag = 'mostly-false--last';
+    else tag = '';
+    return tag;
   }
 
   function updateMinMax(userWeight) {
@@ -81,7 +108,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
 
   return (
     <div className="">
-      <p>Normalized Weight (-1, 1) : {normalizedTotalWeight}</p>
+      <p>Normalized Weight tag : {tag}</p>
       {isOutOfScope ? <img src={OutOfScopeImage} /> : null}
       {hasOpinion ? <img src={HasOpinionImage} /> : null}
     </div>
