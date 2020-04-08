@@ -19,7 +19,7 @@ export default function AppFooter() {
           <ul className="menu-footer">
             <li><Link route="articles"><a>ค้นหาข่าวลวง</a></Link></li>
             <li><Link route="replies"><a>รายการความคิดเห็น</a></Link></li>
-            <li className="d-none"><Link route="policy"><a>นโยบายการใช้งาน</a></Link></li>
+            <li><Link route="policy"><a>นโยบายการใช้งาน</a></Link></li>
             <li><Link route="about"><a>เกี่ยวกับเรา</a></Link></li>
           </ul>
           {/* <div className="ml-auto">
