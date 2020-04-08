@@ -28,6 +28,7 @@ import {
   voteReplyRequest,
   submitArticleCategories,
   fetchArticleHyperlink,
+  fetchReplyHyperlink,
   categoriesEdit,
 } from 'ducks/articleDetail';
 import i18n from '../i18n';
@@ -134,6 +135,19 @@ class ArticlePage extends React.Component {
     return dispatch(
       fetchArticleHyperlink({
         hyperlink,
+        articleId: id,
+      })
+    );
+  };
+
+  handleFetchReplyHyperlink = (replyId, hyperlink) => {
+
+    const { dispatch, id } = this.props;
+    console.log('dispatch', dispatch)
+    return dispatch(
+      fetchReplyHyperlink({
+        hyperlink,
+        replyId,
         articleId: id,
       })
     );
@@ -251,6 +265,7 @@ class ArticlePage extends React.Component {
       isReplyLoading,
       categoriesEditMode: _categoriesEditMode,
       aticleHyperlinkLoading,
+      replyHyperlinkLoading,
       user,
     } = this.props;
 
@@ -301,7 +316,7 @@ class ArticlePage extends React.Component {
                   },
                 })
               )}
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} aticleHyperlinkLoading={aticleHyperlinkLoading} />
+              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
             </article>
             <footer>
               {expanded
@@ -428,6 +443,9 @@ class ArticlePage extends React.Component {
               onDelete={this.handleReplyConnectionDelete}
               onRestore={this.handleReplyConnectionRestore}
               onVote={this.handleReplyConnectionVote}
+              hyperlinkFetchCallback={this.handleFetchReplyHyperlink} 
+              replyHyperlinkLoading={replyHyperlinkLoading}
+              
             />
           </section>
           <section className="section">
@@ -497,6 +515,7 @@ function mapStateToProps({ articleDetail, auth }) {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
     aticleHyperlinkLoading: articleDetail.getIn(['state', 'aticleHyperlinkLoading']),
+    replyHyperlinkLoading: articleDetail.getIn(['state', 'replyHyperlinkLoading']),
     categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
     user: auth.get('user'),

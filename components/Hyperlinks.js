@@ -26,7 +26,7 @@ function getErrorText(error) {
  * @param {Map} props.hyperlink
  * @param {Function} props.fetchCallback
  */
-function Hyperlink({ hyperlink = Map(), fetchCallback, aticleHyperlinkLoading }) {
+function Hyperlink({ hyperlink = Map(), fetchCallback, hyperlinkLoading }) {
   const title = hyperlink.get('title');
   const summary = (hyperlink.get('summary') || '').slice(0, 200);
   const topImageUrl = hyperlink.get('topImageUrl');
@@ -59,7 +59,7 @@ function Hyperlink({ hyperlink = Map(), fetchCallback, aticleHyperlinkLoading })
 
       {fetchCallback? 
       <div className="">
-        {aticleHyperlinkLoading && aticleHyperlinkLoading == url?
+        {hyperlinkLoading && hyperlinkLoading == url?
         <small className="text-secondary">
           {i18n.t('fetching')}
         </small>
@@ -142,13 +142,13 @@ function Hyperlink({ hyperlink = Map(), fetchCallback, aticleHyperlinkLoading })
 /**
  * @param {List} props.hyperlinks
  */
-function Hyperlinks({ hyperlinks = List(), fetchCallback, aticleHyperlinkLoading }) {
+function Hyperlinks({ hyperlinks = List(), fetchCallback, hyperlinkLoading }) {
   if (!hyperlinks || hyperlinks.size === 0) return null;
 
   return (
     <section className="links">
       {hyperlinks
-        .map((hyperlink, idx) => <Hyperlink key={idx} hyperlink={hyperlink} fetchCallback={fetchCallback} aticleHyperlinkLoading={aticleHyperlinkLoading}  />)
+        .map((hyperlink, idx) => <Hyperlink key={idx} hyperlink={hyperlink} fetchCallback={fetchCallback} hyperlinkLoading={hyperlinkLoading}  />)
         .toArray()}
       <style jsx>{`
         .links {
