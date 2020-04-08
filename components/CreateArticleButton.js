@@ -1,23 +1,32 @@
 import React from 'react';
-import Router from 'next/router';
+import Link from 'next/link';
+import i18n from 'i18n';
+import { showDialog } from 'ducks/auth';
 
 export default class CreateArticleButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  handleOnClick = () => {
-    Router.push(`/create/`);
+  onLoginClick = title => {
+    const { dispatch } = this.props;
+    dispatch(showDialog(title));
   };
 
   render() {
     const { user } = this.props;
     if (user != null) {
       return (
-        <div>
-          <button onClick={this.handleOnClick}>Create Article</button>
-        </div>
+        <Link href={`/create`}>
+          <a className={`btn btn-primary btn-sm`}>{i18n.t('createArticle')}</a>
+        </Link>
       );
-    } else return null;
+    } else {
+      return (
+        <a className={`btn btn-primary btn-sm`} onClick={e => {
+          e.preventDefault();
+          this.onLoginClick(i18n.t('signup'));
+        }}>
+          {i18n.t('createArticle')}
+        </a>
+      );
+    }
   }
 }

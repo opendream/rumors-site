@@ -325,30 +325,52 @@ class Articles extends ListPage {
 
   renderList = () => {
     const { localEditorHelperList } = this.state;
-    const { articles = null, totalCount, authFields } = this.props;
+    const { articles = null, totalCount, authFields, user, dispatch, query: { q } } = this.props;
 
     return (
       <div className={`article-wrapper`}>
-        <p>
-          {totalCount} {i18n.t('pageArticles.articles')}
-        </p>
-        {this.renderPagination()}
-        <ul className="article-list">
-          {articles.map(article => {
-            const id = article.get('id');
-            return (
-              <ArticleItem
-                key={id}
-                article={article}
-                isLogin={authFields.size !== 0}
-                requestedForReply={authFields.get(article.get('id'))}
-                handleLocalEditorHelperList={this.handleLocalEditorHelperList}
-                {...localEditorHelperList[id]}
-              />
-            );
-          })}
-        </ul>
-        {this.renderPagination()}
+
+        {totalCount > 0?
+        <div>
+          <p>
+            {totalCount} {i18n.t('pageArticles.articles')}
+          </p>
+          {this.renderPagination()}
+          <ul className="article-list">
+            {articles.map(article => {
+              const id = article.get('id');
+              return (
+                <ArticleItem
+                  key={id}
+                  article={article}
+                  isLogin={authFields.size !== 0}
+                  requestedForReply={authFields.get(article.get('id'))}
+                  handleLocalEditorHelperList={this.handleLocalEditorHelperList}
+                  {...localEditorHelperList[id]}
+                />
+              );
+            })}
+          </ul>
+          {this.renderPagination()}
+
+        </div>
+        :
+        <div>
+          <h4 className={`mt-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
+        </div>
+        }
+
+        {q?
+        <div>
+          {totalCount > 0?
+          i18n.t('createArticleLinkExistTeaser')
+          :
+          i18n.t('createArticleLinkTeaser')
+          }
+          &nbsp;<CreateArticleButton dispatch={dispatch} user={user} />
+        </div>
+        : ``}
+        
         <style jsx>
           {`
             .article-wrapper {
@@ -384,7 +406,6 @@ class Articles extends ListPage {
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>
-            <CreateArticleButton user={user} />
             {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()}

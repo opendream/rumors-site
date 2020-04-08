@@ -82,6 +82,10 @@
   "or": "หรือ",
   "fetchLinkAgain": "อัพเดทข้อมูลลิงก์อีกครั้ง",
   "fetching": "กำลังดึงข้อมูล..",
+  "notFoundSearchArticleResult": "ไม่พบบทความที่คุณค้นหา",
+  "createArticleLinkTeaser": "หากคุณสงสัยว่าบทความที่พบเป็นข่าวลวง ข่าวลือ หรือ ข้อความหลอก กรุณาคลิกที่",
+  "createArticleLinkExistTeaser": "หากคุณสงสัยว่าบทความที่พบเป็นข่าวลวง ข่าวลือ หรือ ข้อความหลอก ที่ยังไม่พบใน Cofact กรุณาคลิกที่",
+  "createArticle": "สร้างบทความ",
 
   "sentence": {
     "congratulationsPromoted": "เย้! คุณได้อัปเวลจ้า",
