@@ -72,7 +72,7 @@ class CreateArticlePage extends React.Component {
               <input type="text" name="title" />
 
               <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
-              <textarea name="text" rows="6" />
+              <textarea name="text" rows="6" required />
 
               <h2>{i18n.t('pageCreate.messageSource')}</h2>
               <input type="text" name="references" />
