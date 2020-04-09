@@ -23,6 +23,7 @@ const fragments = {
   articleFields: `
     fragment articleFields on Article {
       id
+      title
       text
       replyRequestCount
       replyCount

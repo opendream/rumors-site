@@ -70,6 +70,7 @@ export const load = ({
       edges {
         node {
           id
+          title
           text
           replyCount
           replyRequestCount

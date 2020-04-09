@@ -92,7 +92,7 @@ export default class ReplyForm extends React.PureComponent {
     return (
       <p>
         <select name="type" value={replyType} onChange={this.handleTypeChange}>
-          {['NOT_ARTICLE', 'OPINIONATED', 'NOT_RUMOR', 'RUMOR'].map(type => (
+          {['NOT_RUMOR', 'RUMOR_NOT_RUMOR', 'RUMOR', 'NOT_ARTICLE', 'OPINIONATED'].map(type => (
             <option key={type} value={type}>
               {TYPE_NAME[type]}
             </option>
