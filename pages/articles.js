@@ -249,7 +249,7 @@ class Articles extends ListPage {
     }
 
     return (
-      <div>
+      <div className="text-right">
         <span>
           <select
             onChange={this.handleOrderByChange}
@@ -275,7 +275,7 @@ class Articles extends ListPage {
         <div className="row">
           {/* TODO: waiting for backend */}
           <div className={`col`}>
-            <div className={`wrapper-cat`}>
+            <div className={`wrapper-cat mt-3 mt-md-0`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
                 <CheckboxGroup
@@ -284,11 +284,11 @@ class Articles extends ListPage {
                   value={categories}
                   onChange={this.handleCategoriesChange}
                   Component="ul"
-                  className="mb-4 border-bottom"
+                  className="mb-4 border-bottom d-md-flex justify-content-md-between"
                 >
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
                     <li key={i} className="form-check form-check-inline" >
-                      <label>
+                      <label className="mb-3">
                         <Checkbox value={item} />
                         {item}
                       </label>
@@ -300,64 +300,55 @@ class Articles extends ListPage {
           </div>
           <style jsx>
           {`
-            .wrapper-cat { 
-              
-
+            .wrapper-cat label { 
+              font-size: 1.15rem;
              }
         `}
         </style>
       </div>
       <div className="row">
         <div className={`col`}>
-          <div className={`card`}>
-            <div className={`card-body`}>
-              <h5>{i18n.t('reply')}</h5>
-              <RadioGroup
-                onChange={this.handleFilterChange}
-                selectedValue={filter || 'all'}
-                Component="ul"
-              >
-                <li>
-                  <label>
-                    <Radio value="unsolved" />
-                    {i18n.t('notRepliedYet')}
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <Radio value="solved" />
-                    {i18n.t('replied')}
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <Radio value="all" />
-                    {i18n.t('all')}
-                  </label>
-                </li>
-              </RadioGroup>
-            </div>
-          </div>
+          {/* <h5>{i18n.t('reply')}</h5> */}
+          <RadioGroup
+            onChange={this.handleFilterChange}
+            selectedValue={filter || 'all'}
+            Component="div"
+            className="btn-group btn-group-toggle"
+          >
+            <label className="btn btn-secondary">
+              <Radio value="unsolved" />
+              {i18n.t('notRepliedYet')}
+            </label>
+            <label className="btn btn-secondary">
+              <Radio value="solved" />
+              {i18n.t('replied')}
+            </label>
+            <label className="btn btn-secondary">
+              <Radio value="all" />
+              {i18n.t('all')}
+            </label>
+          </RadioGroup>
         </div>
         <div className="col">
-          {i18n.t('pageArticles.orderBy')}:{this.renderOrderBy()}
-          <div className={`row mt-3`}>
-            <div className={`col-12`}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={
-                    +replyRequestCount === 1 ||
-                    typeof replyRequestCount === 'undefined'
-                  }
-                  onChange={this.handleReplyRequestCountCheck}
-                />{' '}
-                {i18n.t('pageArticles.listArticlesIncludeOne')}
-              </label>
-            </div>
-          </div>
+          {/* {i18n.t('pageArticles.orderBy')}: */}
+          {this.renderOrderBy()}
         </div>
         
+      </div>
+      <div className={`row mt-3`}>
+        <div className={`col-12`}>
+          <label>
+            <input
+              type="checkbox"
+              checked={
+                +replyRequestCount === 1 ||
+                typeof replyRequestCount === 'undefined'
+              }
+              onChange={this.handleReplyRequestCountCheck}
+            />{' '}
+            {i18n.t('pageArticles.listArticlesIncludeOne')}
+          </label>
+        </div>
       </div>
         <style>
           {`
