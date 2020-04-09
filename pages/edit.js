@@ -13,7 +13,6 @@ import RelatedReplies from 'components/RelatedReplies';
 import ReplySearch from 'components/ReplySearch/ReplySearch.js';
 import ReplyForm from 'components/ReplyForm';
 import ReplyRequestReason from 'components/ReplyRequestReason';
-import Hyperlinks from 'components/Hyperlinks';
 import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
 
 import {
@@ -31,7 +30,7 @@ import {
   fetchArticleHyperlink,
   fetchReplyHyperlink,
   categoriesEdit,
-} from 'ducks/articleDetail';
+} from 'ducks/editArticleDetail';
 import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
@@ -45,6 +44,15 @@ class EditArticlePage extends React.Component {
     isExpanded: false,
   };
 
+  static async getInitialProps({ store: { dispatch }, query: { id } }) {
+    await dispatch(load(id));
+    return { id };
+  }
+
+  componentDidMount() {
+    const { id, dispatch } = this.props;
+    return dispatch(loadAuth(id));
+  }
 
   handleConnect = ({ target: { value: replyId } }) => {
     const { dispatch, id } = this.props;
@@ -282,13 +290,11 @@ class EditArticlePage extends React.Component {
   render() {
     const { data, user } = this.props;
 
+    console.log('DATATATATA : ' + data);
+
     const article = data.get('article');
     const replyConnections = data.get('replyConnections');
     const relatedArticles = data.get('relatedArticles');
-
-    console.log('DATATATATA : ' + data);
-
-
 
     if (article === null) {
       return <div>article Edit not found.</div>;
@@ -420,4 +426,25 @@ class EditArticlePage extends React.Component {
   }
 }
 
-export default EditArticlePage;
+function mapStateToProps({ editArticleDetail, auth }) {
+  return {
+    isLoading: editArticleDetail.getIn(['state', 'isLoading']),
+    isReplyLoading: editArticleDetail.getIn(['state', 'isReplyLoading']),
+    aticleHyperlinkLoading: editArticleDetail.getIn([
+      'state',
+      'aticleHyperlinkLoading',
+    ]),
+    replyHyperlinkLoading: editArticleDetail.getIn([
+      'state',
+      'replyHyperlinkLoading',
+    ]),
+    categoriesEditMode: editArticleDetail.getIn([
+      'state',
+      'categoriesEditMode',
+    ]),
+    data: editArticleDetail.get('data'),
+    user: auth.get('user'),
+    isLoadingAuth: auth.getIn(['state', 'isLoading']),
+  };
+}
+export default connect(mapStateToProps)(EditArticlePage);
