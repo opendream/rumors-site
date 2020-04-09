@@ -176,6 +176,22 @@ class AppLayout extends React.Component {
             border: 1px solid #000 !important;
             display: inline-block;
           }
+
+          .wrapper-main {
+            padding: 0.5rem 1rem !important;
+            max-width: 1140px !important;
+            margin: 0 auto;
+          }
+          @media screen and (min-width: 768px) {
+            .wrapper-main {
+              padding: 1rem  !important;
+            }
+          }
+          @media screen and (min-width: 1024px) {
+            .wrapper-main {
+              padding: 1rem 2rem !important;
+            }
+          }
           
         `}</style>
         

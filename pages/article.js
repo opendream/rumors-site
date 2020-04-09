@@ -293,7 +293,7 @@ class ArticlePage extends React.Component {
 
     return (
       <AppLayout>
-        <div className="root">
+        <div className="wrapper-main">
           <Head>
             <title>
               {slicedArticleTitle}⋯⋯ | {i18n.t('SiteName')}{' '}
