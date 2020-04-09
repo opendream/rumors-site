@@ -310,7 +310,7 @@ class ArticlePage extends React.Component {
               <ArticleInfo article={article} />
             </header>
 
-            {/* <ArticleTruthMeter replyConnections={replyConnections} /> */}
+            <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {article.get('title')?
               <div>
