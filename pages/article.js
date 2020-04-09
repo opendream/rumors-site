@@ -14,7 +14,7 @@ import ReplySearch from 'components/ReplySearch/ReplySearch.js';
 import ReplyForm from 'components/ReplyForm';
 import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
-import ArticleTruthMeter from "../components/ArticleTruthMeter/ArticleTruthMeter";
+import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
 
 import {
   load,
@@ -131,7 +131,6 @@ class ArticlePage extends React.Component {
   };
 
   handleFetchHyperlink = hyperlink => {
-
     const { dispatch, id } = this.props;
     return dispatch(
       fetchArticleHyperlink({
@@ -142,9 +141,8 @@ class ArticlePage extends React.Component {
   };
 
   handleFetchReplyHyperlink = (replyId, hyperlink) => {
-
     const { dispatch, id } = this.props;
-    console.log('dispatch', dispatch)
+    console.log('dispatch', dispatch);
     return dispatch(
       fetchReplyHyperlink({
         hyperlink,
@@ -249,6 +247,16 @@ class ArticlePage extends React.Component {
     }
   };
 
+  renderEditButton = replyConnections => {
+    let isEditable = true;
+    if (replyConnections.size > 0) {
+      isEditable = false;
+    }
+    return isEditable ? (
+      <button onClick={this.onEditArticleClick}>Edit</button>
+    ) : null;
+  };
+
   onLoginClick = title => {
     const { dispatch } = this.props;
     dispatch(showDialog(title));
@@ -258,6 +266,8 @@ class ArticlePage extends React.Component {
     const isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
   };
+
+  onEditArticleClick = () => {};
 
   render() {
     const {
@@ -309,7 +319,7 @@ class ArticlePage extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
-
+            {this.renderEditButton(replyConnections)}
             <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {nl2br(
@@ -319,7 +329,11 @@ class ArticlePage extends React.Component {
                   },
                 })
               )}
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
+              <Hyperlinks
+                hyperlinks={article.get('hyperlinks')}
+                fetchCallback={this.handleFetchHyperlink}
+                hyperlinkLoading={aticleHyperlinkLoading}
+              />
             </article>
             <footer>
               {expanded
@@ -446,9 +460,8 @@ class ArticlePage extends React.Component {
               onDelete={this.handleReplyConnectionDelete}
               onRestore={this.handleReplyConnectionRestore}
               onVote={this.handleReplyConnectionVote}
-              hyperlinkFetchCallback={this.handleFetchReplyHyperlink} 
+              hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
               replyHyperlinkLoading={replyHyperlinkLoading}
-              
             />
           </section>
           <section className="section">
@@ -517,8 +530,14 @@ function mapStateToProps({ articleDetail, auth }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
-    aticleHyperlinkLoading: articleDetail.getIn(['state', 'aticleHyperlinkLoading']),
-    replyHyperlinkLoading: articleDetail.getIn(['state', 'replyHyperlinkLoading']),
+    aticleHyperlinkLoading: articleDetail.getIn([
+      'state',
+      'aticleHyperlinkLoading',
+    ]),
+    replyHyperlinkLoading: articleDetail.getIn([
+      'state',
+      'replyHyperlinkLoading',
+    ]),
     categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
     user: auth.get('user'),
