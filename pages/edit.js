@@ -36,25 +36,15 @@ import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
 import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
-import Routes from "next-routes";
-import {Link} from "../routes";
+import Routes from 'next-routes';
+import { Link } from '../routes';
 
-class ArticlePage extends React.Component {
+class EditArticlePage extends React.Component {
   state = {
     tab: 'search', // 'new, 'related', 'search'
     isExpanded: false,
   };
 
-  static async getInitialProps({ store: { dispatch }, query: { id } }) {
-    await dispatch(load(id));
-    console.log("ID ::: " + id);
-    return { id };
-  }
-
-  componentDidMount() {
-    const { id, dispatch } = this.props;
-    return dispatch(loadAuth(id));
-  }
 
   handleConnect = ({ target: { value: replyId } }) => {
     const { dispatch, id } = this.props;
@@ -270,9 +260,10 @@ class ArticlePage extends React.Component {
     if (isCreatorViewing && isZeroReply) {
       isEditable = true;
     }
-    console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
     return isEditable ? (
-        <Link route="edit" params={{ id: articleId}}>Edit</Link>
+      <Link route="edit" params={{ id: '1' }}>
+        Edit
+      </Link>
     ) : null;
   };
 
@@ -286,42 +277,25 @@ class ArticlePage extends React.Component {
     this.setState({ isExpanded: !isExpanded });
   };
 
-  onEditArticleClick = () => {
-
-  };
+  onEditArticleClick = () => {};
 
   render() {
-    const {
-      data,
-      isLoading,
-      isReplyLoading,
-      categoriesEditMode: _categoriesEditMode,
-      aticleHyperlinkLoading,
-      replyHyperlinkLoading,
-      user,
-    } = this.props;
+    const { data, user } = this.props;
 
     const article = data.get('article');
     const replyConnections = data.get('replyConnections');
     const relatedArticles = data.get('relatedArticles');
 
-    console.log("ARTICLE DATA ::: "+data);
+    console.log('DATATATATA : ' + data);
 
 
-    if (isLoading && article === null) {
-      return <div>Loading...</div>;
-    }
 
     if (article === null) {
-      return <div>Article not found.</div>;
+      return <div>article Edit not found.</div>;
     }
 
     const slicedArticleTitle = article.get('text').slice(0, 15);
     const categories = article.get('categories');
-
-    let categoriesEditMode = _categoriesEditMode
-      ? _categoriesEditMode
-      : !categories || categories.size === 0;
 
     const expanded = this.state.isExpanded;
 
@@ -353,11 +327,6 @@ class ArticlePage extends React.Component {
                   },
                 })
               )}
-              <Hyperlinks
-                hyperlinks={article.get('hyperlinks')}
-                fetchCallback={this.handleFetchHyperlink}
-                hyperlinkLoading={aticleHyperlinkLoading}
-              />
             </article>
             <footer>
               {expanded
@@ -374,103 +343,6 @@ class ArticlePage extends React.Component {
                     );
                   })
                 : null}
-
-              <div className={`mt-3`}>
-                {categoriesEditMode ? (
-                  <div className={`card`}>
-                    <div className="card-body">
-                      <div>
-                        <div>
-                          <h5>{i18n.t(`specifyArticleCategory`)}</h5>
-                          <div className={`text-secondary`}>
-                            {i18n.t(`selectMinimum`)}
-                          </div>
-                        </div>
-                        <form
-                          className={`mt-2`}
-                          ref={categoriesEl =>
-                            (this._categoriesEl = categoriesEl)
-                          }
-                          onSubmit={e => {
-                            e.preventDefault();
-                            const checkboxArray = Array.prototype.slice.call(
-                              this._categoriesEl
-                            );
-                            const checkedCheckboxes = checkboxArray.filter(
-                              input => input.checked
-                            );
-                            const categories = checkedCheckboxes.map(
-                              input => input.value
-                            );
-                            this.handleCategoriesSubmit(categories);
-                          }}
-                        >
-                          <div>
-                            {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                              <div
-                                key={i}
-                                className="form-check form-check-inline"
-                              >
-                                <input
-                                  className="form-check-input"
-                                  type="checkbox"
-                                  name="categories"
-                                  id={`article-category-${i}`}
-                                  value={item}
-                                  defaultChecked={
-                                    categories &&
-                                    categories.filter(c => c === item).size > 0
-                                  }
-                                />
-                                <label
-                                  className="form-check-label"
-                                  htmlFor={`article-category-${i}`}
-                                >
-                                  {item}
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                          <div className={`mt-3`}>
-                            <button>{i18n.t(`save`)}</button>
-                            <button
-                              className={`btn btn-link`}
-                              onClick={e => {
-                                e.preventDefault();
-                                this.handleCategoriesEdit(false);
-                              }}
-                            >
-                              {i18n.t(`cancel`)}
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <h4>
-                    <span>
-                      {categories.map((item, i) => (
-                        <span key={i} className="badge badge-secondary mr-2">
-                          {item}
-                        </span>
-                      ))}
-                    </span>
-
-                    <button
-                      className={`btn btn-link`}
-                      onClick={() => this.handleCategoriesEdit()}
-                    >
-                      <img
-                        src={require('../components/AppLayout/images/edit.svg')}
-                        width={12}
-                        height={12}
-                        alt="edit"
-                      />
-                    </button>
-                  </h4>
-                )}
-              </div>
             </footer>
           </section>
           <section
@@ -480,12 +352,10 @@ class ArticlePage extends React.Component {
           >
             <CurrentReplies
               replyConnections={replyConnections}
-              disabled={isReplyLoading}
               onDelete={this.handleReplyConnectionDelete}
               onRestore={this.handleReplyConnectionRestore}
               onVote={this.handleReplyConnectionVote}
               hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
-              replyHyperlinkLoading={replyHyperlinkLoading}
             />
           </section>
           <section className="section">
@@ -550,23 +420,4 @@ class ArticlePage extends React.Component {
   }
 }
 
-function mapStateToProps({ articleDetail, auth }) {
-  return {
-    isLoading: articleDetail.getIn(['state', 'isLoading']),
-    isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
-    aticleHyperlinkLoading: articleDetail.getIn([
-      'state',
-      'aticleHyperlinkLoading',
-    ]),
-    replyHyperlinkLoading: articleDetail.getIn([
-      'state',
-      'replyHyperlinkLoading',
-    ]),
-    categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
-    data: articleDetail.get('data'),
-    user: auth.get('user'),
-    isLoadingAuth: auth.getIn(['state', 'isLoading']),
-  };
-}
-
-export default connect(mapStateToProps)(ArticlePage);
+export default EditArticlePage;

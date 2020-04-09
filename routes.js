@@ -19,6 +19,6 @@ routes
   })
   .add({
     name: 'edit',
-    pattern: 'edit/:id',
+    pattern: '/article/:id/edit',
     page: 'edit',
   });
