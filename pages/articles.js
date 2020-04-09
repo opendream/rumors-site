@@ -182,7 +182,7 @@ class Articles extends ListPage {
     const { stats, repliedArticleCount } = this.props;
 
     return (
-      <h2 className="header justify-content-center justify-content-md-end">
+      <h2 className="header justify-content-center justify-content-md-end mb-0">
         {/* <span>{i18n.t('articleList')}</span> */}
         <FullSiteArticleStats
           stats={stats}
@@ -272,31 +272,43 @@ class Articles extends ListPage {
 
     return (
       <div>
-        {/* TODO: waiting for backend */}
-        <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
-          <div className={`card`}>
-            <div className={`card-body`}>
-              <h5>{i18n.t('categories')}</h5>
-              <CheckboxGroup
-                checkboxDepth={3}
-                name="categories"
-                value={categories}
-                onChange={this.handleCategoriesChange}
-                Component="ul"
-              >
-                {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                  <li key={i}>
-                    <label>
-                      <Checkbox value={item} />
-                      {item}
-                    </label>
-                  </li>
-                ))}
-              </CheckboxGroup>
+        <div className="row">
+          {/* TODO: waiting for backend */}
+          <div className={`col`}>
+            <div className={`wrapper-cat`}>
+              <div className={``}>
+                {/* <h5>{i18n.t('categories')}</h5> */}
+                <CheckboxGroup
+                  checkboxDepth={3}
+                  name="categories"
+                  value={categories}
+                  onChange={this.handleCategoriesChange}
+                  Component="ul"
+                  className="mb-4 border-bottom"
+                >
+                  {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                    <li key={i} className="form-check form-check-inline" >
+                      <label>
+                        <Checkbox value={item} />
+                        {item}
+                      </label>
+                    </li>
+                  ))}
+                </CheckboxGroup>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
+          <style jsx>
+          {`
+            .wrapper-cat { 
+              
+
+             }
+        `}
+        </style>
+      </div>
+      <div className="row">
+        <div className={`col`}>
           <div className={`card`}>
             <div className={`card-body`}>
               <h5>{i18n.t('reply')}</h5>
@@ -327,22 +339,26 @@ class Articles extends ListPage {
             </div>
           </div>
         </div>
-        {i18n.t('pageArticles.orderBy')}:{this.renderOrderBy()}
-        <div className={`row mt-3`}>
-          <div className={`col-12`}>
-            <label>
-              <input
-                type="checkbox"
-                checked={
-                  +replyRequestCount === 1 ||
-                  typeof replyRequestCount === 'undefined'
-                }
-                onChange={this.handleReplyRequestCountCheck}
-              />{' '}
-              {i18n.t('pageArticles.listArticlesIncludeOne')}
-            </label>
+        <div className="col">
+          {i18n.t('pageArticles.orderBy')}:{this.renderOrderBy()}
+          <div className={`row mt-3`}>
+            <div className={`col-12`}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={
+                    +replyRequestCount === 1 ||
+                    typeof replyRequestCount === 'undefined'
+                  }
+                  onChange={this.handleReplyRequestCountCheck}
+                />{' '}
+                {i18n.t('pageArticles.listArticlesIncludeOne')}
+              </label>
+            </div>
           </div>
         </div>
+        
+      </div>
         <style>
           {`
             .reply-request-count {
