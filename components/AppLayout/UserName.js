@@ -123,9 +123,8 @@ class UserName extends PureComponent {
 
         <button className="edit" onClick={this.handleEdit}>
           <img
-            src={require('./images/edit.svg')}
-            width={12}
-            height={12}
+            src={require('/static/img/icon/ic-edit@2x.png')}
+            width="20px"
             alt="edit"
           />
         </button>

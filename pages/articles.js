@@ -101,15 +101,6 @@ class Articles extends ListPage {
         <div className={`col`}>
           <div className="search-form">
             <div className="row no-gutters justify-content-center">
-              {/* <label className="label-search">
-                {i18n.t('pageArticles.searchFor')}:{' '}
-                <input
-                  type="search"
-                  onBlur={this.handleKeywordChange}
-                  onKeyUp={this.handleKeywordKeyup}
-                  defaultValue={q}
-                />
-              </label> */}
               <div className="pr-2 col-9 col-md-10">
                 <input
                   className="form-control text-field"

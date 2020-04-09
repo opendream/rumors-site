@@ -101,6 +101,12 @@ class AppLayout extends React.Component {
             color: #B4195D;
           }
 
+          button {
+            border: 1px solid #ccc;
+            font-weight: 300;
+            border-radius: 3px;
+          }
+
           .btn-primary {
             background-color: #f0b4d0;
             border-color: #f0b4d0;
