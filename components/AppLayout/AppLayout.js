@@ -192,6 +192,27 @@ class AppLayout extends React.Component {
               padding: 1rem 2rem !important;
             }
           }
+
+          input[type=checkbox] {
+            position: absolute;
+            left: -1000em;
+          }
+          input[type=checkbox]:checked+label:before {
+            background-position: 0 -20px;
+          }
+
+          input[type=checkbox]+label:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 0 .5em 0 0;
+            background: url("/static/img/icon/ic-check@2x.png") no-repeat 0 0;
+            background-size: 20px;
+            vertical-align: bottom;
+            position: relative;
+            bottom: 2px;
+        }
           
         `}</style>
         

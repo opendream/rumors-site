@@ -249,16 +249,18 @@ class Articles extends ListPage {
     }
 
     return (
-      <div className="text-right">
-        <span>
+      <div className="text-md-right">
+        
+        <div class="input-group">
           <select
             onChange={this.handleOrderByChange}
             value={orderBy || 'createdAt'}
+            className="custom-select"
           >
             <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
             <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
           </select>
-        </span>
+        </div>
       </div>
     );
   };
@@ -274,7 +276,7 @@ class Articles extends ListPage {
       <div>
         <div className="row">
           {/* TODO: waiting for backend */}
-          <div className={`col`}>
+          <div className={`col-12`}>
             <div className={`wrapper-cat mt-3 mt-md-0`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
@@ -288,8 +290,8 @@ class Articles extends ListPage {
                 >
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
                     <li key={i} className="form-check form-check-inline" >
-                      <label className="mb-3">
-                        <Checkbox value={item} />
+                      <Checkbox value={item} id={i} />
+                      <label className="mb-3" for={i}>
                         {item}
                       </label>
                     </li>
@@ -307,7 +309,7 @@ class Articles extends ListPage {
         </style>
       </div>
       <div className="row">
-        <div className={`col`}>
+        <div className={`col-10`}>
           {/* <h5>{i18n.t('reply')}</h5> */}
           <RadioGroup
             onChange={this.handleFilterChange}
@@ -315,21 +317,22 @@ class Articles extends ListPage {
             Component="div"
             className="btn-group btn-group-toggle"
           >
-            <label className="btn btn-secondary">
-              <Radio value="unsolved" />
-              {i18n.t('notRepliedYet')}
-            </label>
-            <label className="btn btn-secondary">
-              <Radio value="solved" />
-              {i18n.t('replied')}
-            </label>
-            <label className="btn btn-secondary">
+            <label className="btn btn-outline-dark">
               <Radio value="all" />
               {i18n.t('all')}
             </label>
+            <label className="btn btn-outline-dark">
+              <Radio value="unsolved" />
+              {i18n.t('notRepliedYet')}
+            </label>
+            <label className="btn btn-outline-dark">
+              <Radio value="solved" />
+              {i18n.t('replied')}
+            </label>
+            
           </RadioGroup>
         </div>
-        <div className="col">
+        <div className="col-2">
           {/* {i18n.t('pageArticles.orderBy')}: */}
           {this.renderOrderBy()}
         </div>
@@ -362,6 +365,17 @@ class Articles extends ListPage {
             }
             ul li input {
               margin-right: 0.5rem;
+            }
+
+            
+
+            @media screen and (min-width: 768px) {
+              .btn-group-toggle .btn {
+                padding: 0.5rem 1.25rem;
+                border-radius: .75rem;
+                font-size: 1.15rem;
+                font-weight: 300;
+              }
             }
         `}
         </style>
