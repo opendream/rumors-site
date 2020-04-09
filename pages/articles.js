@@ -101,15 +101,6 @@ class Articles extends ListPage {
         <div className={`col`}>
           <div className="search-form">
             <div className="row no-gutters justify-content-center">
-              {/* <label className="label-search">
-                {i18n.t('pageArticles.searchFor')}:{' '}
-                <input
-                  type="search"
-                  onBlur={this.handleKeywordChange}
-                  onKeyUp={this.handleKeywordKeyup}
-                  defaultValue={q}
-                />
-              </label> */}
               <div className="pr-2 col-9 col-md-10">
                 <input 
                   className="form-control text-field"
@@ -129,8 +120,6 @@ class Articles extends ListPage {
         </div>
         <style jsx>
           {`
-
-
               .search-form .form-inline .form-control,
               .search-form .text-field {
                 padding: 15px;
@@ -185,8 +174,6 @@ class Articles extends ListPage {
         </style>
       </div>
       
-        
-      
     );
   };
 
@@ -206,8 +193,6 @@ class Articles extends ListPage {
             flex-direction: column;
             justify-content: space-between;
             align-items: stretch;
-            // padding-bottom: 1rem;
-            // border-bottom: 1px solid rgba(0, 0, 0, 0.3);
           
           }
           @media screen and (min-width: 576px) {
