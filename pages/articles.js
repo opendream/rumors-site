@@ -111,82 +111,79 @@ class Articles extends ListPage {
                 />
               </label> */}
               <div className="pr-2 col-9 col-md-10">
-                <input 
+                <input
                   className="form-control text-field"
                   placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ"
                   type="search"
                   onBlur={this.handleKeywordChange}
                   onKeyUp={this.handleKeywordKeyup}
                   defaultValue={q}
-                   />
+                />
               </div>
               <div className="col-3 col-md-2">
-                <button type="submit" className="btn btn-primary w-100">ค้นหา</button>
+                <button type="submit" className="btn btn-primary w-100">
+                  ค้นหา
+                </button>
               </div>
             </div>
-            
           </div>
         </div>
         <style jsx>
           {`
-
-
-              .search-form .form-inline .form-control,
+            .search-form .form-inline .form-control,
+            .search-form .text-field {
+              padding: 15px;
+              font-size: 16px;
+              height: auto;
+              font-weight: 300;
+              border-radius: 10px;
+              border-color: #fff;
+              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
+            }
+            .search-form .text-field::placeholder {
+              font-style: italic;
+              font-size: 90%;
+            }
+            @media screen and (min-width: 768px) {
               .search-form .text-field {
-                padding: 15px;
-                font-size: 16px;
-                height: auto;
-                font-weight: 300;
-                border-radius: 10px;
-                border-color: #fff;
-                box-shadow: 0 12px 25px 0 rgba(0,0,0,0.15);
-
+                font-size: 20px;
               }
-              .search-form .text-field::placeholder {
-                font-style: italic;
-                font-size: 90%;
-              }
-              @media screen and (min-width: 768px) {
-                .search-form .text-field {
-                  font-size: 20px;
-                }
-              }
-              .search-form .form-inline .form-control {
-                width: 79%;
-                margin-right: 1%;
-              }
-              .search-form .btn { padding: 15px; }
-              .search-form .form-inline .btn {
-                width: 20%;
-                padding: 15px;
-              }
+            }
+            .search-form .form-inline .form-control {
+              width: 79%;
+              margin-right: 1%;
+            }
+            .search-form .btn {
+              padding: 15px;
+            }
+            .search-form .form-inline .btn {
+              width: 20%;
+              padding: 15px;
+            }
+            .search-form .btn-primary {
+              background-color: #f0b4d0;
+              border-color: #f0b4d0;
+              font-size: 16px;
+              font-weight: 500;
+              color: #000;
+              border-radius: 10px;
+              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
+            }
+            @media screen and (min-width: 768px) {
               .search-form .btn-primary {
-                background-color: #f0b4d0;
-                border-color: #f0b4d0;
-                font-size: 16px;
-                font-weight: 500;
-                color: #000;
-                border-radius: 10px;
-                box-shadow: 0 12px 25px 0 rgba(0,0,0,0.15);
+                font-size: 20px;
               }
-              @media screen and (min-width: 768px) {
-                .search-form .btn-primary {
-                  font-size: 20px;
-                }
-              }
-              .search-form .btn-primary:hover,
-              .search-form .btn-primary:active,
-              .search-form .btn-primary:focus {
-                background-color: #ff79ac !important;
-                border-color: #ff79ac !important;
-                color: #000;
-              }
+            }
+            .search-form .btn-primary:hover,
+            .search-form .btn-primary:active,
+            .search-form .btn-primary:focus {
+              background-color: #ff79ac !important;
+              border-color: #ff79ac !important;
+              color: #000;
+            }
           `}
         </style>
       </div>
-      
-        
-      
     );
   };
 
@@ -208,7 +205,6 @@ class Articles extends ListPage {
             align-items: stretch;
             // padding-bottom: 1rem;
             // border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-          
           }
           @media screen and (min-width: 576px) {
             .header {
@@ -262,15 +258,17 @@ class Articles extends ListPage {
     }
 
     return (
-      <span>
-        <select
-          onChange={this.handleOrderByChange}
-          value={orderBy || 'createdAt'}
-        >
-          <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
-          <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
-        </select>
-      </span>
+      <div>
+        <span>
+          <select
+            onChange={this.handleOrderByChange}
+            value={orderBy || 'createdAt'}
+          >
+            <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
+            <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
+          </select>
+        </span>
+      </div>
     );
   };
 
@@ -283,65 +281,62 @@ class Articles extends ListPage {
 
     return (
       <div>
-        <div className={`row`}>
-          {/* TODO: waiting for backend */}
-          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
-            <div className={`card`}>
-              <div className={`card-body`}>
-                <h5>{i18n.t('categories')}</h5>
-                <CheckboxGroup
-                  checkboxDepth={3}
-                  name="categories"
-                  value={categories}
-                  onChange={this.handleCategoriesChange}
-                  Component="ul"
-                >
-                  {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                    <li key={i}>
-                      <label>
-                        <Checkbox value={item} />
-                        {item}
-                      </label>
-                    </li>
-                  ))}
-                </CheckboxGroup>
-              </div>
-            </div>
-          </div>
-
-          <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
-            <div className={`card`}>
-              <div className={`card-body`}>
-                <h5>{i18n.t('reply')}</h5>
-                <RadioGroup
-                  onChange={this.handleFilterChange}
-                  selectedValue={filter || 'all'}
-                  Component="ul"
-                >
-                  <li>
+        {/* TODO: waiting for backend */}
+        <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
+          <div className={`card`}>
+            <div className={`card-body`}>
+              <h5>{i18n.t('categories')}</h5>
+              <CheckboxGroup
+                checkboxDepth={3}
+                name="categories"
+                value={categories}
+                onChange={this.handleCategoriesChange}
+                Component="ul"
+              >
+                {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                  <li key={i}>
                     <label>
-                      <Radio value="unsolved" />
-                      {i18n.t('notRepliedYet')}
+                      <Checkbox value={item} />
+                      {item}
                     </label>
                   </li>
-                  <li>
-                    <label>
-                      <Radio value="solved" />
-                      {i18n.t('replied')}
-                    </label>
-                  </li>
-                  <li>
-                    <label>
-                      <Radio value="all" />
-                      {i18n.t('all')}
-                    </label>
-                  </li>
-                </RadioGroup>
-              </div>
+                ))}
+              </CheckboxGroup>
             </div>
           </div>
         </div>
-
+        <div className={`mt-3 col-sm-6 col-md-4 col-lg-3`}>
+          <div className={`card`}>
+            <div className={`card-body`}>
+              <h5>{i18n.t('reply')}</h5>
+              <RadioGroup
+                onChange={this.handleFilterChange}
+                selectedValue={filter || 'all'}
+                Component="ul"
+              >
+                <li>
+                  <label>
+                    <Radio value="unsolved" />
+                    {i18n.t('notRepliedYet')}
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <Radio value="solved" />
+                    {i18n.t('replied')}
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <Radio value="all" />
+                    {i18n.t('all')}
+                  </label>
+                </li>
+              </RadioGroup>
+            </div>
+          </div>
+        </div>
+        {i18n.t('pageArticles.orderBy')}:{this.renderOrderBy()}
         <div className={`row mt-3`}>
           <div className={`col-12`}>
             <label>
@@ -357,7 +352,6 @@ class Articles extends ListPage {
             </label>
           </div>
         </div>
-
         <style>
           {`
             .reply-request-count {
@@ -493,7 +487,7 @@ class Articles extends ListPage {
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()} */}
             {this.renderSearch()} {i18n.t('pageArticles.orderBy')}:
-            {this.renderOrderBy()}
+
             {this.renderFilter()}
             {isLoading ? <p>Loading...</p> : this.renderList()}
             <span />
