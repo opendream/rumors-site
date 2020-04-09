@@ -23,12 +23,12 @@ class CreateArticlePage extends React.Component {
 
     gql`
       mutation(
-        $title: String!
+        $title: String
         $text: String!
         $reference: ArticleReferenceInput!
         $reason: String
       ) {
-        CreateArticle(title: $text, text: $text, reference: $reference, reason: $reason) {
+        CreateArticle(title: $title, text: $text, reference: $reference, reason: $reason) {
           id
         }
       }
