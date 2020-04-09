@@ -37,7 +37,10 @@ function LoginModal({ isDialogShown, onModalClose }) {
       console.log(this.readyState, this.status, this.responseText)
       if (this.readyState == 4 && this.status == 200) {
         // console.log('this.responseText', this.responseText)
-      } 
+        location.reload();
+      } else if (this.readyState == 4 && this.status == 401) {
+        alert('อีเมล หรือ รหัสผ่าน ไม่ถูกต้อง')
+      }
     };
 
     xhttp.open("POST", dest, true);
