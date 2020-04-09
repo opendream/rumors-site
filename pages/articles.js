@@ -293,10 +293,10 @@ class Articles extends ListPage {
                   value={categories}
                   onChange={this.handleCategoriesChange}
                   Component="ul"
-                  className="mb-4 border-bottom d-md-flex justify-content-md-between"
+                  className="mb-4 border-bottom flex-md-wrap d-md-flex justify-content-md-start"
                 >
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                    <li key={i} className="form-check form-check-inline" >
+                    <li key={i} className="form-check form-check-inline col-12 col-md-4 col-lg-3 col-xl-2 p-0 m-0" >
                       <Checkbox value={item} id={i} />
                       <label className="mb-3" for={i}>
                         {item}
