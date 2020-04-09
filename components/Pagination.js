@@ -17,7 +17,7 @@ export default function Pagination({
             query: { ...query, before: firstCursorOfPage, after: undefined },
           })}
         >
-          <a>Prev</a>
+          <a>ย้อนกลับ</a>
         </Link>
       ) : (
         ''
@@ -28,7 +28,7 @@ export default function Pagination({
             query: { ...query, after: lastCursorOfPage, before: undefined },
           })}
         >
-          <a>Next</a>
+          <a>ถัดไป</a>
         </Link>
       ) : (
         ''
