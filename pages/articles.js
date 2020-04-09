@@ -490,9 +490,9 @@ class Articles extends ListPage {
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>
-            {searchUserByArticleId
+            {/* {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
-              : this.renderHeader()}
+              : this.renderHeader()} */}
             {this.renderSearch()}
             {this.renderFilter()}
             {isLoading ? <p>Loading...</p> : this.renderList()}
