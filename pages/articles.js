@@ -261,6 +261,13 @@ class Articles extends ListPage {
             <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
           </select>
         </div>
+        <style jsx>
+          {`
+            .custom-selectl { 
+              max-width: 330px;
+             }
+        `}
+        </style>
       </div>
     );
   };
@@ -308,8 +315,8 @@ class Articles extends ListPage {
         `}
         </style>
       </div>
-      <div className="row">
-        <div className={`col-12 col-md-10`}>
+      <div className="row align-items-center">
+        <div className={`col-12 col-md-8 col-xl-10 mb-3 mb-md-0`}>
           {/* <h5>{i18n.t('reply')}</h5> */}
           <RadioGroup
             onChange={this.handleFilterChange}
@@ -332,7 +339,7 @@ class Articles extends ListPage {
             
           </RadioGroup>
         </div>
-        <div className="col-12 col-md-2">
+        <div className="col-12 col-sm-8 col-md-4 col-xl-2">
           {/* {i18n.t('pageArticles.orderBy')}: */}
           {this.renderOrderBy()}
         </div>
@@ -340,15 +347,16 @@ class Articles extends ListPage {
       </div>
       <div className={`row mt-3`}>
         <div className={`col-12`}>
-          <label>
-            <input
+          <input
               type="checkbox"
+              id="countcheck"
               checked={
                 +replyRequestCount === 1 ||
                 typeof replyRequestCount === 'undefined'
               }
               onChange={this.handleReplyRequestCountCheck}
             />{' '}
+          <label for="countcheck">
             {i18n.t('pageArticles.listArticlesIncludeOne')}
           </label>
         </div>

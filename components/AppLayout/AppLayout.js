@@ -212,7 +212,7 @@ class AppLayout extends React.Component {
             vertical-align: bottom;
             position: relative;
             bottom: 2px;
-        }
+          }
           
         `}</style>
         
