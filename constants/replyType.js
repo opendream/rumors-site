@@ -4,6 +4,7 @@ export const TYPE_ICON = {
   NOT_ARTICLE: '⚠️️',
   OPINIONATED: '💬',
   NOT_RUMOR: '⭕',
+  RUMOR_NOT_RUMOR: '◑',
   RUMOR: '❌',
 };
 
@@ -11,6 +12,7 @@ export const TYPE_NAME = {
   NOT_ARTICLE: `⚠️️ ${i18n.t('replyType.name.NOT_ARTICLE')}`,
   OPINIONATED: `💬 ${i18n.t('replyType.name.OPINIONATED')}`,
   NOT_RUMOR: `⭕ ${i18n.t('replyType.name.NOT_RUMOR')}`,
+  RUMOR_NOT_RUMOR: `◑ ${i18n.t('replyType.name.RUMOR_NOT_RUMOR')}`,
   RUMOR: `❌ ${i18n.t('replyType.name.RUMOR')}`,
 };
 
@@ -18,6 +20,7 @@ export const TYPE_DESC = {
   NOT_ARTICLE: `${i18n.t('replyType.desc.NOT_ARTICLE')}`,
   OPINIONATED: `${i18n.t('replyType.desc.OPINIONATED')}`,
   NOT_RUMOR: `${i18n.t('replyType.desc.NOT_RUMOR')}`,
+  RUMOR_NOT_RUMOR: `${i18n.t('replyType.desc.RUMOR_NOT_RUMOR')}`,
   RUMOR: `${i18n.t('replyType.desc.RUMOR')}`,
 };
 
@@ -25,6 +28,7 @@ export const TYPE_INSTRUCTION = {
   NOT_ARTICLE: `${i18n.t('replyType.instruction.NOT_ARTICLE')}`,
   OPINIONATED: `${i18n.t('replyType.instruction.OPINIONATED')}`,
   NOT_RUMOR: `${i18n.t('replyType.instruction.NOT_RUMOR')}`,
+  RUMOR_NOT_RUMOR: `${i18n.t('replyType.instruction.RUMOR_NOT_RUMOR')}`,
   RUMOR: `${i18n.t('replyType.instruction.RUMOR')}`,
 };
 
