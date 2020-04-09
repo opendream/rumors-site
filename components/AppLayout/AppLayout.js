@@ -74,8 +74,13 @@ class AppLayout extends React.Component {
         <style jsx global>{`
           body {
             font-family: 'Kanit', sans-serif;
+            background: #F6F8FA;
+            font-weight: 300;
           }
-
+          div:not(.home) header.navbar {
+            max-width: 1140px !important;
+            margin: 0 auto;
+          }
           div:not(.home) .wrapper-page {
             background: transparent !important;
           }
@@ -84,6 +89,7 @@ class AppLayout extends React.Component {
           }
           div:not(.home) .link-group {
             border: 1px solid #000 !important;
+
           }
           div:not(.home) .link-list {
             border-right: 1px solid #000 !important;
@@ -117,8 +123,12 @@ class AppLayout extends React.Component {
             color: #000;
           }
 
+          .w300 { font-weight: 300; }
 
 
+          div.home header.navbar {
+            max-width: 100% !important;
+          }
         
           div.home .wrapper-page {
             background: url("static/img/bg-banner@2x.jpg") no-repeat center center !important;
@@ -147,16 +157,18 @@ class AppLayout extends React.Component {
           div.home #menuToggle a {
             color: #000 !important;
           }
-          div.home #menuToggle .link-group {
-            border: 1px solid #000 !important;
-            display: inline-block;
-          }
+          
           div.home #menuToggle .link-list {
             border-right: 1px solid #000 !important;
             color: #000 !important;
           }
           div.home #menuToggle .link-list:last-child { 
             border-right: 0 !important;
+          }
+
+          div #menuToggle .link-group {
+            border: 1px solid #000 !important;
+            display: inline-block;
           }
           
         `}</style>

@@ -16,7 +16,7 @@ class ProgressBar extends PureComponent {
         <i style={{ width: `${ratio * 100}%` }} />
         <style jsx>{`
           .progress {
-            border: 1px solid khaki;
+            border: 1px solid #fff;
             padding: 1px;
             height: 8px;
             border-radius: 3px;
@@ -26,7 +26,7 @@ class ProgressBar extends PureComponent {
           i {
             display: block;
             height: 100%;
-            background: khaki;
+            background: #F0B4D0;
           }
         `}</style>
       </div>
@@ -146,6 +146,10 @@ class UserName extends PureComponent {
             align-items: center;
             justify-content: space-between;
           }
+          .user a {
+            color: #000;
+            font-weight: 500;
+          }
           @media screen and (max-width: 320px) {
             .user a {
               max-width: 120px;
@@ -153,6 +157,7 @@ class UserName extends PureComponent {
               overflow: hidden;
               white-space: nowrap;
               word-break: keep-all;
+              
             }
           }
 
@@ -280,10 +285,10 @@ class UserName extends PureComponent {
           <style jsx>{`
           .user-profile {
             padding: 0.75rem;
-            border-radius: 0.25rem;
-            background-color: #f8f9fa;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-            box-shadow: 1px 1px 4px -3px #000000;
+            border-radius: 8px;
+            background-color: #E0E6EA;
+            border: none;
+            // box-shadow: 1px 1px 4px -3px #000000;
             box-sizing: border-box;
           }
           @media screen and (max-width: 575px) {

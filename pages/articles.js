@@ -97,23 +97,96 @@ class Articles extends ListPage {
       query: { q },
     } = this.props;
     return (
-      <label className="label-search">
-        {i18n.t('pageArticles.searchFor')}:{' '}
-        <input
-          type="search"
-          onBlur={this.handleKeywordChange}
-          onKeyUp={this.handleKeywordKeyup}
-          defaultValue={q}
-        />
+      <div className="row justify-content-md-center my-2 my-md-4 my-lg-5">
+        <div className={`col`}>
+          <div className="search-form">
+            <div className="row no-gutters justify-content-center">
+              {/* <label className="label-search">
+                {i18n.t('pageArticles.searchFor')}:{' '}
+                <input
+                  type="search"
+                  onBlur={this.handleKeywordChange}
+                  onKeyUp={this.handleKeywordKeyup}
+                  defaultValue={q}
+                />
+              </label> */}
+              <div className="pr-2 col-9 col-md-10">
+                <input 
+                  className="form-control text-field"
+                  placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ"
+                  type="search"
+                  onBlur={this.handleKeywordChange}
+                  onKeyUp={this.handleKeywordKeyup}
+                  defaultValue={q}
+                   />
+              </div>
+              <div className="col-3 col-md-2">
+                <button type="submit" className="btn btn-primary w-100">ค้นหา</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
         <style jsx>
           {`
-            .label-search {
-              display: block;
-              margin-bottom: 1em;
-            }
+
+
+              .search-form .form-inline .form-control,
+              .search-form .text-field {
+                padding: 15px;
+                font-size: 16px;
+                height: auto;
+                font-weight: 300;
+                border-radius: 10px;
+                border-color: #fff;
+                box-shadow: 0 12px 25px 0 rgba(0,0,0,0.15);
+
+              }
+              .search-form .text-field::placeholder {
+                font-style: italic;
+                font-size: 90%;
+              }
+              @media screen and (min-width: 768px) {
+                .search-form .text-field {
+                  font-size: 20px;
+                }
+              }
+              .search-form .form-inline .form-control {
+                width: 79%;
+                margin-right: 1%;
+              }
+              .search-form .btn { padding: 15px; }
+              .search-form .form-inline .btn {
+                width: 20%;
+                padding: 15px;
+              }
+              .search-form .btn-primary {
+                background-color: #f0b4d0;
+                border-color: #f0b4d0;
+                font-size: 16px;
+                font-weight: 500;
+                color: #000;
+                border-radius: 10px;
+                box-shadow: 0 12px 25px 0 rgba(0,0,0,0.15);
+              }
+              @media screen and (min-width: 768px) {
+                .search-form .btn-primary {
+                  font-size: 20px;
+                }
+              }
+              .search-form .btn-primary:hover,
+              .search-form .btn-primary:active,
+              .search-form .btn-primary:focus {
+                background-color: #ff79ac !important;
+                border-color: #ff79ac !important;
+                color: #000;
+              }
           `}
         </style>
-      </label>
+      </div>
+      
+        
+      
     );
   };
 
@@ -121,8 +194,8 @@ class Articles extends ListPage {
     const { stats, repliedArticleCount } = this.props;
 
     return (
-      <h2 className="header">
-        <span>{i18n.t('articleList')}</span>
+      <h2 className="header justify-content-center justify-content-md-end">
+        {/* <span>{i18n.t('articleList')}</span> */}
         <FullSiteArticleStats
           stats={stats}
           repliedArticleCount={repliedArticleCount}
@@ -133,8 +206,9 @@ class Articles extends ListPage {
             flex-direction: column;
             justify-content: space-between;
             align-items: stretch;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            // padding-bottom: 1rem;
+            // border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+          
           }
           @media screen and (min-width: 576px) {
             .header {
@@ -411,7 +485,7 @@ class Articles extends ListPage {
     return (
       <body>
         <AppLayout>
-          <main>
+          <main className="wrapper-main">
             <Head>
               <title>{i18n.t('pageArticles.reallyFake')}</title>
             </Head>

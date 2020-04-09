@@ -12,32 +12,58 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
 
   return (
     <div className="full-site-stat">
-      <div>{i18n.t("noReturnMessage")}: <strong>{stats.get('notRepliedCount')}</strong></div>
-      <div>{i18n.t("totalArticles")}: <strong>{stats.get('repliedCount') + stats.get('notRepliedCount')}</strong></div>
-      {typeof repliedArticleCount === 'number' && (
-        <>
-          <div>
-            {i18n.t("othersResponded")}: <strong>{stats.get('repliedCount') - repliedArticleCount}</strong> / {i18n.t("whatYouRespondedTo")}: <strong>{repliedArticleCount}</strong>
-          </div>
-          <div className="progress">
-            <i
-              style={{
-                width: `${(repliedArticleCount / stats.get('repliedCount')) *
-                  100}%`,
-              }}
-            />
-          </div>
-        </>
-      )}
+      <div className="row">
+        <div className="col-6">{i18n.t("noReturnMessage")}: <span className="w300">{stats.get('notRepliedCount')}</span></div>
+        <div className="col-6">{i18n.t("totalArticles")}: <span className="w300">{stats.get('repliedCount') + stats.get('notRepliedCount')}</span></div>
+        {typeof repliedArticleCount === 'number' && (
+          <>
+            <div className="col-6">
+              {i18n.t("othersResponded")}: <span className="w300">{stats.get('repliedCount') - repliedArticleCount}</span> 
+            </div>
+            <div className="col-6">
+              {i18n.t("whatYouRespondedTo")}: <span className="w300">{repliedArticleCount}</span>
+            </div>
+            <div className="col-6 ml-auto">
+              <div className="progress">
+                <i
+                  style={{
+                    width: `${(repliedArticleCount / stats.get('repliedCount')) *
+                      100}%`,
+                  }}
+                />
+              </div>
+            </div>
+            
+          </>
+        )}
+        
+      </div>
       <style jsx>{`
         .full-site-stat {
-          font-size: 12px;
+          font-size: 0.85rem;
+          font-weight: 400;
           padding: .75rem;
-          border-radius: .25rem;
-          border: 1px solid rgba(0,0,0,0.3);
+          border-radius: 8px;
+          border: 1px solid #CACED0;
+          max-width: 400px;
+          margin: 1rem 0;
+        }
+        @media screen and (min-width: 425px) {
+          .full-site-stat {
+            font-size: 1rem;
+          }
+        }
+        @media screen and (min-width: 768px) {
+          .full-site-stat {
+            margin: 0;
+          }
+        }
+        .full-site-stat div {
+          line-height: 1.5em;
         }
         .progress {
-          border: 1px solid khaki;
+          margin: 0.5rem 0 0;
+          border: 1px solid #CACED0;
           padding: 1px;
           height: 8px;
           border-radius: 3px;
@@ -47,7 +73,7 @@ function FullSiteArticleStats({ stats, repliedArticleCount }) {
         i {
           display: block;
           height: 100%;
-          background: khaki;
+          background: #F0B4D0;
         }
       `}</style>
     </div>

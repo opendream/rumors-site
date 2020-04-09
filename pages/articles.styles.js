@@ -1,12 +1,19 @@
 import css from 'styled-jsx/css'; // eslint-disable-line import/no-unresolved
 
 export const mainStyle = css`
-  main {
-    padding: 1rem;
+  main.wrapper-main {
+    padding: 0.5rem 1rem !important;
+    max-width: 1140px !important;
+    margin: 0 auto;
   }
   @media screen and (min-width: 768px) {
-    main {
-      padding: 1rem 40px 40px 40px;
+    main.wrapper-main {
+      padding: 1rem  !important;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    main.wrapper-main {
+      padding: 1rem 2rem !important;
     }
   }
 `;
