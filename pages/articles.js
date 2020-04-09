@@ -309,7 +309,7 @@ class Articles extends ListPage {
         </style>
       </div>
       <div className="row">
-        <div className={`col-10`}>
+        <div className={`col-12 col-md-10`}>
           {/* <h5>{i18n.t('reply')}</h5> */}
           <RadioGroup
             onChange={this.handleFilterChange}
@@ -332,7 +332,7 @@ class Articles extends ListPage {
             
           </RadioGroup>
         </div>
-        <div className="col-2">
+        <div className="col-12 col-md-2">
           {/* {i18n.t('pageArticles.orderBy')}: */}
           {this.renderOrderBy()}
         </div>
