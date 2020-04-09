@@ -477,8 +477,7 @@ class Articles extends ListPage {
             {/* {searchUserByArticleId
               ? this.renderSearchedArticleHeader()
               : this.renderHeader()} */}
-            {this.renderSearch()} {i18n.t('pageArticles.orderBy')}:
-
+            {this.renderSearch()}
             {this.renderFilter()}
             {isLoading ? <p>Loading...</p> : this.renderList()}
             <span />
