@@ -23,12 +23,12 @@ class CreateArticlePage extends React.Component {
 
     gql`
       mutation(
-        $title: String!
+        $title: String
         $text: String!
         $reference: ArticleReferenceInput!
         $reason: String
       ) {
-        CreateArticle(title: $text, text: $text, reference: $reference, reason: $reason) {
+        CreateArticle(title: $title, text: $text, reference: $reference, reason: $reason) {
           id
         }
       }
@@ -72,7 +72,7 @@ class CreateArticlePage extends React.Component {
               <input type="text" name="title" />
 
               <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
-              <textarea name="text" rows="6" />
+              <textarea name="text" rows="6" required />
 
               <h2>{i18n.t('pageCreate.messageSource')}</h2>
               <input type="text" name="references" />

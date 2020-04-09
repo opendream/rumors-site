@@ -39,7 +39,7 @@ export default function ArticleItem({
           ) : (
             ``
           )}
-          <ArticleTruthMeter replyConnections={replyConnections} />
+          {/* <ArticleTruthMeter replyConnections={replyConnections} /> */}
           <ArticleInfo article={article} />
           {isLogin && (
             <ArticleItemWidget
