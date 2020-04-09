@@ -16,4 +16,9 @@ routes
     name: 'reply',
     pattern: '/reply/:id',
     page: 'reply',
+  })
+  .add({
+    name: 'edit',
+    pattern: 'edit/:id',
+    page: 'edit',
   });
