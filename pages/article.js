@@ -247,11 +247,27 @@ class ArticlePage extends React.Component {
     }
   };
 
-  renderEditButton = replyConnections => {
-    let isEditable = true;
-    if (replyConnections.size > 0) {
-      isEditable = false;
+  renderEditButton = (replyConnections, user, articleDetail) => {
+    // console.log (": articleDetail : "+ articleDetail);
+
+    let isEditable = false;
+    let isZeroReply = true;
+    let isCreatorViewing = false;
+    let articleCreatorId = articleDetail.get('user').get('id');
+
+    if (user != null) {
+      let loggedInUserId = user.get('id');
+      if (articleCreatorId === loggedInUserId) isCreatorViewing = true;
     }
+
+    if (replyConnections.size > 0) {
+      isZeroReply = false;
+    }
+
+    if (isCreatorViewing && isZeroReply) {
+      isEditable = true;
+    }
+    console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
     return isEditable ? (
       <button onClick={this.onEditArticleClick}>Edit</button>
     ) : null;
@@ -319,7 +335,7 @@ class ArticlePage extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
-            {this.renderEditButton(replyConnections)}
+            {this.renderEditButton(replyConnections, user, article)}
             <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {nl2br(
