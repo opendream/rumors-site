@@ -22,4 +22,8 @@ routes
     name: 'edit',
     pattern: '/article/:id/edit',
     page: 'edit',
+  })
+  .add({
+    name: 'delete',
+    pattern: '/article/:id/delete',
   });

@@ -10,6 +10,7 @@ import i18n from '../i18n';
 class CreateArticlePage extends React.Component {
   state = {
     isSubmitting: false,
+    initial: null
   };
 
   handleSubmit = e => {
@@ -55,7 +56,9 @@ class CreateArticlePage extends React.Component {
   };
 
   render() {
-    const { isSubmitting } = this.state;
+    const { isSubmitting, initial } = this.state;
+
+    const defaultValue = initial || {}
 
     return (
       <body>
@@ -73,19 +76,19 @@ class CreateArticlePage extends React.Component {
                     <form onSubmit={this.handleSubmit}>
 
                       <h2>{i18n.t('pageCreate.articleTitle')}</h2>
-                      <input type="text" name="title" />
+                      <input type="text" name="title" defaultValue={defaultValue.title || ''} />
 
                       <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
-                      <textarea name="text" rows="6" required />
+                      <textarea name="text" rows="6"  defaultValue={defaultValue.text || ''} required />
 
                       <h2>{i18n.t('pageCreate.messageSource')}</h2>
-                      <input type="text" name="references" />
+                      <input type="text" name="references"  defaultValue={defaultValue.references || ''} />
 
                       <h2>{i18n.t('reason')}</h2>
                       <div class="form-text text-muted">
                         {i18n.t('pageCreate.reasonDetail')}
                       </div>
-                      <textarea name="reason" row="2" />
+                      <textarea name="reason" row="2"  defaultValue={defaultValue.reason || ''} />
 
                       <hr />
 
@@ -94,9 +97,16 @@ class CreateArticlePage extends React.Component {
                         กำลังส่งข้อความ ...
                       </div>
                       :
+                      initial?
+                      <button type="submit" disabled={isSubmitting}>
+                        {`บันทึก`}
+                      </button>
+                      :
                       <button type="submit" disabled={isSubmitting}>
                         {i18n.t('pageCreate.sendMessage')}
                       </button>
+                      }
+                      
                       }
                       
                     </form>
