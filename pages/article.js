@@ -270,14 +270,30 @@ class ArticlePage extends React.Component {
       isEditable = true;
     }
     // console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
+
+    isEditable = isEditable || (user && user.get('isStaff'))
+
+    // TODO: use icon instead text
     return isEditable ? (
-      <div>
+      <div class={`text-right`}>
         <Link route="edit" params={{ id: articleId }}>
-          Edit
+          <a className={``}>
+            <img
+              src={require('/static/img/icon/ic-edit@2x.png')}
+              height="20px"
+              alt="edit"
+            />
+          </a>
         </Link>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <Link route="delete" params={{ id: articleId }}>
-          Delete
+          <a className={``}>
+            <img
+              src={require('/static/img/icon/ic-delete@2x.png')}
+              height="14px"
+              alt="edit"
+            />
+          </a>
         </Link>
       </div>
     ) : null;
@@ -343,6 +359,8 @@ class ArticlePage extends React.Component {
               {/* <ArticleInfo article={article} /> */}
             </header>
 
+            {this.renderEditButton(replyConnections, user, article)}
+
             <div className="card">
               {article.get('title') ? (
                 <div className="card-header d-md-flex align-items-center mb-3">
@@ -360,7 +378,6 @@ class ArticlePage extends React.Component {
                 </div>
               )}
               <div className="card-body">
-                {this.renderEditButton(replyConnections, user, article)}
                 <ArticleTruthMeter replyConnections={replyConnections} />
                 <article className="message" onClick={this.onArticleClick}>
                   {article.get('title') ? (
