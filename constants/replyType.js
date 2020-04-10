@@ -13,7 +13,7 @@ export const TYPE_NAME = {
   OPINIONATED: `💬 ${i18n.t('replyType.name.OPINIONATED')}`,
   NOT_RUMOR: `⭕ ${i18n.t('replyType.name.NOT_RUMOR')}`,
   RUMOR_NOT_RUMOR: `◑ ${i18n.t('replyType.name.RUMOR_NOT_RUMOR')}`,
-  RUMOR: `❌ ${i18n.t('replyType.name.RUMOR')}`,
+  RUMOR: `❌"ic-more" ${i18n.t('replyType.name.RUMOR')}`,
 };
 
 export const TYPE_DESC = {
