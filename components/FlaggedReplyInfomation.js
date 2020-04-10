@@ -3,7 +3,7 @@ import React from 'react';
 export default function FlaggedReplyInfomation({ replyConnections }) {
   let outOfScopeReplyAmount = 0;
   let opinionReplyAmount = 0;
-  if (replyConnections != null) {
+  if (replyConnections !== undefined) {
     replyConnections.map(reply => {
       if (reply.get('reply').get('type') === 'NOT_ARTICLE')
         outOfScopeReplyAmount++;

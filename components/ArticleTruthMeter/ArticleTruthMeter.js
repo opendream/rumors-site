@@ -40,18 +40,32 @@ export default function ArticleTruthMeter({ replyConnections }) {
 
     if (totalReplyTypes.length > 0) {
       var avgRadians = calcDegreeFromReply(totalReplyTypes);
-      console.log(totalReplyTypes + ' : AVG Radian : ' + avgRadians);
       tag = convertDegreeToTag(avgRadians);
+
+      // console.log(
+      //   totalReplyTypes + ' : AVG Radian : ' + avgRadians + 'T: ' + tag
+      // );
     }
   }
 
   function calcDegreeFromReply(totalReplyTypes) {
-    let typeRadian = 180 / (totalReplyTypes.length - 1);
+    // console.log(totalReplyTypes.length);
+    if (totalReplyTypes.length === 1) {
+      if (totalReplyTypes[0] === 1) {
+        return 180;
+      } else if (totalReplyTypes[0] === 0) {
+        return 0;
+      } else {
+        return 90;
+      }
+    }
+    let typeRadian = 180 / totalReplyTypes.length-1;
     let totalRadians = totalReplyTypes
       .map((total, i) => i * typeRadian * total)
       .reduce((a, b) => a + b, 0);
     let totalReplies = totalReplyTypes.reduce((a, b) => a + b, 0);
     let avgRadians = totalRadians / totalReplies;
+    // console.log(totalRadians + ' / ' + totalReplies);
     return avgRadians;
   }
 
@@ -65,7 +79,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
     else if (avgRadians < 90 && avgRadians > 60) tag = 'mostly-false--start';
     else if (avgRadians < 60 && avgRadians > 30) tag = 'mostly-false--middle';
     else if (avgRadians < 30 && avgRadians > 0) tag = 'mostly-false--last';
-    else tag = '';
+    else tag = 'middle';
     return tag;
   }
 
