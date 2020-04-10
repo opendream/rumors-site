@@ -1,11 +1,7 @@
 import React from 'react';
 
 export default function ArticleTruthMeter({ replyConnections }) {
-  let totalWeight = 0;
-  let maxPossibleWeight = 0;
-  let minPossibleWeight = 0;
   let normalizedTotalWeight = 0;
-  let gaugeDegree = 0;
   let tag = '';
 
   const notRumorWeight = 1;
@@ -23,7 +19,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
     replyConnections.map(connections => {
       const replyType = connections.get('reply').get('type');
       const userType = connections.get('user').get('belongTo');
-      console.log('TYPE : ' + replyType);
+      // console.log('TYPE : ' + replyType);
 
       userWeight = calcUserWeight(userType);
       switch (replyType) {
@@ -41,12 +37,13 @@ export default function ArticleTruthMeter({ replyConnections }) {
           totalReplyTypes.push(userWeight * rumorWeight);
           break;
       }
-
-      tag = convertNormalizeWeightToTags(normalizedTotalWeight);
     });
 
-    var avgRadians = calcDegreeFromReply(totalReplyTypes);
-    console.log(totalReplyTypes + ' : AVG Radian : ' + avgRadians);
+    if (totalReplyTypes.length > 0) {
+      var avgRadians = calcDegreeFromReply(totalReplyTypes);
+      console.log(totalReplyTypes + ' : AVG Radian : ' + avgRadians);
+      tag = convertDegreeToTag(avgRadians);
+    }
   }
 
   function calcDegreeFromReply(totalReplyTypes) {
@@ -59,47 +56,24 @@ export default function ArticleTruthMeter({ replyConnections }) {
     return avgRadians;
   }
 
-  function calcDegreeFromNormalizedWeight(normalizedTotalWeight) {
-    return normalizedTotalWeight * 90 + 90;
-  }
-
-  function convertNormalizeWeightToTags(normalizedTotalWeight) {
+  function convertDegreeToTag(avgRadians) {
     let tag = '';
-    if (normalizedTotalWeight === 1) tag = 'true';
-    else if (normalizedTotalWeight === -1) tag = 'false';
-    else if (normalizedTotalWeight > 0.01 && normalizedTotalWeight < 0.33)
+    if (avgRadians >= 180) tag = 'true';
+    else if (avgRadians <= 0) tag = 'false';
+    else if (avgRadians > 90 && avgRadians < 120)
       tag = 'mostly-true--start';
-    else if (normalizedTotalWeight > 0.33 && normalizedTotalWeight < 0.66)
+    else if (avgRadians > 120 && avgRadians < 150)
       tag = 'mostly-true--middle';
-    else if (normalizedTotalWeight > 0.66 && normalizedTotalWeight < 0.99)
+    else if (avgRadians > 150 && avgRadians < 180)
       tag = 'mostly-true--last';
-    else if (normalizedTotalWeight < -0.01 && normalizedTotalWeight > -0.33)
+    else if (avgRadians < 90 && avgRadians > 60)
       tag = 'mostly-false--start';
-    else if (normalizedTotalWeight < -0.33 && normalizedTotalWeight > -0.66)
+    else if (avgRadians < 60 && avgRadians > 30)
       tag = 'mostly-false--middle';
-    else if (normalizedTotalWeight < -0.66 && normalizedTotalWeight > -0.99)
+    else if (avgRadians < 30 && avgRadians > 0)
       tag = 'mostly-false--last';
     else tag = '';
     return tag;
-  }
-
-  function updateMinMax(userWeight) {
-    maxPossibleWeight += userWeight;
-    minPossibleWeight = -maxPossibleWeight;
-  }
-
-  function calcNormalizeWeight(
-    totalWeight,
-    maxPossibleWeight,
-    minPossibleWeight
-  ) {
-    let normalizedWeight = 0;
-    normalizedWeight =
-      2 *
-        ((totalWeight - minPossibleWeight) /
-          (maxPossibleWeight - minPossibleWeight)) -
-      1;
-    return normalizedWeight;
   }
 
   function calcUserWeight(userType) {
@@ -110,8 +84,13 @@ export default function ArticleTruthMeter({ replyConnections }) {
   }
 
   return (
-    <div className={tag}>
-      <p>Normalized Weight tag : {tag}</p>
+    <div>
+      {totalReplyTypes.length > 0 ? (
+        <div className={tag}>
+          <p>Normalized Weight tag : {tag}</p>
+          <p>Degree : {avgRadians}</p>
+        </div>
+      ) : null}
     </div>
   );
 }
