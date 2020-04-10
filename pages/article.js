@@ -255,7 +255,7 @@ class ArticlePage extends React.Component {
     let isEditable = false;
     let isZeroReply = true;
     let isCreatorViewing = false;
-    let articleCreatorId = articleDetail.get('user').get('id');
+    let articleCreatorId = articleDetail.getIn(['user', 'id']) || 0;
 
     if (user != null) {
       let loggedInUserId = user.get('id');
