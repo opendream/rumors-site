@@ -20,7 +20,11 @@ export default function ArticleItem({
   if (article.get('user') != null) {
     articleCreator = article.get('user').get('name');
   }
-  const replyAmount = replyConnections.size;
+
+  let replyAmount = 0;
+  if (replyConnections != null) {
+    replyAmount = replyConnections.size;
+  }
 
   return (
     <li
