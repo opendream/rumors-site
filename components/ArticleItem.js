@@ -44,14 +44,14 @@ export default function ArticleItem({
       <Link route="article" params={{ id }}>
         <a>
           {article.get('title') ? (
-            <div className="card-header d-flex align-items-center mb-3">
+            <div className="card-header d-md-flex align-items-center mb-3">
               <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
               <div className="item-title">{article.get('title')}</div>
             </div>
           ) : (
-            <div className="card-header bg-white d-flex align-items-center">
+            <div className="card-header bg-white d-md-flex align-items-center">
               <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
@@ -59,7 +59,7 @@ export default function ArticleItem({
             </div>
           )}
 
-          <div className="card-body d-flex justify-content-between pt-0">
+          <div className="card-body d-md-flex justify-content-md-between pt-0">
             <div className="card-body-left  d-flex flex-column justify-content-between">
               {article.get('title') ? (
                 <div className="item-text">{article.get('text')}</div>
@@ -80,9 +80,9 @@ export default function ArticleItem({
                 )}
               </div>
               {/*//TODO:: Style these please*/}
-              <div className="d-flex mt-3">
+              <div className="d-sm-flex mt-3">
                 {articleCreator != null ? (
-                  <div className="item-createBy mr-2">{articleCreator}</div>
+                  <div className="item-createBy mr-2 float-left">{articleCreator}</div>
                 ) : null}
                 <ArticleInfo article={article} />
                 {isLogin && (
