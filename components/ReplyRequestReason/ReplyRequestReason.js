@@ -170,7 +170,7 @@ class ReplyRequestReason extends PureComponent {
       (isArticleCreator || replyRequestReason) && (
         <div className="container-request-user">
           {replyRequestReason && this.renderBlockReason()}
-          {isArticleCreator && <LinkAuthorList articleId={articleId} />}
+          <span className="text-right">{isArticleCreator && <LinkAuthorList articleId={articleId}  />}</span>
 
           <style jsx>{`
             .container-request-user {
@@ -179,9 +179,11 @@ class ReplyRequestReason extends PureComponent {
               flex-wrap: wrap;
               align-items: center;
               justify-content: flex-end;
-              border: 2px dashed #ccc;
-              border-top: none;
+          
               padding: 0.2em 0.5em;
+              background: #F6F8FA;
+              border: 1px solid #C9D4DA;
+              border-radius: 5px;
             }
           `}</style>
         </div>

@@ -40,7 +40,7 @@ export const detailStyle = css`
   font-weight: 400;
   padding: 5px 10px;
   min-width: 60px;
-  font-size: 90%;
+  font-size: 14px;
 }
 
 .item-replyRequestCount::before {

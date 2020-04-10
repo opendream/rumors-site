@@ -155,6 +155,10 @@ class AppLayout extends React.Component {
             display: inline-block;
           }
 
+          .btn-link {
+            color: #f0b4d0;
+          }
+
           .badge-primary {
             background-color: #F0B4D0;
           }
