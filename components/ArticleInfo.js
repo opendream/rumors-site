@@ -5,7 +5,7 @@ import i18n from '../i18n';
 export default function ArticleInfo({ article }) {
   const createdAt = moment(article.get('createdAt'));
   return (
-    <div className="root">
+    <div className="root mr-2">
       {createdAt.isValid() ? (
          <span title={createdAt.format('lll')}>&nbsp;•&nbsp; {createdAt.fromNow()}</span>
       ) : (

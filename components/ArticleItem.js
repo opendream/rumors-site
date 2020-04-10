@@ -60,7 +60,7 @@ export default function ArticleItem({
           )}
 
           <div className="card-body d-flex justify-content-between pt-0">
-            <div className="card-body-left">
+            <div className="card-body-left  d-flex flex-column justify-content-between">
               {article.get('title') ? (
                 <div className="item-text">{article.get('text')}</div>
               ) : (
@@ -80,11 +80,19 @@ export default function ArticleItem({
                 )}
               </div>
               {/*//TODO:: Style these please*/}
-              <div className="d-flex">
+              <div className="d-flex mt-3">
                 {articleCreator != null ? (
                   <div className="item-createBy mr-2">{articleCreator}</div>
                 ) : null}
-
+                <ArticleInfo article={article} />
+                {isLogin && (
+                  <ArticleItemWidget
+                    id={id}
+                    read={read}
+                    notArticleReplied={notArticleReplied}
+                    onChange={handleLocalEditorHelperList}
+                  />
+                )}
                 {outOfScopeReplyAmount > 0 ? (
                   <div className="item-outOfScopeReplyAmount">
                     {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
@@ -96,16 +104,6 @@ export default function ArticleItem({
                     {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
                   </div>
                 ) : null}
-
-                <ArticleInfo article={article} />
-                {isLogin && (
-                  <ArticleItemWidget
-                    id={id}
-                    read={read}
-                    notArticleReplied={notArticleReplied}
-                    onChange={handleLocalEditorHelperList}
-                  />
-                )}
               </div>
             </div>
 

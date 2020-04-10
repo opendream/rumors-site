@@ -4,8 +4,12 @@ export const listItemStyle = css`
 
   .card {
     box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
+    border: 0;
+    border-radius: 10px;
   }
   .card-header {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     background: #CCD5D9;
     border-color: #CCD5D9;
   }
@@ -14,6 +18,10 @@ export const listItemStyle = css`
   .card-header .item-text {
     font-size: 1.25rem;
     font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 70%;
   }
 
   .card-header.bg-white {
@@ -48,6 +56,27 @@ export const listItemStyle = css`
     content: "";
     padding-right: 25px;
     background: url(/static/img/icon/ic-comment@2x.png) no-repeat left center;
+    background-size: 20px;
+  }
+
+
+  .item-opinionReplyAmount,
+  .item-outOfScopeReplyAmount {
+    border-left: 1px solid #9E9E9E;
+    padding-left: 5px;
+    margin-left: 5px;
+    font-size: 90%; 
+  }
+  .item-outOfScopeReplyAmount::before {
+    content: "";
+    padding-right: 25px;
+    background: url(/static/img/icon/ic-warning@2x.png) no-repeat left center;
+    background-size: 20px;
+  }
+  .item-opinionReplyAmount::before {
+    content: "";
+    padding-right: 25px;
+    background: url(/static/img/icon/ic-comments@2x.png) no-repeat left center;
     background-size: 20px;
   }
   
@@ -108,7 +137,6 @@ export const listItemStyle = css`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 70%;
   }
   a {
     text-decoration: none;
