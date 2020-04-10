@@ -242,7 +242,7 @@ export default class ReplyForm extends React.PureComponent {
 
         {this.renderReferenceInput()}
 
-        <button className="submit" type="submit" disabled={disabled}>
+        <button className="btn btn-primary btn-lg" type="submit" disabled={disabled}>
           {i18n.t("replyComponent.submitButton")}
         </button>
 

@@ -55,13 +55,8 @@ class ReplyRequestReason extends PureComponent {
             <span className="vote-num">
               {replyRequest.get('positiveFeedbackCount')}
             </span>
-            <svg
-              className={`icon ${ownVote === UPVOTE && 'active'}`}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 320 512"
-            >
-              <path d="M48.048 352h223.895c42.638 0 64.151-51.731 33.941-81.941l-111.943-112c-18.745-18.745-49.137-18.746-67.882 0l-111.952 112C-16.042 300.208 5.325 352 48.048 352zM160 192l112 112H48l112-112z" />
-            </svg>
+
+            <img src="/static/img/icon/thumb-up@2x.png" width="16px" />
           </button>
           <button
             className="btn-vote btn-down-vote"
@@ -71,13 +66,8 @@ class ReplyRequestReason extends PureComponent {
             <span className="vote-num">
               {replyRequest.get('negativeFeedbackCount')}
             </span>
-            <svg
-              className={`icon ${ownVote === DOWNVOTE && 'active'}`}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 320 512"
-            >
-              <path d="M272 160H48.1c-42.6 0-64.2 51.7-33.9 81.9l111.9 112c18.7 18.7 49.1 18.7 67.9 0l112-112c30-30.1 8.7-81.9-34-81.9zM160 320L48 208h224L160 320z" />
-            </svg>
+            <img src="/static/img/icon/thumb-down@2x.png" width="16px" />
+          
           </button>
         </div>
         <svg

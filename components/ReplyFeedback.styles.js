@@ -8,14 +8,20 @@ export const feedbackStyle = css`
     align-items: center;
     color: gray;
   }
+  .reply-feedback label {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
 
   .vote-num {
-    font-weight: bold;
-    margin-left: 0.5em;
+    // font-weight: bold;
+    font-weight: 400;
+    color: #252525;
+    // margin-left: 0.5em;
   }
 
   .down-vote-switch {
-    color: rgb(0, 0, 238);
+    color: #252525;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -39,6 +45,7 @@ export const feedbackStyle = css`
     font-size: 1rem;
     line-height: 100%;
     cursor: pointer;
+    margin-right: 3px;
   }
   .btn-vote:disabled {
     cursor: not-allowed;
