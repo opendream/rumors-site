@@ -72,6 +72,10 @@ export const load = ({
           id
           title
           text
+          user{
+          id
+          name
+          }
           replyCount
           replyRequestCount
           articleReplies{

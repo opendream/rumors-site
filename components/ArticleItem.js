@@ -5,6 +5,7 @@ import ArticleTruthMeter from './ArticleTruthMeter/ArticleTruthMeter';
 import { listItemStyle } from './ListItem.styles';
 import ArticleItemWidget from './ArticleItemWidget/ArticleItemWidget.js';
 import cx from 'classnames';
+import i18n from '../i18n';
 
 export default function ArticleItem({
   article,
@@ -15,6 +16,9 @@ export default function ArticleItem({
   replyConnections,
 }) {
   const id = article.get('id');
+  const articleCreator = article.get('user').get('name');
+  const replyAmount = replyConnections.size;
+
   return (
     <li
       className={cx('item', {
@@ -24,10 +28,24 @@ export default function ArticleItem({
     >
       <Link route="article" params={{ id }}>
         <a>
-          {article.get('title')?
-          <div className="item-title">{article.get('title')}</div>
-          : ``}
+          {/*//TODO:: Change to localization key*/}
+          <div className="item-replyRequestCount">
+            {article.get('replyRequestCount')} คนสงสัย
+          </div>
+
+          {article.get('title') ? (
+            <div className="item-title">{article.get('title')}</div>
+          ) : (
+            ``
+          )}
           <div className="item-text">{article.get('text')}</div>
+          {/*//TODO:: Style these please*/}
+          <div className="item-createBy">{articleCreator}</div>
+          {replyAmount > 0 ? (
+            <div className="item-replyAmount">
+              {replyAmount} {i18n.t('thenReply')}
+            </div>
+          ) : null}
           {article.get('categories') ? (
             <div className={`mt-1 mb-1`}>
               {article.get('categories').map((item, i) => (
@@ -39,7 +57,7 @@ export default function ArticleItem({
           ) : (
             ``
           )}
-          <ArticleTruthMeter replyConnections={replyConnections} />
+          {/*<ArticleTruthMeter replyConnections={replyConnections} />*/}
           <ArticleInfo article={article} />
           {isLogin && (
             <ArticleItemWidget

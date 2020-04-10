@@ -250,8 +250,7 @@ class Articles extends ListPage {
 
     return (
       <div className="text-md-right">
-        
-        <div class="input-group">
+        <div className="input-group">
           <select
             onChange={this.handleOrderByChange}
             value={orderBy || 'createdAt'}
@@ -263,10 +262,10 @@ class Articles extends ListPage {
         </div>
         <style jsx>
           {`
-            .custom-selectl { 
+            .custom-selectl {
               max-width: 330px;
-             }
-        `}
+            }
+          `}
         </style>
       </div>
     );
@@ -296,9 +295,12 @@ class Articles extends ListPage {
                   className="mb-4 border-bottom flex-md-wrap d-md-flex justify-content-md-start"
                 >
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                    <li key={i} className="form-check form-check-inline col-12 col-md-4 col-lg-3 col-xl-2 p-0 m-0" >
+                    <li
+                      key={i}
+                      className="form-check form-check-inline col-12 col-md-4 col-lg-3 col-xl-2 p-0 m-0"
+                    >
                       <Checkbox value={item} id={i} />
-                      <label className="mb-3" for={i}>
+                      <label className="mb-3" htmlFor={i}>
                         {item}
                       </label>
                     </li>
@@ -308,47 +310,46 @@ class Articles extends ListPage {
             </div>
           </div>
           <style jsx>
-          {`
-            .wrapper-cat label { 
-              font-size: 1.15rem;
-             }
-        `}
-        </style>
-      </div>
-      <div className="row align-items-center">
-        <div className={`col-12 col-md-8 col-xl-10 mb-3 mb-md-0`}>
-          {/* <h5>{i18n.t('reply')}</h5> */}
-          <RadioGroup
-            onChange={this.handleFilterChange}
-            selectedValue={filter || 'all'}
-            Component="div"
-            className="btn-group btn-group-toggle"
-          >
-  
-            <label className="link">
-              <Radio value="all" />
-              <span className="btn btn-outline-dark btn-first">{i18n.t('all')}</span>
-            </label>
-            <label className="link">
-              <Radio value="unsolved" />
-              <span className="btn btn-outline-dark btn-middle">{i18n.t('notRepliedYet')}</span>
-            </label>
-            <label className="link">
-              <Radio value="solved" />
-              <span className="btn btn-outline-dark btn-last">{i18n.t('replied')}</span>
-            </label>
-            
-          </RadioGroup>
+            {`
+              .wrapper-cat label {
+                font-size: 1.15rem;
+              }
+            `}
+          </style>
         </div>
-        <div className="col-12 col-sm-8 col-md-4 col-xl-2">
-          {/* {i18n.t('pageArticles.orderBy')}: */}
-          {this.renderOrderBy()}
+        <div className="row align-items-center">
+          <div className={`col-12 col-md-8 col-xl-10 mb-3 mb-md-0`}>
+            {/* <h5>{i18n.t('reply')}</h5> */}
+            <RadioGroup
+              onChange={this.handleFilterChange}
+              selectedValue={filter || 'all'}
+              Component="div"
+              className="btn-group btn-group-toggle"
+            >
+    
+              <label className="link">
+                <Radio value="all" />
+                <span className="btn btn-outline-dark btn-first">{i18n.t('all')}</span>
+              </label>
+              <label className="link">
+                <Radio value="unsolved" />
+                <span className="btn btn-outline-dark btn-middle">{i18n.t('notRepliedYet')}</span>
+              </label>
+              <label className="link">
+                <Radio value="solved" />
+                <span className="btn btn-outline-dark btn-last">{i18n.t('replied')}</span>
+              </label>
+              
+            </RadioGroup>
+          </div>
+          <div className="col-12 col-sm-8 col-md-4 col-xl-2">
+            {/* {i18n.t('pageArticles.orderBy')}: */}
+            {this.renderOrderBy()}
+          </div>
         </div>
-        
-      </div>
-      <div className={`row mt-3`}>
-        <div className={`col-12`}>
-          <input
+        <div className={`row mt-3`}>
+          <div className={`col-12`}>
+            <input
               type="checkbox"
               id="countcheck"
               checked={
@@ -357,11 +358,11 @@ class Articles extends ListPage {
               }
               onChange={this.handleReplyRequestCountCheck}
             />{' '}
-          <label for="countcheck">
-            {i18n.t('pageArticles.listArticlesIncludeOne')}
-          </label>
+            <label htmlFor="countcheck">
+              {i18n.t('pageArticles.listArticlesIncludeOne')}
+            </label>
+          </div>
         </div>
-      </div>
         <style>
           {`
             
@@ -503,7 +504,7 @@ class Articles extends ListPage {
               // border-top: 1px solid rgba(0, 0, 0, 0.3);
               // margin-top: 1rem;
             }
-            
+
             .article-list {
               list-style: none;
               display: flex;
