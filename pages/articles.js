@@ -454,7 +454,7 @@ class Articles extends ListPage {
       <div className={`article-wrapper`}>
         {totalCount > 0 ? (
           <div>
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center mb-2">
               <div className="text-muted">
                 {totalCount} {i18n.t('pageArticles.articles')}
               </div>

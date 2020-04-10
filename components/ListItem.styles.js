@@ -1,6 +1,22 @@
 import css from 'styled-jsx/css'; // eslint-disable-line import/no-unresolved
 
 export const listItemStyle = css`
+
+  .card {
+    box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
+  }
+
+  .item-replyRequestCount {
+    
+  }
+  .item-replyRequestCount::before {
+    content: "";
+    padding-right: 30px;
+    background: url(/static/img/icon/ic-que@2x.png) no-repeat left center;
+    background-size: 25px;
+  }
+
+
   .item {
     --font-size: 0.8em; // for ArticleInfo && articleItemWidget layout
     --list-item-padding: 8px;
