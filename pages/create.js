@@ -10,13 +10,14 @@ import i18n from '../i18n';
 class CreateArticlePage extends React.Component {
   state = {
     isSubmitting: false,
-    initial: null
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ isSubmitting: true });
 
+    const initial = this.props.initial;
+    const id = initial.getIn(['article', 'id']);
     const title = e.target.title.value.trim();
     const text = e.target.text.value.trim();
     const reason = e.target.reason.value.trim();
@@ -24,16 +25,24 @@ class CreateArticlePage extends React.Component {
 
     gql`
       mutation(
+        $id: String
         $title: String
         $text: String!
         $reference: ArticleReferenceInput!
         $reason: String
       ) {
-        CreateArticle(title: $title, text: $text, reference: $reference, reason: $reason) {
+        CreateArticle(
+          id: $id
+          title: $title
+          text: $text
+          reference: $reference
+          reason: $reason
+        ) {
           id
         }
       }
     `({
+      id,
       title,
       text,
       reason,
@@ -56,9 +65,16 @@ class CreateArticlePage extends React.Component {
   };
 
   render() {
-    const { isSubmitting, initial } = this.state;
-
-    const defaultValue = initial || {}
+    const { isSubmitting } = this.state;
+    const initial = this.props.initial;
+    let defaultValue;
+    if (initial && initial.get) {
+      defaultValue = initial.get('article') || {};
+    } else {
+      defaultValue = new Map();
+    }
+    // let article = defaultValue.get('article');
+    // console.log("Default Value : "+article);
 
     return (
       <body>
@@ -74,22 +90,34 @@ class CreateArticlePage extends React.Component {
                 <div className={`card-body`}>
                   <div className={`form-wrapper m-3`}>
                     <form onSubmit={this.handleSubmit}>
-
                       <h2>{i18n.t('pageCreate.articleTitle')}</h2>
-                      <input type="text" name="title" defaultValue={defaultValue.title || ''} />
-
-                      <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
-                      <textarea name="text" rows="6"  defaultValue={defaultValue.text || ''} required />
-
+                      <input
+                        type="text"
+                        name="title"
+                        defaultValue={defaultValue.get('title') || ''}
+                      />
+                      <h2>{i18n.t('pageCreate.articleBody')} *</h2>
+                      <textarea
+                        name="text"
+                        rows="6"
+                        defaultValue={defaultValue.get('text') || ''}
+                        required
+                      />
                       <h2>{i18n.t('pageCreate.messageSource')}</h2>
-                      <input type="text" name="references"  defaultValue={defaultValue.references || ''} />
-
+                      <input
+                        type="text"
+                        name="references"
+                        defaultValue={defaultValue.references || ''}
+                      />
                       <h2>{i18n.t('reason')}</h2>
-                      <div class="form-text text-muted">
+                      <div className="form-text text-muted">
                         {i18n.t('pageCreate.reasonDetail')}
                       </div>
-                      <textarea name="reason" row="2"  defaultValue={defaultValue.reason || ''} />
-
+                      <textarea
+                        name="reason"
+                        row="2"
+                        defaultValue={defaultValue.get('reason') || ''}
+                      />
                       <hr />
 
                       {isSubmitting?
@@ -124,7 +152,9 @@ class CreateArticlePage extends React.Component {
               }
 
               .article-form-wrapper {
-                background-image:url(/static/img/bg-article-form.${isSubmitting? 'svg': 'png'})
+                background-image: url(/static/img/bg-article-form.${isSubmitting
+                    ? 'svg'
+                    : 'png'});
               }
             `}</style>
           </div>

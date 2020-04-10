@@ -22,8 +22,16 @@ export default function ArticleItem({
   }
 
   let replyAmount = 0;
+  let outOfScopeReplyAmount = 0;
+  let opinionReplyAmount = 0;
   if (replyConnections != null) {
     replyAmount = replyConnections.size;
+    replyConnections.map(reply => {
+      if (reply.get('reply').get('type') === 'NOT_ARTICLE')
+        outOfScopeReplyAmount++;
+      else if (reply.get('reply').get('type') === 'OPINIONATED')
+        opinionReplyAmount++;
+    });
   }
 
   return (
@@ -36,15 +44,14 @@ export default function ArticleItem({
       <Link route="article" params={{ id }}>
         <a>
           {article.get('title') ? (
-            <div className="card-header d-flex align-items-center">
+            <div className="card-header d-md-flex align-items-center mb-3">
               <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
               <div className="item-title">{article.get('title')}</div>
             </div>
-            
           ) : (
-            <div className="card-header bg-white d-flex align-items-center">
+            <div className="card-header bg-white d-md-flex align-items-center">
               <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
@@ -52,56 +59,69 @@ export default function ArticleItem({
             </div>
           )}
 
-          {article.get('title') ? (
-         
-         <div className="card-body">
-         {/*//TODO:: Change to localization key*/}
-         <div className="item-text">{article.get('text')}</div></div>
-         
-          ) : (
-            
-            ``
-          )}
-
-          <div className="card-body">
-            
-            {/*//TODO:: Style these please*/}
-            {articleCreator != null ? (
-              <div className="item-createBy">{articleCreator}</div>
-            ) : null}
-
-            {replyAmount > 0 ? (
-              <div className="item-replyAmount">
-                {replyAmount} {i18n.t('thenReply')}
+          <div className="card-body d-md-flex justify-content-md-between pt-0">
+            <div className="card-body-left  d-flex flex-column justify-content-between">
+              {article.get('title') ? (
+                <div className="item-text">{article.get('text')}</div>
+              ) : (
+                ``
+              )}
+              <div>
+                {article.get('categories') ? (
+                  <div className={`mt-1 mb-1`}>
+                    {article.get('categories').map((item, i) => (
+                      <span key={i} className="badge badge-primary mr-2">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  ``
+                )}
               </div>
-            ) : null}
+              {/*//TODO:: Style these please*/}
+              <div className="d-sm-flex mt-3">
+                {articleCreator != null ? (
+                  <div className="item-createBy mr-2 float-left">{articleCreator}</div>
+                ) : null}
+                <ArticleInfo article={article} />
+                {isLogin && (
+                  <ArticleItemWidget
+                    id={id}
+                    read={read}
+                    notArticleReplied={notArticleReplied}
+                    onChange={handleLocalEditorHelperList}
+                  />
+                )}
+                {outOfScopeReplyAmount > 0 ? (
+                  <div className="item-outOfScopeReplyAmount">
+                    {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
+                  </div>
+                ) : null}
 
-            {article.get('categories') ? (
-              <div className={`mt-1 mb-1`}>
-                {article.get('categories').map((item, i) => (
-                  <span key={i} className="badge badge-secondary mr-2">
-                    {item}
-                  </span>
-                ))}
+                {opinionReplyAmount > 0 ? (
+                  <div className="item-opinionReplyAmount">
+                    {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
+                  </div>
+                ) : null}
               </div>
-            ) : (
-              ``
-            )}
-            {/*<ArticleTruthMeter replyConnections={replyConnections} />*/}
-            <ArticleInfo article={article} />
-            {isLogin && (
-              <ArticleItemWidget
-                id={id}
-                read={read}
-                notArticleReplied={notArticleReplied}
-                onChange={handleLocalEditorHelperList}
-              />
-            )}
+            </div>
 
+            <div className="card-body-right">
+              <div className="d-flex flex-column align-items-center">
+                <ArticleTruthMeter replyConnections={replyConnections} />
+
+                {replyAmount > 0 ? (
+                  <div className="item-replyAmount">
+                    {replyAmount} {i18n.t('thenReply')}
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </div>
         </a>
       </Link>
-      
+
       <style jsx>{listItemStyle}</style>
     </li>
   );

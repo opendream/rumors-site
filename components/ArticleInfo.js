@@ -5,16 +5,16 @@ import i18n from '../i18n';
 export default function ArticleInfo({ article }) {
   const createdAt = moment(article.get('createdAt'));
   return (
-    <div className="root">
+    <div className="root mr-2">
       {createdAt.isValid() ? (
-        <span title={createdAt.format('lll')}>{createdAt.fromNow()}</span>
+         <span title={createdAt.format('lll')}>&nbsp;•&nbsp; {createdAt.fromNow()}</span>
       ) : (
         ''
       )}
       <style jsx>{`
         .root {
-          font-size: var(--font-size);
-          color: rgba(0, 0, 0, 0.5);
+          font-size: 90%;
+          color: #9E9E9E;
         }
       `}</style>
     </div>

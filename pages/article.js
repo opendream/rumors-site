@@ -36,8 +36,8 @@ import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
 import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
-import Routes from "next-routes";
-import {Link} from "../routes";
+import Routes from 'next-routes';
+import { Link } from '../routes';
 
 class ArticlePage extends React.Component {
   state = {
@@ -270,7 +270,15 @@ class ArticlePage extends React.Component {
     }
     // console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
     return isEditable ? (
-        <Link route="edit" params={{ id: articleId}}>Edit</Link>
+      <div>
+        <Link route="edit" params={{ id: articleId }}>
+          Edit
+        </Link>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <Link route="delete" params={{ id: articleId }}>
+          Delete
+        </Link>
+      </div>
     ) : null;
   };
 
@@ -282,10 +290,6 @@ class ArticlePage extends React.Component {
   onArticleClick = () => {
     const isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
-  };
-
-  onEditArticleClick = () => {
-
   };
 
   render() {
@@ -331,41 +335,68 @@ class ArticlePage extends React.Component {
           </Head>
           <section className="section">
             <header className="header">
-              <h2>{i18n.t('originalMessage')}</h2>
+              {/* <h2>{i18n.t('originalMessage')}</h2> */}
               {/* <div className="trendline">
                 <Trendline id={article.get('id')} />
               </div> */}
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <ArticleInfo article={article} />
+              {/* <ArticleInfo article={article} /> */}
             </header>
-            {this.renderEditButton(replyConnections, user, article)}
-            <ArticleTruthMeter replyConnections={replyConnections} />
-            <article className="message" onClick={this.onArticleClick}>
-              {article.get('title')?
-              <div>
-                <h4>
+
+            <div className="card">
+              {article.get('title') ? (
+                <div className="card-header d-md-flex align-items-center mb-3">
+                  <div className="item-replyRequestCount mr-3">
+                    {article.get('replyRequestCount')} คนสงสัย
+                  </div>
+                  <div className="item-title">{article.get('title')}</div>
+                </div>
+              ) : (
+                <div className="card-header bg-white d-md-flex align-items-center">
+                  <div className="item-replyRequestCount mr-3">
+                    {article.get('replyRequestCount')} คนสงสัย
+                  </div>
+                  <div className="item-text">{article.get('text')}</div>
+                </div>
+              )}
+              <div className="card-body">
+                {this.renderEditButton(replyConnections, user, article)}
+                <ArticleTruthMeter replyConnections={replyConnections} />
+                <article className="message" onClick={this.onArticleClick}>
+                {article.get('title') ? (
+                  <div>
+                    <h4>
+                      {nl2br(
+                        linkify(article.get('title'), {
+                          props: {
+                            target: '_blank',
+                          },
+                        })
+                      )}
+                    </h4>
+                  </div>
+                ) : (
+                  ``
+                )}
+                <div>
                   {nl2br(
-                    linkify(article.get('title'), {
+                    linkify(article.get('text'), {
                       props: {
                         target: '_blank',
                       },
                     })
                   )}
-                </h4>
+                </div>
+                <Hyperlinks
+                  hyperlinks={article.get('hyperlinks')}
+                  fetchCallback={this.handleFetchHyperlink}
+                  hyperlinkLoading={aticleHyperlinkLoading}
+                />
+              </article>  
               </div>
-              :``}
-              <div>
-                {nl2br(
-                  linkify(article.get('text'), {
-                    props: {
-                      target: '_blank',
-                    },
-                  })
-                )}
-              </div>
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
-
-            </article>
+            </div>
+            
+            
             <footer>
               {expanded
                 ? article.get('replyRequests').map((replyRequest, index) => {

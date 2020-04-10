@@ -15,12 +15,12 @@ export default class CreateArticleButton extends React.Component {
     if (user != null) {
       return (
         <Link href={`/create`}>
-          <a className={`btn btn-primary btn-sm`}>{i18n.t('createArticle')}</a>
+          <a className={`btn btn-secondary btn-create d-inline-flex align-items-center`}>{i18n.t('createArticle')}</a>
         </Link>
       );
     } else {
       return (
-        <a className={`btn btn-primary btn-sm`} onClick={e => {
+        <a className={`btn btn-secondary btn-sm`} onClick={e => {
           e.preventDefault();
           this.onLoginClick(i18n.t('signup'));
         }}>

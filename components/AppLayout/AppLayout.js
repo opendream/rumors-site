@@ -146,6 +146,19 @@ class AppLayout extends React.Component {
             color: #000;
           }
 
+          .btn-create::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-size: cover !important;
+            background: url("/static/img/icon/btn-create@2x.png") no-repeat left center;
+            display: inline-block;
+          }
+
+          .badge-primary {
+            background-color: #F0B4D0;
+          }
+
           .w300 { font-weight: 300; }
 
 
@@ -211,7 +224,7 @@ class AppLayout extends React.Component {
           }
 
           input[type=checkbox] {
-            position: absolute;
+            position: absolute !important;
             left: -1000em;
           }
           input[type=checkbox]:checked+label:before {

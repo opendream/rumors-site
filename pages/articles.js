@@ -458,8 +458,9 @@ class Articles extends ListPage {
               <div className="text-muted">
                 {totalCount} {i18n.t('pageArticles.articles')}
               </div>
-              {this.renderPagination()}
+              
             </div>
+            {this.renderPagination()}
             <ul className="article-list">
               {articles.map(article => {
                 const id = article.get('id');
