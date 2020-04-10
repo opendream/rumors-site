@@ -41,7 +41,7 @@ import {Link} from "../routes";
 
 class ArticlePage extends React.Component {
   state = {
-    tab: 'search', // 'new, 'related', 'search'
+    tab: 'new', // 'new, 'related', 'search'
     isExpanded: false,
   };
 

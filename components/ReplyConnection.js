@@ -37,9 +37,12 @@ export default class ReplyConnection extends React.PureComponent {
     return (
       <aside className="not-in-range-info">
         ／ {i18n.t("replyComponent.referToScope")}
-        <a href={USER_REFERENCE} target="_blank" rel="noopener noreferrer">
-          {i18n.t("replyComponent.userGuide")}
-        </a>{i18n.t("fullStop")}
+        <Link href={`/editor/guideline`}>
+          <a>
+            {i18n.t("replyComponent.userGuide")}
+          </a>
+        </Link>
+        {i18n.t("fullStop")}
         <style jsx>{`
           .not-in-range-info {
             display: inline-block; /* line-break as a whole in small screen */

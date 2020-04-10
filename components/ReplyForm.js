@@ -6,6 +6,8 @@ import {
   TYPE_SUGGESTION_OPTIONS,
 } from '../constants/replyType';
 
+import Link from 'next/link'
+
 import { EDITOR_FACEBOOK_GROUP, EDITOR_REFERENCE } from '../constants/urls';
 import i18n from '../i18n';
 
@@ -141,9 +143,12 @@ export default class ReplyForm extends React.PureComponent {
       return (
         <p>
           {i18n.t("replyComponent.referToScope")}{' '}
-          <a href={EDITOR_REFERENCE} target="_blank" rel="noopener noreferrer">
-            {i18n.t("replyComponent.editingRules")}
-          </a>{i18n.t("fullStop")}
+          <Link href={`/editor/guideline`}>
+            <a>
+              {i18n.t("replyComponent.editingRules")}
+            </a>
+          </Link>
+          {i18n.t("fullStop")}
         </p>
       );
     }

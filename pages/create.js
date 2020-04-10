@@ -66,29 +66,45 @@ class CreateArticlePage extends React.Component {
                 {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
               </title>
             </Head>
-            <form onSubmit={this.handleSubmit}>
+            <main className={`wrapper-main`}>
+              <div className={`card article-form-wrapper`}>
+                <div className={`card-body`}>
+                  <div className={`form-wrapper m-3`}>
+                    <form onSubmit={this.handleSubmit}>
 
-              <h2>{i18n.t('pageCreate.articleTitle')}</h2>
-              <input type="text" name="title" />
+                      <h2>{i18n.t('pageCreate.articleTitle')}</h2>
+                      <input type="text" name="title" />
 
-              <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
-              <textarea name="text" rows="6" required />
+                      <h2>{i18n.t('pageCreate.articleBody')} *</h2>              
+                      <textarea name="text" rows="6" required />
 
-              <h2>{i18n.t('pageCreate.messageSource')}</h2>
-              <input type="text" name="references" />
+                      <h2>{i18n.t('pageCreate.messageSource')}</h2>
+                      <input type="text" name="references" />
 
-              <h2>{i18n.t('reason')}</h2>
-              <div class="form-text text-muted">
-                {i18n.t('pageCreate.reasonDetail')}
+                      <h2>{i18n.t('reason')}</h2>
+                      <div class="form-text text-muted">
+                        {i18n.t('pageCreate.reasonDetail')}
+                      </div>
+                      <textarea name="reason" row="2" />
+
+                      <hr />
+
+                      {isSubmitting?
+                      <div>
+                        กำลังส่งข้อความ ...
+                      </div>
+                      :
+                      <button type="submit" disabled={isSubmitting}>
+                        {i18n.t('pageCreate.sendMessage')}
+                      </button>
+                      }
+                      
+                    </form>
+                  </div>
+                </div>
               </div>
-              <textarea name="reason" row="2" />
+            </main>
 
-              <hr />
-
-              <button type="submit" className="btn btn-secondary" disabled={isSubmitting}>
-                {i18n.t('pageCreate.sendMessage')}
-              </button>
-            </form>
             <style jsx>{`
               .root {
                 padding: 0 40px 40px;
@@ -97,6 +113,10 @@ class CreateArticlePage extends React.Component {
               textarea,
               input {
                 width: 100%;
+              }
+
+              .article-form-wrapper {
+                background-image:url(/static/img/bg-article-form.${isSubmitting? 'svg': 'png'})
               }
             `}</style>
           </div>
