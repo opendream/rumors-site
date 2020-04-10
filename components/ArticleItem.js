@@ -32,25 +32,34 @@ export default function ArticleItem({
       <Link route="article" params={{ id }}>
         <a>
           {article.get('title') ? (
-            <div className="card-header d-flex">
-              <div className="item-replyRequestCount">
+            <div className="card-header d-flex align-items-center">
+              <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
               <div className="item-title">{article.get('title')}</div>
             </div>
             
           ) : (
-            <div className="card-body d-flex">
-              <div className="item-replyRequestCount">
+            <div className="card-header bg-white d-flex align-items-center">
+              <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
               <div className="item-text">{article.get('text')}</div>
             </div>
           )}
 
+          {article.get('title') ? (
+         
+         <div className="card-body">
+         {/*//TODO:: Change to localization key*/}
+         <div className="item-text">{article.get('text')}</div></div>
+         
+          ) : (
+            
+            ``
+          )}
+
           <div className="card-body">
-            {/*//TODO:: Change to localization key*/}
-            {/* <div className="item-text">{article.get('text')}</div> */}
             
             {/*//TODO:: Style these please*/}
             {articleCreator != null ? (

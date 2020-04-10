@@ -5,6 +5,20 @@ export const listItemStyle = css`
   .card {
     box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
   }
+  .card-header {
+    background: #CCD5D9;
+    border-color: #CCD5D9;
+  }
+
+  .card-header .item-title,
+  .card-header .item-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .card-header.bg-white {
+    border-color: #fff;
+  }
 
   .item-replyRequestCount {
     
@@ -16,6 +30,7 @@ export const listItemStyle = css`
     background-size: 25px;
   }
 
+  
 
   .item {
     --font-size: 0.8em; // for ArticleInfo && articleItemWidget layout
