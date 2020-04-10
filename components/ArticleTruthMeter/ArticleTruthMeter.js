@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ArticleTruthMeter({ replyConnections }) {
-  let normalizedTotalWeight = 0;
   let tag = '';
 
   const notRumorWeight = 1;

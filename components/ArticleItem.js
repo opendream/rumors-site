@@ -6,6 +6,7 @@ import { listItemStyle } from './ListItem.styles';
 import ArticleItemWidget from './ArticleItemWidget/ArticleItemWidget.js';
 import cx from 'classnames';
 import i18n from '../i18n';
+import FlaggedReplyInfomation from './FlaggedReplyInfomation';
 
 export default function ArticleItem({
   article,
@@ -22,17 +23,7 @@ export default function ArticleItem({
   }
 
   let replyAmount = 0;
-  let outOfScopeReplyAmount = 0;
-  let opinionReplyAmount = 0;
-  if (replyConnections != null) {
-    replyAmount = replyConnections.size;
-    replyConnections.map(reply => {
-      if (reply.get('reply').get('type') === 'NOT_ARTICLE')
-        outOfScopeReplyAmount++;
-      else if (reply.get('reply').get('type') === 'OPINIONATED')
-        opinionReplyAmount++;
-    });
-  }
+  if (replyConnections != null) replyAmount = replyConnections.size;
 
   return (
     <li
@@ -82,7 +73,9 @@ export default function ArticleItem({
               {/*//TODO:: Style these please*/}
               <div className="d-sm-flex mt-3">
                 {articleCreator != null ? (
-                  <div className="item-createBy mr-2 float-left">{articleCreator}</div>
+                  <div className="item-createBy mr-2 float-left">
+                    {articleCreator}
+                  </div>
                 ) : null}
                 <ArticleInfo article={article} />
                 {isLogin && (
@@ -93,17 +86,7 @@ export default function ArticleItem({
                     onChange={handleLocalEditorHelperList}
                   />
                 )}
-                {outOfScopeReplyAmount > 0 ? (
-                  <div className="item-outOfScopeReplyAmount">
-                    {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
-                  </div>
-                ) : null}
-
-                {opinionReplyAmount > 0 ? (
-                  <div className="item-opinionReplyAmount">
-                    {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
-                  </div>
-                ) : null}
+                <FlaggedReplyInfomation replyConnections={replyConnections} />
               </div>
             </div>
 
