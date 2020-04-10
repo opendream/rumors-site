@@ -16,7 +16,10 @@ export default function ArticleItem({
   replyConnections,
 }) {
   const id = article.get('id');
-  const articleCreator = article.get('user').get('name');
+  let articleCreator = null;
+  if (article.get('user') != null) {
+    articleCreator = article.get('user').get('name');
+  }
   const replyAmount = replyConnections.size;
 
   return (
@@ -40,12 +43,16 @@ export default function ArticleItem({
           )}
           <div className="item-text">{article.get('text')}</div>
           {/*//TODO:: Style these please*/}
-          <div className="item-createBy">{articleCreator}</div>
+          {articleCreator != null ? (
+            <div className="item-createBy">{articleCreator}</div>
+          ) : null}
+
           {replyAmount > 0 ? (
             <div className="item-replyAmount">
               {replyAmount} {i18n.t('thenReply')}
             </div>
           ) : null}
+
           {article.get('categories') ? (
             <div className={`mt-1 mb-1`}>
               {article.get('categories').map((item, i) => (
