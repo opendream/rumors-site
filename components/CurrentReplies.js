@@ -144,8 +144,8 @@ export default function CurrentReplies({
         </ul>
       </>
       : ``}
-      <h2>{i18n.t("existingResponse")}</h2>
-      <ul className="items">
+      {/* <h2>{i18n.t("existingResponse")}</h2>  */}
+      <div className="wrapper">
         {validConnections.map(conn => (
           <ReplyConnection
             key={`${conn.get('articleId')}__${conn.get('replyId')}`}
@@ -163,12 +163,13 @@ export default function CurrentReplies({
           disabled={disabled}
         />
 
-      </ul>
+      </div>
       <style jsx>{`
-        .items {
-          list-style-type: none;
-          padding-left: 0;
-        }
+        // .items {
+        //   list-style-type: none;
+        //   padding-left: 0;
+        // }
+        
       `}</style>
     </div>
   );

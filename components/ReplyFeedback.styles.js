@@ -15,7 +15,7 @@ export const feedbackStyle = css`
 
   .vote-num {
     // font-weight: bold;
-    font-weight: 400;
+    font-weight: 300;
     color: #252525;
     // margin-left: 0.5em;
   }

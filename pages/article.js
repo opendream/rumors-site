@@ -190,13 +190,13 @@ class ArticlePage extends React.Component {
           ) : (
             <span>
               {i18n.t('sentence.useRelavantReplies')}{' '}
-              <span className="badge">{relatedReplyCount}</span>
+              <span className="badge badge-primary">{relatedReplyCount}</span>
             </span>
           )}
         </li>
         <li
           onClick={this.handleTabChange('search')}
-          className={`tab ${tab === 'search' ? 'active' : ''}`}
+          className={`tab search ${tab === 'search' ? 'active' : ''}`}
         >
           {i18n.t('search')}
         </li>
@@ -610,9 +610,12 @@ class ArticlePage extends React.Component {
           <style jsx>{detailStyle}</style>
           <style jsx>{`
             .tab-content {
+              background: #fff;
               padding: 20px;
               border: 1px solid #ccc;
               border-top: 0;
+              border-bottom-left-radius: 10px;
+              border-bottom-right-radius: 10px;
             }
           `}</style>
         </div>

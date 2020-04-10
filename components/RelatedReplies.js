@@ -26,7 +26,7 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
         </strong>
       </header>
       <section className="section">
-        <h3>
+        <h3 className="section-title">
           {i18n.t("relatedInformation")}<span className="similarity">
             （{i18n.t("correlation")} ：<strong>{similarityPercentage} %</strong>）
           </span>
@@ -42,14 +42,14 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
         </blockquote>
       </section>
       <section className="section">
-        <h3>{i18n.t("respond")}</h3>
+        <h3 className="section-title">{i18n.t("respond")}</h3>
         <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
       </section>
       <footer>
         <Link route="reply" params={{ id: reply.get('id') }}>
           <a title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
         </Link>
-        ・<button type="button" value={reply.get('id')} onClick={onConnect}>
+        ・<button type="button" className="btn-copy btn-secondary btn-sm" value={reply.get('id')} onClick={onConnect}>
           {i18n.t("relatedReplies.buttonText")}
         </button>
       </footer>

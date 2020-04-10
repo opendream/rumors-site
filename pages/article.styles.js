@@ -167,6 +167,12 @@ export const tabMenuStyle = css`
   .tabs li {
     list-style: none;
   }
+  .tabs li.tab:first-child {
+    border-top-left-radius: 10px;
+  }
+  li.tab.search{
+    border-top-right-radius: 10px;
+  }
   .tab {
     padding: 16px 20px;
     border: 1px solid #ccc;

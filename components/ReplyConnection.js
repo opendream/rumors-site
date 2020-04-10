@@ -90,7 +90,7 @@ export default class ReplyConnection extends React.PureComponent {
             route="reply"
             params={{ id: replyConnection.getIn(['reply', 'id']) }}
           >
-            <a>{timeEl}</a>
+            <a className="text-muted">{timeEl}</a>
           </Link>
         ) : (
           timeEl
@@ -166,16 +166,18 @@ export default class ReplyConnection extends React.PureComponent {
     const reference = replyConnection.getIn(['reply', 'reference']);
     return (
       <section className="section">
-        <h3>{replyType === 'OPINIONATED' ? `${i18n.t("differentOpinions")}` : `${i18n.t("source")}`}</h3>
-        {reference
-          ? nl2br(linkify(reference))
-          : `⚠️️ ${i18n.t("sentence.responseHasNoSource")}`}
+        <h3 className="section-title">{replyType === 'OPINIONATED' ? `${i18n.t("differentOpinions")}` : `${i18n.t("source")}`}</h3>
+        <div className="bubble">
+          {reference
+            ? nl2br(linkify(reference))
+            : `⚠️️ ${i18n.t("sentence.responseHasNoSource")}`}
 
-        <Hyperlinks
-          hyperlinks={replyConnection.getIn(['reply', 'hyperlinks'])}
-          fetchCallback={(hyperlink) => hyperlinkFetchCallback(replyConnection.getIn(['reply', 'id']), hyperlink)} 
-          hyperlinkLoading={replyHyperlinkLoading}        
-        />
+          <Hyperlinks
+            hyperlinks={replyConnection.getIn(['reply', 'hyperlinks'])}
+            fetchCallback={(hyperlink) => hyperlinkFetchCallback(replyConnection.getIn(['reply', 'id']), hyperlink)} 
+            hyperlinkLoading={replyHyperlinkLoading}        
+          />
+        </div>
         <style jsx>{sectionStyle}</style>
       </section>
     );
@@ -188,8 +190,8 @@ export default class ReplyConnection extends React.PureComponent {
     const user = replyConnection.get('user');
 
     return (
-      <li className={`root ${user && user.get('belongTo')? 'verified': ''}`}>
-        <header className="section">
+      <div className={`root card card-secondary ${user && user.get('belongTo')? 'verified': ''}`}>
+        <header className="mb-2">
           {this.renderAuthor()}
           {i18n.t("markArticleAs")}：<strong title={TYPE_DESC[replyType]}>
             {TYPE_NAME[replyType]}
@@ -197,21 +199,31 @@ export default class ReplyConnection extends React.PureComponent {
           {this.renderHint()}
         </header>
         <section className="section">
-          <h3>{i18n.t(`reason`)}</h3>
-          <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
+          <h3 className="section-title">{i18n.t(`reason`)}</h3>
+          <div className="bubble">
+            <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
+          </div>
+          
         </section>
 
         {this.renderReference()}
         {this.renderFooter()}
 
         <style jsx>{`
+          .card-secondary {
+            background-color: #E9EDF0;
+            border: 1px solid #C9D4DA;
+            box-shadow: none;
+            padding: 1rem;
+            margin-bottom: 1rem;
+          }
           .root {
-            padding: 24px;
-            border: 1px solid #ccc;
-            border-top: 0;
+            // padding: 24px;
+            // border: 1px solid #ccc;
+            // border-top: 0;
           }
           .root:first-child {
-            border-top: 1px solid #ccc;
+            // border-top: 1px solid #ccc;
           }
           .root:hover {
             background-color: rgba(0, 0, 0, 0.05);
@@ -225,7 +237,7 @@ export default class ReplyConnection extends React.PureComponent {
           }
         `}</style>
         <style jsx>{sectionStyle}</style>
-      </li>
+      </div>
     );
   }
 }

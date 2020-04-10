@@ -92,16 +92,29 @@ export default class ReplyForm extends React.PureComponent {
   renderTypeSelect = () => {
     const { replyType } = this.state;
     return (
-      <p>
-        <select name="type" value={replyType} onChange={this.handleTypeChange}>
-          {['NOT_RUMOR', 'RUMOR_NOT_RUMOR', 'RUMOR', 'NOT_ARTICLE', 'OPINIONATED'].map(type => (
-            <option key={type} value={type}>
-              {TYPE_NAME[type]}
-            </option>
-          ))}
-        </select>
-        <span>：{TYPE_DESC[replyType]}</span>
-      </p>
+      <div className="form-inline mb-3">
+        <div className="form-group">
+          <select className="form-control" name="type" value={replyType} onChange={this.handleTypeChange}>
+            {['NOT_RUMOR', 'RUMOR_NOT_RUMOR', 'RUMOR', 'NOT_ARTICLE', 'OPINIONATED'].map(type => (
+              <option key={type} value={type}>
+                {TYPE_NAME[type]}
+              </option>
+            ))}
+          </select>
+          <span className="ml-2 badge">{TYPE_DESC[replyType]}</span>
+        </div>
+        <style jsx>{`
+          
+          .badge {
+            color: #252525;
+            font-weight: 300;
+            font-size: 0.95rem;
+            padding: .5em .75em;
+            background-color: #E9EDF0;
+            border-radius: 15px;
+          }
+        `}</style>
+      </div>
     );
   };
 
@@ -154,7 +167,7 @@ export default class ReplyForm extends React.PureComponent {
     }
 
     return (
-      <p>
+      <div className="form-group">
         <label htmlFor="reference">
           {replyType === 'OPINIONATED'
             ? `${i18n.t("sentence.referenceInput")}`
@@ -164,6 +177,7 @@ export default class ReplyForm extends React.PureComponent {
         <textarea
           required
           id="reference"
+          className="form-control"
           placeholder={i18n.t('replyComponent.descriptionTextLink')}
           onChange={this.handleReferenceChange}
           value={reference}
@@ -177,7 +191,7 @@ export default class ReplyForm extends React.PureComponent {
             font-weight: bold;
           }
         `}</style>
-      </p>
+      </div>
     );
   };
 
@@ -212,6 +226,7 @@ export default class ReplyForm extends React.PureComponent {
             font-style: italic;
             display: inline-block;
             color: #999;
+            margin-left: 5px;
           }
         `}</style>
       </span>
@@ -226,7 +241,7 @@ export default class ReplyForm extends React.PureComponent {
       <form onSubmit={this.handleSubmit}>
         {this.renderTypeSelect()}
 
-        <div>
+        <div className="form-group">
           <label htmlFor="text">{TYPE_INSTRUCTION[replyType]}</label>
           <br />
           {this.renderSuggestions()}
@@ -234,6 +249,7 @@ export default class ReplyForm extends React.PureComponent {
             required
             ref={el => (this._textEl = el)}
             id="text"
+            className="form-control"
             placeholder={i18n.t("replyComponent.countWord")}
             onChange={this.handleTextChange}
             value={text}
@@ -242,7 +258,7 @@ export default class ReplyForm extends React.PureComponent {
 
         {this.renderReferenceInput()}
 
-        <button className="btn btn-primary btn-lg" type="submit" disabled={disabled}>
+        <button className="btn btn-primary btn-md" type="submit" disabled={disabled}>
           {i18n.t("replyComponent.submitButton")}
         </button>
 

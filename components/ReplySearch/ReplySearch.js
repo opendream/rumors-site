@@ -69,7 +69,7 @@ export default class ReplySearch extends PureComponent {
             `${i18n.t('sentence.noRelatedArticles')}`
           ) : (
             <span>
-              {i18n.t('sentence.useRelavantReplies')} <span className="badge">{replisCount}</span>
+              {i18n.t('sentence.useRelavantReplies')} <span className="badge badge-primary">{replisCount}</span>
             </span>
           )}
         </li>
@@ -83,7 +83,7 @@ export default class ReplySearch extends PureComponent {
             `${i18n.t('sentence.noRelatedArticles')}`
           ) : (
             <span>
-              {i18n.t('sentence.browseRelatedArticles')} <span className="badge">{articlesCount}</span>
+              {i18n.t('sentence.browseRelatedArticles')} <span className="badge badge-primary">{articlesCount}</span>
             </span>
           )}
         </li>
@@ -91,6 +91,9 @@ export default class ReplySearch extends PureComponent {
         <style jsx>{`
           .tabs {
             margin-top: 20px;
+          }
+          .badge {
+            padding: 5px 12px;
           }
         `}</style>
         <style jsx>{tabMenuStyle}</style>
@@ -130,38 +133,43 @@ export default class ReplySearch extends PureComponent {
     const { articles, replies } = this.props;
 
     return (
-      <div>
-        <label htmlFor="replySeach">
-          {i18n.t('sentence.searchForRelevantReplies')}{' : '}
-          <input id="replySeach" type="search" onKeyUp={this.handleSearch} />
-        </label>
+      <div className="form">
+        <div className="form-inline">
+          <div className="form-group">
+            <label htmlFor="replySeach">
+              {i18n.t('sentence.searchForRelevantReplies')}{' : '}
+            </label>
+            <input id="replySeach" className="form-control ml-2" type="search" onKeyUp={this.handleSearch} />
+          </div>
+        </div>
+          
 
-        {articles.size || replies.size ? (
-          <Fragment>
-            {this.renderTabMenu()}
-            <div key="tab-content" className="tab-content">
-              {this.renderSearchReplyTab()}
-            </div>
-          </Fragment>
-        ) : (
-          search && (
-            <div className="search-none">{`- ${i18n.t("replySearch.findNo")}${search}${i18n.t('replySearch.relatedRepliesAndArticles')} -`}</div>
-          )
-        )}
+          {articles.size || replies.size ? (
+            <Fragment>
+              {this.renderTabMenu()}
+              <div key="tab-content" className="tab-content">
+                {this.renderSearchReplyTab()}
+              </div>
+            </Fragment>
+          ) : (
+            search && (
+              <div className="search-none">{`- ${i18n.t("replySearch.findNo")}${search}${i18n.t('replySearch.relatedRepliesAndArticles')} -`}</div>
+            )
+          )}
 
-        <style jsx>{`
-          .tab-content {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-top: 0;
-          }
-          .search-none {
-            margin-top: 20px;
-            color: gray;
-            text-align: center;
-          }
-        `}</style>
-      </div>
+          <style jsx>{`
+            .tab-content {
+              padding: 20px;
+              border: 1px solid #ccc;
+              border-top: 0;
+            }
+            .search-none {
+              margin-top: 20px;
+              color: gray;
+              text-align: center;
+            }
+          `}</style>
+        </div>
     );
   }
 }

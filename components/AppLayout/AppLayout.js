@@ -136,6 +136,10 @@ class AppLayout extends React.Component {
             min-width: 80px;
             font-size: 1.1rem !important;
           }
+          .btn.btn-md {
+            min-width: 140px;
+            font-size: 1.15rem;
+          }
 
           @media screen and (min-width: 768px) {
             .btn-primary {
@@ -172,7 +176,7 @@ class AppLayout extends React.Component {
           }
 
           .badge-primary {
-            background-color: #F0B4D0;
+            background-color: #F0B4D0 !important;
           }
 
           .bubble
@@ -183,7 +187,7 @@ class AppLayout extends React.Component {
                border-radius: 8px;
                 border: #C9D4DA solid 1px;
                 border-top-left-radius: 0;
-                margin: 1.5rem 0;
+                margin: 1rem 0;
             }
             
             .bubble:after
