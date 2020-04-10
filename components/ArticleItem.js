@@ -22,8 +22,16 @@ export default function ArticleItem({
   }
 
   let replyAmount = 0;
+  let outOfScopeReplyAmount = 0;
+  let opinionReplyAmount = 0;
   if (replyConnections != null) {
     replyAmount = replyConnections.size;
+    replyConnections.map(reply => {
+      if (reply.get('reply').get('type') === 'NOT_ARTICLE')
+        outOfScopeReplyAmount++;
+      else if (reply.get('reply').get('type') === 'OPINIONATED')
+        opinionReplyAmount++;
+    });
   }
 
   return (
@@ -42,7 +50,6 @@ export default function ArticleItem({
               </div>
               <div className="item-title">{article.get('title')}</div>
             </div>
-            
           ) : (
             <div className="card-header bg-white d-flex align-items-center">
               <div className="item-replyRequestCount mr-3">
@@ -53,18 +60,15 @@ export default function ArticleItem({
           )}
 
           {article.get('title') ? (
-         
-         <div className="card-body">
-         {/*//TODO:: Change to localization key*/}
-         <div className="item-text">{article.get('text')}</div></div>
-         
+            <div className="card-body">
+              {/*//TODO:: Change to localization key*/}
+              <div className="item-text">{article.get('text')}</div>
+            </div>
           ) : (
-            
             ``
           )}
 
           <div className="card-body">
-            
             {/*//TODO:: Style these please*/}
             {articleCreator != null ? (
               <div className="item-createBy">{articleCreator}</div>
@@ -73,6 +77,18 @@ export default function ArticleItem({
             {replyAmount > 0 ? (
               <div className="item-replyAmount">
                 {replyAmount} {i18n.t('thenReply')}
+              </div>
+            ) : null}
+
+            {outOfScopeReplyAmount > 0 ? (
+              <div className="item-outOfScopeReplyAmount">
+                {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
+              </div>
+            ) : null}
+
+            {opinionReplyAmount > 0 ? (
+              <div className="item-opinionReplyAmount">
+                {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
               </div>
             ) : null}
 
@@ -97,11 +113,10 @@ export default function ArticleItem({
                 onChange={handleLocalEditorHelperList}
               />
             )}
-
           </div>
         </a>
       </Link>
-      
+
       <style jsx>{listItemStyle}</style>
     </li>
   );
