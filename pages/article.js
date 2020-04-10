@@ -36,8 +36,8 @@ import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
 import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
-import Routes from "next-routes";
-import {Link} from "../routes";
+import Routes from 'next-routes';
+import { Link } from '../routes';
 
 class ArticlePage extends React.Component {
   state = {
@@ -270,7 +270,15 @@ class ArticlePage extends React.Component {
     }
     // console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
     return isEditable ? (
-        <Link route="edit" params={{ id: articleId}}>Edit</Link>
+      <div>
+        <Link route="edit" params={{ id: articleId }}>
+          Edit
+        </Link>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <Link route="delete" params={{ id: articleId }}>
+          Delete
+        </Link>
+      </div>
     ) : null;
   };
 
@@ -282,10 +290,6 @@ class ArticlePage extends React.Component {
   onArticleClick = () => {
     const isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
-  };
-
-  onEditArticleClick = () => {
-
   };
 
   render() {
@@ -341,19 +345,21 @@ class ArticlePage extends React.Component {
             {this.renderEditButton(replyConnections, user, article)}
             <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
-              {article.get('title')?
-              <div>
-                <h4>
-                  {nl2br(
-                    linkify(article.get('title'), {
-                      props: {
-                        target: '_blank',
-                      },
-                    })
-                  )}
-                </h4>
-              </div>
-              :``}
+              {article.get('title') ? (
+                <div>
+                  <h4>
+                    {nl2br(
+                      linkify(article.get('title'), {
+                        props: {
+                          target: '_blank',
+                        },
+                      })
+                    )}
+                  </h4>
+                </div>
+              ) : (
+                ``
+              )}
               <div>
                 {nl2br(
                   linkify(article.get('text'), {
@@ -363,8 +369,11 @@ class ArticlePage extends React.Component {
                   })
                 )}
               </div>
-              <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
-
+              <Hyperlinks
+                hyperlinks={article.get('hyperlinks')}
+                fetchCallback={this.handleFetchHyperlink}
+                hyperlinkLoading={aticleHyperlinkLoading}
+              />
             </article>
             <footer>
               {expanded
