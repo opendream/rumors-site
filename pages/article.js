@@ -286,7 +286,7 @@ class ArticlePage extends React.Component {
           </a>
         </Link>
 
-        <Link route="delete" params={{ id: articleId }}>
+        {/* <Link route="delete" params={{ id: articleId }}>
           <a className={``}>
             <img
               src={require('/static/img/icon/ic-delete@2x.png')}
@@ -294,7 +294,7 @@ class ArticlePage extends React.Component {
               alt="edit"
             />
           </a>
-        </Link>
+        </Link> */}
       </div>
     ) : null;
   };
