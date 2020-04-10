@@ -40,7 +40,7 @@ export default function AppFooter() {
       <style jsx>{`
         footer {
           // background: #343A40;
-          background: #343A40 url("static/img/bg-fill-footer@2x.png") no-repeat 180% -15px;
+          background: #343A40 url("/static/img/bg-fill-footer@2x.png") no-repeat 180% -15px;
           background-size: 70%;
           padding: 3rem 1rem;
           text-align: center;
@@ -86,7 +86,7 @@ export default function AppFooter() {
 
         @media screen and (min-width: 768px) {
           footer {
-            background: #343A40 url("static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
+            background: #343A40 url("/static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
             background-size: contain;
           }
           .menu-footer {
