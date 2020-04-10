@@ -15,6 +15,7 @@ import ReplyForm from 'components/ReplyForm';
 import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
 import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
+import FlaggedReplyInfomation from "../components/FlaggedReplyInfomation";
 
 import {
   load,
@@ -323,7 +324,6 @@ class ArticlePage extends React.Component {
       : !categories || categories.size === 0;
 
     const expanded = this.state.isExpanded;
-
     return (
       <AppLayout>
         <div className="wrapper-main">
@@ -363,40 +363,43 @@ class ArticlePage extends React.Component {
                 {this.renderEditButton(replyConnections, user, article)}
                 <ArticleTruthMeter replyConnections={replyConnections} />
                 <article className="message" onClick={this.onArticleClick}>
-                {article.get('title') ? (
-                  <div>
-                    <h4>
-                      {nl2br(
-                        linkify(article.get('title'), {
-                          props: {
-                            target: '_blank',
-                          },
-                        })
-                      )}
-                    </h4>
-                  </div>
-                ) : (
-                  ``
-                )}
-                <div>
-                  {nl2br(
-                    linkify(article.get('text'), {
-                      props: {
-                        target: '_blank',
-                      },
-                    })
+                  {article.get('title') ? (
+                    <div>
+                      <h4>
+                        {nl2br(
+                          linkify(article.get('title'), {
+                            props: {
+                              target: '_blank',
+                            },
+                          })
+                        )}
+                      </h4>
+                    </div>
+                  ) : (
+                    ``
                   )}
-                </div>
-                <Hyperlinks
-                  hyperlinks={article.get('hyperlinks')}
-                  fetchCallback={this.handleFetchHyperlink}
-                  hyperlinkLoading={aticleHyperlinkLoading}
-                />
-              </article>  
+                  <div>
+                    {nl2br(
+                      linkify(article.get('text'), {
+                        props: {
+                          target: '_blank',
+                        },
+                      })
+                    )}
+                  </div>
+                  <Hyperlinks
+                    hyperlinks={article.get('hyperlinks')}
+                    fetchCallback={this.handleFetchHyperlink}
+                    hyperlinkLoading={aticleHyperlinkLoading}
+                  />
+                </article>
               </div>
             </div>
-            
-            
+
+            {/*//TODO:: Style this*/}
+            <div className="replyCount">{replyConnections.size} ความเห็น</div>
+            <FlaggedReplyInfomation replyConnections={replyConnections} />
+
             <footer>
               {expanded
                 ? article.get('replyRequests').map((replyRequest, index) => {
