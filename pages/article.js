@@ -362,18 +362,36 @@ class ArticlePage extends React.Component {
             {this.renderEditButton(replyConnections, user, article)}
 
             <div className="card">
-              <div className="card-header d-md-flex align-items-center mb-3">
+
+              <div className={`card-header d-md-flex align-items-center mb-3 ${article.get('title')? 'has-title': 'no-title'}`}>
                 <div className="item-replyRequestCount mr-3">
                   {article.get('replyRequestCount')} คนสงสัย
                 </div>
+
                 {article.get('title')?
                 <div className="item-title">{article.get('title')}</div>
                 :``}
+
               </div>
-              <div className="card-body">
+              
               <div className="card-body d-md-flex justify-content-md-between pt-0">
                 <div className="card-body-left  d-flex flex-column justify-content-between">
                   <article className="" onClick={this.onArticleClick}>
+                    {article.get('title') ? (
+                      <div>
+                        <div>
+                          {nl2br(
+                            linkify(article.get('text'), {
+                              props: {
+                                target: '_blank',
+                              },
+                            })
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      ``
+                    )}
                     <div>
                       {nl2br(
                         linkify(article.get('text'), {
@@ -422,7 +440,7 @@ class ArticlePage extends React.Component {
                 </div>
               </div>
                 
-              </div>
+             
             </div>
 
             

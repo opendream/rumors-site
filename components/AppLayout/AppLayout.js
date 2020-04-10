@@ -171,14 +171,14 @@ class AppLayout extends React.Component {
           }
         
           div.home .wrapper-page {
-            background: url("static/img/bg-banner@2x.jpg") no-repeat center center !important;
+            background: url("/static/img/bg-banner@2x.jpg") no-repeat center center !important;
             background-size: cover !important;
             margin: -120px 0 0;
             padding: 120px 0 0px;
           }
           @media screen and (min-width: 769px) {
             div.home .wrapper-page {
-              background: url("static/img/bg-banner@2x.jpg") no-repeat top center !important;
+              background: url("/static/img/bg-banner@2x.jpg") no-repeat top center !important;
               background-size: cover !important;
               margin: -160px 0 0;
               padding: 160px 0 0px;
