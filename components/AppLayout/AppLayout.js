@@ -146,6 +146,15 @@ class AppLayout extends React.Component {
             color: #000;
           }
 
+          .btn-create::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+            background: url("/static/icon/btn-create@2x.png") no-repeat left center;
+            display: inline-block;
+          }
+
           .badge-primary {
             background-color: #F0B4D0;
           }
