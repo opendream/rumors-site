@@ -90,51 +90,61 @@ class CreateArticlePage extends React.Component {
                 <div className={`card-body`}>
                   <div className={`form-wrapper m-3`}>
                     <form onSubmit={this.handleSubmit}>
-                      <h2>{i18n.t('pageCreate.articleTitle')}</h2>
-                      <input
-                        type="text"
-                        name="title"
-                        defaultValue={defaultValue.get('title') || ''}
-                      />
-                      <h2>{i18n.t('pageCreate.articleBody')} *</h2>
-                      <textarea
-                        name="text"
-                        rows="6"
-                        defaultValue={defaultValue.get('text') || ''}
-                        required
-                      />
-                      <h2>{i18n.t('pageCreate.messageSource')}</h2>
-                      <input
-                        type="text"
-                        name="references"
-                        defaultValue={defaultValue.references || ''}
-                      />
-                      <h2>{i18n.t('reason')}</h2>
-                      <div className="form-text text-muted">
-                        {i18n.t('pageCreate.reasonDetail')}
+                      <div className="form-group">
+                        <h3>{i18n.t('pageCreate.articleTitle')}</h3>
+                        <input
+                          type="text"
+                          name="title"
+                          className="form-control"
+                          defaultValue={defaultValue.get('title') || ''}
+                        />
                       </div>
-                      <textarea
-                        name="reason"
-                        row="2"
-                        defaultValue={defaultValue.get('reason') || ''}
-                      />
-                      <hr />
-
-                      {isSubmitting?
-                      <div>
-                        กำลังส่งข้อความ ...
+                      <div className="form-group">
+                        <h3>{i18n.t('pageCreate.articleBody')} *</h3>
+                        <textarea
+                          name="text"
+                          rows="6"
+                          className="form-control"
+                          defaultValue={defaultValue.get('text') || ''}
+                          required
+                        />
                       </div>
-                      :
-                      initial?
-                      <button type="submit" disabled={isSubmitting}>
-                        {`บันทึก`}
-                      </button>
-                      :
-                      <button type="submit" disabled={isSubmitting}>
-                        {i18n.t('pageCreate.sendMessage')}
-                      </button>
-                      }
-                                            
+                      
+                      <div className="form-group">
+                        <h3>{i18n.t('pageCreate.messageSource')}</h3>
+                        <input
+                          type="text"
+                          name="references"
+                          className="form-control"
+                          defaultValue={defaultValue.references || ''}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <h3>{i18n.t('reason')}</h3>
+                        <small className="form-text text-muted">
+                          {i18n.t('pageCreate.reasonDetail')}
+                        </small>
+                        <textarea
+                          name="reason"
+                          row="2"
+                          className="form-control"
+                          defaultValue={defaultValue.get('reason') || ''}
+                        />
+                      </div>
+                      
+                      <div className="form-group">
+                        {isSubmitting ? (
+                          <div>กำลังส่งข้อความ ...</div>
+                        ) : initial ? (
+                          <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
+                            {`บันทึก`}
+                          </button>
+                        ) : (
+                          <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
+                            {i18n.t('pageCreate.sendMessage')}
+                          </button>
+                        )}
+                      </div>
                     </form>
                   </div>
                 </div>
