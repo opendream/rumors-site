@@ -106,9 +106,7 @@ class CreateArticlePage extends React.Component {
                         {i18n.t('pageCreate.sendMessage')}
                       </button>
                       }
-                      
-                      }
-                      
+                                            
                     </form>
                   </div>
                 </div>
