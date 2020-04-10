@@ -285,7 +285,7 @@ class ArticlePage extends React.Component {
             />
           </a>
         </Link>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+
         <Link route="delete" params={{ id: articleId }}>
           <a className={``}>
             <img

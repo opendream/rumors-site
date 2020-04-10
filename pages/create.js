@@ -17,7 +17,7 @@ class CreateArticlePage extends React.Component {
     this.setState({ isSubmitting: true });
 
     const initial = this.props.initial;
-    const id = initial.getIn(['article', 'id']);
+    const id = (initial && initial.getIn(['article', 'id'])) || null;
     const title = e.target.title.value.trim();
     const text = e.target.text.value.trim();
     const reason = e.target.reason.value.trim();
