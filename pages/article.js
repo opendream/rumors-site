@@ -400,6 +400,9 @@ class ArticlePage extends React.Component {
             <div className="replyCount">{replyConnections.size} ความเห็น</div>
             <FlaggedReplyInfomation replyConnections={replyConnections} />
 
+            <div className={"postCreator"}> {article.get('user').get('name')}</div>
+            <ArticleInfo article={article} />
+
             <footer>
               {expanded
                 ? article.get('replyRequests').map((replyRequest, index) => {
