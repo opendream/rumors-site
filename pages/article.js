@@ -275,7 +275,7 @@ class ArticlePage extends React.Component {
 
     // TODO: use icon instead text
     return isEditable ? (
-      <div class={`text-right`}>
+      <div class={`text-right my-2`}>
         <Link route="edit" params={{ id: articleId }}>
           <a className={``}>
             <img
@@ -285,8 +285,8 @@ class ArticlePage extends React.Component {
             />
           </a>
         </Link>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <Link route="delete" params={{ id: articleId }}>
+
+        {/* <Link route="delete" params={{ id: articleId }}>
           <a className={``}>
             <img
               src={require('/static/img/icon/ic-delete@2x.png')}
@@ -294,7 +294,7 @@ class ArticlePage extends React.Component {
               alt="edit"
             />
           </a>
-        </Link>
+        </Link> */}
       </div>
     ) : null;
   };
