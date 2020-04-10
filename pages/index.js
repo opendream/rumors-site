@@ -328,7 +328,7 @@ class IndexPage extends React.Component {
               /* Section LINE */
 
               .section-line {
-                background: #f0b4d0 url("static/img/bg-gp-cofact.png") no-repeat left center ;
+                background: #f0b4d0 url("/static/img/bg-gp-cofact.png") no-repeat left center ;
                 background-size: 90%;
                 min-height: 100vh;
               }
@@ -360,7 +360,7 @@ class IndexPage extends React.Component {
                 }
 
                 .add-line-qr {
-                  background: url("static/img/bg-white-check@2x.png") no-repeat right top;
+                  background: url("/static/img/bg-white-check@2x.png") no-repeat right top;
                   background-size: 100%;
                   margin-bottom: 1rem;
                   position: relative;
@@ -392,8 +392,8 @@ class IndexPage extends React.Component {
                   content: "";
                   width: 85%;
                   height: 130%;
-                  // background: url("static/img/bg-frame-iphone.png") no-repeat top center;
-                  background: url("static/img/frame-mobile-i7@2x.png") no-repeat top center;
+                  // background: url("/static/img/bg-frame-iphone.png") no-repeat top center;
+                  background: url("/static/img/frame-mobile-i7@2x.png") no-repeat top center;
                   background-size: 100%;
                   position: absolute;
                   left: 8%;
@@ -404,7 +404,7 @@ class IndexPage extends React.Component {
                 }
 
                 .add-line-sm {
-                  background: url("static/img/bg-white-sm.png") no-repeat top right;
+                  background: url("/static/img/bg-white-sm.png") no-repeat top right;
                   background-size: 100%;
                   padding: 0 0 0 2rem;
                   margin-right: -30px;
