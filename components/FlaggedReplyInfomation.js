@@ -14,7 +14,7 @@ export default function FlaggedReplyInfomation({ replyConnections }) {
 
   return (
     <div>
-      {replyConnections.size > 0 ? (
+      {replyConnections && replyConnections.size > 0 ? (
         <div>
           {outOfScopeReplyAmount > 0 ? (
             <div className="item-outOfScopeReplyAmount">
