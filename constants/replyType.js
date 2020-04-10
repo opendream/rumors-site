@@ -70,7 +70,7 @@ export const TYPE_SUGGESTION_OPTIONS = {
     },
     { 
       label: `${i18n.t('replyType.suggestion.not_article5.label')}`,
-      value: `${i18n.t('replyType.suggestion.not_article5.value Cofacts')}` 
+      value: `${i18n.t('replyType.suggestion.not_article5.value')}` 
     },
     { 
       label: `${i18n.t('replyType.suggestion.not_article6.label')}`, 
