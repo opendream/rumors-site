@@ -377,21 +377,20 @@ class ArticlePage extends React.Component {
                   <div className="item-text">{article.get('text')}</div>
                 </div>
               )}
-              <div className="card-body">
               <div className="card-body d-md-flex justify-content-md-between pt-0">
                 <div className="card-body-left  d-flex flex-column justify-content-between">
                   <article className="" onClick={this.onArticleClick}>
                     {article.get('title') ? (
                       <div>
-                        <h4>
+                        <div>
                           {nl2br(
-                            linkify(article.get('title'), {
+                            linkify(article.get('text'), {
                               props: {
                                 target: '_blank',
                               },
                             })
                           )}
-                        </h4>
+                        </div>
                       </div>
                     ) : (
                       ``
@@ -540,7 +539,7 @@ class ArticlePage extends React.Component {
                 </div>
               </div>
                 
-              </div>
+             
             </div>
 
             
