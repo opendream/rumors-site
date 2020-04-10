@@ -8,6 +8,7 @@ import replyList from './replyList';
 import userList from './userList';
 import articleDetail from './articleDetail';
 import replyDetail from './replyDetail';
+import editArticleDetail from "./editArticleDetail";
 import auth from './auth';
 
 const reducers = combineReducers({
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   articleDetail,
   replyDetail,
   auth,
+  editArticleDetail,
 });
 
 const enhancer = composeWithDevTools(applyMiddleware(thunk));
