@@ -91,7 +91,7 @@ export default function ArticleItem({
             </div>
 
             <div className="card-body-right">
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column align-items-center h-100 justify-content-end">
                 <ArticleTruthMeter replyConnections={replyConnections} />
 
                 {replyAmount > 0 ? (

@@ -355,7 +355,6 @@ class ArticlePage extends React.Component {
               {/* <div className="trendline">
                 <Trendline id={article.get('id')} />
               </div> */}
-              &nbsp;&nbsp;&nbsp;&nbsp;
               {/* <ArticleInfo article={article} /> */}
             </header>
 
@@ -363,7 +362,7 @@ class ArticlePage extends React.Component {
 
             <div className="card">
 
-              <div className={`card-header d-md-flex align-items-center mb-3 ${article.get('title')? 'has-title': 'no-title'}`}>
+              <div className={`card-header d-md-flex align-items-center mb-3 ${article.get('title')? 'has-title': 'no-title bg-white'}`}>
                 <div className="item-replyRequestCount mr-3">
                   {article.get('replyRequestCount')} คนสงสัย
                 </div>
@@ -376,7 +375,7 @@ class ArticlePage extends React.Component {
               
               <div className="card-body d-md-flex justify-content-md-between pt-0">
                 <div className="card-body-left  d-flex flex-column justify-content-between">
-                  <article className="" onClick={this.onArticleClick}>
+                  <article className="content" onClick={this.onArticleClick}>
                     {article.get('title') ? (
                       <div>
                         <div>
@@ -407,6 +406,12 @@ class ArticlePage extends React.Component {
                       hyperlinkLoading={aticleHyperlinkLoading}
                     />
                   </article>
+                  
+                  <div className="d-sm-flex mt-3">
+                    <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
+                    <ArticleInfo article={article} />
+                    <FlaggedReplyInfomation replyConnections={replyConnections} />
+                  </div>
                   <footer>
                     {expanded
                       ? article.get('replyRequests').map((replyRequest, index) => {
@@ -424,15 +429,10 @@ class ArticlePage extends React.Component {
                       : null}
 
                   </footer>
-                  <div className="d-sm-flex mt-3">
-                    <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
-                    <ArticleInfo article={article} />
-                    <FlaggedReplyInfomation replyConnections={replyConnections} />
-                  </div>
 
                 </div>
                 <div className="card-body-right">
-                  <div className="d-flex flex-column align-items-center">
+                  <div className="d-flex flex-column align-items-center h-100 justify-content-end">
                   
                     <ArticleTruthMeter replyConnections={replyConnections} />
                     <div className="replyCount item-replyAmount">{replyConnections.size} ความเห็น</div>
@@ -446,7 +446,7 @@ class ArticlePage extends React.Component {
             
             <div className={`mt-3`}>
               {categoriesEditMode ? (
-                <div className={`card`}>
+                <div className={`card card-secondary`}>
                   <div className="card-body">
                     <div>
                       <div>
@@ -501,7 +501,7 @@ class ArticlePage extends React.Component {
                           ))}
                         </div>
                         <div className={`mt-3`}>
-                          <button>{i18n.t(`save`)}</button>
+                          <button className="btn btn-primary btn-sm">{i18n.t(`save`)}</button>
                           <button
                             className={`btn btn-link`}
                             onClick={e => {

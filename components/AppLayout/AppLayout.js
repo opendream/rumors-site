@@ -132,6 +132,11 @@ class AppLayout extends React.Component {
             border-radius: 10px;
           }
 
+          .btn.btn-sm {
+            min-width: 80px;
+            font-size: 1.1rem !important;
+          }
+
           @media screen and (min-width: 768px) {
             .btn-primary {
               font-size: 20px;
@@ -156,12 +161,58 @@ class AppLayout extends React.Component {
           }
 
           .btn-link {
+            color: #000;
+            text-decoration: underline;
+            
+          }
+          .btn-link:hover,
+          .btn-link:active,
+          .btn-link:focus {
             color: #f0b4d0;
           }
 
           .badge-primary {
             background-color: #F0B4D0;
           }
+
+          .bubble
+            {
+               position: relative;
+               background: #F6F8FA;
+               padding: 0.5rem 1rem;
+               border-radius: 8px;
+                border: #C9D4DA solid 1px;
+                border-top-left-radius: 0;
+                margin: 1.5rem 0;
+            }
+            
+            .bubble:after
+            {
+              content: '';
+              position: absolute;
+              border-style: solid;
+              border-width: 0 10px 14px 0;
+              border-color: #F6F8FA transparent;
+              display: block;
+              width: 0;
+              z-index: 1;
+              top: -14px;
+              left: 0px;
+            }
+            
+            .bubble:before
+            {
+              content: '';
+              position: absolute;
+              border-style: solid;
+              border-width: 0px 12px 15px 0;
+              border-color: #C9D4DA transparent;
+              display: block;
+              width: 0;
+              z-index: 0;
+              top: -16px;
+              left: -1px;
+            }
 
           .w300 { font-weight: 300; }
 
@@ -247,6 +298,8 @@ class AppLayout extends React.Component {
             position: relative;
             bottom: 2px;
           }
+
+         
 
           
           

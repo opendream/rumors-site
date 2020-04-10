@@ -8,6 +8,11 @@ export const detailStyle = css`
   border: 0;
   border-radius: 10px;
 }
+.card-secondary {
+  background-color: #E9EDF0;
+  border: 1px solid #C9D4DA;
+  box-shadow: none;
+}
 .card-header {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -24,10 +29,6 @@ export const detailStyle = css`
   .card-header .item-text {
     font-size: 1.25rem;
     font-weight: 500;
-    // text-overflow: ellipsis;
-    // white-space: nowrap;
-    // overflow: hidden;
-    // max-width: 70%;
   }
 }
 
@@ -109,6 +110,16 @@ export const detailStyle = css`
     width: 25%;
   }
 }
+
+article.content {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+article.content a {
+  color: #F0B4D0;
+}
+
+
 
 
 
