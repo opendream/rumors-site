@@ -6,14 +6,8 @@ export default function ArticleInfo({ article }) {
   const createdAt = moment(article.get('createdAt'));
   return (
     <div className="root">
-      {article.get('replyRequestCount')} {i18n.t("return")}
-      {article.get('replyCount') > 0 ? (
-        <span>・{article.get('replyCount')} {i18n.t("thenReply")}</span>
-      ) : (
-        ''
-      )}
       {createdAt.isValid() ? (
-        <span title={createdAt.format('lll')}>・{createdAt.fromNow()}</span>
+        <span title={createdAt.format('lll')}>{createdAt.fromNow()}</span>
       ) : (
         ''
       )}
