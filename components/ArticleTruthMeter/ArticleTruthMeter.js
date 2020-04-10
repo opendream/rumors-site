@@ -1,6 +1,4 @@
 import React from 'react';
-import OutOfScopeImage from './img/ic-no-scope.png';
-import HasOpinionImage from './img/ic-comment.png';
 
 export default function ArticleTruthMeter({ replyConnections }) {
   let totalWeight = 0;
@@ -13,13 +11,9 @@ export default function ArticleTruthMeter({ replyConnections }) {
   const notRumorWeight = 1;
   const rumorWeight = -1;
 
-  let isOutOfScope = false;
-  let hasOpinion = false;
 
   let notRumorCount = 0;
   let rumorCount = 0;
-  let hasOpinionCount = 0;
-  let outOfScopeCount = 0;
 
 
   if (typeof replyConnections != 'undefined') {
@@ -52,14 +46,6 @@ export default function ArticleTruthMeter({ replyConnections }) {
             minPossibleWeight
           );
           gaugeDegree = calcDegreeFromNormalizedWeight(normalizedTotalWeight);
-          break;
-        case 'NOT_ARTICLE':
-          outOfScopeCount++;
-          isOutOfScope = true;
-          break;
-        case 'OPINIONATED':
-          hasOpinion++;
-          hasOpinion = true;
           break;
       }
 
@@ -131,8 +117,6 @@ export default function ArticleTruthMeter({ replyConnections }) {
   return (
     <div className={tag}>
       <p>Normalized Weight tag : {tag}</p>
-      {isOutOfScope ? <img src={OutOfScopeImage} /> : null}
-      {hasOpinion ? <img src={HasOpinionImage} /> : null}
     </div>
   );
 }

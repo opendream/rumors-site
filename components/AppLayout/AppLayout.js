@@ -146,6 +146,10 @@ class AppLayout extends React.Component {
             color: #000;
           }
 
+          .badge-primary {
+            background-color: #F0B4D0;
+          }
+
           .w300 { font-weight: 300; }
 
 
@@ -211,7 +215,7 @@ class AppLayout extends React.Component {
           }
 
           input[type=checkbox] {
-            position: absolute;
+            position: absolute !important;
             left: -1000em;
           }
           input[type=checkbox]:checked+label:before {

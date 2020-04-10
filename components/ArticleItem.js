@@ -44,7 +44,7 @@ export default function ArticleItem({
       <Link route="article" params={{ id }}>
         <a>
           {article.get('title') ? (
-            <div className="card-header d-flex align-items-center">
+            <div className="card-header d-flex align-items-center mb-3">
               <div className="item-replyRequestCount mr-3">
                 {article.get('replyRequestCount')} คนสงสัย
               </div>
@@ -59,60 +59,67 @@ export default function ArticleItem({
             </div>
           )}
 
-          {article.get('title') ? (
-            <div className="card-body">
-              {/*//TODO:: Change to localization key*/}
-              <div className="item-text">{article.get('text')}</div>
+          <div className="card-body d-flex justify-content-between pt-0">
+            <div className="card-body-left">
+              {article.get('title') ? (
+                <div className="item-text">{article.get('text')}</div>
+              ) : (
+                ``
+              )}
+              <div>
+                {article.get('categories') ? (
+                  <div className={`mt-1 mb-1`}>
+                    {article.get('categories').map((item, i) => (
+                      <span key={i} className="badge badge-primary mr-2">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  ``
+                )}
+              </div>
+              {/*//TODO:: Style these please*/}
+              <div className="d-flex">
+                {articleCreator != null ? (
+                  <div className="item-createBy mr-2">{articleCreator}</div>
+                ) : null}
+
+                {outOfScopeReplyAmount > 0 ? (
+                  <div className="item-outOfScopeReplyAmount">
+                    {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
+                  </div>
+                ) : null}
+
+                {opinionReplyAmount > 0 ? (
+                  <div className="item-opinionReplyAmount">
+                    {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
+                  </div>
+                ) : null}
+
+                <ArticleInfo article={article} />
+                {isLogin && (
+                  <ArticleItemWidget
+                    id={id}
+                    read={read}
+                    notArticleReplied={notArticleReplied}
+                    onChange={handleLocalEditorHelperList}
+                  />
+                )}
+              </div>
             </div>
-          ) : (
-            ``
-          )}
 
-          <div className="card-body">
-            {/*//TODO:: Style these please*/}
-            {articleCreator != null ? (
-              <div className="item-createBy">{articleCreator}</div>
-            ) : null}
+            <div className="card-body-right">
+              <div className="d-flex flex-column align-items-center">
+                <ArticleTruthMeter replyConnections={replyConnections} />
 
-            {replyAmount > 0 ? (
-              <div className="item-replyAmount">
-                {replyAmount} {i18n.t('thenReply')}
+                {replyAmount > 0 ? (
+                  <div className="item-replyAmount">
+                    {replyAmount} {i18n.t('thenReply')}
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-
-            {outOfScopeReplyAmount > 0 ? (
-              <div className="item-outOfScopeReplyAmount">
-                {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
-              </div>
-            ) : null}
-
-            {opinionReplyAmount > 0 ? (
-              <div className="item-opinionReplyAmount">
-                {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
-              </div>
-            ) : null}
-
-            {article.get('categories') ? (
-              <div className={`mt-1 mb-1`}>
-                {article.get('categories').map((item, i) => (
-                  <span key={i} className="badge badge-secondary mr-2">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              ``
-            )}
-            {/*<ArticleTruthMeter replyConnections={replyConnections} />*/}
-            <ArticleInfo article={article} />
-            {isLogin && (
-              <ArticleItemWidget
-                id={id}
-                read={read}
-                notArticleReplied={notArticleReplied}
-                onChange={handleLocalEditorHelperList}
-              />
-            )}
+            </div>
           </div>
         </a>
       </Link>

@@ -20,17 +20,49 @@ export const listItemStyle = css`
     border-color: #fff;
   }
 
-  .item-replyRequestCount {
-    
+  .badge {
+    font-weight: 400;
+    padding: 5px 10px;
+    min-width: 60px;
+    font-size: 90%;
   }
+
   .item-replyRequestCount::before {
     content: "";
     padding-right: 30px;
     background: url(/static/img/icon/ic-que@2x.png) no-repeat left center;
     background-size: 25px;
   }
+  .item-createBy {
+    color: #9E9E9E;
+    font-size: 90%;
+  }
+  .item-createBy::before {
+    content: "";
+    padding-right: 25px;
+    background: url(/static/img/icon/ic-profile@2x.png) no-repeat left center;
+    background-size: 20px;
+  }
 
+  .item-replyAmount::before {
+    content: "";
+    padding-right: 25px;
+    background: url(/static/img/icon/ic-comment@2x.png) no-repeat left center;
+    background-size: 20px;
+  }
   
+  @media screen and (min-width: 768px) {
+    .card-body-left {
+      width: 75%
+    }
+    .card-body-right {
+      width: 25%;
+    }
+  }
+  
+
+
+
 
   .item {
     --font-size: 0.8em; // for ArticleInfo && articleItemWidget layout
@@ -76,6 +108,7 @@ export const listItemStyle = css`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    max-width: 70%;
   }
   a {
     text-decoration: none;
