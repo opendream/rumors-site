@@ -14,7 +14,7 @@ import ReplySearch from 'components/ReplySearch/ReplySearch.js';
 import ReplyForm from 'components/ReplyForm';
 import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
-import ArticleTruthMeter from "../components/ArticleTruthMeter/ArticleTruthMeter";
+import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
 
 import {
   load,
@@ -36,6 +36,8 @@ import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
 import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
+import Routes from "next-routes";
+import {Link} from "../routes";
 
 class ArticlePage extends React.Component {
   state = {
@@ -131,7 +133,6 @@ class ArticlePage extends React.Component {
   };
 
   handleFetchHyperlink = hyperlink => {
-
     const { dispatch, id } = this.props;
     return dispatch(
       fetchArticleHyperlink({
@@ -142,9 +143,7 @@ class ArticlePage extends React.Component {
   };
 
   handleFetchReplyHyperlink = (replyId, hyperlink) => {
-
     const { dispatch, id } = this.props;
-    console.log('dispatch', dispatch)
     return dispatch(
       fetchReplyHyperlink({
         hyperlink,
@@ -249,6 +248,32 @@ class ArticlePage extends React.Component {
     }
   };
 
+  renderEditButton = (replyConnections, user, articleDetail) => {
+    // console.log (": articleDetail : "+ articleDetail);
+    const articleId = articleDetail.get('id');
+    let isEditable = false;
+    let isZeroReply = true;
+    let isCreatorViewing = false;
+    let articleCreatorId = articleDetail.get('user').get('id');
+
+    if (user != null) {
+      let loggedInUserId = user.get('id');
+      if (articleCreatorId === loggedInUserId) isCreatorViewing = true;
+    }
+
+    if (replyConnections.size > 0) {
+      isZeroReply = false;
+    }
+
+    if (isCreatorViewing && isZeroReply) {
+      isEditable = true;
+    }
+    // console.log(isEditable+" : "+isZeroReply+" : "+isCreatorViewing);
+    return isEditable ? (
+        <Link route="edit" params={{ id: articleId}}>Edit</Link>
+    ) : null;
+  };
+
   onLoginClick = title => {
     const { dispatch } = this.props;
     dispatch(showDialog(title));
@@ -257,6 +282,10 @@ class ArticlePage extends React.Component {
   onArticleClick = () => {
     const isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
+  };
+
+  onEditArticleClick = () => {
+
   };
 
   render() {
@@ -309,7 +338,7 @@ class ArticlePage extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
-
+            {this.renderEditButton(replyConnections, user, article)}
             <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {article.get('title')?
@@ -335,6 +364,7 @@ class ArticlePage extends React.Component {
                 )}
               </div>
               <Hyperlinks hyperlinks={article.get('hyperlinks')} fetchCallback={this.handleFetchHyperlink} hyperlinkLoading={aticleHyperlinkLoading} />
+
             </article>
             <footer>
               {expanded
@@ -461,9 +491,8 @@ class ArticlePage extends React.Component {
               onDelete={this.handleReplyConnectionDelete}
               onRestore={this.handleReplyConnectionRestore}
               onVote={this.handleReplyConnectionVote}
-              hyperlinkFetchCallback={this.handleFetchReplyHyperlink} 
+              hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
               replyHyperlinkLoading={replyHyperlinkLoading}
-              
             />
           </section>
           <section className="section">
@@ -532,8 +561,14 @@ function mapStateToProps({ articleDetail, auth }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
-    aticleHyperlinkLoading: articleDetail.getIn(['state', 'aticleHyperlinkLoading']),
-    replyHyperlinkLoading: articleDetail.getIn(['state', 'replyHyperlinkLoading']),
+    aticleHyperlinkLoading: articleDetail.getIn([
+      'state',
+      'aticleHyperlinkLoading',
+    ]),
+    replyHyperlinkLoading: articleDetail.getIn([
+      'state',
+      'replyHyperlinkLoading',
+    ]),
     categoriesEditMode: articleDetail.getIn(['state', 'categoriesEditMode']),
     data: articleDetail.get('data'),
     user: auth.get('user'),

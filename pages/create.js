@@ -60,7 +60,7 @@ class CreateArticlePage extends React.Component {
     return (
       <body>
         <AppLayout>
-          <div className="root">
+          <div className="wrapper-main">
             <Head>
               <title>
                 {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
@@ -104,6 +104,7 @@ class CreateArticlePage extends React.Component {
                 </div>
               </div>
             </main>
+
             <style jsx>{`
               .root {
                 padding: 0 40px 40px;
