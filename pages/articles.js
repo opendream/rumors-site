@@ -426,10 +426,12 @@ class Articles extends ListPage {
       <div className={`article-wrapper`}>
         {totalCount > 0 ? (
           <div>
-            <p>
-              {totalCount} {i18n.t('pageArticles.articles')}
-            </p>
-            {this.renderPagination()}
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="text-muted">
+                {totalCount} {i18n.t('pageArticles.articles')}
+              </div>
+              {this.renderPagination()}
+            </div>
             <ul className="article-list">
               {articles.map(article => {
                 const id = article.get('id');
@@ -453,8 +455,8 @@ class Articles extends ListPage {
             {this.renderPagination()}
           </div>
         ) : (
-          <div>
-            <h4 className={`mt-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
+          <div className="">
+            <h4 className={`my-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
           </div>
         )}
 
@@ -471,9 +473,10 @@ class Articles extends ListPage {
         <style jsx>
           {`
             .article-wrapper {
-              border-top: 1px solid rgba(0, 0, 0, 0.3);
-              margin-top: 1rem;
+              // border-top: 1px solid rgba(0, 0, 0, 0.3);
+              // margin-top: 1rem;
             }
+            
             .article-list {
               list-style: none;
               display: flex;

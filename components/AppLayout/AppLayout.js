@@ -107,6 +107,23 @@ class AppLayout extends React.Component {
             border-radius: 3px;
           }
 
+          .btn-sm { 
+            padding: 2px 10px;
+            border-radius: 15px;
+          }
+
+          .btn-secondary {
+            background-color: #90A2AB;
+            border-color: #90A2AB !important;
+          }
+
+          .btn-secondary:hover,
+          .btn-secondary:active,
+          .btn-secondary:focus {
+            background-color: #728188 !important;
+            border-color: #728188 !important;
+          }
+
           .btn-primary {
             background-color: #f0b4d0;
             border-color: #f0b4d0;
