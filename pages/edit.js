@@ -34,7 +34,6 @@ import {
 import i18n from '../i18n';
 
 import { detailStyle, tabMenuStyle } from './article.styles';
-import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
 import Routes from 'next-routes';
 import { Link } from '../routes';
 
@@ -248,32 +247,6 @@ class EditArticlePage extends React.Component {
     }
   };
 
-  renderEditButton = (replyConnections, user, articleDetail) => {
-    // console.log (": articleDetail : "+ articleDetail);
-    const articleId = articleDetail.get('id');
-    let isEditable = false;
-    let isZeroReply = true;
-    let isCreatorViewing = false;
-    let articleCreatorId = articleDetail.get('user').get('id');
-
-    if (user != null) {
-      let loggedInUserId = user.get('id');
-      if (articleCreatorId === loggedInUserId) isCreatorViewing = true;
-    }
-
-    if (replyConnections.size > 0) {
-      isZeroReply = false;
-    }
-
-    if (isCreatorViewing && isZeroReply) {
-      isEditable = true;
-    }
-    return isEditable ? (
-      <Link route="edit" params={{ id: '1' }}>
-        Edit
-      </Link>
-    ) : null;
-  };
 
   onLoginClick = title => {
     const { dispatch } = this.props;
@@ -293,17 +266,16 @@ class EditArticlePage extends React.Component {
     console.log('DATATATATA : ' + data);
 
     const article = data.get('article');
-    const replyConnections = data.get('replyConnections');
-    const relatedArticles = data.get('relatedArticles');
 
     if (article === null) {
       return <div>article Edit not found.</div>;
     }
 
     const slicedArticleTitle = article.get('text').slice(0, 15);
-    const categories = article.get('categories');
-
+    const existingText = data.get('article').get('text');
     const expanded = this.state.isExpanded;
+
+    console.log("Existing Title : "+existingText);
 
     return (
       <AppLayout>
@@ -314,17 +286,39 @@ class EditArticlePage extends React.Component {
               {i18n.t('realOrFake')}
             </title>
           </Head>
+
+          <section className="section">
+            <form onSubmit={this.handleSubmit}>
+
+              <h2>{i18n.t( 'pageCreate.articleTitle' )}</h2>
+              <input type="text" name="title" placeholder ={existingText} />
+
+              <h2>{i18n.t( 'pageCreate.articleBody' )} *</h2>
+              <textarea name="text" rows="6" placeholder ={existingText}/>
+
+              <h2>{i18n.t( 'pageCreate.messageSource' )}</h2>
+              <input type="text" name="references"placeholder ={existingText}/>
+
+              <h2>{i18n.t( 'reason' )}</h2>
+              <div className="form-text text-muted">
+                {i18n.t( 'pageCreate.reasonDetail' )}
+              </div>
+              <textarea name="reason" row="2"/>
+
+              <hr/>
+
+              <button type="submit">
+                {i18n.t( 'pageCreate.sendMessage' )}
+              </button>
+            </form>
+          </section>
+
           <section className="section">
             <header className="header">
-              <h2>{i18n.t('originalMessage')}</h2>
-              {/* <div className="trendline">
-                <Trendline id={article.get('id')} />
-              </div> */}
+              <h2>PREVIEW</h2>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ArticleInfo article={article} />
             </header>
-            {this.renderEditButton(replyConnections, user, article)}
-            <ArticleTruthMeter replyConnections={replyConnections} />
             <article className="message" onClick={this.onArticleClick}>
               {nl2br(
                 linkify(article.get('text'), {
@@ -351,67 +345,6 @@ class EditArticlePage extends React.Component {
                 : null}
             </footer>
           </section>
-          <section
-            id="current-replies"
-            className="section"
-            ref={replySectionEl => (this._replySectionEl = replySectionEl)}
-          >
-            <CurrentReplies
-              replyConnections={replyConnections}
-              onDelete={this.handleReplyConnectionDelete}
-              onRestore={this.handleReplyConnectionRestore}
-              onVote={this.handleReplyConnectionVote}
-              hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
-            />
-          </section>
-          <section className="section">
-            <h2>{i18n.t('addNewResponse')}</h2>
-
-            {user ? (
-              <div>
-                {this.renderTabMenu()}
-                <div className="tab-content">{this.renderNewReplyTab()}</div>
-              </div>
-            ) : (
-              <div>
-                {i18n.t('please')} &nbsp;
-                <a
-                  href="#"
-                  className={``}
-                  onClick={e => {
-                    e.preventDefault();
-                    this.onLoginClick(i18n.t('login'));
-                  }}
-                >
-                  {i18n.t('login')}
-                </a>&nbsp;
-                {i18n.t('or')}&nbsp;
-                <a
-                  href="#"
-                  className={``}
-                  onClick={e => {
-                    e.preventDefault();
-                    this.onLoginClick(i18n.t('signup'));
-                  }}
-                >
-                  {i18n.t('signup')}
-                </a>&nbsp;
-                {i18n.t('first')}
-              </div>
-            )}
-          </section>
-          {relatedArticles.size ? (
-            <section className="section">
-              <h2>{i18n.t('sentence.similarArticles')}</h2>
-              <div>
-                {relatedArticles.map(article => (
-                  <ArticleItem key={article.get('id')} article={article} />
-                ))}
-              </div>
-            </section>
-          ) : (
-            ''
-          )}
           <style jsx>{detailStyle}</style>
           <style jsx>{`
             .tab-content {
