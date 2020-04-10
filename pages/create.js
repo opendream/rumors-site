@@ -60,7 +60,7 @@ class CreateArticlePage extends React.Component {
     return (
       <body>
         <AppLayout>
-          <div className="root">
+          <div className="wrapper-main">
             <Head>
               <title>
                 {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
@@ -85,7 +85,7 @@ class CreateArticlePage extends React.Component {
 
               <hr />
 
-              <button type="submit" disabled={isSubmitting}>
+              <button type="submit" className="btn btn-secondary" disabled={isSubmitting}>
                 {i18n.t('pageCreate.sendMessage')}
               </button>
             </form>

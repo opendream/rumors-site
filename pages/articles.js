@@ -324,17 +324,18 @@ class Articles extends ListPage {
             Component="div"
             className="btn-group btn-group-toggle"
           >
-            <label className="btn btn-outline-dark">
+  
+            <label className="link">
               <Radio value="all" />
-              {i18n.t('all')}
+              <span className="btn btn-outline-dark btn-first">{i18n.t('all')}</span>
             </label>
-            <label className="btn btn-outline-dark">
+            <label className="link">
               <Radio value="unsolved" />
-              {i18n.t('notRepliedYet')}
+              <span className="btn btn-outline-dark btn-middle">{i18n.t('notRepliedYet')}</span>
             </label>
-            <label className="btn btn-outline-dark">
+            <label className="link">
               <Radio value="solved" />
-              {i18n.t('replied')}
+              <span className="btn btn-outline-dark btn-last">{i18n.t('replied')}</span>
             </label>
             
           </RadioGroup>
@@ -363,6 +364,7 @@ class Articles extends ListPage {
       </div>
         <style>
           {`
+            
             .reply-request-count {
               width: 2em;
             }
@@ -375,8 +377,33 @@ class Articles extends ListPage {
               margin-right: 0.5rem;
             }
 
-            
+            .btn-group-toggle input {
+              display: none;
+            }
+            .btn-group-toggle .link { 
+              display: flex;
+              margin-bottom: 0;
+            }
 
+            .btn-group-toggle .btn.btn-first {
+              
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            }
+            .btn-group-toggle .btn.btn-last {
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+            .btn-group-toggle .btn.btn-middle {
+              border-radius: 0;
+              border-left: 0;
+              border-right: 0;
+            }
+
+            .btn-group-toggle input:checked ~ .btn {
+              background-color: #343a40;
+              color: #fff;
+            }
             @media screen and (min-width: 768px) {
               .btn-group-toggle .btn {
                 padding: 0.5rem 1.25rem;
