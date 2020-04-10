@@ -9,59 +9,54 @@ export default function ArticleTruthMeter({ replyConnections }) {
   let tag = '';
 
   const notRumorWeight = 1;
-  const rumorWeight = -1;
-
+  const rumorNotRumorWeight = 0.5;
+  const rumorWeight = 0;
 
   let notRumorCount = 0;
   let rumorCount = 0;
+  let rumorNotRumorCount = 0;
 
+  let totalReplyTypes = [];
 
   if (typeof replyConnections != 'undefined') {
     let userWeight = 0;
     replyConnections.map(connections => {
       const replyType = connections.get('reply').get('type');
       const userType = connections.get('user').get('belongTo');
+      console.log('TYPE : ' + replyType);
 
+      userWeight = calcUserWeight(userType);
       switch (replyType) {
         case 'NOT_RUMOR':
           notRumorCount++;
-          userWeight = calcUserWeight(userType);
-          updateMinMax(userWeight);
-          totalWeight += notRumorWeight * userWeight;
-          normalizedTotalWeight = calcNormalizeWeight(
-            totalWeight,
-            maxPossibleWeight,
-            minPossibleWeight
-          );
-          gaugeDegree = calcDegreeFromNormalizedWeight(normalizedTotalWeight);
+          totalReplyTypes.push(userWeight * notRumorWeight);
+          break;
+        case 'RUMOR_NOT_RUMOR':
+          rumorNotRumorCount++;
+          totalReplyTypes.push(userWeight * rumorNotRumorWeight);
+
           break;
         case 'RUMOR':
           rumorCount++;
-          userWeight = calcUserWeight(userType);
-          updateMinMax(userWeight);
-          totalWeight += rumorWeight * userWeight;
-          normalizedTotalWeight = calcNormalizeWeight(
-            totalWeight,
-            maxPossibleWeight,
-            minPossibleWeight
-          );
-          gaugeDegree = calcDegreeFromNormalizedWeight(normalizedTotalWeight);
+          totalReplyTypes.push(userWeight * rumorWeight);
           break;
       }
 
       tag = convertNormalizeWeightToTags(normalizedTotalWeight);
-      console.log(
-        'TOTAL WEIGHT : ' +
-          totalWeight +
-          ' : ' +
-          normalizedTotalWeight +
-          ' : ' +
-          tag +
-          ' : ' +
-          gaugeDegree +
-          'deg'
-      );
     });
+
+    var avgRadians = calcDegreeFromReply(totalReplyTypes);
+    console.log(totalReplyTypes + ' : AVG Radian : ' + avgRadians);
+  }
+
+  function calcDegreeFromReply(totalReplyTypes) {
+    let typeRadian = 180 / (totalReplyTypes.length - 1);
+    let totalRadians = totalReplyTypes
+      .map((total, i) => i * typeRadian * total)
+      .reduce((a, b) => a + b, 0);
+    let totalReplies = totalReplyTypes.reduce((a, b) => a + b, 0);
+    let avgRadians = totalRadians / totalReplies;
+    return avgRadians;
   }
 
   function calcDegreeFromNormalizedWeight(normalizedTotalWeight) {
