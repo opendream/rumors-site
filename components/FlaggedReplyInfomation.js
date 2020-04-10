@@ -3,7 +3,9 @@ import React from 'react';
 export default function FlaggedReplyInfomation({ replyConnections }) {
   let outOfScopeReplyAmount = 0;
   let opinionReplyAmount = 0;
-  if (replyConnections != null) {
+  let replyAmount = 0;
+  if (replyConnections !== undefined) {
+    replyAmount = replyConnections.size;
     replyConnections.map(reply => {
       if (reply.get('reply').get('type') === 'NOT_ARTICLE')
         outOfScopeReplyAmount++;
@@ -14,7 +16,7 @@ export default function FlaggedReplyInfomation({ replyConnections }) {
 
   return (
     <div>
-      {replyConnections.size > 0 ? (
+      {replyAmount > 0 ? (
         <div>
           {outOfScopeReplyAmount > 0 ? (
             <div className="item-outOfScopeReplyAmount">
