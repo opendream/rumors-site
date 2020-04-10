@@ -150,8 +150,8 @@ class AppLayout extends React.Component {
             content: "";
             width: 20px;
             height: 20px;
-            background-size: cover;
-            background: url("/static/icon/btn-create@2x.png") no-repeat left center;
+            background-size: cover !important;
+            background: url("/static/img/icon/btn-create@2x.png") no-repeat left center;
             display: inline-block;
           }
 
