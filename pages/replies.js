@@ -174,7 +174,7 @@ class ReplyList extends ListPage {
 
     return (
       <AppLayout>
-        <main>
+        <main className="wrapper-main">
           <Head>
             <title>{i18n.t("pageReplies.replyList")}</title>
           </Head>

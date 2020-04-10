@@ -249,16 +249,25 @@ class Articles extends ListPage {
     }
 
     return (
-      <div className="text-right">
-        <span>
+      <div className="text-md-right">
+        
+        <div class="input-group">
           <select
             onChange={this.handleOrderByChange}
             value={orderBy || 'createdAt'}
+            className="custom-select"
           >
             <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
             <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
           </select>
-        </span>
+        </div>
+        <style jsx>
+          {`
+            .custom-selectl { 
+              max-width: 330px;
+             }
+        `}
+        </style>
       </div>
     );
   };
@@ -274,7 +283,7 @@ class Articles extends ListPage {
       <div>
         <div className="row">
           {/* TODO: waiting for backend */}
-          <div className={`col`}>
+          <div className={`col-12`}>
             <div className={`wrapper-cat mt-3 mt-md-0`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
@@ -284,12 +293,12 @@ class Articles extends ListPage {
                   value={categories}
                   onChange={this.handleCategoriesChange}
                   Component="ul"
-                  className="mb-4 border-bottom d-md-flex justify-content-md-between"
+                  className="mb-4 border-bottom flex-md-wrap d-md-flex justify-content-md-start"
                 >
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                    <li key={i} className="form-check form-check-inline" >
-                      <label className="mb-3">
-                        <Checkbox value={item} />
+                    <li key={i} className="form-check form-check-inline col-12 col-md-4 col-lg-3 col-xl-2 p-0 m-0" >
+                      <Checkbox value={item} id={i} />
+                      <label className="mb-3" for={i}>
                         {item}
                       </label>
                     </li>
@@ -306,8 +315,8 @@ class Articles extends ListPage {
         `}
         </style>
       </div>
-      <div className="row">
-        <div className={`col`}>
+      <div className="row align-items-center">
+        <div className={`col-12 col-md-8 col-xl-10 mb-3 mb-md-0`}>
           {/* <h5>{i18n.t('reply')}</h5> */}
           <RadioGroup
             onChange={this.handleFilterChange}
@@ -315,21 +324,22 @@ class Articles extends ListPage {
             Component="div"
             className="btn-group btn-group-toggle"
           >
-            <label className="btn btn-secondary">
-              <Radio value="unsolved" />
-              {i18n.t('notRepliedYet')}
-            </label>
-            <label className="btn btn-secondary">
-              <Radio value="solved" />
-              {i18n.t('replied')}
-            </label>
-            <label className="btn btn-secondary">
+            <label className="btn btn-outline-dark">
               <Radio value="all" />
               {i18n.t('all')}
             </label>
+            <label className="btn btn-outline-dark">
+              <Radio value="unsolved" />
+              {i18n.t('notRepliedYet')}
+            </label>
+            <label className="btn btn-outline-dark">
+              <Radio value="solved" />
+              {i18n.t('replied')}
+            </label>
+            
           </RadioGroup>
         </div>
-        <div className="col">
+        <div className="col-12 col-sm-8 col-md-4 col-xl-2">
           {/* {i18n.t('pageArticles.orderBy')}: */}
           {this.renderOrderBy()}
         </div>
@@ -337,15 +347,16 @@ class Articles extends ListPage {
       </div>
       <div className={`row mt-3`}>
         <div className={`col-12`}>
-          <label>
-            <input
+          <input
               type="checkbox"
+              id="countcheck"
               checked={
                 +replyRequestCount === 1 ||
                 typeof replyRequestCount === 'undefined'
               }
               onChange={this.handleReplyRequestCountCheck}
             />{' '}
+          <label for="countcheck">
             {i18n.t('pageArticles.listArticlesIncludeOne')}
           </label>
         </div>
@@ -362,6 +373,17 @@ class Articles extends ListPage {
             }
             ul li input {
               margin-right: 0.5rem;
+            }
+
+            
+
+            @media screen and (min-width: 768px) {
+              .btn-group-toggle .btn {
+                padding: 0.5rem 1.25rem;
+                border-radius: .75rem;
+                font-size: 1.15rem;
+                font-weight: 300;
+              }
             }
         `}
         </style>
@@ -404,10 +426,12 @@ class Articles extends ListPage {
       <div className={`article-wrapper`}>
         {totalCount > 0 ? (
           <div>
-            <p>
-              {totalCount} {i18n.t('pageArticles.articles')}
-            </p>
-            {this.renderPagination()}
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="text-muted">
+                {totalCount} {i18n.t('pageArticles.articles')}
+              </div>
+              {this.renderPagination()}
+            </div>
             <ul className="article-list">
               {articles.map(article => {
                 const id = article.get('id');
@@ -431,8 +455,8 @@ class Articles extends ListPage {
             {this.renderPagination()}
           </div>
         ) : (
-          <div>
-            <h4 className={`mt-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
+          <div className="">
+            <h4 className={`my-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
           </div>
         )}
 
@@ -449,9 +473,10 @@ class Articles extends ListPage {
         <style jsx>
           {`
             .article-wrapper {
-              border-top: 1px solid rgba(0, 0, 0, 0.3);
-              margin-top: 1rem;
+              // border-top: 1px solid rgba(0, 0, 0, 0.3);
+              // margin-top: 1rem;
             }
+            
             .article-list {
               list-style: none;
               display: flex;

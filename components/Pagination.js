@@ -10,14 +10,14 @@ export default function Pagination({
   lastCursorOfPage,
 }) {
   return (
-    <p>
+    <div className="wrapper-pager">
       {firstCursor && firstCursor !== firstCursorOfPage ? (
         <Link
           route={url.format({
             query: { ...query, before: firstCursorOfPage, after: undefined },
           })}
         >
-          <a>ย้อนกลับ</a>
+          <a className="btn btn-sm btn-secondary"> &laquo; ย้อนกลับ</a>
         </Link>
       ) : (
         ''
@@ -28,16 +28,17 @@ export default function Pagination({
             query: { ...query, after: lastCursorOfPage, before: undefined },
           })}
         >
-          <a>ถัดไป</a>
+          <a className="btn btn-sm btn-secondary">ต่อไป &raquo;</a>
         </Link>
       ) : (
         ''
       )}
       <style jsx>{`
-        a {
-          padding: 8px;
+        .wrapper-pager { 
+          margin: 0.5rem 0;
+          text-align: right;
         }
       `}</style>
-    </p>
+    </div>
   );
 }
