@@ -255,7 +255,7 @@ class ArticlePage extends React.Component {
     let isEditable = false;
     let isZeroReply = true;
     let isCreatorViewing = false;
-    let articleCreatorId = articleDetail.get('user').get('id');
+    let articleCreatorId = articleDetail.getIn(['user', 'id']) || 0;
 
     if (user != null) {
       let loggedInUserId = user.get('id');
@@ -425,7 +425,7 @@ class ArticlePage extends React.Component {
 
                   </footer>
                   <div className="d-sm-flex mt-3">
-                    <span className={"postCreator item-createBy"}> {article.get('user').get('name')}</span>
+                    <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
                     <ArticleInfo article={article} />
                     <FlaggedReplyInfomation replyConnections={replyConnections} />
                   </div>
