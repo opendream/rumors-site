@@ -249,8 +249,9 @@ class Articles extends ListPage {
     }
 
     return (
-      <div className="text-md-right">
+      <div className="text-md-right float-md-right">
         <div className="input-group">
+          <div className="caret"></div>
           <select
             onChange={this.handleOrderByChange}
             value={orderBy || 'createdAt'}
@@ -318,7 +319,7 @@ class Articles extends ListPage {
           </style>
         </div>
         <div className="row align-items-center">
-          <div className={`col-12 col-md-8 col-xl-10 mb-3 mb-md-0`}>
+          <div className={`col-12 col-md-8 mb-3 mb-md-0`}>
             {/* <h5>{i18n.t('reply')}</h5> */}
             <RadioGroup
               onChange={this.handleFilterChange}
@@ -342,7 +343,7 @@ class Articles extends ListPage {
               
             </RadioGroup>
           </div>
-          <div className="col-12 col-sm-8 col-md-4 col-xl-2">
+          <div className="col-12 col-sm-8 col-md-4 text-md-right">
             {/* {i18n.t('pageArticles.orderBy')}: */}
             {this.renderOrderBy()}
           </div>
@@ -385,6 +386,9 @@ class Articles extends ListPage {
               display: flex;
               margin-bottom: 0;
             }
+            .btn-group-toggle .btn {
+              border-radius: .75rem;
+            }
 
             .btn-group-toggle .btn.btn-first {
               
@@ -405,12 +409,23 @@ class Articles extends ListPage {
               background-color: #343a40;
               color: #fff;
             }
+            @media screen and (min-width: 375px) {
+              .btn-group-toggle .btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 1rem;
+                font-weight: 300;
+              }
+            }
+            @media screen and (min-width: 425px) {
+              .btn-group-toggle .btn {
+                padding: 0.5rem 1rem;
+                font-size: 1.1rem;
+              }
+            }
             @media screen and (min-width: 768px) {
               .btn-group-toggle .btn {
+                font-size: 1.25rem;
                 padding: 0.5rem 1.25rem;
-                border-radius: .75rem;
-                font-size: 1.15rem;
-                font-weight: 300;
               }
             }
         `}

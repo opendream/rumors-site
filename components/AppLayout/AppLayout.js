@@ -321,6 +321,46 @@ class AppLayout extends React.Component {
             color: #fff;
           }
           
+          .input-group {
+            background: url(/static/img/icon/ic-select@2x.png) no-repeat left center;
+            background-size: 20px;
+            padding-left: 20px;
+            border-bottom: 1px solid #000;
+            min-width: 200px;
+          }
+          .custom-select {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            
+          }
+          .input-group .caret {
+            position: absolute;
+            right: 15px;
+            bottom: 50%;
+            transform: translate(-50%,0);
+          }
+          
+          .input-group .caret:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top: 7px solid #252525;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+          }
+          
+          .input-group .caret:after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 0;
+            border-top: 5px solid #F6F8FA;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+          }
+          
         `}</style>
         
       </Fragment>

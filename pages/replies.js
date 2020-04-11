@@ -69,18 +69,22 @@ class ReplyList extends ListPage {
       query: { orderBy, q },
     } = this.props;
     if (q) {
-      return <span> Relevance</span>;
+      return <span className="text-md-right"> Relevance</span>;
     }
 
     return (
+        <div className="input-group">
+          <div className="caret"></div>
           <select
-          onChange={this.handleOrderByChange}
-          className="form-control"
-          value={orderBy || 'createdAt_DESC'}
-        >
-          <option value="createdAt_DESC">Most recently written</option>
-          <option value="createdAt_ASC">Least recently written</option>
-        </select>
+            onChange={this.handleOrderByChange}
+            className="form-control custom-select"
+            value={orderBy || 'createdAt_DESC'}
+          >
+            <option value="createdAt_DESC">Most recently written</option>
+            <option value="createdAt_ASC">Least recently written</option>
+          </select>
+        </div>
+          
 
     );
   };
@@ -191,11 +195,11 @@ class ReplyList extends ListPage {
           </Head>
           <h2 className="mb-2 mb-lg-3">{i18n.t("pageReplies.replyList")}</h2>
           
-          <div className="d-flex justify-content-between">
+          <div className="d-md-flex justify-content-md-between">
             {this.renderSearch()}
             <div className="form-inline">
               <div className="form-group">
-                <label className="mr-2">Order By:</label>
+                {/* <label className="mr-2">Order By:</label> */}
                 {this.renderOrderBy()}
               </div>
             </div>
