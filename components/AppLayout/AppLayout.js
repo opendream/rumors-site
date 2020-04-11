@@ -131,6 +131,9 @@ class AppLayout extends React.Component {
             color: #000;
             border-radius: 10px;
           }
+          .btn.btn-sm.btn-primary {
+            font-size: 1.1rem !important;
+          }
 
           .btn.btn-sm {
             min-width: 80px;
@@ -172,6 +175,10 @@ class AppLayout extends React.Component {
           .btn-link:active,
           .btn-link:focus {
             color: #f0b4d0;
+          }
+
+          .badge {
+            white-space: pre-wrap
           }
 
           .badge-primary {
@@ -302,9 +309,17 @@ class AppLayout extends React.Component {
             bottom: 2px;
           }
 
-         
-
-          
+          .btn-group-link .btn {
+            margin-right: 0.5rem;
+          }
+          .btn-group-link input[type=radio] {
+            position: absolute !important;
+            left: -1000em;
+          }
+          .btn-group-link input:checked ~ .btn {
+            background-color: #343a40;
+            color: #fff;
+          }
           
         `}</style>
         

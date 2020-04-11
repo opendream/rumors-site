@@ -168,6 +168,7 @@ export default class ReplySearch extends PureComponent {
               color: gray;
               text-align: center;
             }
+            
           `}</style>
         </div>
     );

@@ -47,15 +47,20 @@ class ReplyList extends ListPage {
       query: { q },
     } = this.props;
     return (
-      <label>
-        Search For:
-        <input
-          type="search"
-          onBlur={this.handleKeywordChange}
-          onKeyUp={this.handleKeywordKeyup}
-          defaultValue={q}
-        />
-      </label>
+      <div className="form-inline">
+        <div className="form-group">
+          <label className="mr-2"> Search For:
+          </label>
+          <input
+            type="search"
+            onBlur={this.handleKeywordChange}
+            onKeyUp={this.handleKeywordKeyup}
+            className="form-control"
+            defaultValue={q}
+          />
+        </div>
+      </div>
+      
     );
   };
 
@@ -68,13 +73,15 @@ class ReplyList extends ListPage {
     }
 
     return (
-      <select
-        onChange={this.handleOrderByChange}
-        value={orderBy || 'createdAt_DESC'}
-      >
-        <option value="createdAt_DESC">Most recently written</option>
-        <option value="createdAt_ASC">Least recently written</option>
-      </select>
+          <select
+          onChange={this.handleOrderByChange}
+          className="form-control"
+          value={orderBy || 'createdAt_DESC'}
+        >
+          <option value="createdAt_DESC">Most recently written</option>
+          <option value="createdAt_ASC">Least recently written</option>
+        </select>
+
     );
   };
 
@@ -86,14 +93,18 @@ class ReplyList extends ListPage {
     if (!isLoggedIn) return null;
 
     return (
-      <label>
+      <div>
         <input
           type="checkbox"
           onChange={this.handleMyReplyOnlyCheck}
           checked={!!mine}
+          id="onlyMine"
         />
-        {i18n.t("pageReplies.onlyMine")}
-      </label>
+        <label for="onlyMine">  
+          {i18n.t("pageReplies.onlyMine")}
+        </label>
+      </div>
+      
     );
   }
 
@@ -102,25 +113,25 @@ class ReplyList extends ListPage {
       query: { filter },
     } = this.props;
     return (
-      <RadioGroup
-        onChange={this.handleFilterChange}
-        selectedValue={filter || 'all'}
-        Component="ul"
-      >
-        <li>
-          <label>
-            <Radio value="all" />All
+        <RadioGroup
+          onChange={this.handleFilterChange}
+          selectedValue={filter || 'all'}
+          Component="div"
+          className="btn-group-link btn-group-toggle"
+        >
+          <label className="link">
+            <Radio value="all" />
+            <span className="btn btn-outline-dark">All</span>
           </label>
-        </li>
-        {['NOT_ARTICLE', 'OPINIONATED', 'NOT_RUMOR', 'RUMOR'].map(type => (
-          <li key={type}>
-            <label>
-              <Radio value={type} title={TYPE_DESC[type]} />
-              {TYPE_NAME[type]}
+          {['NOT_ARTICLE', 'OPINIONATED', 'NOT_RUMOR', 'RUMOR'].map(type => (
+            <label className="link" key={type}>
+              <Radio id={type} value={type} title={TYPE_DESC[type]} />
+              <span className="btn btn-outline-dark">{TYPE_NAME[type]}</span>
             </label>
-          </li>
-        ))}
-      </RadioGroup>
+          ))}
+
+        </RadioGroup>
+      
     );
   };
 
@@ -152,7 +163,7 @@ class ReplyList extends ListPage {
     } = this.props;
     return (
       <div>
-        <p>{totalCount} replies</p>
+        <p className="text-muted mt-3">{totalCount} replies</p>
         {this.renderPagination()}
         <div className="reply-list">
           {replies.map(reply => (
@@ -178,13 +189,23 @@ class ReplyList extends ListPage {
           <Head>
             <title>{i18n.t("pageReplies.replyList")}</title>
           </Head>
-          <h2>{i18n.t("pageReplies.replyList")}</h2>
-          {this.renderSearch()}
+          <h2 className="mb-2 mb-lg-3">{i18n.t("pageReplies.replyList")}</h2>
+          
+          <div className="d-flex justify-content-between">
+            {this.renderSearch()}
+            <div className="form-inline">
+              <div className="form-group">
+                <label className="mr-2">Order By:</label>
+                {this.renderOrderBy()}
+              </div>
+            </div>
+          </div>
           <br />
-          Order By:
-          {this.renderOrderBy()}
-          {this.renderFilter()}
-          {this.renderMyReplyOnlyCheckbox()}
+          <div className="">
+            {this.renderFilter()}
+            {this.renderMyReplyOnlyCheckbox()}
+          </div>
+          
           {isLoading ? <p>Loading...</p> : this.renderList()}
           <style jsx>{mainStyle}</style>
         </main>

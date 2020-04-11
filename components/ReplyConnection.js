@@ -102,6 +102,7 @@ export default class ReplyConnection extends React.PureComponent {
                 key="delete"
                 disabled={disabled}
                 onClick={this.handleAction}
+                className="mb-2 mb-md-0"
               >
                 {actionText}
               </button>,

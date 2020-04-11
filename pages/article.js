@@ -407,7 +407,7 @@ class ArticlePage extends React.Component {
                     />
                   </article>
                   
-                  <div className="d-sm-flex mt-3">
+                  <div className="d-flex mt-3">
                     <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
                     <ArticleInfo article={article} />
                     <FlaggedReplyInfomation replyConnections={replyConnections} />

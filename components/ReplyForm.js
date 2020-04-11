@@ -94,7 +94,7 @@ export default class ReplyForm extends React.PureComponent {
     return (
       <div className="form-inline mb-3">
         <div className="form-group">
-          <select className="form-control" name="type" value={replyType} onChange={this.handleTypeChange}>
+          <select className="form-control mb-2 mb-md-0" name="type" value={replyType} onChange={this.handleTypeChange}>
             {['NOT_RUMOR', 'RUMOR_NOT_RUMOR', 'RUMOR', 'NOT_ARTICLE', 'OPINIONATED'].map(type => (
               <option key={type} value={type}>
                 {TYPE_NAME[type]}

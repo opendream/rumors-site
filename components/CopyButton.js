@@ -39,7 +39,7 @@ export default class CopyButton extends React.PureComponent {
   render() {
     const { tooltipAttrs } = this.state;
     return (
-      <button ref={this.copyBtnRef} className="btn-copy btn-secondary btn-sm" {...tooltipAttrs}>
+      <button ref={this.copyBtnRef} className="btn-copy btn-secondary btn-sm " {...tooltipAttrs}>
         {i18n.t('copyToClipboard')}
         <style jsx>{`
           .btn-copy {

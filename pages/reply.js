@@ -207,17 +207,17 @@ class ReplyPage extends React.Component {
     return (
       <div className={``}>
         <AppLayout>
-          <div className="root">
+          <div className="root wrapper-main">
             <Head>
               <title>{reply.get('text').slice(0, 15)}⋯⋯ - {i18n.t("reply")}</title>
             </Head>
 
             <section className="section">
-              <header className="header">
+              <header className="header d-flex justify-content-between">
                 <h2>{i18n.t("originalMessage")}</h2>
                 {this.renderArticleLink()}
               </header>
-              <div className="message">
+              <div className="message ">
                 {nl2br(
                   linkify(originalArticle.get('text'), {
                     props: { target: '_blank' },
