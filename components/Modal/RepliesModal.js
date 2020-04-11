@@ -30,9 +30,9 @@ export default function RepliesModal({ replies, onConnect, onModalClose }) {
               </section>
               <footer>
                 <Link route="reply" params={{ id: replyId }}>
-                  <a title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
+                  <a className="text-muted" title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
                 </Link>
-                ・<button type="button" value={replyId} onClick={onConnect}>
+                ・<button type="button" className="btn-sm btn-secondary" value={replyId} onClick={onConnect}>
                   {i18n.t('repliesModal.buttonText')}
                 </button>
               </footer>
@@ -41,6 +41,7 @@ export default function RepliesModal({ replies, onConnect, onModalClose }) {
         })}
       </ul>
       <style jsx>{`
+        
         .items {
           list-style-type: none;
           padding-left: 0;

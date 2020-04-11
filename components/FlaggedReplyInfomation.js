@@ -17,13 +17,13 @@ export default function FlaggedReplyInfomation({ replyConnections }) {
       {replyConnections && replyConnections.size > 0 ? (
         <div className="d-lg-flex">
           {outOfScopeReplyAmount > 0 ? (
-            <div className="item-outOfScopeReplyAmount mb-2">
+            <div className="item-outOfScopeReplyAmount mb-2 mb-lg-0">
               {outOfScopeReplyAmount} คนว่า ไม่อยู่ในขอบเขตการตรวจสอบ
             </div>
           ) : null}
 
           {opinionReplyAmount > 0 ? (
-            <div className="item-opinionReplyAmount mb-2">
+            <div className="item-opinionReplyAmount mb-2 mb-lg-0">
               {opinionReplyAmount} คนว่า มีความเห็นส่วนตัว
             </div>
           ) : null}

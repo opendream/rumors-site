@@ -412,24 +412,23 @@ class ArticlePage extends React.Component {
                     <ArticleInfo article={article} />
                     <FlaggedReplyInfomation replyConnections={replyConnections} />
                   </div>
-                  <footer>
-                    {expanded
-                      ? article.get('replyRequests').map((replyRequest, index) => {
-                          return (
-                            <ReplyRequestReason
-                              key={`reason-${index}`}
-                              index={index}
-                              articleId={article.get('id')}
-                              replyRequest={replyRequest}
-                              isArticleCreator={index === 0}
-                              onVoteReason={this.handleVoteReplyRequest}
-                            />
-                          );
-                        })
-                      : null}
-
-                  </footer>
-
+              
+                  {expanded
+                    ? article.get('replyRequests').map((replyRequest, index) => {
+                        return (
+                          <footer>
+                          <ReplyRequestReason
+                            key={`reason-${index}`}
+                            index={index}
+                            articleId={article.get('id')}
+                            replyRequest={replyRequest}
+                            isArticleCreator={index === 0}
+                            onVoteReason={this.handleVoteReplyRequest}
+                          />
+                          </footer>
+                        );
+                      })
+                    : null}
                 </div>
                 <div className="card-body-right">
                   <div className="d-flex flex-column align-items-center h-100 justify-content-end">

@@ -134,7 +134,6 @@ class AppLayout extends React.Component {
 
           .btn.btn-sm {
             min-width: 80px;
-            font-size: 1.1rem !important;
           }
           .btn.btn-md {
             min-width: 140px;

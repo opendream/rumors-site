@@ -10,7 +10,7 @@ export default class Modal extends PureComponent {
           </div>
 
           <div className="modal fade d-block show">
-            <div className="modal-dialog modal-dialog-centered modal-sm">
+            <div className="modal-dialog modal-dialog-centered modal-md">
               <div className="modal-content">
                 <div className="modal-body">
                   <button type="button" className="close" onClick={onClose}>
