@@ -332,6 +332,7 @@ class AppLayout extends React.Component {
             background: none;
             border: none;
             font-size: 1.25rem;
+            font-weight: 300;
             
           }
           .input-group .caret {

@@ -25,7 +25,7 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
           {TYPE_NAME[reply.get('type')]}
         </strong>
       </header>
-      <section className="section">
+      <section className="">
         <h3 className="section-title">
           {i18n.t("relatedInformation")}<span className="similarity">
             {i18n.t("correlation")} ：<strong>{similarityPercentage} %</strong>
