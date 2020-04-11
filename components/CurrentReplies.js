@@ -40,7 +40,7 @@ class DeletedItems extends React.Component {
           transform: 'none',
         }}
       >
-        <h1>{i18n.t("deletedResponse")}</h1>
+        <h2>{i18n.t("deletedResponse")}</h2>
         <ul className="items">
           {items.map(conn => (
             <ReplyConnection
