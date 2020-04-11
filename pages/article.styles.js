@@ -112,7 +112,7 @@ export const detailStyle = css`
 }
 
 article.content {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 400;
 }
 article.content a {

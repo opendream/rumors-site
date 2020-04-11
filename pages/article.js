@@ -595,8 +595,10 @@ class ArticlePage extends React.Component {
             )}
           </section>
           {relatedArticles.size ? (
+            
             <section className="section">
-              <h2>{i18n.t('sentence.similarArticles')}</h2>
+              <hr className="mb-2 mb-md-4" />
+              <h3 className="pb-2 pb-md-4">{i18n.t('sentence.similarArticles')}</h3>
               <div>
                 {relatedArticles.map(article => (
                   <ArticleItem key={article.get('id')} article={article} />

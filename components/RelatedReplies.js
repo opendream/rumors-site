@@ -28,7 +28,7 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
       <section className="section">
         <h3 className="section-title">
           {i18n.t("relatedInformation")}<span className="similarity">
-            （{i18n.t("correlation")} ：<strong>{similarityPercentage} %</strong>）
+            {i18n.t("correlation")} ：<strong>{similarityPercentage} %</strong>
           </span>
         </h3>
         <blockquote>
@@ -41,13 +41,13 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
           </ExpandableText>
         </blockquote>
       </section>
-      <section className="section">
+      <section className="">
         <h3 className="section-title">{i18n.t("respond")}</h3>
-        <ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText>
+        <div className="bubble"><ExpandableText>{nl2br(linkify(reply.get('text')))}</ExpandableText></div>
       </section>
       <footer>
         <Link route="reply" params={{ id: reply.get('id') }}>
-          <a title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
+          <a className="text-muted" title={createdAt.format('lll')}>{createdAt.fromNow()}</a>
         </Link>
         ・<button type="button" className="btn-copy btn-secondary btn-sm" value={reply.get('id')} onClick={onConnect}>
           {i18n.t("relatedReplies.buttonText")}
@@ -74,7 +74,12 @@ function RelatedReplyItem({ article, reply, similarity, onConnect }) {
           margin-left: 0;
         }
         .similarity {
-          font-weight: normal;
+          font-weight: 400;
+          background-color: #E9EDF0;
+          border-radius: 10px;
+          margin: 0 5px;
+          padding: 0 10px;
+          font-size: 0.9rem;
         }
       `}</style>
       <style jsx>{sectionStyle}</style>
