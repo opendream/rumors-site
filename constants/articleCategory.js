@@ -5,5 +5,6 @@ export const TYPE_ARTICLE_OPTIONS = [
   i18n.t('articleCategory.cancer'),
   i18n.t('articleCategory.loseWeight'),
   i18n.t('articleCategory.herbalMedicine'),
-  i18n.t('articleCategory.COVID-19')
+  i18n.t('articleCategory.COVID-19'),
+  'อย. เพิกถอน',
 ]

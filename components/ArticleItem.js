@@ -23,7 +23,7 @@ export default function ArticleItem({
   }
 
   let replyAmount = 0;
-  if (replyConnections != null) replyAmount = replyConnections.size;
+  if (replyConnections != null) replyAmount = replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size;
 
   return (
     <li

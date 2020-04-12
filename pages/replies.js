@@ -49,7 +49,7 @@ class ReplyList extends ListPage {
     return (
       <div className="form-inline">
         <div className="form-group">
-          <label className="mr-2"> Search For:
+          <label className="mr-2"> ค้นหา:
           </label>
           <input
             type="search"
@@ -69,7 +69,7 @@ class ReplyList extends ListPage {
       query: { orderBy, q },
     } = this.props;
     if (q) {
-      return <span className="text-md-right"> Relevance</span>;
+      return <span className="text-md-right"> {i18n.t('pageArticles.relevance')}</span>;
     }
 
     return (
@@ -80,8 +80,8 @@ class ReplyList extends ListPage {
             className="form-control custom-select"
             value={orderBy || 'createdAt_DESC'}
           >
-            <option value="createdAt_DESC">Most recently written</option>
-            <option value="createdAt_ASC">Least recently written</option>
+            <option value="createdAt_DESC">เขียนล่าสุด</option>
+            <option value="createdAt_ASC">เขียนเมื่อนานมาแล้ว</option>
           </select>
         </div>
           
@@ -125,9 +125,9 @@ class ReplyList extends ListPage {
         >
           <label className="link">
             <Radio value="all" />
-            <span className="btn btn-outline-dark">All</span>
+            <span className="btn btn-outline-dark">ทั้งหมด</span>
           </label>
-          {['NOT_ARTICLE', 'OPINIONATED', 'NOT_RUMOR', 'RUMOR'].map(type => (
+          {['NOT_RUMOR', 'RUMOR_NOT_RUMOR', 'RUMOR', 'NOT_ARTICLE', 'OPINIONATED'].map(type => (
             <label className="link" key={type}>
               <Radio id={type} value={type} title={TYPE_DESC[type]} />
               <span className="btn btn-outline-dark">{TYPE_NAME[type]}</span>
@@ -167,7 +167,7 @@ class ReplyList extends ListPage {
     } = this.props;
     return (
       <div>
-        <p className="text-muted mt-3">{totalCount} replies</p>
+        <p className="text-muted mt-3">{totalCount} ความเห็น</p>
         {this.renderPagination()}
         <div className="reply-list">
           {replies.map(reply => (

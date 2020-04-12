@@ -77,99 +77,97 @@ class CreateArticlePage extends React.Component {
     // console.log("Default Value : "+article);
 
     return (
-      <body>
-        <AppLayout>
-          <div className="wrapper-main">
-            <Head>
-              <title>
-                {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
-              </title>
-            </Head>
-            <main className={`wrapper-main`}>
-              <div className={`card article-form-wrapper`}>
-                <div className={`card-body`}>
-                  <div className={`form-wrapper m-3`}>
-                    <form onSubmit={this.handleSubmit}>
-                      <div className="form-group">
-                        <h3>{i18n.t('pageCreate.articleTitle')}</h3>
-                        <input
-                          type="text"
-                          name="title"
-                          className="form-control"
-                          defaultValue={defaultValue.get('title') || ''}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <h3>{i18n.t('pageCreate.articleBody')} *</h3>
-                        <textarea
-                          name="text"
-                          rows="6"
-                          className="form-control"
-                          defaultValue={defaultValue.get('text') || ''}
-                          required
-                        />
-                      </div>
-                      
-                      <div className="form-group">
-                        <h3>{i18n.t('pageCreate.messageSource')}</h3>
-                        <input
-                          type="text"
-                          name="references"
-                          className="form-control"
-                          defaultValue={defaultValue.references || ''}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <h3>{i18n.t('reason')}</h3>
-                        <small className="form-text text-muted">
-                          {i18n.t('pageCreate.reasonDetail')}
-                        </small>
-                        <textarea
-                          name="reason"
-                          row="2"
-                          className="form-control"
-                          defaultValue={defaultValue.get('reason') || ''}
-                        />
-                      </div>
-                      
-                      <div className="form-group">
-                        {isSubmitting ? (
-                          <div>กำลังส่งข้อความ ...</div>
-                        ) : initial ? (
-                          <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
-                            {`บันทึก`}
-                          </button>
-                        ) : (
-                          <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
-                            {i18n.t('pageCreate.sendMessage')}
-                          </button>
-                        )}
-                      </div>
-                    </form>
-                  </div>
+      <AppLayout>
+        <div className="wrapper-main">
+          <Head>
+            <title>
+              {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
+            </title>
+          </Head>
+          <main className={`wrapper-main`}>
+            <div className={`card article-form-wrapper`}>
+              <div className={`card-body`}>
+                <div className={`form-wrapper m-3`}>
+                  <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                      <h3>{i18n.t('pageCreate.articleTitle')}</h3>
+                      <input
+                        type="text"
+                        name="title"
+                        className="form-control"
+                        defaultValue={defaultValue.get('title') || ''}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <h3>{i18n.t('pageCreate.articleBody')} *</h3>
+                      <textarea
+                        name="text"
+                        rows="6"
+                        className="form-control"
+                        defaultValue={defaultValue.get('text') || ''}
+                        required
+                      />
+                    </div>
+                    
+                    <div className="form-group">
+                      <h3>{i18n.t('pageCreate.messageSource')}</h3>
+                      <input
+                        type="text"
+                        name="references"
+                        className="form-control"
+                        defaultValue={defaultValue.references || ''}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <h3>{i18n.t('reason')}</h3>
+                      <small className="form-text text-muted">
+                        {i18n.t('pageCreate.reasonDetail')}
+                      </small>
+                      <textarea
+                        name="reason"
+                        row="2"
+                        className="form-control"
+                        defaultValue={defaultValue.get('reason') || ''}
+                      />
+                    </div>
+                    
+                    <div className="form-group">
+                      {isSubmitting ? (
+                        <div>กำลังส่งข้อความ ...</div>
+                      ) : initial ? (
+                        <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
+                          {`บันทึก`}
+                        </button>
+                      ) : (
+                        <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
+                          {i18n.t('pageCreate.sendMessage')}
+                        </button>
+                      )}
+                    </div>
+                  </form>
                 </div>
               </div>
-            </main>
+            </div>
+          </main>
 
-            <style jsx>{`
-              .root {
-                padding: 0 40px 40px;
-              }
+          <style jsx>{`
+            .root {
+              padding: 0 40px 40px;
+            }
 
-              textarea,
-              input {
-                width: 100%;
-              }
+            textarea,
+            input {
+              width: 100%;
+            }
 
-              .article-form-wrapper {
-                background-image: url(/static/img/bg-article-form.${isSubmitting
-                    ? 'svg'
-                    : 'png'});
-              }
-            `}</style>
-          </div>
-        </AppLayout>
-      </body>
+            .article-form-wrapper {
+              background-image: url(/static/img/bg-article-form.${isSubmitting
+                  ? 'svg'
+                  : 'png'});
+            }
+          `}</style>
+        </div>
+      </AppLayout>
     );
   }
 }

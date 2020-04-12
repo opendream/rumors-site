@@ -544,33 +544,31 @@ class Articles extends ListPage {
     const { user } = this.props;
 
     return (
-      <body>
-        <AppLayout>
-          <main className="wrapper-main">
-            <Head>
-              <title>{i18n.t('pageArticles.reallyFake')}</title>
-            </Head>
-            {/* {searchUserByArticleId
-              ? this.renderSearchedArticleHeader()
-              : this.renderHeader()} */}
-            {this.renderSearch()}
-            {this.renderFilter()}
-            {isLoading ? <p>Loading...</p> : this.renderList()}
-            <span />
-            {+replyRequestCount !== 1 &&
-            typeof replyRequestCount !== 'undefined' ? (
-              <span className="hint">
-                {i18n.t('pageArticles.listArticlesMoreThanTwoPeople')}{' '}
-                <Link route="articles" params={{ replyRequestCount: 1 }}>
-                  <a>{i18n.t('pageArticles.clickHere')}</a>
-                </Link>
-              </span>
-            ) : null}
-            <style jsx>{hintStyle}</style>
-            <style jsx>{mainStyle}</style>
-          </main>
-        </AppLayout>
-      </body>
+      <AppLayout>
+        <main className="wrapper-main">
+          <Head>
+            <title>{i18n.t('pageArticles.reallyFake')}</title>
+          </Head>
+          {/* {searchUserByArticleId
+            ? this.renderSearchedArticleHeader()
+            : this.renderHeader()} */}
+          {this.renderSearch()}
+          {this.renderFilter()}
+          {isLoading ? <p>Loading...</p> : this.renderList()}
+          <span />
+          {+replyRequestCount !== 1 &&
+          typeof replyRequestCount !== 'undefined' ? (
+            <span className="hint">
+              {i18n.t('pageArticles.listArticlesMoreThanTwoPeople')}{' '}
+              <Link route="articles" params={{ replyRequestCount: 1 }}>
+                <a>{i18n.t('pageArticles.clickHere')}</a>
+              </Link>
+            </span>
+          ) : null}
+          <style jsx>{hintStyle}</style>
+          <style jsx>{mainStyle}</style>
+        </main>
+      </AppLayout>
     );
   }
 }

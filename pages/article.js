@@ -275,7 +275,7 @@ class ArticlePage extends React.Component {
 
     // TODO: use icon instead text
     return isEditable ? (
-      <div class={`text-right my-2`}>
+      <div className={`text-right my-2`}>
         <Link route="edit" params={{ id: articleId }}>
           <a className={``}>
             <img
@@ -434,7 +434,7 @@ class ArticlePage extends React.Component {
                   <div className="d-flex flex-column align-items-center h-100 justify-content-end">
                   
                     <ArticleTruthMeter replyConnections={replyConnections} />
-                    <div className="replyCount item-replyAmount">{replyConnections.size} ความเห็น</div>
+                    <div className="replyCount item-replyAmount">{replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size} ความเห็น</div>
                   </div>
                 </div>
               </div>
