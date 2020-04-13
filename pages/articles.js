@@ -298,7 +298,7 @@ class Articles extends ListPage {
                   {TYPE_ARTICLE_OPTIONS.map((item, i) => (
                     <li
                       key={i}
-                      className="form-check form-check-inline col-12 col-md-4 col-lg-3 col-xl-2 p-0 m-0"
+                      className="form-check form-check-inline col-6 col-sm-3 col-md-4 col-lg-3 col-xl-2 p-0 m-0"
                     >
                       <Checkbox value={item} id={i} />
                       <label className="mb-3" htmlFor={i}>
@@ -313,7 +313,12 @@ class Articles extends ListPage {
           <style jsx>
             {`
               .wrapper-cat label {
-                font-size: 1.15rem;
+                font-size: 1rem;
+              }
+              @media screen and (min-width: 768px) {
+                .wrapper-cat label {
+                  font-size: 1.15rem;
+                }
               }
             `}
           </style>

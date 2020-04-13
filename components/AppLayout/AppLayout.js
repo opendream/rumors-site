@@ -327,13 +327,18 @@ class AppLayout extends React.Component {
             padding-left: 20px;
             border-bottom: 1px solid #000;
             min-width: 200px;
+            max-width: 95%;
           }
           .custom-select {
             background: none;
             border: none;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 300;
-            
+          }
+          @media screen and (min-width: 768px) {
+            .custom-select {
+              font-size: 1.25rem;
+            }
           }
           .input-group .caret {
             position: absolute;

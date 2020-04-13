@@ -79,7 +79,7 @@ class ReplyFeedback extends Component {
       ));
 
     return (
-      <div className="reply-feedback">
+      <div className="reply-feedback mt-2 mt-md-0">
         {!isOwnArticleReply && <label>{i18n.t("replyComponent.isItHelpfull")}</label>}
        
         
