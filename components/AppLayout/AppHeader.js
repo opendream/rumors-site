@@ -57,9 +57,14 @@ function AppHeader({
                         <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link>
                       {user && user.get('isStaff') ? 
-                      <Link href="/users">
-                        <a className={`nav-item ${pathname == '/users'? 'active': ''}`}>{i18n.t('users')}</a>
-                      </Link>
+                      <>
+                        <Link href="/users">
+                          <a className={`nav-item ${pathname == '/users'? 'active': ''}`}>{i18n.t('users')}</a>
+                        </Link>
+                        <Link href="/tags">
+                          <a className={`nav-item ${pathname == '/tags'? 'active': ''}`}>หมวดหมู่</a>
+                        </Link>
+                      </>
                       : ``}
                       {EDITOR_FACEBOOK_GROUP ? (
                         <a
@@ -111,9 +116,14 @@ function AppHeader({
                   <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link>
                 {user && user.get('isStaff') ? (
+                <>
                   <Link href="/users">
                     <a className={`nav-item ${pathname == '/users'? 'active': ''}`}>{i18n.t('users')}</a>
                   </Link>
+                  <Link href="/tags">
+                    <a className={`nav-item ${pathname == '/tags'? 'active': ''}`}>หมวดหมู่</a>
+                  </Link>
+                </>
                 ) : (
                   ``
                 )}

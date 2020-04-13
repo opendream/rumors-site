@@ -15,6 +15,8 @@ import Pagination from 'components/Pagination';
 import ArticleItem from 'components/ArticleItem';
 import FullSiteArticleStats from 'components/FullSiteArticleStats';
 import articleList, { load, loadAuthFields } from 'ducks/articleList';
+import tagList, { load as loadTags } from 'ducks/tagList';
+
 import CreateArticleButton from '../components/CreateArticleButton';
 import i18n from '../i18n';
 
@@ -38,6 +40,7 @@ class Articles extends ListPage {
       query.replyRequestCount = 1;
     }
     await store.dispatch(load(query));
+    await store.dispatch(loadTags({}));
     return { query };
   }
 
@@ -275,6 +278,7 @@ class Articles extends ListPage {
   renderFilter = () => {
     const {
       query: { categories: _categories, filter, replyRequestCount },
+      tags
     } = this.props;
 
     let categories = _categories ? _categories.split(',') : [];
@@ -283,6 +287,7 @@ class Articles extends ListPage {
       <div>
         <div className="row">
           {/* TODO: waiting for backend */}
+
           <div className={`col-12`}>
             <div className={`wrapper-cat mt-3 mt-md-0`}>
               <div className={``}>
@@ -578,10 +583,13 @@ class Articles extends ListPage {
   }
 }
 
-function mapStateToProps({ articleList, auth }) {
+function mapStateToProps({ articleList, tagList, auth }) {
   return {
     isLoading: articleList.getIn(['state', 'isLoading']),
     articles: (articleList.get('edges') || List()).map(edge =>
+      edge.get('node')
+    ),
+    tags: (tagList.get('edges') || List()).map(edge =>
       edge.get('node')
     ),
     stats: articleList.get('stats'),

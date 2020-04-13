@@ -16,7 +16,7 @@ const SET_STATE = defineType('SET_STATE');
 export const setState = createAction(SET_STATE);
 
 export const load = ({
-  orderBy = 'createdAt_DESC',
+  orderBy = 'priority_DESC',
   before,
   after,
 }) => dispatch => {

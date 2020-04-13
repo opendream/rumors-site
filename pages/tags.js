@@ -19,7 +19,7 @@ import { mainStyle } from './articles.styles';
 import gql from 'util/gql';
 
 
-class TagForm extends PureComponent {
+class TagPriorityForm extends PureComponent {
 
 
   constructor(props) {
@@ -27,7 +27,7 @@ class TagForm extends PureComponent {
 
     this.  state = {
       mode: 'display',
-      belongTo: props.tag.get('belongTo')
+      priority: props.tag.get('priority')
     }
   
   }
@@ -35,24 +35,23 @@ class TagForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
 
-    const {user} = this.props;
+    const {tag} = this.props;
 
     if (!this.inputEl) return;
-    const newBelongTo = this.inputEl.value;
+    const newPriority = this.inputEl.value;
 
     gql`
-      mutation($name: String!, $belongTo: String, $id: String) {
-        UpdateUser(name: $name, belongTo: $belongTo, id: $id) {
-          name
-          belongTo
-        }
+    mutation($title: String!, $priority: Int) {
+      CreateOrUpdateTag(title: $title, priority: $priority) {
+        title
+        priority
       }
+    }
     `({
-      id: user.get('id'),
-      name: user.get('name'),
-      belongTo: newBelongTo,
+      title: tag.get('title'),
+      priority: parseInt(newPriority),
     }).then(resp => {
-      this.setState({belongTo: newBelongTo, mode: 'display'})
+      this.setState({priority: newPriority, mode: 'display'})
     })
 
   }
@@ -74,13 +73,13 @@ class TagForm extends PureComponent {
   }
 
   render() {
-    const { user } = this.props;
-    const { mode, belongTo } = this.state;
+    const { tag } = this.props;
+    const { mode, priority } = this.state;
 
     if (mode == 'display') {
       return (
         <div>
-          {belongTo}
+          {priority}
           <button className="edit" onClick={this.handleEdit}>
             <img
               src={require('../components/AppLayout/images/edit.svg')}
@@ -114,8 +113,8 @@ class TagForm extends PureComponent {
         <form onSubmit={this.handleSubmit}>
           <input
             className="name-input"
-            type="text"
-            defaultValue={user.get('belongTo')}
+            type="numeric"
+            defaultValue={tag.get('priority')}
             ref={el => (this.inputEl = el)}
           />
           <button className="submit" type="submit">
@@ -183,9 +182,22 @@ class TagList extends ListPage {
 
   }
 
-  handleDelete = e => {
-    e.preventDefault();
-    alert('Coming soon')
+  handleDelete = tag => {
+
+    gql`
+      mutation($title: String!, $status: String) {
+        CreateOrUpdateTag(title: $title, status: $status) {
+          title
+          status
+        }
+      }
+    `({
+      title: tag.get('title'),
+      status: 'DELETED',
+    }).then(resp => {
+      this.componentDidMount()
+    })
+
   }
 
   renderPagination = () => {
@@ -246,10 +258,10 @@ class TagList extends ListPage {
                   {tag.get('title')}
                 </td>
                 <td>
-                  {tag.get('priority')}
+                  <TagPriorityForm tag={tag} />
                 </td>
                 <td>
-                  <button onClick={this.handleDelete}>ลบ</button>
+                  <button onClick={(e) => this.handleDelete(tag)}>ลบ</button>
                 </td>
               </tr>
             ))}
