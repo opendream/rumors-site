@@ -12,28 +12,42 @@ export const listItemStyle = css`
     border-top-left-radius: 10px;
     background: #CCD5D9;
     border-color: #CCD5D9;
+    margin-bottom: 0 !important
   }
   .card-header .item-title,
-  .card-header .item-text {
+  .card-header .item-text,
+  .card-notitle .item-text {
     font-size: 1.25rem;
     font-weight: 500;
   }
   @media screen and (min-width: 576px) {
     .card-header .item-title,
-    .card-header .item-text {
+    .card-header .item-text,
+    .card-notitle .item-text  {
       font-size: 1.25rem;
-      font-weight: 500;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      max-width: 70%;
+      max-width: 80%;
     }
   }
-  
+
+  @media screen and (min-width: 1024px) {
+    .card-header .item-title,
+    .card-header .item-text,
+    .card-notitle .item-text  {
+      max-width: 85%;
+    }
+  }
+ 
+ 
 
   .card-header.bg-white {
     border-color: #fff;
   }
+  .card-body { padding: 1rem; }
+
+
 
   .badge {
     font-weight: 400;
@@ -69,7 +83,7 @@ export const listItemStyle = css`
 
   .card-body-left {
     width: 100%;
-    margin-bottom: 1rem;
+    padding-top: 1rem;
   }
   .card-body-right {
     width: 100%;
@@ -77,11 +91,11 @@ export const listItemStyle = css`
   
   @media screen and (min-width: 768px) {
     .card-body-left {
-      width: 75%;
+      width: 80%;
       margin-bottom: 0;
     }
     .card-body-right {
-      width: 25%;
+      width: 20%;
     }
   }
   

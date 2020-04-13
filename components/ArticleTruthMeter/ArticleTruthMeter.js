@@ -92,14 +92,14 @@ export default function ArticleTruthMeter({ replyConnections }) {
 
       <style jsx>{`
         .meter {
-          margin-bottom: 1rem;
+          margin: 1rem 0 0;
         }
         .meter-tag > div {
           background: url(/static/img/meter/bg-meter@2x.png) no-repeat center
             center;
           background-size: 100%;
-          width: 145px;
-          height: 80px;
+          width: 105px;
+          height: 55px;
           text-indent: -999em;
           margin-bottom: 1rem;
           position: relative;
@@ -111,7 +111,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
           position: absolute;
           height: 0;
           border-style: solid;
-          border-width: 0 10px 50px 10px;
+          border-width: 0 8px 40px 8px;
           border-color: transparent transparent #252525 transparent;
           bottom: -20%;
           left: 20%;
@@ -126,39 +126,40 @@ export default function ArticleTruthMeter({ replyConnections }) {
             left;
           background-size: cover;
           position: absolute;
-          bottom: -10px;
+          bottom: 0;
           left: 50%;
-          width: 65px;
-          height: 40px;
+          width: 40px;
+          height: 25px;
+      
         }
         .meter-tag > div.false:after {
           background: url(/static/img/meter/btn-false@2x.png) no-repeat center
             center;
-          background-size: cover;
+          background-size: 100%;
         }
         .meter-tag > div.true:after {
           background: url(/static/img/meter/btn-true@2x.png) no-repeat center
             center;
-          background-size: cover;
+          background-size: 100%;
         }
         .meter-tag > div.middle:after {
           background: url(/static/img/meter/btn-middle@2x.png) no-repeat center
             center;
-          background-size: cover;
+          background-size: 100%;
         }
         .meter-tag > div.mostly-true--start:after,
         .meter-tag > div.mostly-true--middle:after,
         .meter-tag > div.mostly-true--last:after {
           background: url(/static/img/meter/btn-mostly_true@2x.png) no-repeat
             center center;
-          background-size: cover;
+          background-size: 100%;
         }
         .meter-tag > div.mostly-false--start:after,
         .meter-tag > div.mostly-false--middle:after,
         .meter-tag > div.mostly-false--last:after {
           background: url(/static/img/meter/btn-mostly_false@2x.png) no-repeat
             center center;
-          background-size: cover;
+          background-size: 100%;
         }
 
         .meter-tag > div.false:before {
@@ -173,28 +174,28 @@ export default function ArticleTruthMeter({ replyConnections }) {
           transform: rotate(90deg);
         }
         .meter-tag > div.middle:before {
-          bottom: 10%;
-          left: 44%;
+          bottom: 4%;
+          left: 42%;
           transform: rotate(0deg);
         }
         .meter-tag > div.mostly-true--start:before,
         .meter-tag > div.mostly-true--middle:before,
         .meter-tag > div.mostly-true--last:before {
-          bottom: 0;
+          bottom: 0%;
           left: auto;
-          right: 30%;
+          right: 28%;
           transform: rotate(40deg);
         }
         .meter-tag > div.mostly-true--middle:before {
-          bottom: 10%;
+          bottom: 4%;
           left: auto;
-          right: 35%;
+          right: 33%;
           transform: rotate(25deg);
         }
         .meter-tag > div.mostly-true--start:before {
-          bottom: 12%;
+          bottom: 4%;
           left: auto;
-          right: 42%;
+          right: 40%;
           transform: rotate(12deg);
         }
 
@@ -202,18 +203,18 @@ export default function ArticleTruthMeter({ replyConnections }) {
         .meter-tag > div.mostly-false--middle:before,
         .meter-tag > div.mostly-false--last:before {
           bottom: 0%;
-          left: 30%;
+          left: 28%;
           transform: rotate(-35deg);
         }
 
         .meter-tag > div.mostly-false--last:before {
-          bottom: 10%;
+          bottom: 4%;
           left: 40%;
           transform: rotate(-5deg);
         }
         .meter-tag > div.mostly-false--middle:before {
-          bottom: 10%;
-          left: 35%;
+          bottom: 4%;
+          left: 33%;
           transform: rotate(-20deg);
         }
       `}</style>

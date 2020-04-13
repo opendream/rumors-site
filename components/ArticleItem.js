@@ -42,12 +42,13 @@ export default function ArticleItem({
               <div className="item-title">{article.get('title')}</div>
             </div>
           ) : (
-            <div className="card-header bg-white d-md-flex align-items-center">
-              <div className="item-replyRequestCount mr-3">
-                {article.get('replyRequestCount')} คนสงสัย
-              </div>
-              <div className="item-text">{article.get('text')}</div>
-            </div>
+            // <div className="card-header bg-white d-md-flex align-items-center">
+            //   <div className="item-replyRequestCount mr-3">
+            //     {article.get('replyRequestCount')} คนสงสัย
+            //   </div>
+            //   <div className="item-text">{article.get('text')}</div>
+            // </div>
+            ``
           )}
 
           <div className="card-body d-md-flex justify-content-md-between pt-0">
@@ -55,7 +56,13 @@ export default function ArticleItem({
               {article.get('title') ? (
                 <div className="item-text">{article.get('text')}</div>
               ) : (
-                ``
+                <div className="card-notitle d-md-flex align-items-center">
+                  <div className="item-replyRequestCount mr-3">
+                    {article.get('replyRequestCount')} คนสงสัย
+                  </div>
+                  <div className="item-text">{article.get('text')}</div>
+                </div>
+               
               )}
               <div>
                 {article.get('categories') ? (
