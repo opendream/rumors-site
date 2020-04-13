@@ -359,7 +359,7 @@ class ArticlePage extends React.Component {
 
           {article.get('status') == 'DELETED'?
           <section className="section alert alert-danger">
-            <h2>บทความนี้ได้ถูกลบไปแล้ว</h2>
+            <h2>ข้อความนี้ได้ถูกลบไปแล้ว</h2>
           </section>
           : ``}
 
