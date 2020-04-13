@@ -77,7 +77,11 @@ export default function ArticleItem({
                   <div className="item-createBy mr-2 float-left">
                     {articleCreator}
                   </div>
-                ) : null}
+                ) : 
+                  <div className="item-createBy mr-2 float-left">
+                    ไม่ระบุชื่อ
+                  </div>
+                }
                 <ArticleInfo article={article} />
                 {isLogin && (
                   <ArticleItemWidget

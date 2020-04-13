@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { EDITOR_FACEBOOK_GROUP, PROJECT_HACKFOLDR } from 'constants/urls';
-import { Link } from 'routes';
+import Link from 'next/link';
+import { useRouter } from 'next/router'
+
 import { showDialog, logout, updateName } from 'ducks/auth';
 import UserName from './UserName';
 import i18n from '../../i18n';
+import { withRouter } from 'next/dist/lib/router';
 
 function AppHeader({
   user,
@@ -12,13 +15,15 @@ function AppHeader({
   onLoginClick,
   onLogoutClick,
   onUserNameUpdate,
+  router: {pathname},
 }) {
+  
   return (
     <header className={`navbar navbar-expand-lg navbar-dark`}>
       <div className={`container-fluid`}>
         <div className={`d-flex align-items-start w-100`}>
           <div className={`head-left d-flex align-items-center w-100`}>
-            <Link route="index">
+            <Link href="/">
               <a className="logo" href="/">
                 <div>
                   <img
@@ -41,21 +46,19 @@ function AppHeader({
                   <div id="menu">
                     <div className="nav">
                       {user && (user.get('isStaff') || user.get('belongTo')) ? 
-                      <Link route="create">
-                        <a className="nav-item">{i18n.t('createArticle')}</a>
+                      <Link href="/create">
+                        <a className={`nav-item ${pathname == '/create'? 'active': ''}`}>{i18n.t('createArticle')}</a>
                       </Link>
                       : ``}
-                      <Link route="articles">
-                        <a className="nav-item">{i18n.t('articles')}</a>
+                      <Link href="/articles">
+                        <a className={`nav-item ${pathname == '/articles'? 'active': ''}`}>{i18n.t('articles')}</a>
                       </Link>
-                      <Link route="replies">
-                        <a className="nav-item">{i18n.t('replies')}</a>
+                      <Link href="/replies">
+                        <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link>
-                        {/*//TODO:: Change to About Text*/}
-                        <a href="/about" className="nav-item d-none">ABOUT</a>
                       {user && user.get('isStaff') ? 
-                      <Link route="users">
-                        <a className="nav-item">{i18n.t('users')}</a>
+                      <Link href="/users">
+                        <a className={`nav-item ${pathname == '/users'? 'active': ''}`}>{i18n.t('users')}</a>
                       </Link>
                       : ``}
                       {EDITOR_FACEBOOK_GROUP ? (
@@ -97,24 +100,19 @@ function AppHeader({
             <div className="ml-auto d-none d-md-flex align-items-center">
               <div className="nav">
                 {user && (user.get('isStaff') || user.get('belongTo')) ? 
-                <Link route="create">
-                  <a className="nav-item">{i18n.t('createArticle')}</a>
+                <Link href="/create">
+                  <a className={`nav-item ${pathname == '/create'? 'active': ''}`}>{i18n.t('createArticle')}</a>
                 </Link>
                 : ``}
-                <Link route="articles">
-                  <a className="nav-item">{i18n.t('articles')}</a>
+                <Link href="/articles">
+                  <a className={`nav-item ${pathname == '/articles'? 'active': ''}`}>{i18n.t('articles')}</a>
                 </Link>
-                <Link route="replies">
-                  <a className="nav-item">{i18n.t('replies')}</a>
+                <Link href="/replies">
+                  <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link>
-                  {/*//TODO:: Change to About Text*/}
-                  <a href="/about" className="nav-item d-none">ABOUT</a>
-
-                  {/*//TODO:: Change to Policy Text*/}
-                  <a href="/policy" className="nav-item d-none">POLICY</a>
                 {user && user.get('isStaff') ? (
-                  <Link route="users">
-                    <a className="nav-item">{i18n.t('users')}</a>
+                  <Link href="/users">
+                    <a className={`nav-item ${pathname == '/users'? 'active': ''}`}>{i18n.t('users')}</a>
                   </Link>
                 ) : (
                   ``
@@ -353,4 +351,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AppHeader);
+)(withRouter(AppHeader));
