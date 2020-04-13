@@ -1,34 +1,42 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import gql from '../util/gql';
+import Router from 'next/router';
 
-import {
-  load,
-  loadAuth,
-  submitReply,
-  connectReply,
-  searchReplies,
-  searchRepiedArticle,
-  updateArticleReplyStatus,
-  voteReply,
-  reset,
-  voteReplyRequest,
-  submitArticleCategories,
-  fetchArticleHyperlink,
-  fetchReplyHyperlink,
-  categoriesEdit,
-} from 'ducks/editArticleDetail';
-import CreateArticlePage from './create';
+import i18n from '../i18n';
 
-class EditArticlePage extends CreateArticlePage {
-  static async getInitialProps({ store: { dispatch }, query: { id } }) {
-    await dispatch(load(id));
+class DeleteArticlePage extends React.Component {
+
+
+  static async getInitialProps({ query: { id } }) {
     return { id };
+  }
+  
+  constructor(props) {
+    super(props)
+
+    gql`
+      mutation(
+        $id: String
+        $status: String
+      ) {
+        UpdateArticleStatus(
+          id: $id
+          status: $status
+        ) {
+          id
+        }
+      }
+    `({
+      id: props.id,
+      status: 'DELETED'
+    }).then(resp => {
+      Router.push(`/article/${props.id}`);
+    });
+  }
+
+  render() {
+    return 'Deleteing ...'
   }
 }
 
-function mapStateToProps({ editArticleDetail }) {
-  return {
-    initial: editArticleDetail.get('data'),
-  };
-}
-export default connect(mapStateToProps)(EditArticlePage);
+export default DeleteArticlePage;

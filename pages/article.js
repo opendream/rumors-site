@@ -285,19 +285,26 @@ class ArticlePage extends React.Component {
             />
           </a>
         </Link>
-
-        {/* <Link route="delete" params={{ id: articleId }}>
-          <a className={``}>
+        &nbsp;
+        <Link route="delete" params={{ id: articleId }}>
+          <a className={``} onClick={this.onDeleteClick}>
             <img
               src={require('/static/img/icon/ic-delete@2x.png')}
               height="14px"
-              alt="edit"
+              alt="delete"
             />
           </a>
-        </Link> */}
+        </Link>
       </div>
     ) : null;
   };
+
+  onDeleteClick = e => {
+    const r = confirm('คุณแน่ใจแล้วใช่ไหมที่จะลบ?');
+    if (!r) {
+      e.preventDefault();
+    }
+  }
 
   onLoginClick = title => {
     const { dispatch } = this.props;
@@ -349,265 +356,262 @@ class ArticlePage extends React.Component {
               {i18n.t('realOrFake')}
             </title>
           </Head>
-          <section className="section">
-            <header className="header">
-              {/* <h2>{i18n.t('originalMessage')}</h2> */}
-              {/* <div className="trendline">
-                <Trendline id={article.get('id')} />
-              </div> */}
-              {/* <ArticleInfo article={article} /> */}
-            </header>
 
-            {this.renderEditButton(replyConnections, user, article)}
+          {article.get('status') == 'DELETED'?
+          <section className="section alert alert-danger">
+            <h2>บทความนี้ได้ถูกลบไปแล้ว</h2>
+          </section>
+          : ``}
 
-            <div className="card">
-
-              <div className={`card-header d-md-flex align-items-center mb-3 ${article.get('title')? 'has-title': 'no-title bg-white'}`}>
-                <div className="item-replyRequestCount mr-3">
-                  {article.get('replyRequestCount')} คนสงสัย
-                </div>
-
-                {article.get('title')?
-                <div className="item-title">{article.get('title')}</div>
-                :``}
-
-              </div>
-              
-              <div className="card-body d-md-flex justify-content-md-between pt-0">
-                <div className="card-body-left  d-flex flex-column justify-content-between">
-                  <article className="content" onClick={this.onArticleClick}>
-                    {article.get('title') ? (
-                      <div>
-                        <div>
-                          {nl2br(
-                            linkify(article.get('text'), {
-                              props: {
-                                target: '_blank',
-                              },
-                            })
-                          )}
-                        </div>
-                      </div>
-                    ) : (
-                      ``
-                    )}
-                    <div>
-                      {nl2br(
-                        linkify(article.get('text'), {
-                          props: {
-                            target: '_blank',
-                          },
-                        })
-                      )}
-                    </div>
-                    <Hyperlinks
-                      hyperlinks={article.get('hyperlinks')}
-                      fetchCallback={this.handleFetchHyperlink}
-                      hyperlinkLoading={aticleHyperlinkLoading}
-                    />
-                  </article>
-                  
-                  <div className="d-flex mt-3">
-                    <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
-                    <ArticleInfo article={article} />
-                    <FlaggedReplyInfomation replyConnections={replyConnections} />
-                  </div>
-              
-                  {expanded
-                    ? article.get('replyRequests').map((replyRequest, index) => {
-                        return (
-                          <footer>
-                          <ReplyRequestReason
-                            key={`reason-${index}`}
-                            index={index}
-                            articleId={article.get('id')}
-                            replyRequest={replyRequest}
-                            isArticleCreator={index === 0}
-                            onVoteReason={this.handleVoteReplyRequest}
-                          />
-                          </footer>
-                        );
-                      })
-                    : null}
-                </div>
-                <div className="card-body-right">
-                  <div className="d-flex flex-column align-items-center h-100 justify-content-end">
-                  
-                    <ArticleTruthMeter replyConnections={replyConnections} />
-                    <div className="replyCount item-replyAmount">{replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size} ความเห็น</div>
-                  </div>
-                </div>
-              </div>
-                
-             
-            </div>
-
+          <div className={`${article.get('status') == 'DELETED'? `d-none`: ``}`}>
             
-            <div className={`mt-3`}>
-              {categoriesEditMode ? (
-                <div className={`card card-secondary`}>
-                  <div className="card-body">
-                    <div>
+            <section className="section ">
+              <header className="header">
+                {/* <h2>{i18n.t('originalMessage')}</h2> */}
+                {/* <div className="trendline">
+                  <Trendline id={article.get('id')} />
+                </div> */}
+                {/* <ArticleInfo article={article} /> */}
+              </header>
+
+              {this.renderEditButton(replyConnections, user, article)}
+
+              <div className="card">
+
+                <div className={`card-header d-md-flex align-items-center mb-3 ${article.get('title')? 'has-title': 'no-title bg-white'}`}>
+                  <div className="item-replyRequestCount mr-3">
+                    {article.get('replyRequestCount')} คนสงสัย
+                  </div>
+
+                  {article.get('title')?
+                  <div className="item-title">{article.get('title')}</div>
+                  :``}
+
+                </div>
+                
+                <div className="card-body d-md-flex justify-content-md-between pt-0">
+                  <div className="card-body-left  d-flex flex-column justify-content-between">
+                    <article className="content" onClick={this.onArticleClick}>
                       <div>
-                        <h5>{i18n.t(`specifyArticleCategory`)}</h5>
-                        <div className={`text-secondary`}>
-                          {i18n.t(`selectMinimum`)}
-                        </div>
+                        {nl2br(
+                          linkify(article.get('text'), {
+                            props: {
+                              target: '_blank',
+                            },
+                          })
+                        )}
                       </div>
-                      <form
-                        className={`mt-2`}
-                        ref={categoriesEl =>
-                          (this._categoriesEl = categoriesEl)
-                        }
-                        onSubmit={e => {
-                          e.preventDefault();
-                          const checkboxArray = Array.prototype.slice.call(
-                            this._categoriesEl
+                      <Hyperlinks
+                        hyperlinks={article.get('hyperlinks')}
+                        fetchCallback={this.handleFetchHyperlink}
+                        hyperlinkLoading={aticleHyperlinkLoading}
+                      />
+                    </article>
+                    
+                    <div className="d-flex mt-3">
+                      <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
+                      <ArticleInfo article={article} />
+                      <FlaggedReplyInfomation replyConnections={replyConnections} />
+                    </div>
+                
+                    {expanded
+                      ? article.get('replyRequests').map((replyRequest, index) => {
+                          return (
+                            <footer>
+                            <ReplyRequestReason
+                              key={`reason-${index}`}
+                              index={index}
+                              articleId={article.get('id')}
+                              replyRequest={replyRequest}
+                              isArticleCreator={index === 0}
+                              onVoteReason={this.handleVoteReplyRequest}
+                            />
+                            </footer>
                           );
-                          const checkedCheckboxes = checkboxArray.filter(
-                            input => input.checked
-                          );
-                          const categories = checkedCheckboxes.map(
-                            input => input.value
-                          );
-                          this.handleCategoriesSubmit(categories);
-                        }}
-                      >
-                        <div>
-                          {TYPE_ARTICLE_OPTIONS.map((item, i) => (
-                            <div
-                              key={i}
-                              className="form-check form-check-inline"
-                            >
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="categories"
-                                id={`article-category-${i}`}
-                                value={item}
-                                defaultChecked={
-                                  categories &&
-                                  categories.filter(c => c === item).size > 0
-                                }
-                              />
-                              <label
-                                className="form-check-label"
-                                htmlFor={`article-category-${i}`}
-                              >
-                                {item}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
-                        <div className={`mt-3`}>
-                          <button className="btn btn-primary btn-sm">{i18n.t(`save`)}</button>
-                          <button
-                            className={`btn btn-link`}
-                            onClick={e => {
-                              e.preventDefault();
-                              this.handleCategoriesEdit(false);
-                            }}
-                          >
-                            {i18n.t(`cancel`)}
-                          </button>
-                        </div>
-                      </form>
+                        })
+                      : null}
+                  </div>
+                  <div className="card-body-right">
+                    <div className="d-flex flex-column align-items-center h-100 justify-content-end">
+                    
+                      <ArticleTruthMeter replyConnections={replyConnections} />
+                      <div className="replyCount item-replyAmount">{replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size} ความเห็น</div>
                     </div>
                   </div>
+                </div>
+                  
+              
+              </div>
+
+              
+              <div className={`mt-3`}>
+                {categoriesEditMode ? (
+                  <div className={`card card-secondary`}>
+                    <div className="card-body">
+                      <div>
+                        <div>
+                          <h5>{i18n.t(`specifyArticleCategory`)}</h5>
+                          <div className={`text-secondary`}>
+                            {i18n.t(`selectMinimum`)}
+                          </div>
+                        </div>
+                        <form
+                          className={`mt-2`}
+                          ref={categoriesEl =>
+                            (this._categoriesEl = categoriesEl)
+                          }
+                          onSubmit={e => {
+                            e.preventDefault();
+                            const checkboxArray = Array.prototype.slice.call(
+                              this._categoriesEl
+                            );
+                            const checkedCheckboxes = checkboxArray.filter(
+                              input => input.checked
+                            );
+                            const categories = checkedCheckboxes.map(
+                              input => input.value
+                            );
+                            this.handleCategoriesSubmit(categories);
+                          }}
+                        >
+                          <div>
+                            {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                              <div
+                                key={i}
+                                className="form-check form-check-inline"
+                              >
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  name="categories"
+                                  id={`article-category-${i}`}
+                                  value={item}
+                                  defaultChecked={
+                                    categories &&
+                                    categories.filter(c => c === item).size > 0
+                                  }
+                                />
+                                <label
+                                  className="form-check-label"
+                                  htmlFor={`article-category-${i}`}
+                                >
+                                  {item}
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                          <div className={`mt-3`}>
+                            <button className="btn btn-primary btn-sm">{i18n.t(`save`)}</button>
+                            <button
+                              className={`btn btn-link`}
+                              onClick={e => {
+                                e.preventDefault();
+                                this.handleCategoriesEdit(false);
+                              }}
+                            >
+                              {i18n.t(`cancel`)}
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <h4>
+                    <span>
+                      {categories.map((item, i) => (
+                        <span key={i} className="badge badge-primary mr-2">
+                          {item}
+                        </span>
+                      ))}
+                    </span>
+
+                    <button
+                      className={`btn btn-link`}
+                      onClick={() => this.handleCategoriesEdit()}
+                    >
+                      <img
+                        src={require('../components/AppLayout/images/edit.svg')}
+                        width={12}
+                        height={12}
+                        alt="edit"
+                      />
+                    </button>
+                  </h4>
+                )}
+              </div>
+            
+
+              
+            </section>
+            <section
+              id="current-replies"
+              className="section"
+              ref={replySectionEl => (this._replySectionEl = replySectionEl)}
+            >
+              <CurrentReplies
+                replyConnections={replyConnections}
+                disabled={isReplyLoading}
+                onDelete={this.handleReplyConnectionDelete}
+                onRestore={this.handleReplyConnectionRestore}
+                onVote={this.handleReplyConnectionVote}
+                hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
+                replyHyperlinkLoading={replyHyperlinkLoading}
+              />
+            </section>
+            <section className="section">
+              <h2>{i18n.t('addNewResponse')}</h2>
+
+              {user ? (
+                <div>
+                  {this.renderTabMenu()}
+                  <div className="tab-content">{this.renderNewReplyTab()}</div>
                 </div>
               ) : (
-                <h4>
-                  <span>
-                    {categories.map((item, i) => (
-                      <span key={i} className="badge badge-primary mr-2">
-                        {item}
-                      </span>
-                    ))}
-                  </span>
-
-                  <button
-                    className={`btn btn-link`}
-                    onClick={() => this.handleCategoriesEdit()}
+                <div>
+                  {i18n.t('please')} &nbsp;
+                  <a
+                    href="#"
+                    className={``}
+                    onClick={e => {
+                      e.preventDefault();
+                      this.onLoginClick(i18n.t('login'));
+                    }}
                   >
-                    <img
-                      src={require('../components/AppLayout/images/edit.svg')}
-                      width={12}
-                      height={12}
-                      alt="edit"
-                    />
-                  </button>
-                </h4>
+                    {i18n.t('login')}
+                  </a>&nbsp;
+                  {i18n.t('or')}&nbsp;
+                  <a
+                    href="#"
+                    className={``}
+                    onClick={e => {
+                      e.preventDefault();
+                      this.onLoginClick(i18n.t('signup'));
+                    }}
+                  >
+                    {i18n.t('signup')}
+                  </a>&nbsp;
+                  {i18n.t('first')}
+                </div>
               )}
-            </div>
-          
-
-            
-          </section>
-          <section
-            id="current-replies"
-            className="section"
-            ref={replySectionEl => (this._replySectionEl = replySectionEl)}
-          >
-            <CurrentReplies
-              replyConnections={replyConnections}
-              disabled={isReplyLoading}
-              onDelete={this.handleReplyConnectionDelete}
-              onRestore={this.handleReplyConnectionRestore}
-              onVote={this.handleReplyConnectionVote}
-              hyperlinkFetchCallback={this.handleFetchReplyHyperlink}
-              replyHyperlinkLoading={replyHyperlinkLoading}
-            />
-          </section>
-          <section className="section">
-            <h2>{i18n.t('addNewResponse')}</h2>
-
-            {user ? (
-              <div>
-                {this.renderTabMenu()}
-                <div className="tab-content">{this.renderNewReplyTab()}</div>
-              </div>
-            ) : (
-              <div>
-                {i18n.t('please')} &nbsp;
-                <a
-                  href="#"
-                  className={``}
-                  onClick={e => {
-                    e.preventDefault();
-                    this.onLoginClick(i18n.t('login'));
-                  }}
-                >
-                  {i18n.t('login')}
-                </a>&nbsp;
-                {i18n.t('or')}&nbsp;
-                <a
-                  href="#"
-                  className={``}
-                  onClick={e => {
-                    e.preventDefault();
-                    this.onLoginClick(i18n.t('signup'));
-                  }}
-                >
-                  {i18n.t('signup')}
-                </a>&nbsp;
-                {i18n.t('first')}
-              </div>
-            )}
-          </section>
-          {relatedArticles.size ? (
-            
-            <section className="section">
-              <hr className="mb-2 mb-md-4" />
-              <h3 className="pb-2 pb-md-4">{i18n.t('sentence.similarArticles')}</h3>
-              <div>
-                {relatedArticles.map(article => (
-                  <ArticleItem key={article.get('id')} article={article} />
-                ))}
-              </div>
             </section>
-          ) : (
-            ''
-          )}
+            {relatedArticles.size ? (
+              
+              <section className="section">
+                <hr className="mb-2 mb-md-4" />
+                <h3 className="pb-2 pb-md-4">{i18n.t('sentence.similarArticles')}</h3>
+                <div>
+                  {relatedArticles.map(article => (
+                    <ArticleItem key={article.get('id')} article={article} />
+                  ))}
+                </div>
+              </section>
+            ) : (
+              ''
+            )}
+
+          </div>
+
           <style jsx>{detailStyle}</style>
           <style jsx>{`
             .tab-content {

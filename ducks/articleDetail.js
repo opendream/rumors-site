@@ -125,6 +125,7 @@ export const load = id => dispatch => {
           }
         }
         categories
+        status
       }
     }
     ${fragments.articleFields}
