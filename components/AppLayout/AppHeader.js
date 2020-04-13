@@ -183,6 +183,17 @@ function AppHeader({
         .nav-item {
           margin-right: 1.5em;
           color: #fff;
+          border-bottom: 2px solid transparent;
+        }
+        .nav-item:hover, 
+        .nav-item:focus,
+        .nav-item:active {
+          border-bottom: 2px solid currentColor;
+          text-decoration: none;
+        }
+        .nav-item.active {
+          border-bottom: 2px solid currentColor;
+          text-decoration: none;
         }
 
         .navbar {
