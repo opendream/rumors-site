@@ -300,14 +300,14 @@ class Articles extends ListPage {
                   Component="ul"
                   className="mb-4 border-bottom flex-md-wrap d-md-flex justify-content-md-start"
                 >
-                  {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                  {tags.map((item, i) => (
                     <li
                       key={i}
                       className="form-check form-check-inline col-6 col-sm-3 col-md-4 col-lg-3 col-xl-2 p-0 m-0"
                     >
-                      <Checkbox value={item} id={i} />
+                      <Checkbox value={item.get('title')} id={i} />
                       <label className="mb-3" htmlFor={i}>
-                        {item}
+                        {item.get('title')}
                       </label>
                     </li>
                   ))}
