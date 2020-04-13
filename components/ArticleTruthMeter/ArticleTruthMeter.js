@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ArticleTruthMeter({ replyConnections }) {
+export default function ArticleTruthMeter({ replyConnections, size }) {
   let tag = '';
 
   const notRumorWeight = 1;
@@ -83,7 +83,7 @@ export default function ArticleTruthMeter({ replyConnections }) {
   }
 
   return (
-    <div className="meter">
+    <div className={`meter ${size}`}>
       {tag != 0 ? (
         <div className="meter-tag">
           <div className={tag}>meter: {tag}</div>
