@@ -91,15 +91,146 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
       ) : null}
 
       <style jsx>{`
+
+        /* Small item */
+        .meter.small {
+          margin: 0;
+        }
+        .meter.small .meter-tag > div {
+          background: url(/static/img/meter/bg-meter@2x.png) no-repeat center
+            center;
+          background-size: 100%;
+          width: 85px;
+          height: 55px;
+          text-indent: -999em;
+          margin-bottom: 0.5rem;
+          position: relative;
+        }
+        .meter.small .meter-tag > div:before {
+          content: '';
+          display: inline-block;
+          width: 0;
+          position: absolute;
+          height: 0;
+          border-style: solid;
+          border-width: 0 7px 30px 7px;
+          border-color: transparent transparent #252525 transparent;
+          bottom: -10%;
+          left: 20%;
+          transform: rotate(-90deg);
+          z-index: auto;
+        }
+
+        .meter.small .meter-tag > div:after {
+          transform: translate(-50%, 0);
+          content: '';
+          background: url(/static/img/meter/btn-false@2x.png) no-repeat bottom
+            left;
+          background-size: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 35px;
+          height: 25px;
+      
+        }
+        .meter.small .meter-tag > div.false:after {
+          background: url(/static/img/meter/btn-false@2x.png) no-repeat center
+            center;
+          background-size: 100%;
+        }
+        .meter.small .meter-tag > div.true:after {
+          background: url(/static/img/meter/btn-true@2x.png) no-repeat center
+            center;
+          background-size: 100%;
+        }
+        .meter.small .meter-tag > div.middle:after {
+          background: url(/static/img/meter/btn-middle@2x.png) no-repeat center
+            center;
+          background-size: 100%;
+        }
+        .meter.small .meter-tag > div.mostly-true--start:after,
+        .meter.small .meter-tag > div.mostly-true--middle:after,
+        .meter.small .meter-tag > div.mostly-true--last:after {
+          background: url(/static/img/meter/btn-mostly_true@2x.png) no-repeat
+            center center;
+          background-size: 100%;
+        }
+        .meter.small .meter-tag > div.mostly-false--start:after,
+        .meter.small .meter-tag > div.mostly-false--middle:after,
+        .meter.small .meter-tag > div.mostly-false--last:after {
+          background: url(/static/img/meter/btn-mostly_false@2x.png) no-repeat
+            center center;
+          background-size: 100%;
+        }
+
+        .meter.small .meter-tag > div.false:before {
+          bottom: -10%;
+          left: 20%;
+          transform: rotate(-90deg);
+        }
+        .meter.small .meter-tag > div.true:before {
+          bottom: -10%;
+          left: auto;
+          right: 20%;
+          transform: rotate(90deg);
+        }
+        .meter.small .meter-tag > div.middle:before {
+          bottom: 12%;
+          left: 43%;
+          transform: rotate(0deg);
+        }
+        .meter.small .meter-tag > div.mostly-true--start:before,
+        .meter.small .meter-tag > div.mostly-true--middle:before,
+        .meter.small .meter-tag > div.mostly-true--last:before {
+          bottom: 10%;
+          left: auto;
+          right: 28%;
+          transform: rotate(40deg);
+        }
+        .meter.small .meter-tag > div.mostly-true--middle:before {
+          bottom: 12%;
+          left: auto;
+          right: 33%;
+          transform: rotate(25deg);
+        }
+        .meter.small .meter-tag > div.mostly-true--start:before {
+          bottom: 12%;
+          left: auto;
+          right: 40%;
+          transform: rotate(12deg);
+        }
+
+        .meter.small .meter-tag > div.mostly-false--start:before,
+        .meter.small .meter-tag > div.mostly-false--middle:before,
+        .meter.small .meter-tag > div.mostly-false--last:before {
+          bottom: 10%;
+          left: 28%;
+          transform: rotate(-35deg);
+        }
+
+        .meter.small .meter-tag > div.mostly-false--last:before {
+          bottom: 12%;
+          left: 40%;
+          transform: rotate(-5deg);
+        }
+        .meter.small .meter-tag > div.mostly-false--middle:before {
+          bottom: 12%;
+          left: 33%;
+          transform: rotate(-20deg);
+        }
+
+        /* Large Item */
+
         .meter {
-          margin: 1rem 0 0;
+          margin-bottom: 1rem;
         }
         .meter-tag > div {
           background: url(/static/img/meter/bg-meter@2x.png) no-repeat center
             center;
           background-size: 100%;
-          width: 105px;
-          height: 55px;
+          width: 145px;
+          height: 80px;
           text-indent: -999em;
           margin-bottom: 1rem;
           position: relative;
@@ -111,26 +242,25 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           position: absolute;
           height: 0;
           border-style: solid;
-          border-width: 0 8px 40px 8px;
+          border-width: 0 10px 50px 10px;
           border-color: transparent transparent #252525 transparent;
           bottom: -20%;
           left: 20%;
           transform: rotate(-90deg);
           z-index: auto;
         }
-
+      
         .meter-tag > div:after {
           transform: translate(-50%, 0);
           content: '';
           background: url(/static/img/meter/btn-false@2x.png) no-repeat bottom
             left;
-          background-size: cover;
+          background-size: 100%;
           position: absolute;
-          bottom: 0;
+          bottom: -10px;
           left: 50%;
-          width: 40px;
-          height: 25px;
-      
+          width: 65px;
+          height: 40px;
         }
         .meter-tag > div.false:after {
           background: url(/static/img/meter/btn-false@2x.png) no-repeat center
@@ -161,7 +291,7 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
             center center;
           background-size: 100%;
         }
-
+      
         .meter-tag > div.false:before {
           bottom: -20%;
           left: 20%;
@@ -174,49 +304,51 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           transform: rotate(90deg);
         }
         .meter-tag > div.middle:before {
-          bottom: 4%;
-          left: 42%;
+          bottom: 10%;
+          left: 43%;
           transform: rotate(0deg);
         }
         .meter-tag > div.mostly-true--start:before,
         .meter-tag > div.mostly-true--middle:before,
         .meter-tag > div.mostly-true--last:before {
-          bottom: 0%;
+          bottom: 0;
           left: auto;
-          right: 28%;
+          right: 30%;
           transform: rotate(40deg);
         }
         .meter-tag > div.mostly-true--middle:before {
-          bottom: 4%;
+          bottom: 10%;
           left: auto;
-          right: 33%;
+          right: 35%;
           transform: rotate(25deg);
         }
         .meter-tag > div.mostly-true--start:before {
-          bottom: 4%;
+          bottom: 12%;
           left: auto;
-          right: 40%;
+          right: 42%;
           transform: rotate(12deg);
         }
-
+      
         .meter-tag > div.mostly-false--start:before,
         .meter-tag > div.mostly-false--middle:before,
         .meter-tag > div.mostly-false--last:before {
           bottom: 0%;
-          left: 28%;
+          left: 30%;
           transform: rotate(-35deg);
         }
-
+      
         .meter-tag > div.mostly-false--last:before {
-          bottom: 4%;
+          bottom: 10%;
           left: 40%;
           transform: rotate(-5deg);
         }
         .meter-tag > div.mostly-false--middle:before {
-          bottom: 4%;
-          left: 33%;
+          bottom: 10%;
+          left: 35%;
           transform: rotate(-20deg);
         }
+      
+
       `}</style>
     </div>
   );
