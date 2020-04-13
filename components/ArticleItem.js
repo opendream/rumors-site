@@ -42,12 +42,6 @@ export default function ArticleItem({
               <div className="item-title">{article.get('title')}</div>
             </div>
           ) : (
-            // <div className="card-header bg-white d-md-flex align-items-center">
-            //   <div className="item-replyRequestCount mr-3">
-            //     {article.get('replyRequestCount')} คนสงสัย
-            //   </div>
-            //   <div className="item-text">{article.get('text')}</div>
-            // </div>
             ``
           )}
 
