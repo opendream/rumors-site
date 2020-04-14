@@ -3,7 +3,7 @@ import i18n from '../i18n';
 export const TYPE_ICON = {
   NOT_ARTICLE: '⚠️️',
   OPINIONATED: '💬',
-  NOT_RUMOR: '⭕',
+  NOT_RUMOR: '✅',
   RUMOR_NOT_RUMOR: '◑',
   RUMOR: '❌',
 };
@@ -11,7 +11,7 @@ export const TYPE_ICON = {
 export const TYPE_NAME = {
   NOT_ARTICLE: `⚠️️ ${i18n.t('replyType.name.NOT_ARTICLE')}`,
   OPINIONATED: `💬 ${i18n.t('replyType.name.OPINIONATED')}`,
-  NOT_RUMOR: `⭕ ${i18n.t('replyType.name.NOT_RUMOR')}`,
+  NOT_RUMOR: `✅ ${i18n.t('replyType.name.NOT_RUMOR')}`,
   RUMOR_NOT_RUMOR: `◑ ${i18n.t('replyType.name.RUMOR_NOT_RUMOR')}`,
   RUMOR: `❌ ${i18n.t('replyType.name.RUMOR')}`,
 };

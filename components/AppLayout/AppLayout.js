@@ -187,13 +187,14 @@ class AppLayout extends React.Component {
 
           .bubble
             {
-               position: relative;
-               background: #F6F8FA;
-               padding: 0.5rem 1rem;
-               border-radius: 8px;
-                border: #C9D4DA solid 1px;
-                border-top-left-radius: 0;
-                margin: 1rem 0;
+              display: inline-block;
+              position: relative;
+              background: #F6F8FA;
+              padding: 0.5rem 1rem;
+              border-radius: 8px;
+              border: #C9D4DA solid 1px;
+              border-top-left-radius: 0;
+              margin: 1rem 0;
             }
             
             .bubble:after
@@ -320,6 +321,16 @@ class AppLayout extends React.Component {
             background-color: #343a40;
             color: #fff;
           }
+          @media screen and (max-width: 500px) {
+            .btn-group-link .link {
+              display: block;
+            }
+            .btn-group-link .link .btn {
+              width: 100%;
+              text-align: left;
+            }
+          }
+         
           
           .input-group {
             background: url(/static/img/icon/ic-select@2x.png) no-repeat left center;
@@ -337,7 +348,7 @@ class AppLayout extends React.Component {
           }
           @media screen and (min-width: 768px) {
             .custom-select {
-              font-size: 1.25rem;
+              font-size: 1.15rem;
             }
           }
           .input-group .caret {

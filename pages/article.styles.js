@@ -29,6 +29,7 @@ export const detailStyle = css`
   .card-header .item-text {
     font-size: 1.25rem;
     font-weight: 500;
+    flex: 0 0 85%;
   }
 }
 

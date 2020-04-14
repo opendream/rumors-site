@@ -315,7 +315,7 @@ function AppHeader({
           }
           
           #menu .nav .nav-item {
-            padding: 10px 0;
+            padding: 10px 0 0;
             font-size: 22px;
             display: block;
           }

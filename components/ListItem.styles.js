@@ -122,13 +122,13 @@ export const listItemStyle = css`
     border: 1px solid rgba(0,0,0,.125);
   }
   .item:first-child {
-    border-top-right-radius: .25rem;
-    border-top-left-radius: .25rem;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
   .item:last-child {
     margin-bottom: 0;
-    border-bottom-right-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
   .item.read {
     background-color: #f1f1f1;

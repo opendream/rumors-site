@@ -217,13 +217,16 @@ class ReplyPage extends React.Component {
                 <h2>{i18n.t("originalMessage")}</h2>
                 {this.renderArticleLink()}
               </header>
-              <div className="message ">
-                {nl2br(
-                  linkify(originalArticle.get('text'), {
-                    props: { target: '_blank' },
-                  })
-                )}
-                <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} />
+              <div className="card ">
+                <div className="card-body">
+                  {nl2br(
+                    linkify(originalArticle.get('text'), {
+                      props: { target: '_blank' },
+                    })
+                  )}
+                  <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} /> 
+                </div>
+                
               </div>
             </section>
 

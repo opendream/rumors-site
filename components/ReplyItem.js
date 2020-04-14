@@ -12,10 +12,14 @@ export default function ReplyItem({ reply, showUser = true }) {
   return (
     <Link route="reply" params={{ id: reply.get('id') }}>
       <a className="item">
-        <div title={TYPE_NAME[replyType]}>{TYPE_ICON[replyType]}</div>
-        <div className="item-content">
-          <div className="item-text">
-            {showUser ? `${reply.getIn(['user', 'name'], i18n.t("someone"))}：` : ''}
+      <div className="item-content">
+        <div title={TYPE_NAME[replyType]} className="float-left mr-3"><strong>{TYPE_NAME[replyType]}</strong></div>
+        <div className="item-createBy">
+          {showUser ? `${reply.getIn(['user', 'name'], i18n.t("someone"))}` : ''}
+        </div>
+        
+        <div className="item-text">
+          <div className="bubble">
             {reply.get('text')}
           </div>
           <div className="item-info">
@@ -28,15 +32,23 @@ export default function ReplyItem({ reply, showUser = true }) {
               ''
             )}
           </div>
+          </div>
         </div>
         <style jsx>{listItemStyle}</style>
         <style jsx>{`
           .item {
             display: flex;
           }
+          .item-createBy {
+            display: inline
+          }
           .item-content {
-            margin-left: 8px;
+            // margin-left: 8px;
             min-width: 0; /* Make inner ellipsis work */
+          }
+          .item-content .item-text {
+            white-space: pre-wrap;
+
           }
           .item-info {
             font-size: 0.8em;

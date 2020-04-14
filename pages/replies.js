@@ -47,18 +47,79 @@ class ReplyList extends ListPage {
       query: { q },
     } = this.props;
     return (
-      <div className="form-inline">
-        <div className="form-group">
-          <label className="mr-2"> ค้นหา:
-          </label>
-          <input
-            type="search"
-            onBlur={this.handleKeywordChange}
-            onKeyUp={this.handleKeywordKeyup}
-            className="form-control"
-            defaultValue={q}
-          />
+      <div className="search-form">
+        <div className="row no-gutters justify-content-center">
+          <div className="pr-2 pr-md-3 col-8 col-md-9">
+            <input
+              type="search"
+              onBlur={this.handleKeywordChange}
+              onKeyUp={this.handleKeywordKeyup}
+              className="form-control text-field"
+              defaultValue={q}
+            />
+          </div>
+          <div className="col-4 col-md-3">
+            <button className="btn btn-primary w-100" type="submit">ค้นหา</button>
+          </div>
         </div>
+        <style jsx>
+          {`
+            .search-form {
+              flex: 0 0 70%;
+            }
+            .search-form .form-inline .form-control,
+            .search-form .text-field {
+              padding: 9px 15px;
+              font-size: 16px;
+              height: auto;
+              font-weight: 300;
+              border-radius: 10px;
+              border-color: #fff;
+              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
+            }
+            .search-form .text-field::placeholder {
+              font-style: italic;
+              font-size: 90%;
+            }
+            @media screen and (min-width: 768px) {
+              .search-form .text-field {
+                font-size: 20px;
+              }
+            }
+            .search-form .form-inline .form-control {
+              width: 79%;
+              margin-right: 1%;
+            }
+            .search-form .btn {
+              padding: 9px 15px;
+            }
+            .search-form .form-inline .btn {
+              width: 20%;
+              padding: 9px 15px;
+            }
+            .search-form .btn-primary {
+              background-color: #f0b4d0;
+              border-color: #f0b4d0;
+              font-size: 16px;
+              font-weight: 500;
+              color: #000;
+              border-radius: 10px;
+              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
+            }
+            @media screen and (min-width: 768px) {
+              .search-form .btn-primary {
+                font-size: 20px;
+              }
+            }
+            .search-form .btn-primary:hover,
+            .search-form .btn-primary:active,
+            .search-form .btn-primary:focus {
+              background-color: #ff79ac !important;
+              border-color: #ff79ac !important;
+              color: #000;
+            }
+          `}
+        </style>
       </div>
       
     );
@@ -83,6 +144,13 @@ class ReplyList extends ListPage {
             <option value="createdAt_DESC">เขียนล่าสุด</option>
             <option value="createdAt_ASC">เขียนเมื่อนานมาแล้ว</option>
           </select>
+          <style jsx>
+            {`
+            .input-group {
+              max-width: 100%;
+            }
+            `}
+          </style>
         </div>
           
 
@@ -193,12 +261,12 @@ class ReplyList extends ListPage {
           <Head>
             <title>{i18n.t("pageReplies.replyList")}</title>
           </Head>
-          <h2 className="mb-2 mb-lg-3">{i18n.t("pageReplies.replyList")}</h2>
+          <h2 className="mb-3">{i18n.t("pageReplies.replyList")}</h2>
           
-          <div className="d-md-flex justify-content-md-between">
+          <div className="d-md-flex justify-content-md-between mb-2 mb-lg-3">
             {this.renderSearch()}
-            <div className="form-inline">
-              <div className="form-group">
+            <div className="form-inline mt-3 mt-md-0">
+              <div className="form-group w-100">
                 {/* <label className="mr-2">Order By:</label> */}
                 {this.renderOrderBy()}
               </div>
