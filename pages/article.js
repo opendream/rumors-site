@@ -16,6 +16,7 @@ import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
 import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
 import FlaggedReplyInfomation from "../components/FlaggedReplyInfomation";
+import ClaimReviewJsonifier from "../components/ClaimReviewJsonifier";
 
 import {
   load,
@@ -356,6 +357,8 @@ class ArticlePage extends React.Component {
               {i18n.t('realOrFake')}
             </title>
           </Head>
+
+          <ClaimReviewJsonifier article={article}  replyConnections={replyConnections}/>
 
           {article.get('status') == 'DELETED'?
           <section className="section alert alert-danger">
