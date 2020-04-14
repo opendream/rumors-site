@@ -1,13 +1,40 @@
 import React from 'react';
+import reply from '../pages/reply';
 
-export default function ClaimReviewJsonifier({ article, avgRadian }) {
-  console.log(article);
+export default function ClaimReviewJsonifier({
+  article,
+  avgRadian,
+  replyConnections,
+}) {
   let id = article.get('id');
-  let title = article.get('text');
+  let url = 'https://cofact.org/article/' + id;
+  let titleText = article.get('text');
   let link = article.get('references');
   let rating = 0;
 
   rating = convertDegreeToRating(avgRadian);
+
+  let author = determineAuthor(replyConnections);
+
+  let claimReviewJson = {
+    '@context': 'https://schema.org',
+    '@type': 'ClaimReview',
+    claimReviewed: titleText,
+    url: url,
+    author: author,
+    datePublished: '2019-11-23',
+    itemReviewed: {
+      '@type': 'Claim',
+      appearance: { link },
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: rating,
+      bestRating: '5',
+      worstRating: '1',
+      alternateName: 'เป็นเรื่องหลอกลวง',
+    },
+  };
 
   function convertDegreeToRating(avgRadians) {
     let rating = 0;
@@ -20,37 +47,18 @@ export default function ClaimReviewJsonifier({ article, avgRadian }) {
     return rating;
   }
 
-  let claimReviewJson = {
-    '@context': 'https://schema.org',
-    '@type': 'ClaimReview',
-    claimReviewed: title,
-    url: 'https://cofact.org/article/1li9139uion6w/2',
-    author: {
+  function determineAuthor(replyConnections) {
+    let author = {
       '@type': 'Person',
       name: 'k',
-    },
-    datePublished: '2019-11-23',
-    itemReviewed: {
-      '@type': 'Claim',
-      appearance: {link},
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: rating,
-      bestRating: '5',
-      worstRating: '1',
-      alternateName: 'เป็นเรื่องหลอกลวง',
-    },
-  };
+    };
 
-  return (
-    <script>{JSON.stringify(claimReviewJson)}</script>
+    replyConnections.map(reply => {
+      console.log("replyID : "+reply.get('user'));
+    });
 
-    //   <p>
-    //     Claimed !! {id} : {title} : {link} : {rating}
-    //   </p>
-    //   <script type="application/ld+json">
+    return author;
+  }
 
-    // </script>
-  );
+  return <script>{JSON.stringify(claimReviewJson)}</script>;
 }

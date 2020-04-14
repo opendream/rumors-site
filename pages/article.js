@@ -360,7 +360,7 @@ class ArticlePage extends React.Component {
             </title>
           </Head>
 
-          <ClaimReviewJsonifier article={article} avgRadian={meterDegree}/>
+          <ClaimReviewJsonifier article={article} avgRadian={meterDegree} replyConnections={replyConnections}/>
 
           {article.get('status') == 'DELETED'?
           <section className="section alert alert-danger">

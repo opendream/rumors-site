@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function CalcDegreeFromReply( replyConnections ) {
-  console.log('CONNN#1 : ' + replyConnections);
+export default function CalcDegreeFromReply(replyConnections) {
   let avgRadians;
   let totalReplyTypes = [0, 0, 0];
   totalReplyTypes = populateTotalReplyTypes(replyConnections);
@@ -16,30 +15,23 @@ function populateTotalReplyTypes(replyConnections) {
   const rumorNotRumorWeight = 1;
   const rumorWeight = 1;
 
-  console.log('CONNN : ' + replyConnections);
-
   if (typeof replyConnections != 'undefined') {
     let userWeight = 0;
     replyConnections.map(connections => {
       const replyType = connections.get('reply').get('type');
       const userType = connections.get('user').get('belongTo');
-      // console.log('TYPE : ' + replyType);
 
       switch (replyType) {
         case 'NOT_RUMOR':
-          // notRumorCount++;
-
           userWeight = calcUserWeight(userType);
           totalReplyTypes[2] = totalReplyTypes[2] + userWeight * notRumorWeight;
           break;
         case 'RUMOR_NOT_RUMOR':
-          // rumorNotRumorCount++;
           userWeight = calcUserWeight(userType);
           totalReplyTypes[1] =
             totalReplyTypes[1] + userWeight * rumorNotRumorWeight;
           break;
         case 'RUMOR':
-          // rumorCount++;
           userWeight = calcUserWeight(userType);
           totalReplyTypes[0] = totalReplyTypes[0] + userWeight * rumorWeight;
           break;
