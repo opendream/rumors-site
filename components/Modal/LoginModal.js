@@ -22,6 +22,9 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
     : `${i18n.t('login')} / ${i18n.t('signup')}`;
   const action = isDialogShown == i18n.t('login') ? 'login' : 'signup';
 
+  const switchTarget =
+    isDialogShown == i18n.t('login') ? i18n.t('signup') : i18n.t('login');
+
   const onSubmit = e => {
     if (location.origin != PUBLIC_API_URL) {
       return;
@@ -59,10 +62,10 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
   return (
     <Modal onClose={onModalClose}>
       <div className="root">
-        <h4 className={`mb-4`}>{title}</h4>
-        <div>
-          <a onClick={onSwitchClick}>To Signup </a>
-        </div>
+        <h4 className={`mb-4`}>
+          {title} {i18n.t('or')}
+          <a onClick={onSwitchClick}> {switchTarget}</a>
+        </h4>
 
         <div>
           <form
