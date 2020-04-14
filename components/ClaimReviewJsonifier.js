@@ -91,38 +91,37 @@ export default function ClaimReviewJsonifier({ article, replyConnections }) {
     return userWeight;
   }
 
+  let claimReviewJson = {
+    '@context': 'https://schema.org',
+    '@type': 'ClaimReview',
+    claimReviewed: title,
+    url: 'https://cofact.org/article/1li9139uion6w/2',
+    author: {
+      '@type': 'Person',
+      name: 'k',
+    },
+    datePublished: '2019-11-23',
+    itemReviewed: {
+      '@type': 'Claim',
+      appearance: 'https://board.postjung.com/1166664',
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: rating,
+      bestRating: '5',
+      worstRating: '1',
+      alternateName: 'เป็นเรื่องหลอกลวง',
+    },
+  };
+
   return (
-    <div>
-      <p>
-        Claimed !! {id} : {title} : {link} : {rating}
-      </p>
-    </div>
-      // <script type="application/ld+json">
-      //   {
-      //     "@context": "https://schema.org",
-      //     "@type": "ClaimReview",
-      //     "claimReviewed": {title},
-      //     "url": "https://cofact.org/article/1li9139uion6w/2",
-      //     "author":
-      //     {
-      //       "@type": "Person",
-      //       "name": "k"
-      //     },
-      //     "datePublished": "2019-11-23",
-      //     "itemReviewed":
-      //     {
-      //       "@type": "Claim",
-      //       "appearance": "https://board.postjung.com/1166664"
-      //     },
-      //     "reviewRating":
-      //     {
-      //       "@type": "Rating",
-      //       "ratingValue": {rating},
-      //       "bestRating": "5",
-      //       "worstRating": "1",
-      //       "alternateName": "เป็นเรื่องหลอกลวง"
-      //     }
-      // }
-      // </script>
+    <script>{JSON.stringify(claimReviewJson)}</script>
+
+    //   <p>
+    //     Claimed !! {id} : {title} : {link} : {rating}
+    //   </p>
+    //   <script type="application/ld+json">
+
+    // </script>
   );
 }
