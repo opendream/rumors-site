@@ -7,6 +7,7 @@ import ArticleItemWidget from './ArticleItemWidget/ArticleItemWidget.js';
 import cx from 'classnames';
 import i18n from '../i18n';
 import FlaggedReplyInfomation from './FlaggedReplyInfomation';
+import CalcDegreeFromReply from './CalcDegreeFromReply';
 
 export default function ArticleItem({
   article,
@@ -23,7 +24,15 @@ export default function ArticleItem({
   }
 
   let replyAmount = 0;
-  if (replyConnections != null) replyAmount = replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size;
+  if (replyConnections != null)
+    replyAmount = replyConnections.filter(
+      r =>
+        r.get('reply').get('type') == 'NOT_RUMOR' ||
+        r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' ||
+        r.get('reply').get('type') == 'RUMOR'
+    ).size;
+
+  let meterDegree = CalcDegreeFromReply(replyConnections);
 
   return (
     <li
@@ -56,7 +65,6 @@ export default function ArticleItem({
                   </div>
                   <div className="item-text">{article.get('text')}</div>
                 </div>
-               
               )}
               <div>
                 {article.get('categories') ? (
@@ -77,11 +85,11 @@ export default function ArticleItem({
                   <div className="item-createBy mr-2 float-left">
                     {articleCreator}
                   </div>
-                ) : 
+                ) : (
                   <div className="item-createBy mr-2 float-left">
                     ไม่ระบุชื่อ
                   </div>
-                }
+                )}
                 <ArticleInfo article={article} />
                 {isLogin && (
                   <ArticleItemWidget
@@ -97,7 +105,7 @@ export default function ArticleItem({
 
             <div className="card-body-right">
               <div className="d-flex flex-column align-items-center h-100 justify-content-end">
-                <ArticleTruthMeter replyConnections={replyConnections} size={`small`} />
+                <ArticleTruthMeter avgRadian={meterDegree} size={`small`} />
 
                 {replyAmount > 0 ? (
                   <div className="item-replyAmount">
