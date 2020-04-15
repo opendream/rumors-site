@@ -334,15 +334,8 @@ function AppHeader({
 
           #menuToggle #menu  {
             box-shadow: 1px 2px 5px -2px rgba(0,0,0,0.5)
-          }
-
-          
+          } 
         }
-
-
-        
-
-
       `}</style>
     </header>
   );

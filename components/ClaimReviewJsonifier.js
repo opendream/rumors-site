@@ -11,11 +11,28 @@ export default function ClaimReviewJsonifier({
   let id = article.get('id');
   let url = 'https://cofact.org/article/' + id;
   let titleText = article.get('text');
-  let link = article.get('references');
+  let link = determineReferenceLink(article);
 
   let rating = convertDegreeToRating(avgRadian);
   let altRatingName = determineAltRatingNameFromRating(rating);
   let author = determineAuthor(replyConnections);
+
+  function determineReferenceLink(article) {
+    let urlLink = '';
+    let hyperlinks = article.get('hyperlinks');
+    let linkCount = 0;
+
+    if (hyperlinks.size > 0) {
+      hyperlinks.map(link => {
+        linkCount++;
+        if (linkCount === 1) {
+          urlLink = link.get('url');
+        }
+      });
+    }
+
+    return urlLink;
+  }
 
   function determineAltRatingNameFromRating(rating) {
     switch (rating) {
@@ -44,10 +61,7 @@ export default function ClaimReviewJsonifier({
   }
 
   function determineAuthor(replyConnections) {
-    let author = {
-      '@type': 'Person',
-      name: 'k',
-    };
+    let author = {};
 
     let authorCount = 0;
     let firstReplyName = '';
@@ -58,10 +72,12 @@ export default function ClaimReviewJsonifier({
       let user = reply.get('user');
       let userId = user.get('id');
       let userBelongTo = user.get('belongTo');
+
       if (!userIdArray.includes(userId)) {
         authorCount++;
         userIdArray.push(userId);
       }
+
       if (userBelongTo != null) userWithBelongToFlag = user;
 
       if (authorCount === 1) firstReplyName = user.get('name');
@@ -69,7 +85,12 @@ export default function ClaimReviewJsonifier({
 
     if (authorCount > 1) {
       firstReplyName =
-        firstReplyName + ' ' + i18n.t('with') + ' ' + authorCount + ' others';
+        firstReplyName +
+        ' ' +
+        i18n.t('with') +
+        ' ' +
+        (authorCount - 1) +
+        ' others';
     }
 
     if (userWithBelongToFlag != null) {
