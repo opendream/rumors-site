@@ -195,6 +195,7 @@ class AppLayout extends React.Component {
               border: #C9D4DA solid 1px;
               border-top-left-radius: 0;
               margin: 1rem 0;
+              max-width: 100%;
             }
             
             .bubble:after
