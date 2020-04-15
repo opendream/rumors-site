@@ -1,86 +1,8 @@
 import React from 'react';
 
-export default function ArticleTruthMeter({ replyConnections, size }) {
+export default function ArticleTruthMeter({ avgRadian, size }) {
   let tag = '';
-
-  const notRumorWeight = 1;
-  const rumorNotRumorWeight = 1;
-  const rumorWeight = 1;
-
-  let notRumorCount = 0;
-  let rumorCount = 0;
-  let rumorNotRumorCount = 0;
-
-  let totalReplyTypes = [0, 0, 0];
-
-  if (typeof replyConnections != 'undefined') {
-    let userWeight = 0;
-    replyConnections.map(connections => {
-      const replyType = connections.get('reply').get('type');
-      const userType = connections.get('user').get('belongTo');
-      // console.log('TYPE : ' + replyType);
-
-      switch (replyType) {
-        case 'NOT_RUMOR':
-          notRumorCount++;
-
-          userWeight = calcUserWeight(userType);
-          totalReplyTypes[2] = totalReplyTypes[2] + userWeight * notRumorWeight;
-          break;
-        case 'RUMOR_NOT_RUMOR':
-          rumorNotRumorCount++;
-          userWeight = calcUserWeight(userType);
-          totalReplyTypes[1] =
-            totalReplyTypes[1] + userWeight * rumorNotRumorWeight;
-          break;
-        case 'RUMOR':
-          rumorCount++;
-          userWeight = calcUserWeight(userType);
-          totalReplyTypes[0] = totalReplyTypes[0] + userWeight * rumorWeight;
-          break;
-      }
-    });
-
-    if (totalReplyTypes.length > 0) {
-      var avgRadians = calcDegreeFromReply(totalReplyTypes);
-      tag = convertDegreeToTag(avgRadians);
-      // console.log(
-      //   totalReplyTypes + ' : AVG Radian : ' + avgRadians + 'T: ' + tag
-      // );
-    }
-  }
-
-  function calcDegreeFromReply(totalReplyTypes) {
-    let typeRadian = 180 / (totalReplyTypes.length - 1);
-    let totalRadians = totalReplyTypes
-        .map((total, i) => i * typeRadian * total)
-        .reduce((a, b) => a + b, 0);
-    let totalReplies = totalReplyTypes.reduce((a, b) => a + b, 0);
-    let avgRadians = totalRadians / totalReplies;
-    return avgRadians;
-  }
-
-  function convertDegreeToTag(avgRadians) {
-    let tag = '';
-    if (avgRadians >= 180) tag = 'true';
-    else if (avgRadians <= 0) tag = 'false';
-    else if (avgRadians == 90) tag = 'middle';
-    else if (avgRadians > 90 && avgRadians < 120) tag = 'mostly-true--start';
-    else if (avgRadians >= 120 && avgRadians < 150) tag = 'mostly-true--middle';
-    else if (avgRadians >= 150 && avgRadians < 180) tag = 'mostly-true--last';
-    else if (avgRadians <= 90 && avgRadians > 60) tag = 'mostly-false--last';
-    else if (avgRadians <= 60 && avgRadians > 30) tag = 'mostly-false--middle';
-    else if (avgRadians <= 30 && avgRadians > 0) tag = 'mostly-false--start';
-    else tag = '';
-    return tag;
-  }
-
-  function calcUserWeight(userType) {
-    let userWeight;
-    if (userType == null) userWeight = 1;
-    else userWeight = 10;
-    return userWeight;
-  }
+  tag = convertDegreeToTag(avgRadian);
 
   return (
     <div className={`meter ${size}`}>
@@ -91,7 +13,6 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
       ) : null}
 
       <style jsx>{`
-
         /* Small item */
         .meter.small {
           margin: 0;
@@ -132,7 +53,6 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           left: 50%;
           width: 35px;
           height: 25px;
-      
         }
         .meter.small .meter-tag > div.false:after {
           background: url(/static/img/meter/btn-false@2x.png) no-repeat center
@@ -249,7 +169,7 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           transform: rotate(-90deg);
           z-index: auto;
         }
-      
+
         .meter-tag > div:after {
           transform: translate(-50%, 0);
           content: '';
@@ -291,7 +211,7 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
             center center;
           background-size: 100%;
         }
-      
+
         .meter-tag > div.false:before {
           bottom: -20%;
           left: 20%;
@@ -328,7 +248,7 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           right: 42%;
           transform: rotate(12deg);
         }
-      
+
         .meter-tag > div.mostly-false--start:before,
         .meter-tag > div.mostly-false--middle:before,
         .meter-tag > div.mostly-false--last:before {
@@ -336,7 +256,7 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           left: 30%;
           transform: rotate(-35deg);
         }
-      
+
         .meter-tag > div.mostly-false--last:before {
           bottom: 10%;
           left: 40%;
@@ -347,9 +267,22 @@ export default function ArticleTruthMeter({ replyConnections, size }) {
           left: 35%;
           transform: rotate(-20deg);
         }
-      
-
       `}</style>
     </div>
   );
+}
+
+function convertDegreeToTag(avgRadians) {
+  let tag = '';
+  if (avgRadians >= 180) tag = 'true';
+  else if (avgRadians <= 0) tag = 'false';
+  else if (avgRadians == 90) tag = 'middle';
+  else if (avgRadians > 90 && avgRadians < 120) tag = 'mostly-true--start';
+  else if (avgRadians >= 120 && avgRadians < 150) tag = 'mostly-true--middle';
+  else if (avgRadians >= 150 && avgRadians < 180) tag = 'mostly-true--last';
+  else if (avgRadians <= 90 && avgRadians > 60) tag = 'mostly-false--last';
+  else if (avgRadians <= 60 && avgRadians > 30) tag = 'mostly-false--middle';
+  else if (avgRadians <= 30 && avgRadians > 0) tag = 'mostly-false--start';
+  else tag = '';
+  return tag;
 }

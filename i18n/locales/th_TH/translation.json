@@ -316,5 +316,11 @@
   "Connect with Facebook": "เชื่อมต่อด้วย Facebook",
     
   "feelResonable": "รู้สึกว่ามีเหตุผล",
-  "feelUnresonable": "รู้สึกว่าไม่มีเหตุผล"
+  "feelUnresonable": "รู้สึกว่าไม่มีเหตุผล",
+  "altNameIsFake": "เป็นเรื่องหลอกลวง",
+  "altNameIsMostlyFake": "เป็นเรื่องหลอกลวงเป็นส่วนมาก",
+  "altNameIsSomewhatTrue": "เป็นเรื่องจริงบางส่วน",
+  "altNameIsMostlyTrue": "เป็นเรื่องจริงเป็นส่วนมาก",
+  "altNameIsTrue": "เป็นเรื่องจริง"
+
 }

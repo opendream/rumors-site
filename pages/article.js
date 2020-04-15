@@ -16,6 +16,8 @@ import ReplyRequestReason from 'components/ReplyRequestReason';
 import Hyperlinks from 'components/Hyperlinks';
 import ArticleTruthMeter from '../components/ArticleTruthMeter/ArticleTruthMeter';
 import FlaggedReplyInfomation from "../components/FlaggedReplyInfomation";
+import ClaimReviewJsonifier from "../components/ClaimReviewJsonifier";
+import CalcDegreeFromReply from "../components/CalcDegreeFromReply";
 
 import {
   load,
@@ -331,6 +333,7 @@ class ArticlePage extends React.Component {
     const replyConnections = data.get('replyConnections');
     const relatedArticles = data.get('relatedArticles');
 
+    let meterDegree = CalcDegreeFromReply(replyConnections);
     if (isLoading && article === null) {
       return <div>Loading...</div>;
     }
@@ -356,6 +359,8 @@ class ArticlePage extends React.Component {
               {i18n.t('realOrFake')}
             </title>
           </Head>
+
+          <ClaimReviewJsonifier article={article} avgRadian={meterDegree} replyConnections={replyConnections}/>
 
           {article.get('status') == 'DELETED'?
           <section className="section alert alert-danger">
@@ -434,7 +439,7 @@ class ArticlePage extends React.Component {
                   <div className="card-body-right">
                     <div className="d-flex flex-column align-items-center h-100 justify-content-end">
                     
-                      <ArticleTruthMeter replyConnections={replyConnections} />
+                      <ArticleTruthMeter avgRadian={meterDegree} />
                       <div className="replyCount item-replyAmount">{replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size} ความเห็น</div>
                     </div>
                   </div>
