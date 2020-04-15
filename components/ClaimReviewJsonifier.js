@@ -1,5 +1,7 @@
 import React from 'react';
 import reply from '../pages/reply';
+import i18n from '../i18n';
+import { List } from 'immutable';
 
 export default function ClaimReviewJsonifier({
   article,
@@ -10,31 +12,25 @@ export default function ClaimReviewJsonifier({
   let url = 'https://cofact.org/article/' + id;
   let titleText = article.get('text');
   let link = article.get('references');
-  let rating = 0;
 
-  rating = convertDegreeToRating(avgRadian);
-
+  let rating = convertDegreeToRating(avgRadian);
+  let altRatingName = determineAltRatingNameFromRating(rating);
   let author = determineAuthor(replyConnections);
 
-  let claimReviewJson = {
-    '@context': 'https://schema.org',
-    '@type': 'ClaimReview',
-    claimReviewed: titleText,
-    url: url,
-    author: author,
-    datePublished: '2019-11-23',
-    itemReviewed: {
-      '@type': 'Claim',
-      appearance: { link },
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: rating,
-      bestRating: '5',
-      worstRating: '1',
-      alternateName: 'เป็นเรื่องหลอกลวง',
-    },
-  };
+  function determineAltRatingNameFromRating(rating) {
+    switch (rating) {
+      case 1:
+        return i18n.t('altNameIsFake');
+      case 2:
+        return i18n.t('altNameIsMostlyFake');
+      case 3:
+        return i18n.t('altNameIsSomewhatTrue');
+      case 4:
+        return i18n.t('altNameIsMostlyTrue');
+      case 5:
+        return i18n.t('altNameIsTrue');
+    }
+  }
 
   function convertDegreeToRating(avgRadians) {
     let rating = 0;
@@ -53,12 +49,65 @@ export default function ClaimReviewJsonifier({
       name: 'k',
     };
 
+    let authorCount = 0;
+    let firstReplyName = '';
+    let userWithBelongToFlag = null;
+    let userIdArray = [];
+
     replyConnections.map(reply => {
-      console.log("replyID : "+reply.get('user'));
+      let user = reply.get('user');
+      let userId = user.get('id');
+      let userBelongTo = user.get('belongTo');
+      if (!userIdArray.includes(userId)) {
+        authorCount++;
+        userIdArray.push(userId);
+      }
+      if (userBelongTo != null) userWithBelongToFlag = user;
+
+      if (authorCount === 1) firstReplyName = user.get('name');
     });
+
+    if (authorCount > 1) {
+      firstReplyName =
+        firstReplyName + ' ' + i18n.t('with') + ' ' + authorCount + ' others';
+    }
+
+    if (userWithBelongToFlag != null) {
+      let url =
+        'https://www.google.com/search?q=' + userWithBelongToFlag.get('name');
+      author = {
+        '@type': 'Organization',
+        name: userWithBelongToFlag.get('name'),
+        url: url,
+      };
+    } else {
+      author = {
+        '@type': 'Person',
+        name: firstReplyName,
+      };
+    }
 
     return author;
   }
+
+  let claimReviewJson = {
+    '@context': 'https://schema.org',
+    '@type': 'ClaimReview',
+    claimReviewed: titleText,
+    url: url,
+    author: author,
+    itemReviewed: {
+      '@type': 'Claim',
+      appearance: { link },
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: rating,
+      bestRating: '5',
+      worstRating: '1',
+      alternateName: altRatingName,
+    },
+  };
 
   return <script>{JSON.stringify(claimReviewJson)}</script>;
 }
