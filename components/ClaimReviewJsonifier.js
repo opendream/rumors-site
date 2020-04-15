@@ -89,8 +89,8 @@ export default function ClaimReviewJsonifier({
         ' ' +
         i18n.t('with') +
         ' ' +
-        (authorCount - 1) +
-        ' others';
+        (authorCount - 1) +' '+
+        i18n.t('otherUserRespond');
     }
 
     if (userWithBelongToFlag != null) {
