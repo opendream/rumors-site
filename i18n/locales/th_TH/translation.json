@@ -71,6 +71,7 @@
   "oldestFirst": "เก่าไปใหม่",
   "name": "ชื่อ",
   "email": "อีเมล",
+  "password": "รหัสผ่าน",
   "createdAt": "สร้างเมื่อ",
   "belongTo": "สังกัด",
   "someone": "บางคน",

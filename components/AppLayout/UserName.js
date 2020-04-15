@@ -195,6 +195,7 @@ class UserName extends PureComponent {
 							padding: 5px 10px;
 						}
 						.link-list {
+              cursor: pointer;
 							margin-right: 10px;
 							padding-right: 10px;
 						}

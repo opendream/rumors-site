@@ -63,8 +63,7 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
     <Modal onClose={onModalClose}>
       <div className="root">
         <h4 className={`mb-4`}>
-          {title} {i18n.t('or')}
-          <a onClick={onSwitchClick}> {switchTarget}</a>
+          {title}
         </h4>
 
         <div>
@@ -95,13 +94,16 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
             <input type="hidden" name="redirect" value={`/`} />
             <input type="hidden" name="action" value={action} />
 
-            <button type="submit" className="btn btn-secondary btn-block">
+            <button type="submit" className="btn btn-primary btn-block">
               {title}
             </button>
           </form>
+          <div className="mt-3 text-center">
+            {i18n.t('or')} <a className="btn-link" onClick={onSwitchClick}> {switchTarget}</a>
+          </div>
         </div>
-
-        <div className={`text-center mt-2 mb-3`}>
+    <hr />
+        <div className={`text-center mt-2 mb-1`}>
           <small className={`text-secondary`}>
             {i18n.t(`or Connect with Social Media`)}
           </small>
@@ -109,7 +111,7 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
 
         <div>
           <a
-            className={`btn btn-outline-secondary btn-block`}
+            className={`btn btn-outline-secondary btn-block btn-facebook`}
             href={`${PUBLIC_API_URL}/login/facebook?redirect=${redirectUrl}`}
           >
             {i18n.t(`Connect with Facebook`)}
@@ -125,6 +127,27 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
       <style jsx>{`
         .root {
           padding: 20px;
+        }
+        .form-control {
+          border-radius: 10px;
+          padding: 1.5rem 1rem;      
+        }
+        .btn {
+          border-radius: 10px;
+        }
+        .btn-facebook {
+          background-color: #1877f2;
+          border-color: #1877f2;
+          color: white;
+          padding: 10px;
+        }
+        .btn-facebook:hover {
+          background-color: #145dbb;
+          border-color: #145dbb;
+        }
+        a {
+          cursor: pointer;
+          
         }
       `}</style>
     </Modal>
