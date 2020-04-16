@@ -48,7 +48,7 @@ export default class AutoCompleteSearchBox extends React.Component {
 
         let listEdges = resp.getIn(['data', 'ListRelatedArticles', 'edges']);
         listEdges.map(edge => {
-          suggestions.push(edge.get('node').get('title'));
+          suggestions.push(edge.get('node'));
         });
 
         this.setState({ suggestions: suggestions, isSubmitting: false });
@@ -68,7 +68,7 @@ export default class AutoCompleteSearchBox extends React.Component {
       <ul className="item">
         {suggestions.map(item => (
           <li className="list" onClick={() => this.suggestionSelected(item)}>
-            {item}
+            {item.get('title')}
           </li>
         ))}
         <style jsx>
@@ -93,9 +93,14 @@ export default class AutoCompleteSearchBox extends React.Component {
     );
   }
 
-  suggestionSelected(value) {
-    this.setState(() => ({ queryText: value, suggestion: [] }));
-    Router.push(`/articles?q=${value}`);
+  suggestionSelectedToArticle(node) {
+    this.setState(() => ({ queryText: node.get('title'), suggestion: [] }));
+    Router.push(`/article/${node.get('id')}`);
+  }
+
+  suggestionSelected(node) {
+    this.setState(() => ({ queryText: node, suggestion: [] }));
+    Router.push(`/articles?q=${node}`);
   }
 
   render() {
