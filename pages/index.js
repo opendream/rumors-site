@@ -48,17 +48,15 @@ class IndexPage extends React.Component {
                 <div className="row justify-content-md-center">
                   <div className={`col col-lg-8 col-xl-6`}>
                     <div id="SearchQueryField">
-                      <form onSubmit={this.handleSubmit} className="row no-gutters justify-content-center">
-                        <div className="pr-2 col-9 col-md-10">
-                          <input className="form-control text-field" type="text" name="query" placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ" />
-                        </div>
-                        <div className="col-3 col-md-2">
-                          <button type="submit" className="btn btn-primary w-100">ค้นหา</button>
-                        </div>
-                      </form>
-                      {/* <AutoCompleteSearchBox */}
-                      {/* items={['t', 'this', 'no', 'co', 'Cov']} */}
-                      {/* /> */}
+                      {/*<form onSubmit={this.handleSubmit} className="row no-gutters justify-content-center">*/}
+                      {/*  <div className="pr-2 col-9 col-md-10">*/}
+                      {/*    <input className="form-control text-field" type="text" name="query" placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ" />*/}
+                      {/*  </div>*/}
+                      {/*  <div className="col-3 col-md-2">*/}
+                      {/*    <button type="submit" className="btn btn-primary w-100">ค้นหา</button>*/}
+                      {/*  </div>*/}
+                      {/*</form>*/}
+                      <AutoCompleteSearchBox />
                     </div>
                   </div>
                 </div>

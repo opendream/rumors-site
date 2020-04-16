@@ -1,53 +1,62 @@
 import React from 'react';
 import Router from 'next/router';
 import './AutoCompleteSearchBox.css';
+import gql from '../util/gql';
 
 export default class AutoCompleteSearchBox extends React.Component {
   constructor(props) {
     super(props);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
       suggestions: [],
       queryText: '',
-      cursor: 0,
     };
-  }
-
-  handleKeyDown(e) {
-    const { cursor, suggestions } = this.state;
-    if (e.keyCode === 38 && cursor > 0) {
-      this.setState(prevState => ({
-        cursor: prevState.cursor - 1,
-      }));
-    } else if (e.keyCode === 40 && cursor < suggestions.length - 1) {
-      this.setState(prevState => ({
-        cursor: prevState.cursor + 1,
-      }));
-    }
   }
 
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ isSubmitting: true });
-    const searchQuery = e.target.query.value.trim();
+    const queryText = e.target.query.value.trim();
 
-    this.setState({ isSubmitting: false });
-
-    Router.push(`/articles?q=${searchQuery}`);
+    Router.push(`/articles?q=${queryText}`);
   };
 
   handleQueryChange = e => {
-    const { items } = this.props;
-    const query = e.target.value;
+    const queryText = e.target.value;
 
     let suggestions = [];
-    if (query.length > 0) {
-      const regex = new RegExp(`^${query}`, 'i');
-      suggestions = items.sort().filter(v => regex.test(v));
-    }
+    if (queryText.length > 0) {
+      gql`
+        query($queryText: String) {
+          ListRelatedArticles(queryText: $queryText) {
+            edges {
+              node {
+                id
+                title
+              }
+            }
+          }
+        }
+      `({
+        queryText,
+      }).then(resp => {
+        this.setState({ isSubmitting: false });
 
-    this.setState(() => ({ suggestions, queryText: query }));
-    console.log(suggestions);
+        if (resp.get('errors')) {
+          console.error(resp.get('errors'));
+          return;
+        }
+
+        let listEdges = resp.getIn(['data', 'ListRelatedArticles', 'edges']);
+        listEdges.map(edge => {
+          suggestions.push(edge.get('node').get('title'));
+        });
+
+        this.setState({ suggestions: suggestions, isSubmitting: false });
+      });
+    } else {
+      this.setState({ suggestions: [] });
+    }
+    this.setState(() => ({ queryText: queryText }));
   };
 
   renderSuggestion() {
@@ -58,7 +67,9 @@ export default class AutoCompleteSearchBox extends React.Component {
     return (
       <ul className="item">
         {suggestions.map(item => (
-          <li className="list" onClick={() => this.suggestionSelected(item)}>{item}</li>
+          <li className="list" onClick={() => this.suggestionSelected(item)}>
+            {item}
+          </li>
         ))}
         <style jsx>
           {`
@@ -74,7 +85,7 @@ export default class AutoCompleteSearchBox extends React.Component {
               margin-right: 5px;
               border-radius: 10px;
               padding: 7px 15px;
-              cursor: pointer
+              cursor: pointer;
             }
           `}
         </style>
@@ -84,6 +95,7 @@ export default class AutoCompleteSearchBox extends React.Component {
 
   suggestionSelected(value) {
     this.setState(() => ({ queryText: value, suggestion: [] }));
+    Router.push(`/articles?q=${value}`);
   }
 
   render() {
@@ -91,7 +103,10 @@ export default class AutoCompleteSearchBox extends React.Component {
     return (
       <div className="align-items-center">
         <div id="SearchQueryField" className="AutoCompleteSearchBox">
-          <form onSubmit={this.handleSubmit} className="row no-gutters justify-content-center">
+          <form
+            onSubmit={this.handleSubmit}
+            className="row no-gutters justify-content-center"
+          >
             <div className="pr-2 col-9 col-md-10">
               <input
                 className="form-control text-field "
@@ -116,14 +131,13 @@ export default class AutoCompleteSearchBox extends React.Component {
         </div>
         <style jsx>
           {`
-
             .form-inline .form-control,
             .text-field {
               padding: 15px;
               font-size: 16px;
               height: auto;
               font-weight: 300;
-              border-radius: 10px
+              border-radius: 10px;
             }
             @media screen and (min-width: 768px) {
               .text-field {
@@ -134,7 +148,9 @@ export default class AutoCompleteSearchBox extends React.Component {
               width: 79%;
               margin-right: 1%;
             }
-            .btn { padding: 15px; }
+            .btn {
+              padding: 15px;
+            }
             .form-inline .btn {
               width: 20%;
               padding: 15px;
