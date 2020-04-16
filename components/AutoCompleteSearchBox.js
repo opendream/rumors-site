@@ -27,7 +27,7 @@ export default class AutoCompleteSearchBox extends React.Component {
     if (queryText.length > 0) {
       gql`
         query($queryText: String) {
-          ListRelatedArticles(queryText: $queryText) {
+          ListRelatedArticles(queryText: $queryText, first: 5) {
             edges {
               node {
                 id
