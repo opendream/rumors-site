@@ -43,6 +43,7 @@ function populateTotalReplyTypes(replyConnections) {
 }
 
 function calcDegreeFromReply(totalReplyTypes) {
+  if(typeof totalReplyTypes === 'undefined') return 0;
   let typeRadian = 180 / (totalReplyTypes.length - 1);
   let totalRadians = totalReplyTypes
     .map((total, i) => i * typeRadian * total)
