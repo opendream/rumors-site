@@ -62,7 +62,7 @@ export default class AutoCompleteSearchBox extends React.Component {
 
   renderSuggestion() {
     const { suggestions } = this.state;
-    console.log(suggestions);
+
     if (suggestions.length === 0) {
       return null;
     }
@@ -73,14 +73,14 @@ export default class AutoCompleteSearchBox extends React.Component {
             item.get('title') ? (
               <li
                 className="list"
-                onClick={() => this.suggestionSelected(item)}
+                onClick={() => this.suggestionSelectedToArticle(item)}
               >
                 {item.get('title')}
               </li>
             ) : (
               <li
                 className="list"
-                onClick={() => this.suggestionSelected(item)}
+                onClick={() => this.suggestionSelectedToArticle(item)}
               >
                 {item.get('text')}
               </li>
@@ -114,8 +114,15 @@ export default class AutoCompleteSearchBox extends React.Component {
   }
 
   suggestionSelected(node) {
-    this.setState(() => ({ queryText: node, suggestion: [] }));
-    Router.push(`/articles?q=${node}`);
+    let nodeTitle = node.get( 'title' );
+    if (nodeTitle != null) {
+      this.setState(() => ({ queryText: nodeTitle, suggestion: [] }));
+      Router.push(`/articles?q=${nodeTitle}`);
+    } else {
+      let nodeText = node.get( 'text' );
+      this.setState(() => ({ queryText: nodeText, suggestion: [] }));
+      Router.push(`/articles?q=${nodeText}`);
+    }
   }
 
   render() {
