@@ -32,6 +32,7 @@ export default class AutoCompleteSearchBox extends React.Component {
               node {
                 id
                 title
+                text
               }
             }
           }
@@ -61,16 +62,30 @@ export default class AutoCompleteSearchBox extends React.Component {
 
   renderSuggestion() {
     const { suggestions } = this.state;
+    console.log(suggestions);
     if (suggestions.length === 0) {
       return null;
     }
     return (
       <ul className="item">
-        {suggestions.map(item => (
-          <li className="list" onClick={() => this.suggestionSelected(item)}>
-            {item.get('title')}
-          </li>
-        ))}
+        {suggestions.map(
+          item =>
+            item.get('title') ? (
+              <li
+                className="list"
+                onClick={() => this.suggestionSelected(item)}
+              >
+                {item.get('title')}
+              </li>
+            ) : (
+              <li
+                className="list"
+                onClick={() => this.suggestionSelected(item)}
+              >
+                {item.get('text')}
+              </li>
+            )
+        )}
         <style jsx>
           {`
             .item {
