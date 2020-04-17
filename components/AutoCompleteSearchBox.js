@@ -93,14 +93,28 @@ export default class AutoCompleteSearchBox extends React.Component {
               margin: 1rem 0 0;
               padding: 0;
               float: left;
+              display: flex;
+              flex-wrap: wrap;
             }
             .item .list {
               display: inline-block;
               border: 1px solid #ccc;
               margin-right: 5px;
+              margin-bottom: 5px;
               border-radius: 10px;
-              padding: 7px 15px;
+              padding: 5px 10px;
+              font-size: 90%;
+              line-height: 1.35rem;
               cursor: pointer;
+              background: transparent;
+              transition: 0.3s all;
+              text-align: left;
+            }
+            .item .list:hover {
+              background: #fff;
+              border-color: #fff;
+              color: #000;
+              text-shadow: none;
             }
           `}
         </style>
