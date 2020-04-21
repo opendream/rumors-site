@@ -12,7 +12,7 @@ class HowtoPage extends React.Component {
           <div className="root wrapper-page">
             <Head>
               <title>
-                แนะนำการใช้งาน cofact.org
+                วิธีการใช้งาน cofact.org
               </title>
             </Head>
           </div>
@@ -24,7 +24,7 @@ class HowtoPage extends React.Component {
                 <div className="row justify-content-center">
                   <div className="col-12 col-md-10 col-lg-9">
                   <div className="pb-2">
-                    <h2 className="text-center mb-md-5 mb-3">แนะนำการใช้งาน cofact.org</h2>
+                    <h2 className="text-center mb-md-5 mb-3">วิธีการใช้งาน cofact.org</h2>
                     <p>หากพบข้อความที่น่าสงสัย ก่อนจะเชื่อหรือส่งต่อ เราขอชวนคุณมาตรวจสอบ ใน 2 ช่องทางคือ</p>
                     <ol>
                         <li><a href="#website">ตรวจสอบบนเว็บไซต์ cofact.org</a></li>
