@@ -115,6 +115,9 @@ function AppHeader({
                 <Link href="/replies">
                   <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link>
+                <Link href="/howto">
+                  <a className={`nav-item ${pathname == '/howto'? 'active': ''}`}>{i18n.t('How to use')}</a>
+                </Link>
                 {user && user.get('isStaff') ? (
                 <>
                   <Link href="/users">
