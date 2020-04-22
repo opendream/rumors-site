@@ -155,6 +155,7 @@ class AppLayout extends React.Component {
             background-color: #ff79ac !important;
             border-color: #ff79ac !important;
             color: #000;
+            box-shadow: 0 0 0 0.2rem rgb(255, 121, 172, 0.2) !important;
           }
 
           .btn-create::before {

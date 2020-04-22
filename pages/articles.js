@@ -515,7 +515,7 @@ class Articles extends ListPage {
         )}
 
         {q ? (
-          <div>
+          <div className="mb-3">
             {totalCount > 0
               ? i18n.t('createArticleLinkExistTeaser')
               : i18n.t('createArticleLinkTeaser')}
