@@ -14,7 +14,7 @@ class PolicyPage extends React.Component {
           <div className="root wrapper-page">
             <Head>
               <title>
-                {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
+                นโยบายการใช้งาน
               </title>
             </Head>
           </div>

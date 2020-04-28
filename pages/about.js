@@ -26,7 +26,7 @@ class AboutPage extends React.Component {
             <Head>
               <title>
                 {/*TODO:: ChangeKey to About Page*/}
-                {i18n.t('pageCreate.title')} | Cofacts {i18n.t('realOrFake')}
+                เกี่ยวกับเรา
               </title>
             </Head>
 
