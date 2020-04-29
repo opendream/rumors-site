@@ -56,6 +56,7 @@ function AppHeader({
                       <Link href="/replies">
                         <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link>
+                      <a className="nav-item" href="https://blog.cofact.org/" target="_blank">{i18n.t('Blog')}</a>
                       <Link href="/howto">
                         <a className={`nav-item ${pathname == '/howto'? 'active': ''}`}>{i18n.t('How to use')}</a>
                       </Link>
@@ -118,6 +119,7 @@ function AppHeader({
                 <Link href="/replies">
                   <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link>
+                <a className="nav-item" href="https://blog.cofact.org/" target="_blank">{i18n.t('Blog')}</a>
                 <Link href="/howto">
                   <a className={`nav-item ${pathname == '/howto'? 'active': ''}`}>{i18n.t('How to use')}</a>
                 </Link>
@@ -196,21 +198,32 @@ function AppHeader({
           font-size: 1.25rem;
           padding: 5px 10px;
         }
-        .nav-item {
-          margin-right: 1.5em;
-          color: #fff;
-          border-bottom: 2px solid transparent;
-        }
         .nav-item:hover, 
         .nav-item:focus,
         .nav-item:active {
-          border-bottom: 2px solid currentColor;
-          text-decoration: none;
+          text-decoration: underline !important;
         }
         .nav-item.active {
-          border-bottom: 2px solid currentColor;
-          text-decoration: none;
+          text-decoration: underline !important;
         }
+        @media screen and (min-width: 768px) {
+          .nav-item {
+            margin-right: 1.5rem;
+            color: #fff;
+            border-bottom: 2px solid transparent;
+          }
+          .nav-item:hover, 
+          .nav-item:focus,
+          .nav-item:active {
+            border-bottom: 2px solid currentColor;
+            text-decoration: none !important;
+          }
+          .nav-item.active {
+            border-bottom: 2px solid currentColor;
+            text-decoration: none !important;
+          }
+        }
+        
 
         .navbar {
           padding: 1rem;
