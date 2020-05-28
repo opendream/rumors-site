@@ -23,6 +23,7 @@ export default function AppFooter() {
             <li><Link route="howto"><a>{i18n.t('How to use')}</a></Link></li>
             <li><Link route="policy"><a>{i18n.t('Policy')}</a></Link></li>
             <li><Link route="about"><a>{i18n.t('About Us')}</a></Link></li>
+            <li><Link route="about-us"><a>About Us</a></Link></li>
           </ul>
           {/* <div className="ml-auto">
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
@@ -96,9 +97,10 @@ export default function AppFooter() {
           }
           .menu-footer {
             margin: 0;
+            text-align: right;
           }
           .menu-footer li {
-            text-align: left;
+            text-align: right;
             display: inline-block;
             margin: 1.2rem 0 0 2.4rem;
             margin-bottom: 0;
@@ -107,6 +109,16 @@ export default function AppFooter() {
           }
           .logo {
             flex: 0 0 auto;
+          }
+        }
+
+        @media screen and (min-width: 1140px) {
+          .menu-footer {
+            text-align: left;
+          }
+          .menu-footer li {
+            text-align: left;
+            width: calc((100% / 4) - 3rem);
           }
         }
 

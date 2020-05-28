@@ -45,10 +45,10 @@ class AboutPage extends React.Component {
 
                     <h4>เครดิต</h4>
                     <p>
-                      หากคุณต้องการสร้าง Cofact ในแบบของคุณเอง คุณสามารถดาวน์โหลด source code ต้นฉบับของไต้หวันได้ที่
-                      <a href="https://github.com/cofacts" target="_blank">นี่</a>
-                      หรือจะต่อยอดจากเวอร์ชั่น TaiThai ได้ที่
-                      <a href="https://github.com/search?q=topic%3Acofacts+fork%3Atrue+org%3Aopendream&type=Repositories" target="_blank">นี่</a>
+                      หากคุณต้องการสร้าง Cofact ในแบบของคุณเอง คุณสามารถดาวน์โหลด source code ต้นฉบับของไต้หวันได้
+                      <a href="https://github.com/cofacts" target="_blank">ที่นี่</a>
+                      &nbsp;หรือจะต่อยอดจากเวอร์ชั่น TaiThai ได้
+                      <a href="https://github.com/search?q=topic%3Acofacts+fork%3Atrue+org%3Aopendream&type=Repositories" target="_blank">ที่นี่</a>
                     </p>
 
                   </div>
