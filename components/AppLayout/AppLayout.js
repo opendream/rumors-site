@@ -76,6 +76,8 @@ class AppLayout extends React.Component {
             font-family: 'Kanit', sans-serif;
             background: #F6F8FA;
             font-weight: 300;
+            word-break: break-word;
+            word-wrap: break-word;
           }
           div:not(.home) header.navbar {
             max-width: 1140px !important;

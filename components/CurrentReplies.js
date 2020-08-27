@@ -59,6 +59,8 @@ class DeletedItems extends React.Component {
           .items {
             list-style-type: none;
             padding-left: 0;
+            max-height: 70vh;
+            overflow: auto;
           }
         `}</style>
       </Modal>
