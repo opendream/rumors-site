@@ -355,12 +355,12 @@ class ArticlePage extends React.Component {
     let renderText = article.get('text')
     if (renderText.startsWith('$image__')) {
       const fileId = renderText.split('__')[2]
-      renderText = <img className={`image-content my-2`} src={`https://drive.google.com/uc?id=${fileId}`} style={{maxHeight: 300, maxWidth: '100%'}} />
+      renderText = <img className={`image-content my-2`} src={`https://drive.google.com/uc?id=${fileId}`} style={{maxWidth: '100%'}} />
     } else if (renderText.startsWith('$video')) {
       const fileId = renderText.split('__')[2]
       renderText = (
         <div className={`position-relative d-inline-block`}>
-          <video style={{maxHeight: 300, maxWidth: '100%'}} controls={true} onClick={e => e.stopPropagation()}>
+          <video style={{maxWidth: '100%'}} controls={true} onClick={e => e.stopPropagation()}>
             <source src={`https://drive.google.com/uc?id=${fileId}`} />
           </video>
         </div>
