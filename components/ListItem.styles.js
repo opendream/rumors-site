@@ -152,4 +152,18 @@ export const listItemStyle = css`
     text-decoration: none;
     color: inherit;
   }
+
+  .video-play-icon {
+    color: #FFF;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    border: solid 2px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0, .5);
+  }
+
 `;
