@@ -371,7 +371,7 @@ class ArticlePage extends React.Component {
     }
 
     let slicedArticleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
-    slicedArticleTitle = slicedArticleTitle.slice(0, 15);
+    slicedArticleTitle = slicedArticleTitle.slice(0, 20);
 
 
     return (
