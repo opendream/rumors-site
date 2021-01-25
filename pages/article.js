@@ -342,7 +342,7 @@ class ArticlePage extends React.Component {
       return <div>Article not found.</div>;
     }
 
-    const slicedArticleTitle = article.get('text').slice(0, 15);
+
     const categories = article.get('categories');
 
     let categoriesEditMode = _categoriesEditMode
@@ -351,6 +351,7 @@ class ArticlePage extends React.Component {
 
     const expanded = this.state.isExpanded;
 
+    let isMedia = true
 
     let renderText = article.get('text')
     if (renderText.startsWith('$image__')) {
@@ -365,7 +366,12 @@ class ArticlePage extends React.Component {
           </video>
         </div>
       )
+    } else {
+      isMedia = false
     }
+
+    let slicedArticleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
+    slicedArticleTitle = slicedArticleTitle.slice(0, 15);
 
 
     return (
