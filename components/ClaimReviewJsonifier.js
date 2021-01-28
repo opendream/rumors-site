@@ -116,6 +116,7 @@ export default function ClaimReviewJsonifier({
     '@context': 'https://schema.org',
     '@type': 'ClaimReview',
     claimReviewed: titleText,
+    datePublished: article.get('createdAt'),
     url: url,
     author: {
       "@type": "Organization",
@@ -124,6 +125,7 @@ export default function ClaimReviewJsonifier({
     },
     itemReviewed: {
       '@type': 'Claim',
+      datePublished: article.get('updatedAt'),
       author: reviewer,
       // appearance: { link },
     },
