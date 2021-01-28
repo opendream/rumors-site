@@ -125,7 +125,7 @@ export default function ClaimReviewJsonifier({
     },
     itemReviewed: {
       '@type': 'Claim',
-      datePublished: article.get('updatedAt'),
+      datePublished: article.get('createdAt'),
       author: reviewer,
       // appearance: { link },
     },
