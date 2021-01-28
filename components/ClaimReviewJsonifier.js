@@ -7,15 +7,16 @@ export default function ClaimReviewJsonifier({
   article,
   avgRadian,
   replyConnections,
+  articleTitle,
 }) {
   let id = article.get('id');
   let url = 'https://cofact.org/article/' + id;
-  let titleText = article.get('text');
+  let titleText = articleTitle;
   let link = determineReferenceLink(article);
 
   let rating = convertDegreeToRating(avgRadian);
   let altRatingName = determineAltRatingNameFromRating(rating);
-  let author = determineAuthor(replyConnections);
+  let reviewer = determineAuthor(replyConnections);
 
   function determineReferenceLink(article) {
     let urlLink = '';
@@ -116,10 +117,15 @@ export default function ClaimReviewJsonifier({
     '@type': 'ClaimReview',
     claimReviewed: titleText,
     url: url,
-    author: author,
+    author: {
+      "@type": "Organization",
+      "name": "Cofact Thailand",
+      "url": "https://cofact.org"
+    },
     itemReviewed: {
       '@type': 'Claim',
-      appearance: { link },
+      author: reviewer,
+      // appearance: { link },
     },
     reviewRating: {
       '@type': 'Rating',
@@ -130,5 +136,5 @@ export default function ClaimReviewJsonifier({
     },
   };
 
-  return <script>{JSON.stringify(claimReviewJson)}</script>;
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `\n${JSON.stringify(claimReviewJson, null, 4)}\n`}}></script>;
 }

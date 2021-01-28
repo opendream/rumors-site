@@ -370,8 +370,8 @@ class ArticlePage extends React.Component {
       isMedia = false
     }
 
-    let slicedArticleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
-    slicedArticleTitle = slicedArticleTitle.slice(0, 20);
+    let articleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
+    let slicedArticleTitle = articleTitle.slice(0, 20);
 
 
     return (
@@ -382,9 +382,10 @@ class ArticlePage extends React.Component {
               {slicedArticleTitle}⋯⋯ | {i18n.t('SiteName')}{' '}
               {i18n.t('realOrFake')}
             </title>
-          </Head>
 
-          <ClaimReviewJsonifier article={article} avgRadian={meterDegree} replyConnections={replyConnections}/>
+            <ClaimReviewJsonifier article={article} avgRadian={meterDegree} replyConnections={replyConnections} articleTitle={articleTitle} />
+
+          </Head>
 
           {article.get('status') == 'DELETED'?
           <section className="section alert alert-danger">
