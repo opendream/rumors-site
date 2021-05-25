@@ -8,18 +8,19 @@ import i18n from '../i18n';
 import getConfig from 'next/config';
 import { hideDialog, showDialog } from '../ducks/auth';
 import { connect } from 'react-redux';
-import { setLogin } from '../util/gql';
+import { waitForAuth, loadLevel } from '../ducks/auth';
+import gql, { setLogin } from '../util/gql';
 
 const {
   publicRuntimeConfig: { PUBLIC_API_URL },
 } = getConfig();
 
-class LoginPage extends React.Component {
+class MembershipPage extends React.Component {
   constructor(props) {
     super(props);
 
     const redirectUrl = typeof (window) !== 'undefined'? window.location.origin + "/membership": `/membership`;
-    const nextUrl =  typeof (window) !== 'undefined'? window.location.origin + "/membership": `${PUBLIC_API_URL}/membership`;
+    const nextUrl =  typeof (window) !== 'undefined'? window.location.origin + "/membership": `/membership`;
 
     const title = `${i18n.t('login')}`;
     const action = 'login';
@@ -32,12 +33,11 @@ class LoginPage extends React.Component {
       action: action,
       switchTarget: switchTarget
     });
+
   }
 
   componentDidMount() {
-    console.log("componentDidMount")
-
-
+    let self = this;
   }
 
   onSubmit = e => {
@@ -89,7 +89,6 @@ class LoginPage extends React.Component {
   };
 
   render() {
-    console.log("render")
     return (
       <div>
         {this.props.isLogin? <div>
@@ -202,18 +201,12 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps({ auth }) {
-  console.log("xxxx", auth.get('user'));
   return {
     isLogin: auth.get('user'),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(LoginPage);
+)(MembershipPage);
 
