@@ -19,7 +19,7 @@ class MembershipPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const redirectUrl = typeof (window) !== 'undefined'? window.location.origin + "/membership": `/membership`;
+    const redirectUrl = `/membership`;
     const nextUrl =  typeof (window) !== 'undefined'? window.location.origin + "/membership": `/membership`;
 
     const title = `${i18n.t('login')}`;
