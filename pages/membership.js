@@ -26,21 +26,43 @@ class MembershipPage extends React.Component {
     const action = 'login';
     const switchTarget = `${i18n.t('signup')}`;
 
-    this.props.dispatch(load());
-
     this.state = ({
       redirectUrl: redirectUrl,
       nextUrl: nextUrl,
       title: title,
       action: action,
-      switchTarget: switchTarget
+      switchTarget: switchTarget,
+      isLoading: true,
+      user: null
     });
 
   }
 
   componentDidMount() {
     let self = this;
-    console.log("componentDidMount");
+    gql`
+        {
+            GetUser {
+                id
+                name
+                avatarUrl
+                belongTo
+                isStaff
+            }
+        }
+    `().then(resp => {
+      if (typeof (resp.toJSON().data) !== "undefined" && typeof (resp.toJSON().data.GetUser) !== "undefined") {
+        self.setState({
+          isLoading: false,
+          user: resp.toJSON().data.GetUser
+        });
+      } else {
+        self.setState({
+          isLoading: false,
+        });
+      }
+
+    });
   }
 
   onSubmit = e => {
@@ -94,74 +116,76 @@ class MembershipPage extends React.Component {
   render() {
     return (
       <div>
-        {this.props.isLogin? <div>
-          <p>{i18n.t(`คุณได้รับการลงทะเบียนแล้ว`)}</p>
+        {this.state.isLoading? <div>
+          <p>{i18n.t(`รอสักครู่`)}</p>
         </div>: <div>
-          <div>
-            <div className="root">
-              <h4 className={`mb-4`}>
-                {this.state.title}
-              </h4>
-
+          {this.state.user == null? (
+            <div>
               <div>
-                <form
-                  action={`${PUBLIC_API_URL}/login/local?action=${this.state.action}&redirect=/&next=${this.state.nextUrl}`}
-                  method="post"
-                  onSubmit={this.onSubmit}
-                >
-                  <div className="form-group">
-                    <input
-                      name="email"
-                      type="email"
-                      className={`form-control`}
-                      placeholder={i18n.t(`email`)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      name="password"
-                      type="password"
-                      className={`form-control`}
-                      placeholder={i18n.t(`password`)}
-                      autoComplete="false"
-                    />
-                  </div>
-
-                  <input type="hidden" name="next" value={this.state.nextUrl} />
-                  <input type="hidden" name="redirect" value={`/`} />
-                  <input type="hidden" name="action" value={this.state.action} />
-
-                  <button type="submit" className="btn btn-primary btn-block">
+                <div className="root">
+                  <h4 className={`mb-4`}>
                     {this.state.title}
-                  </button>
-                </form>
-                <div className="mt-3 text-center">
-                  {i18n.t('or')} <a className="btn-link" onClick={this.onSwitchClick}> {this.state.switchTarget}</a>
-                </div>
-              </div>
-              <hr />
-              <div className={`text-center mt-2 mb-1`}>
-                <small className={`text-secondary`}>
-                  {i18n.t(`or Connect with Social Media`)}
-                </small>
-              </div>
+                  </h4>
 
-              <div>
-                <a
-                  className={`btn btn-outline-secondary btn-block btn-facebook`}
-                  href={`${PUBLIC_API_URL}/login/facebook?redirect=${this.state.redirectUrl}`}
-                >
-                  {i18n.t(`Connect with Facebook`)}
-                </a>
-                {/* <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/twitter?redirect=${redirectUrl}`}>
+                  <div>
+                    <form
+                      action={`${PUBLIC_API_URL}/login/local?action=${this.state.action}&redirect=/&next=${this.state.nextUrl}`}
+                      method="post"
+                      onSubmit={this.onSubmit}
+                    >
+                      <div className="form-group">
+                        <input
+                          name="email"
+                          type="email"
+                          className={`form-control`}
+                          placeholder={i18n.t(`email`)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          name="password"
+                          type="password"
+                          className={`form-control`}
+                          placeholder={i18n.t(`password`)}
+                          autoComplete="false"
+                        />
+                      </div>
+
+                      <input type="hidden" name="next" value={this.state.nextUrl} />
+                      <input type="hidden" name="redirect" value={`/`} />
+                      <input type="hidden" name="action" value={this.state.action} />
+
+                      <button type="submit" className="btn btn-primary btn-block">
+                        {this.state.title}
+                      </button>
+                    </form>
+                    <div className="mt-3 text-center">
+                      {i18n.t('or')} <a className="btn-link" onClick={this.onSwitchClick}> {this.state.switchTarget}</a>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className={`text-center mt-2 mb-1`}>
+                    <small className={`text-secondary`}>
+                      {i18n.t(`or Connect with Social Media`)}
+                    </small>
+                  </div>
+
+                  <div>
+                    <a
+                      className={`btn btn-outline-secondary btn-block btn-facebook`}
+                      href={`${PUBLIC_API_URL}/login/facebook?redirect=${this.state.redirectUrl}`}
+                    >
+                      {i18n.t(`Connect with Facebook`)}
+                    </a>
+                    {/* <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/twitter?redirect=${redirectUrl}`}>
             Twitter
           </a>
           <a className={`btn btn-outline-secondary btn-block`} href={`${PUBLIC_API_URL}/login/github?redirect=${redirectUrl}`}>
             Github
           </a> */}
-              </div>
-            </div>
-            <style jsx>{`
+                  </div>
+                </div>
+                <style jsx>{`
         .root {
           padding: 20px;
         }
@@ -194,17 +218,21 @@ class MembershipPage extends React.Component {
             border-radius: 10px;
         }
       `}</style>
-          </div>
+              </div>
 
-        </div>}
-      </div>
+            </div>
+
+             ): <div>
+            <p>คุณ {this.state.user.name}  <a href="https://blog.cofact.org/">ไปที่หน้าหลัก</a></p>
+          </div> }
+        </div> }
+       </div>
 
     );
   }
 }
 
 function mapStateToProps({ auth }) {
-  console.log(auth)
   return {
     user: auth.get('user'),
     isLogin: auth.get('user'),
@@ -212,7 +240,6 @@ function mapStateToProps({ auth }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log(dispatch);
   return {};
 }
 
