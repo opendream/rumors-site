@@ -18,8 +18,8 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const redirectUrl = typeof (window) !== 'undefined'? window.location.origin + "/login": `${PUBLIC_API_URL}/login`;
-    const nextUrl =  typeof (window) !== 'undefined'? window.location.origin + "/articles": `${PUBLIC_API_URL}/articles`;
+    const redirectUrl = typeof (window) !== 'undefined'? window.location.origin + "/membership": `/membership`;
+    const nextUrl =  typeof (window) !== 'undefined'? window.location.origin + "/membership": `${PUBLIC_API_URL}/membership`;
 
     const title = `${i18n.t('login')}`;
     const action = 'login';
