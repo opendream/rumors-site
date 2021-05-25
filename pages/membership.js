@@ -6,7 +6,7 @@ import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 import Modal from '../components/Modal';
 import i18n from '../i18n';
 import getConfig from 'next/config';
-import { hideDialog, showDialog } from '../ducks/auth';
+import { hideDialog, load, showDialog } from '../ducks/auth';
 import { connect } from 'react-redux';
 import { waitForAuth, loadLevel } from '../ducks/auth';
 import gql, { setLogin } from '../util/gql';
@@ -26,6 +26,8 @@ class MembershipPage extends React.Component {
     const action = 'login';
     const switchTarget = `${i18n.t('signup')}`;
 
+    this.props.dispatch(load());
+
     this.state = ({
       redirectUrl: redirectUrl,
       nextUrl: nextUrl,
@@ -38,6 +40,7 @@ class MembershipPage extends React.Component {
 
   componentDidMount() {
     let self = this;
+    console.log("componentDidMount");
   }
 
   onSubmit = e => {
@@ -201,12 +204,21 @@ class MembershipPage extends React.Component {
 }
 
 function mapStateToProps({ auth }) {
+  console.log(auth)
   return {
+    user: auth.get('user'),
     isLogin: auth.get('user'),
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  console.log(dispatch);
+  return {};
+}
+
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps
 )(MembershipPage);
 
