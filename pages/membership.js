@@ -117,11 +117,18 @@ class MembershipPage extends React.Component {
     return (
       <div>
         {this.state.isLoading? <div>
-          <p>{i18n.t(`รอสักครู่`)}</p>
+          <h3 className="text-title">{i18n.t(`รอสักครู่`)}</h3>
+          <style jsx>{`
+          .text-title {
+            font-family: kanit;
+            text-align: center;
+            margin: 2rem 0;
+          }
+          `}</style>
         </div>: <div>
           {this.state.user == null? (
             <div>
-              <div>
+              <div className="wrapper-membership">
                 <div className="root">
                   <h4 className={`mb-4`}>
                     {this.state.title}
@@ -186,45 +193,72 @@ class MembershipPage extends React.Component {
                   </div>
                 </div>
                 <style jsx>{`
-        .root {
-          padding: 20px;
-        }
-        .form-control {
-          border-radius: 10px;
-          padding: 1.5rem 1rem;      
-        }
-        .btn {
-          border-radius: 10px;
-        }
-        .btn-facebook {
-          background-color: #1877f2;
-          border-color: #1877f2;
-          color: white;
-          padding: 10px;
-        }
-        .btn-facebook:hover {
-          background-color: #145dbb;
-          border-color: #145dbb;
-        }
-        a {
-          cursor: pointer;
-          
-        }
-        .btn-primary {
-            background-color: #f0b4d0;
-            border-color: #f0b4d0;
-            font-size: 16px;
-            color: #000;
-            border-radius: 10px;
-        }
-      `}</style>
+                .wrapper-membership {
+                  display: flex;
+                  align-items: center;
+                  min-height: calc(100vh);
+                  width: 100%;
+                  background: rgba(0,0,0,0.8);
+                }
+                .root {
+                  background: #fff;
+                  padding: 20px;
+                  font-family: Kanit, Helvetica, Arial, sans-serif;
+                  border: 1px solid #eee;
+                  border-radius: 10px;
+                  margin: 2rem auto;
+                  max-width: 500px;
+                  width: 90%;
+                }
+                .form-control {
+                  border-radius: 10px;
+                  padding: 1.5rem 1rem;      
+                }
+                .btn {
+                  border-radius: 10px;
+                }
+                .btn-facebook {
+                  background-color: #1877f2;
+                  border-color: #1877f2;
+                  color: white;
+                  padding: 10px;
+                }
+                .btn-facebook:hover {
+                  background-color: #145dbb;
+                  border-color: #145dbb;
+                }
+                a {
+                  cursor: pointer;
+                  
+                }
+                .btn-primary {
+                    background-color: #f0b4d0;
+                    border-color: #f0b4d0;
+                    font-size: 16px;
+                    color: #000;
+                    border-radius: 10px;
+                }
+              `}</style>
               </div>
 
             </div>
 
              ): <div>
-            <p>คุณ {this.state.user.name}  <a href="https://blog.cofact.org/">ไปที่หน้าหลัก</a></p>
-          </div> }
+            <h3 className="text-title">คุณ {this.state.user.name}  <a href="https://blog.cofact.org/">ไปที่หน้าหลัก</a></h3>
+            <style jsx>{`
+            .text-title {
+              font-family: kanit;
+              text-align: center;
+              margin: 2rem 0;
+            }
+            a { color: #E57CAB; }
+            a:hover,
+            a:focus,
+            a:active { color:#E57CAB; }
+            `}</style>
+          </div> 
+          
+          }
         </div> }
        </div>
 
