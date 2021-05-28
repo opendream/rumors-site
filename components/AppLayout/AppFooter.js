@@ -19,16 +19,16 @@ export default function AppFooter() {
           <ul className="menu-footer">
             <li><Link route="articles"><a>{i18n.t('articles')}</a></Link></li>
             <li><Link route="replies"><a>{i18n.t('replies')}</a></Link></li>
-            <li><a href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a></li>
+            {/* <li><a href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a></li> */}
             <li><a href="https://blog.cofact.org/category/article/" target="_blank">{i18n.t('Blog')}</a></li>
-            <li><a href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a></li>
-            <li><a href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a></li>
-            <li><a href="https://blog.cofact.org/category/infographic" target="_blank">{i18n.t('Infographic')}</a></li>
-            <li><a href="https://blog.cofact.org/vocabulary" target="_blank">{i18n.t('Vocabulary')}</a></li>
-            <li><a href="https://blog.cofact.org/category/article/fake-news" target="_blank">{i18n.t('Fake News')}</a></li>
+            {/* <li><a href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a></li> */}
+            {/* <li><a href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a></li> */}
+            {/* <li><a href="https://blog.cofact.org/category/infographic" target="_blank">{i18n.t('Infographic')}</a></li> */}
+            {/* <li><a href="https://blog.cofact.org/vocabulary" target="_blank">{i18n.t('Vocabulary')}</a></li> */}
+            {/* <li><a href="https://blog.cofact.org/category/article/fake-news" target="_blank">{i18n.t('Fake News')}</a></li> */}
             <li><Link route="howto"><a>{i18n.t('How to use')}</a></Link></li>
             <li><Link route="policy"><a>{i18n.t('Policy')}</a></Link></li>
-            <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li>
+            {/* <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li> */}
             <li><Link route="about-us"><a>About Us</a></Link></li>
           </ul>
           {/* <div className="ml-auto">
@@ -87,6 +87,7 @@ export default function AppFooter() {
           flex-wrap: wrap;
           width: 100%;
           flex-direction: column;
+          align-items: flex-start
         }
         @media screen and (min-width: 768px) {
           footer {

@@ -56,11 +56,14 @@ function AppHeader({
                       <Link href="/replies">
                         <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link>
-                      <a className="nav-item" href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a>
+                      {/* <a className="nav-item" href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a> */}
                       <a className="nav-item" href="https://blog.cofact.org/" target="_blank">{i18n.t('Blog')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a>
+                      {/* <a className="nav-item" href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a> */}
+                      {/* <a className="nav-item" href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a> */}
+                      {/* <a className="nav-item" href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a> */}
+                      <Link href="/about">
+                        <a className={`nav-item ${pathname == '/about'? 'active': ''}`}>{i18n.t('About Us')}</a>
+                      </Link>
                       {user && user.get('isStaff') ? 
                       <>
                         <Link href="/users">
@@ -120,11 +123,14 @@ function AppHeader({
                 <Link href="/replies">
                   <a className={`nav-item ${pathname == '/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link>
-                <a className="nav-item" href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a>
+                {/* <a className="nav-item" href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a> */}
                 <a className="nav-item" href="https://blog.cofact.org/" target="_blank">{i18n.t('Blog')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a>
+                {/* <a className="nav-item" href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a> */}
+                {/* <a className="nav-item" href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a> */}
+                {/* <a className="nav-item" href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a> */}
+                <Link href="/about">
+                  <a className={`nav-item ${pathname == '/about'? 'active': ''}`}>{i18n.t('About Us')}</a>
+                </Link>
                 {user && user.get('isStaff') ? (
                 <>
                   <Link href="/users">
