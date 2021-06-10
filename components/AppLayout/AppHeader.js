@@ -22,7 +22,7 @@ function AppHeader({
     <header className={`navbar navbar-expand-lg navbar-dark`}>
       <div className={`container-fluid`}>
         <div className={`d-flex align-items-start w-100`}>
-          <div className={`head-left d-flex align-items-center w-100`}>
+          <div className={`head-left d-flex w-100`}>
             <Link href="/">
               <a className="logo" href="/">
                 <div>
@@ -34,7 +34,14 @@ function AppHeader({
                 <h1>{i18n.t('realOrFake')}</h1>
               </a>
             </Link>
-            <div className="ml-auto d-block d-md-none">
+            <div className="ml-auto d-flex d-md-none align-items-end flex-column">
+            <ul className="header-social">
+              <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
+              <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
+              <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
+              <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
+              <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+            </ul>
               <nav role="navigation">
                 <div id="menuToggle">
                   <input type="checkbox" />
@@ -110,7 +117,17 @@ function AppHeader({
                 </div>
               </nav>
             </div>
-            <div className="ml-auto d-none d-md-flex align-items-center">
+            <div className="ml-auto d-none d-md-block">
+              <div className="social-media-header justify-content-end mb-2 d-flex">
+                <ul className="header-social">
+                  <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
+                  <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
+                  <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
+                  <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
+                  <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+                </ul>
+              </div>
+              <div className="d-flex align-items-center">
               <div className="nav">
                 {user && (user.get('isStaff') || user.get('belongTo')) ? 
                 <Link href="/create">
@@ -175,6 +192,7 @@ function AppHeader({
                 onLogoutClick={onLogoutClick}
                 onUpdate={onUserNameUpdate}
               />
+              </div>
             </div>
           </div>
         </div>
@@ -267,7 +285,7 @@ function AppHeader({
           #menuToggle input {
             display: block;
             width: 40px;
-            height: 32px;
+            height: 50px;
             position: absolute;
             top: -7px;
             left: -5px;
@@ -286,8 +304,8 @@ function AppHeader({
             height: 3px;
             margin-bottom: 5px;
             position: relative;
-            background: #cdcdcd;
-            border-radius: 3px;
+            background: #000;
+            border-radius: 10px;
             z-index: 1;
             transform-origin: 4px 0px;
             transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
@@ -362,6 +380,42 @@ function AppHeader({
           #menuToggle #menu  {
             box-shadow: 1px 2px 5px -2px rgba(0,0,0,0.5)
           } 
+        }
+        ul.header-social {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+        ul.header-social li {
+          margin: 0 0 0 5px;
+          width: 25px;
+          height: 25px;
+        }
+        ul.header-social li a {
+            display: block;
+            text-indent: -999em;
+            height: 25px;
+        }
+        ul.header-social li.ic-twitter a {
+          background: url("/static/img/icon/ic-twitter-01.png") no-repeat center center;
+          background-size: 25px;
+        }
+        ul.header-social li.ic-youtube a {
+          background: url("/static/img/icon/ic-youtube-01.png") no-repeat center center;
+          background-size: 25px;
+        }
+        ul.header-social li.ic-line a {
+          background: url("/static/img/icon/ic-line-01.png") no-repeat center center;
+          background-size: 25px;
+        }
+        ul.header-social li.ic-tiktok a {
+          background: url("/static/img/icon/ic-tiktok-01.png") no-repeat center center;
+          background-size: 25px;
+        }
+        ul.header-social li.ic-facebook a {
+          background: url("/static/img/icon/ic-facebook-01.png") no-repeat center center;
+          background-size: 25px;
         }
       `}</style>
     </header>

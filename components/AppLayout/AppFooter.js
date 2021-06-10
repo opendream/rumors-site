@@ -41,6 +41,8 @@ export default function AppFooter() {
               <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
               <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
               <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
+              <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA">Cofact Coform</a></li>
+              <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
             </ul>
           </div>
         </div>
@@ -254,6 +256,24 @@ export default function AppFooter() {
           .block-widget-footer ul li.ic-twitter::before {
             background: url("/static/img/icon/ic-twitter.png") no-repeat left center;
             background-size: 27px;
+          }
+          .block-widget-footer ul li.ic-youtube::before {
+            background: url("/static/img/icon/ic-youtube.png") no-repeat left center;
+            background-size: 27px;
+          }
+          @media (min-width: 576px) {
+            .block-widget-footer ul li.ic-youtube {
+              flex: 0 0 60%;
+            }
+          }
+          .block-widget-footer ul li.ic-tiktok::before {
+            background: url("/static/img/icon/ic-tiktok.png") no-repeat left center;
+            background-size: 27px;
+          }
+          @media (min-width: 576px) {
+            .block-widget-footer ul li.ic-tiktok {
+              flex: 0 0 40%;
+            }
           }
           .block-widget-footer ul li a {
             color: #fff;
