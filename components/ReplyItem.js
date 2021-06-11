@@ -61,7 +61,7 @@ export default function ReplyItem({ reply, showUser = true }) {
             {isMedia ? (
               <div className="item-text">{renderText}</div>
             ) : (
-              <div className="card-notitle d-md-flex align-items-top">
+              <div className="d-md-flex align-items-top">
                 <div className="item-text">{renderText}</div>
               </div>
             )}

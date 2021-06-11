@@ -49,7 +49,7 @@ class AboutUsPage extends React.Component {
                     The concept of Cofact is the integration between the use of “civic tech” and “journalism”, where the editorial team works with volunteers in verifying news or content from credible sources and providing the space for the public to share and to exchange factual information and personal opinions. In addition, CoFact provides a chatbot service, an auto responsive program, which is available for the public to submit any news or content to the editorial team to check for verification. Verified content will then be posted on social media and mainstream media outlets. Some will be developed as in-depth news and featured as the “Cofact Journalism” project.  For instance, content that is interesting as a result of going viral from being fact or fake news, or some that is interesting in terms of public policy and value to the public.   
                     </p>
                     <p>
-                    Cofact is preliminarily supported by the organizations that prioritize this matter—the Thai Health Promotion Foundation, Centre for Humanitarian Dialogue (HD), and Friedrich Naumann Foundation for Freedom (FNF)—and is operated by the teams of ChangeFusion and OpenDream, together with content contributors and supporters such as the Foundation For Consumers, the Wisesight, as well as government organizations, like, the Thai Media Fund, and Sure Before Share, as well as other local civil society, universities, and journalism professional organizations.
+                    Cofact is preliminarily supported by the organizations that prioritize this matter—the Thai Health Promotion Foundation, Centre for Humanitarian Dialogue (HD), and Friedrich Naumann Foundation for Freedom (FNF)—and is operated by the teams of ChangeFusion and OpenDream, together with content contributors and supporters such as the Foundation For Consumers, as well as government organizations, like, the Thai Media Fund, and Sure Before Share, as well as other local civil society, universities, and journalism professional organizations.
                     </p>
                     <p>Cofact believes that in order to solve the problem of fake news in this digital era is to turn everyone into a fact-checker and to create a space for collaborative fact findling by providing a platform as the marketplace of ideas, where it could analyze and differentiate between facts and opinions, and by believing in the society’s judgment. Eventually, even if we could believe in nothing, we shall believe in nothing until the fact is ruled out and manifested, which is better than believing without any consideration or having a “blind trust”. As Ms. Audrey Tung was quoted in the conference in Bangkok that <strong>“blind trust is worse than no trust!”</strong> - to believe in something blindly is worse than to not believe in anything. </p>
                     <p>Hence in this information era, join us in fact-checking. Let us all begin with this health crisis, of COVID-19 pandemic which threatens every citizen worldwide. This virus has arrived together “Infodemic”, the information pandemic. We have compiled some articles here already. It only waits for you to join Cofact community in order to create the wellbeing of our society. </p>
@@ -125,10 +125,10 @@ class AboutUsPage extends React.Component {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wisesight.com/" target="_blank">
+                  <a href="http://khonthaifoundation.org/th/causes/กองทุนสื่อเพื่อความยุต/" target="_blank">
                     <img
-                      src="/static/img/partner/logo-wisesight@2x.png"
-                      alt="WISESIGHT"
+                      src="/static/img/partner/logo-กองทุนสื่อ.jpg"
+                      alt="กองทุนสื่อเพื่อความยุติธรรมในสังคม"
                       className="img-fluid"
                     />
                   </a>

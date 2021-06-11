@@ -93,10 +93,10 @@ class PolicyPage extends React.Component {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wisesight.com/" target="_blank">
+                  <a href="http://khonthaifoundation.org/th/causes/กองทุนสื่อเพื่อความยุต/" target="_blank">
                     <img
-                      src="/static/img/partner/logo-wisesight@2x.png"
-                      alt="WISESIGHT"
+                      src="/static/img/partner/logo-กองทุนสื่อ.jpg"
+                      alt="กองทุนสื่อเพื่อความยุติธรรมในสังคม"
                       className="img-fluid"
                     />
                   </a>

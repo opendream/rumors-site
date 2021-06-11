@@ -20,7 +20,7 @@ export default function AppFooter() {
             <li><Link route="articles"><a>{i18n.t('articles')}</a></Link></li>
             <li><Link route="replies"><a>{i18n.t('replies')}</a></Link></li>
             {/* <li><a href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a></li> */}
-            <li><a href="https://blog.cofact.org/category/article/" target="_blank">{i18n.t('Blog')}</a></li>
+            <li><a href="https://blog.cofact.org" target="_blank">{i18n.t('Blog')}</a></li>
             {/* <li><a href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a></li> */}
             {/* <li><a href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a></li> */}
             {/* <li><a href="https://blog.cofact.org/category/infographic" target="_blank">{i18n.t('Infographic')}</a></li> */}
