@@ -212,33 +212,34 @@ class ReplyPage extends React.Component {
       const fileId = renderText.split('__')[2]
       renderText = (
         <div className={`position-relative d-inline-block`}>
-          <video style={{maxHeight: 300, maxWidth: '100%'}}>
+          <video style={{maxWidth: '100%'}} controls>
             <source src={`https://drive.google.com/uc?id=${fileId}`} />
           </video>
-          <div className={`position-absolute video-play-icon`}>
-            ►
-          </div>
           <style jsx>{`
-          .video-play-icon {
-            color: #FFF;
-            top: 50%;
-            left: 50%;
-            margin-top: -30px;
-            margin-left: -30px;
-            border: solid 2px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: rgb(0, 0, 0, .5);
-            font-size: 30px;
-            padding: 7px 0 0 17px;
-          }
-        `}</style>
+            .video-play-icon {
+              color: #FFF;
+              top: 50%;
+              left: 50%;
+              margin-top: -30px;
+              margin-left: -30px;
+              border: solid 2px;
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background-color: rgb(0, 0, 0, .5);
+              font-size: 30px;
+              padding: 7px 0 0 17px;
+            }
+          `}</style>
         </div>
       )
+
+      console.log(`https://drive.google.com/uc?id=${fileId}`);
     } else {
       isMedia = false
     }
+
+    console.log(renderText);
 
     const replyHyperlinkLoading = false
 
@@ -258,11 +259,16 @@ class ReplyPage extends React.Component {
               </header>
               <div className="card ">
                 <div className="card-body">
-                  {nl2br(
-                    linkify(renderText, {
-                      props: { target: '_blank' },
-                    })
-                  )}
+                  {isMedia? <div>
+                    {renderText}
+                  </div>: <div>
+                    {nl2br(
+                      linkify(renderText, {
+                        props: { target: '_blank' },
+                      })
+                    )}
+                  </div>}
+
                   <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} /> 
                 </div>
                 
