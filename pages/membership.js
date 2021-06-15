@@ -244,7 +244,7 @@ class MembershipPage extends React.Component {
             </div>
 
              ): <div>
-            <h3 className="text-title">คุณ {this.state.user.name}  <a href="https://blog.cofact.org/">ไปที่หน้าหลัก</a></h3>
+            <h3 className="text-title">คุณ {this.state.user.name}  <a href="https://cofact.org/articles">ไปที่หน้าหลัก</a></h3>
             <style jsx>{`
             .text-title {
               font-family: kanit;
