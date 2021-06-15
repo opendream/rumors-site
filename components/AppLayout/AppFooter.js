@@ -17,19 +17,19 @@ export default function AppFooter() {
             </a>
           </Link>
           <ul className="menu-footer">
-            <li><Link route="articles"><a>{i18n.t('articles')}</a></Link></li>
-            <li><Link route="replies"><a>{i18n.t('replies')}</a></Link></li>
-            {/* <li><a href="https://blog.cofact.org/category/news/" target="_blank">{i18n.t('News')}</a></li> */}
-            <li><a href="https://blog.cofact.org" target="_blank">{i18n.t('Blog')}</a></li>
-            {/* <li><a href="https://blog.cofact.org/category/video" target="_blank">{i18n.t('Video')}</a></li> */}
-            {/* <li><a href="https://blog.cofact.org/category/journal" target="_blank">{i18n.t('Journal')}</a></li> */}
-            {/* <li><a href="https://blog.cofact.org/category/infographic" target="_blank">{i18n.t('Infographic')}</a></li> */}
-            {/* <li><a href="https://blog.cofact.org/vocabulary" target="_blank">{i18n.t('Vocabulary')}</a></li> */}
-            {/* <li><a href="https://blog.cofact.org/category/article/fake-news" target="_blank">{i18n.t('Fake News')}</a></li> */}
-            <li><Link route="howto"><a>{i18n.t('How to use')}</a></Link></li>
-            <li><Link route="policy"><a>{i18n.t('Policy')}</a></Link></li>
-            {/* <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li> */}
-            <li><Link route="about-us"><a>About Us</a></Link></li>
+            <li><a href="https://cofact.org/articles">{i18n.t('articles')}</a></li>
+            <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li>
+            <li><a href="https://blog.cofact.org/category/news/">{i18n.t('News')}</a></li>
+            <li><a href="https://blog.cofact.org/category/article">{i18n.t('Blog')}</a></li>
+            <li><a href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a></li>
+            <li><a href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a></li>
+            <li><a href="https://blog.cofact.org/category/infographic">{i18n.t('Infographic')}</a></li>
+            <li><a href="https://blog.cofact.org/vocabulary">{i18n.t('Vocabulary')}</a></li>
+            <li><a href="https://blog.cofact.org/category/article/fake-news">{i18n.t('Fake News')}</a></li>
+            <li><a href="https://cofact.org/howto">{i18n.t('How to use')}</a></li>
+            <li><a href="https://cofact.org/policy">{i18n.t('Policy')}</a></li>
+            <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li>
+            <li><a href="https://cofact.org/about-us">About Us</a></li>
           </ul>
           {/* <div className="ml-auto">
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
