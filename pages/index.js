@@ -7,8 +7,9 @@ import { indexStyle, jumbotronStyle, sectionStyle } from './index.styles';
 class IndexPage extends React.Component {
   render() {
     if (typeof(window) !== "undefined") {
-      // window.location.href = "https://blog.cofact.org/";
+      window.location.href = "https://blog.cofact.org/";
     }
+    
     return (
       <div className={`home`}>
         <AppLayout>
