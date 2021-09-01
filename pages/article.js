@@ -41,6 +41,7 @@ import { detailStyle, tabMenuStyle } from './article.styles';
 import { TYPE_ARTICLE_OPTIONS } from 'constants/articleCategory';
 import Routes from 'next-routes';
 import { Link } from '../routes';
+import { load as loadTags } from 'ducks/tagList';
 
 class ArticlePage extends React.Component {
   state = {
@@ -50,6 +51,7 @@ class ArticlePage extends React.Component {
 
   static async getInitialProps({ store: { dispatch }, query: { id } }) {
     await dispatch(load(id));
+    await dispatch(loadTags({}));
     return { id };
   }
 
@@ -327,6 +329,7 @@ class ArticlePage extends React.Component {
       aticleHyperlinkLoading,
       replyHyperlinkLoading,
       user,
+      tags,
     } = this.props;
 
     const article = data.get('article');
@@ -505,7 +508,7 @@ class ArticlePage extends React.Component {
                           }}
                         >
                           <div>
-                            {TYPE_ARTICLE_OPTIONS.map((item, i) => (
+                            {tags.map((item, i) => (
                               <div
                                 key={i}
                                 className="form-check form-check-inline"
@@ -515,17 +518,17 @@ class ArticlePage extends React.Component {
                                   type="checkbox"
                                   name="categories"
                                   id={`article-category-${i}`}
-                                  value={item}
+                                  value={item.get('title')}
                                   defaultChecked={
                                     categories &&
-                                    categories.filter(c => c === item).size > 0
+                                    categories.filter(c => c === item.get('title')).size > 0
                                   }
                                 />
                                 <label
                                   className="form-check-label"
                                   htmlFor={`article-category-${i}`}
                                 >
-                                  {item}
+                                  {item.get('title')}
                                 </label>
                               </div>
                             ))}
@@ -659,7 +662,7 @@ class ArticlePage extends React.Component {
   }
 }
 
-function mapStateToProps({ articleDetail, auth }) {
+function mapStateToProps({ articleDetail, auth, tagList }) {
   return {
     isLoading: articleDetail.getIn(['state', 'isLoading']),
     isReplyLoading: articleDetail.getIn(['state', 'isReplyLoading']),
@@ -675,6 +678,9 @@ function mapStateToProps({ articleDetail, auth }) {
     data: articleDetail.get('data'),
     user: auth.get('user'),
     isLoadingAuth: auth.getIn(['state', 'isLoading']),
+    tags: (tagList.get('edges') || List()).map(edge =>
+      edge.get('node')
+    ),
   };
 }
 
