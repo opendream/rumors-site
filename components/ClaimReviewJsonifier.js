@@ -133,7 +133,7 @@ export default function ClaimReviewJsonifier({
     },
     reviewRating: {
       '@type': 'Rating',
-      ratingValue: rating,
+      ratingValue: rating.toString(),
       bestRating: '5',
       worstRating: '1',
       alternateName: altRatingName,
