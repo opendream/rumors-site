@@ -114,7 +114,7 @@ export default function ClaimReviewJsonifier({
     return author;
   }
 
-  let claimReviewJson = {
+  var claimReviewJson = {
     '@context': 'https://schema.org',
     '@type': 'ClaimReview',
     claimReviewed: titleText,
@@ -139,6 +139,10 @@ export default function ClaimReviewJsonifier({
       alternateName: altRatingName,
     },
   };
+
+  if (rating === 0) {
+    return <script></script>;
+  }
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `\n${JSON.stringify(claimReviewJson, null, 4)}\n`}}></script>;
 }
