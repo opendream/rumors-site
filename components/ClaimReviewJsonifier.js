@@ -37,6 +37,8 @@ export default function ClaimReviewJsonifier({
 
   function determineAltRatingNameFromRating(rating) {
     switch (rating) {
+      case 0:
+        return i18n.t('altNameInProgress');
       case 1:
         return i18n.t('altNameIsFake');
       case 2:
