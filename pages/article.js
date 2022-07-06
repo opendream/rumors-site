@@ -386,7 +386,7 @@ class ArticlePage extends React.Component {
               {i18n.t('realOrFake')}
             </title>
 
-            <meta name="description" content={articleTitle}>
+            <meta name="description" content={articleTitle} />
             <ClaimReviewJsonifier article={article} avgRadian={meterDegree} replyConnections={replyConnections} articleTitle={articleTitle} />
 
           </Head>
