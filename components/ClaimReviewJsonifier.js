@@ -107,7 +107,7 @@ export default function ClaimReviewJsonifier({
     } else {
       author = {
         '@type': 'Person',
-        name: firstReplyName,
+        name: firstReplyName || "Cofact User",
       };
     }
 

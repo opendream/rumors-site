@@ -374,7 +374,7 @@ class ArticlePage extends React.Component {
     }
 
     let articleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
-    let slicedArticleTitle = articleTitle.slice(0, 20);
+    let slicedArticleTitle = articleTitle;
 
 
     return (
@@ -382,7 +382,7 @@ class ArticlePage extends React.Component {
         <div className="wrapper-main">
           <Head>
             <title>
-              {slicedArticleTitle}⋯⋯ | {i18n.t('SiteName')}{' '}
+              {slicedArticleTitle} | {i18n.t('SiteName')}{' '}
               {i18n.t('realOrFake')}
             </title>
 
