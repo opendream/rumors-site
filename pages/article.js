@@ -512,7 +512,7 @@ class ArticlePage extends React.Component {
                             {tags.map((item, i) => (
                               <div
                                 key={i}
-                                className="form-check form-check-inline"
+                                className="form-check form-check-inline form-check-item"
                               >
                                 <input
                                   className="form-check-input"
@@ -655,6 +655,10 @@ class ArticlePage extends React.Component {
               border-top: 0;
               border-bottom-left-radius: 10px;
               border-bottom-right-radius: 10px;
+            }
+            .form-check-item {
+              min-width: 130px;
+              margin-bottom: 5px;
             }
           `}</style>
         </div>
