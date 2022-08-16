@@ -191,8 +191,17 @@ class UserName extends PureComponent {
 					</a>
 					<style jsx>{`
 						.link-group {
-							border-radius: 15px;
-							padding: 5px 10px;
+							list-style: none;
+              display: flex;
+              font-weight: 300;
+              justify-content: center;
+              align-items: center;
+              min-width: 190px;
+              padding: 0.5rem;
+              border-radius: 8px;
+              background-color: #e0e6ea;
+              border: none;
+              box-sizing: border-box;
 						}
 						.link-list {
               cursor: pointer;

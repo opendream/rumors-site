@@ -90,7 +90,7 @@ class AppLayout extends React.Component {
             color: #000 !important;
           }
           div:not(.home) .link-group {
-            border: 1px solid #000 !important;
+            // border: 1px solid #000 !important;
 
           }
           div:not(.home) .link-list {
@@ -273,7 +273,7 @@ class AppLayout extends React.Component {
           }
 
           div #menuToggle .link-group {
-            border: 1px solid #000 !important;
+            // border: 1px solid #000 !important;
             display: inline-block;
           }
 

@@ -18,14 +18,14 @@ export default function AppFooter() {
           </Link>
           <ul className="menu-footer">
             <li><a href="https://cofact.org/articles">{i18n.t('articles')}</a></li>
-            <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li>
-            <li><a href="https://blog.cofact.org/category/news/">{i18n.t('News')}</a></li>
-            <li><a href="https://blog.cofact.org/category/article">{i18n.t('Blog')}</a></li>
-            <li><a href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a></li>
+            {/* <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li> */}
+            <li><a href="https://blog.cofact.org/e-learning">{i18n.t('e-Learning')}</a></li>
             <li><a href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a></li>
+            <li><a href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a></li>
+            <li><a href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a></li>
+            <li><a href="https://blog.cofact.org/category/fake-news">{i18n.t('Fake News')}</a></li>
             <li><a href="https://blog.cofact.org/category/infographic">{i18n.t('Infographic')}</a></li>
-            <li><a href="https://blog.cofact.org/vocabulary">{i18n.t('Vocabulary')}</a></li>
-            <li><a href="https://blog.cofact.org/category/article/fake-news">{i18n.t('Fake News')}</a></li>
+            <li><a href="https://blog.cofact.org/vocabulary">แนะนำคำศัพท์</a></li>
             <li><a href="https://cofact.org/howto">{i18n.t('How to use')}</a></li>
             <li><a href="https://cofact.org/policy">{i18n.t('Policy')}</a></li>
             <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li>
@@ -111,6 +111,10 @@ export default function AppFooter() {
           }
           .menu-footer {
               max-width: 47%;
+          }
+          .wrapper-footer .logo, 
+          .wrapper-footer .menu-footer {
+            margin: 2.5rem 0 0;
           }
 
         }
