@@ -24,7 +24,7 @@ export default function AppFooter() {
             <li><a href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a></li>
             <li><a href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a></li>
             <li><a href="https://blog.cofact.org/category/fake-news">{i18n.t('Fake News')}</a></li>
-            <li><a href="https://blog.cofact.org/category/infographic">{i18n.t('Infographic')}</a></li>
+            <li><a href="https://blog.cofact.org/category/infographic">อินโฟกราฟิก</a></li>
             <li><a href="https://blog.cofact.org/vocabulary">แนะนำคำศัพท์</a></li>
             <li><a href="https://cofact.org/howto">{i18n.t('How to use')}</a></li>
             <li><a href="https://cofact.org/policy">{i18n.t('Policy')}</a></li>
