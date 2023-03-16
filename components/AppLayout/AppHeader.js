@@ -140,7 +140,7 @@ function AppHeader({
                     <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
                     <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
                     <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
-                    <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+                    <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
                   </ul>
                 </div>
               </div>
