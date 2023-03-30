@@ -18,7 +18,7 @@ export default function ArticleTruthMeter({ avgRadian, size }) {
           margin: 0;
         }
         .meter.small .meter-tag > div {
-          background: url(/static/img/meter/bg-meter@2x.png) no-repeat center
+          background: url(/static/img/meter/bg-meter_@2x.png) no-repeat center
             center;
           background-size: 100%;
           width: 85px;
@@ -146,7 +146,7 @@ export default function ArticleTruthMeter({ avgRadian, size }) {
           margin-bottom: 1rem;
         }
         .meter-tag > div {
-          background: url(/static/img/meter/bg-meter@2x.png) no-repeat center
+          background: url(/static/img/meter/bg-meter_@2x.png) no-repeat center
             center;
           background-size: 100%;
           width: 145px;
