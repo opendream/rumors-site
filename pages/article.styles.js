@@ -31,6 +31,9 @@ export const detailStyle = css`
     font-weight: 500;
     flex: 0 0 85%;
   }
+  .card-body .item-text {
+    font-size: 1.15rem
+  }
 }
 
 

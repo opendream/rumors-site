@@ -90,20 +90,19 @@ export default function ArticleItem({
               <div className="item-title">{article.get('title')}</div>
             </div>
           ) : (
-            ``
+            <div className="card-header d-md-flex align-items-top mb-3">
+              <div className="item-replyRequestCount mr-3 pt-1">
+                {article.get('replyRequestCount')} คนสงสัย
+              </div>
+            </div>
           )}
-
+      
           <div className="card-body d-md-flex justify-content-md-between pt-0">
             <div className="card-body-left  d-flex flex-column justify-content-between">
               {(article.get('title') || isMedia) ? (
-                <div className="item-text">{renderText}</div>
+                <div className="item-text mb-3">{renderText}</div>
               ) : (
-                <div className="card-notitle d-md-flex align-items-top">
-                  <div className="item-replyRequestCount mr-3 pt-1">
-                    {article.get('replyRequestCount')} คนสงสัย
-                  </div>
-                  <div className="item-text">{renderText}</div>
-                </div>
+                <div className="item-text mb-3">{renderText}</div>
               )}
               <div>
                 {article.get('categories') ? (

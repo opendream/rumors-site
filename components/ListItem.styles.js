@@ -144,10 +144,18 @@ export const listItemStyle = css`
   //   border: 0;
   // }
   .item-text {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    line-height: 1.35;
   }
+  .card-body-left .item-text {
+    font-size: 1.15rem;
+  }
+  
   a {
     text-decoration: none;
     color: inherit;

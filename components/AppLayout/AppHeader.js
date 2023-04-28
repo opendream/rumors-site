@@ -72,6 +72,7 @@ function AppHeader({
                       {/* <Link href="/about">
                         <a className={`nav-item ${pathname == '/about-us'? 'active': ''}`}>About Us</a>
                       </Link> */}
+                      <a className="nav-item" href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
                       <a className="nav-item" href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
                       <a className="nav-item" href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
@@ -124,6 +125,9 @@ function AppHeader({
             <div className="ml-auto d-none d-md-block">
               <div className="d-flex justify-content-end mb-2">
                 <ul className="nav-top align-items-center"> 
+                  <li>
+                    <a href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
+                  </li>
                   <li>
                     <a href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
                   </li>

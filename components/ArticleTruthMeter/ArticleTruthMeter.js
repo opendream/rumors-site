@@ -21,7 +21,7 @@ export default function ArticleTruthMeter({ avgRadian, size }) {
           background: url(/static/img/meter/bg-meter_@2x.png) no-repeat center
             center;
           background-size: 100%;
-          width: 85px;
+          width: 100px;
           height: 55px;
           text-indent: -999em;
           margin-bottom: 0.5rem;
