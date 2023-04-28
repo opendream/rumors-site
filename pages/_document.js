@@ -37,6 +37,17 @@ class MyDocument extends Document {
               `,
             }}
           />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZKWKPSY5D"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-5ZKWKPSY5D');
+              `,
+            }}
+          />
           <meta property="og:title" content="Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="	https://cofact.org/" />
