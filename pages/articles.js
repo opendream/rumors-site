@@ -31,6 +31,7 @@ class Articles extends ListPage {
         read: true,
         notArticleReplied: false, // false ||
       },
+      groupName: null,
     },
     user: null,
   };
@@ -275,43 +276,112 @@ class Articles extends ListPage {
     );
   };
 
+  handleGroupName = (groupName) => {
+    console.log(groupName)
+    this.setState(prevState => ({
+      groupName: (prevState.groupName !== groupName)? groupName: null
+    }));
+  };
+
   renderFilter = () => {
     const {
       query: { categories: _categories, filter, replyRequestCount },
       tags
     } = this.props;
 
+    const { groupName } = this.state;
+
     let categories = _categories ? _categories.split(',') : [];
+
+    let groupTags = []
+    let groupTagsKeys = {"อื่นๆ": []}
+    tags.forEach(function(tag, i) {
+      let groupName = "อื่นๆ"
+      if (tag.get('groupName')) {
+        groupName = tag.get('groupName')
+
+        try {
+          groupTagsKeys[groupName].push(tag)
+        } catch (e) {
+          groupTagsKeys[groupName] = [tag]
+          groupTags.push(groupName)
+        }
+        return
+      }
+      groupTagsKeys["อื่นๆ"].push(tag)
+
+    })
+    groupTags = groupTags.sort()
+    groupTags.push("อื่นๆ")
+
 
     return (
       <div>
         <div className="row">
-          {/* TODO: waiting for backend */}
-
           <div className={`col-12`}>
             <div className={`wrapper-cat mt-3 mt-md-0`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
+
                 <CheckboxGroup
-                  checkboxDepth={3}
+                  checkboxDepth={6}
                   name="categories"
                   value={categories}
                   onChange={this.handleCategoriesChange}
-                  Component="ul"
-                  className="mb-4 border-bottom flex-md-wrap d-md-flex justify-content-md-start"
+                  Component="div"
+                  className="mb-4 pb-2 border-bottom d-flex gap-3"
                 >
-                  {tags.map((item, i) => (
-                    <li
-                      key={i}
-                      className="form-check form-check-inline col-6 col-sm-3 col-md-4 col-lg-3 col-xl-2 p-0 m-0"
-                    >
-                      <Checkbox value={item.get('title')} id={i} />
-                      <label className="mb-3" htmlFor={i}>
-                        {item.get('title')}
-                      </label>
-                    </li>
-                  ))}
+                  <div className="flex mr-4 md-d-none">
+                    <span className="my-2">
+                      ประเด็นที่ต้องการค้นหา
+                    </span>
+                  </div>
+                  <div className="flex-grow-1 d-flex">
+                  {groupTags.map((group, ii) => (
+                    <div className="flex-grow-1">
+                      <div className="btn-group w-full p-1">
+                        <a className="btn  btn-secondary dropdown-toggle" href="#" role="button" id={'dropdownMenu_'+ ii}
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.handleGroupName(group)}>
+                          {group}
+                        </a>
+                        <div className={'dropdown-menu w-full p-2 '+ ((groupName === group)?'show': 'hidden')} aria-labelledby={'dropdownMenu_'+ ii}>
+                        {groupTagsKeys[group].map((item, i) => (
+                          <div
+                            key={i}
+                            className="dropdown-item form-check form-check-inline p-0 m-0"
+                          >
+                            <Checkbox value={item.get('title')} id={"category_" + item.get('title')} />
+                            <label className="mb-3" htmlFor={"category_" + item.get('title')}>
+                              {item.get('title')}
+                            </label>
+                          </div>
+                        ))}
+                        </div>
+                      </div>
+                    </div>)
+                  )}
+                  </div>
                 </CheckboxGroup>
+              </div>
+            </div>
+          </div>
+          <div className={`col-12`}>
+            <div className={`wrapper-cat my-3 mt-md-0`}>
+              <div className={``}>
+                {/* <h5>{i18n.t('categories')}</h5> */}
+                <div className="d-flex ">
+                  {
+                    categories.map((item, i) => (
+                      <span key={i}
+                            className="badge-category badge badge-light p-2 mr-2"
+                      >
+                        {item}
+                        <label className="mx-1 color-white " htmlFor={"category_" + item}>
+                          x
+                        </label>
+                      </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -323,6 +393,24 @@ class Articles extends ListPage {
               @media screen and (min-width: 768px) {
                 .wrapper-cat label {
                   font-size: 1.15rem;
+                }
+              }
+              .badge-light {
+                background-color: #aaa;
+              }
+              
+              label {
+              cursor: pointer;
+              }
+              .w-full {
+                width: 100%;
+              }
+              .dropdown-toggle::after {
+                //content: none;
+              }
+              @media screen and (max-width: 768px) {
+                .md-d-none {
+                  display: none;
                 }
               }
             `}
@@ -337,7 +425,7 @@ class Articles extends ListPage {
               Component="div"
               className="btn-group btn-group-toggle"
             >
-    
+
               <label className="link">
                 <Radio value="all" />
                 <span className="btn btn-outline-dark btn-first">{i18n.t('all')}</span>
@@ -350,7 +438,7 @@ class Articles extends ListPage {
                 <Radio value="solved" />
                 <span className="btn btn-outline-dark btn-last">{i18n.t('replied')}</span>
               </label>
-              
+
             </RadioGroup>
           </div>
           <div className="col-12 col-sm-8 col-md-4 text-md-right">
@@ -483,7 +571,7 @@ class Articles extends ListPage {
               <div className="text-muted">
                 {totalCount} {i18n.t('pageArticles.articles')}
               </div>
-              
+
             </div>
             {this.renderPagination()}
             <ul className="article-list">
@@ -555,7 +643,7 @@ class Articles extends ListPage {
 
     return (
       <AppLayout>
-        <main className="wrapper-main">
+        <main className="wrapper-main" >
           <Head>
             <title>{i18n.t('pageArticles.reallyFake')}</title>
           </Head>

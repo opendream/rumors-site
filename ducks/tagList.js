@@ -42,6 +42,7 @@ export const load = ({
       edges {
         node {
           title
+          groupName
           priority
           createdAt
         }

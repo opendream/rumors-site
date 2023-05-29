@@ -25,11 +25,11 @@ class TagPriorityForm extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.  state = {
+    this.state = {
       mode: 'display',
       priority: props.tag.get('priority')
     }
-  
+
   }
 
   handleSubmit = e => {
@@ -41,15 +41,17 @@ class TagPriorityForm extends PureComponent {
     const newPriority = this.inputEl.value;
 
     gql`
-    mutation($title: String!, $priority: Int) {
-      CreateOrUpdateTag(title: $title, priority: $priority) {
+    mutation($title: String!, $priority: Int, $groupName: String) {
+      CreateOrUpdateTag(title: $title, priority: $priority, groupName: $groupName) {
         title
         priority
+        groupName
       }
     }
     `({
       title: tag.get('title'),
       priority: parseInt(newPriority),
+      groupName: tag.get('groupName'),
     }).then(resp => {
       this.setState({priority: newPriority, mode: 'display'})
     })
@@ -108,13 +110,135 @@ class TagPriorityForm extends PureComponent {
       )
     } else {
 
-      
+
       return (
         <form onSubmit={this.handleSubmit}>
           <input
             className="name-input"
             type="numeric"
             defaultValue={tag.get('priority')}
+            ref={el => (this.inputEl = el)}
+          />
+          <button className="submit" type="submit">
+            Save
+          </button>
+          <button type="button" onClick={this.onCancel}>
+            Cancel
+          </button>
+
+          <style jsx>{`
+            .name-input {
+              width: 6em;
+            }
+
+            .submit {
+              margin: 0 8px;
+            }
+          `}</style>
+        </form>
+      )
+    }
+  }
+}
+
+class TagGroupForm extends PureComponent {
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      mode: 'display',
+      groupName: props.tag.get('groupName')
+    }
+
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const {tag} = this.props;
+
+    if (!this.inputEl) return;
+    const newGroupName = this.inputEl.value;
+
+    gql`
+    mutation($title: String!, $priority: Int, $groupName: String) {
+      CreateOrUpdateTag(title: $title, priority: $priority, groupName: $groupName) {
+        title
+        priority
+        groupName
+      }
+    }
+    `({
+      title: tag.get('title'),
+      priority: parseInt(tag.get('priority')),
+      groupName: newGroupName,
+    }).then(resp => {
+      this.setState({groupName: newGroupName, mode: 'display'})
+    })
+
+  }
+
+  handleEdit = e => {
+    e.preventDefault();
+    this.setState({mode: 'edit'});
+
+    setTimeout(() => {
+      if (this.inputEl) {
+        this.inputEl.select();
+      }
+    }, 0);
+  }
+
+  onCancel = e => {
+    e.preventDefault();
+    this.setState({mode: 'display'});
+  }
+
+  render() {
+    const { tag } = this.props;
+    const { mode, groupName } = this.state;
+
+    if (mode == 'display') {
+      return (
+        <div>
+          {groupName}
+          <button className="edit" onClick={this.handleEdit}>
+            <img
+              src={require('../components/AppLayout/images/edit.svg')}
+              width={12}
+              height={12}
+              alt="edit"
+            />
+          </button>
+          <style jsx>{`
+
+            .edit {
+              padding: 4px;
+              margin: 0 12px 0 4px;
+              opacity: 0.4;
+              cursor: pointer;
+              border: 0;
+              background: transparent;
+              margin-right: auto;
+            }
+
+            .edit:hover {
+              opacity: 0.7;
+            }
+          `}</style>
+        </div>
+      )
+    } else {
+
+
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="name-input"
+            type="text"
+            defaultValue={tag.get('groupName')}
             ref={el => (this.inputEl = el)}
           />
           <button className="submit" type="submit">
@@ -164,17 +288,21 @@ class TagList extends ListPage {
 
     if (!this.inputEls.title) return;
     const title = this.inputEls.title.value;
+    const groupName = this.inputEls.groupName.value || 'อื่นๆ';
     const priority = parseInt(this.inputEls.priority.value || 0);
 
+
     gql`
-      mutation($title: String!, $priority: Int) {
-        CreateOrUpdateTag(title: $title, priority: $priority) {
+      mutation($title: String!, $priority: Int, $groupName: String) {
+        CreateOrUpdateTag(title: $title, priority: $priority, groupName: $groupName) {
           title
+          groupName
           priority
         }
       }
     `({
       title: title,
+      groupName: groupName,
       priority: priority,
     }).then(resp => {
       this.componentDidMount()
@@ -235,6 +363,7 @@ class TagList extends ListPage {
           <thead>
             <tr>
               <th scope="col">ชื่อ</th>
+              <th scope="col">หมวดหมู่</th>
               <th scope="col">ความสำคัญ (เรียงตามเลขมากไปน้อย)</th>
               <th scope="col">&nbsp;</th>
             </tr>
@@ -243,6 +372,9 @@ class TagList extends ListPage {
             <tr key={`add-new-tag`}>
               <td>
                 <input type="text" ref={el => (this.inputEls.title = el)} />
+              </td>
+              <td>
+                <input type="text" ref={el => (this.inputEls.groupName = el)} />
               </td>
               <td>
                 <input type="number" ref={el => (this.inputEls.priority = el)} />
@@ -256,6 +388,9 @@ class TagList extends ListPage {
               <tr key={tag.get('title')}>
                 <td>
                   {tag.get('title')}
+                </td>
+                <td>
+                  <TagGroupForm tag={tag} />
                 </td>
                 <td>
                   <TagPriorityForm tag={tag} />
