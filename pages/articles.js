@@ -319,7 +319,7 @@ class Articles extends ListPage {
       <div>
         <div className="row">
           <div className={`col-12`}>
-            <div className={`wrapper-cat mt-3 mt-md-0`}>
+            <div className={`wrapper-cat py-1 mb-2`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
 
@@ -329,18 +329,18 @@ class Articles extends ListPage {
                   value={categories}
                   onChange={this.handleCategoriesChange}
                   Component="div"
-                  className="mb-4 pb-2 border-bottom d-flex gap-3"
+                  className="d-flex align-items-center"
                 >
                   <div className="flex mr-4 md-d-none">
                     <span className="my-2">
                       ประเด็นที่ต้องการค้นหา
                     </span>
                   </div>
-                  <div className="flex-grow-1 d-flex">
+                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-md-row">
                   {groupTags.map((group, ii) => (
-                    <div className="flex-grow-1">
+                    <div className="flex-grow-1 item-list">
                       <div className="btn-group w-full p-1">
-                        <a className="btn  btn-secondary dropdown-toggle" href="#" role="button" id={'dropdownMenu_'+ ii}
+                        <a className="btn btn-outilne dropdown-toggle" role="button" id={'dropdownMenu_'+ ii}
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.handleGroupName(group)}>
                           {group}
                         </a>
@@ -351,7 +351,7 @@ class Articles extends ListPage {
                             className="dropdown-item form-check form-check-inline p-0 m-0"
                           >
                             <Checkbox value={item.get('title')} id={"category_" + item.get('title')} />
-                            <label className="mb-3" htmlFor={"category_" + item.get('title')}>
+                            <label className="p-2 mb-0 w-full" htmlFor={"category_" + item.get('title')}>
                               {item.get('title')}
                             </label>
                           </div>
@@ -366,19 +366,22 @@ class Articles extends ListPage {
             </div>
           </div>
           <div className={`col-12`}>
-            <div className={`wrapper-cat my-3 mt-md-0`}>
+            <div className={``}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
-                <div className="d-flex ">
+                <div className="d-flex mb-4 flex-wrap">
                   {
                     categories.map((item, i) => (
                       <span key={i}
-                            className="badge-category badge badge-light p-2 mr-2"
+                            className="badge-category badge mr-2 mb-2"
                       >
-                        {item}
-                        <label className="mx-1 color-white " htmlFor={"category_" + item}>
-                          x
+                        <label className="mx-1 pr-1 color-white " htmlFor={"category_" + item}>
+                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L0.46967 8.46967ZM5.53033 5.53033C5.82322 5.23744 5.82322 4.76256 5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967L5.53033 5.53033ZM4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033L4.46967 4.46967ZM9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L9.53033 1.53033ZM5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033L5.53033 4.46967ZM8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L8.46967 9.53033ZM4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033C5.82322 5.23744 5.82322 4.76256 5.53033 4.46967L4.46967 5.53033ZM1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L1.53033 0.46967ZM1.53033 9.53033L5.53033 5.53033L4.46967 4.46967L0.46967 8.46967L1.53033 9.53033ZM5.53033 5.53033L9.53033 1.53033L8.46967 0.46967L4.46967 4.46967L5.53033 5.53033ZM4.46967 5.53033L8.46967 9.53033L9.53033 8.46967L5.53033 4.46967L4.46967 5.53033ZM5.53033 4.46967L1.53033 0.46967L0.46967 1.53033L4.46967 5.53033L5.53033 4.46967Z" fill="black"/>
+                          </svg>
                         </label>
+                        {item}
+                        
                       </span>
                   ))}
                 </div>
@@ -387,9 +390,60 @@ class Articles extends ListPage {
           </div>
           <style jsx>
             {`
+              .wrapper-cat {
+                border-top: 1px solid #DFDFDF;
+                border-bottom: 1px solid #DFDFDF;
+              }
+              .wrapper-cat .dropdown-toggle {
+                font-size: 1.15rem;
+                text-align: left;
+              }
+              .wrapper-cat .dropdown-toggle::after {
+                display: none;
+              }
+              .wrapper-cat .dropdown-toggle::before {
+                display: inline-block;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                vertical-align: middle;
+                content: "";
+                background: url("/static/img/icon/caret-down.svg") no-repeat 0 0;
+                background-size: contain;
+                position: relative;
+                width: 10px;
+                height: 6px;
+              }
+              .wrapper-cat .dropdown-menu {
+                border-radius: 10px;
+                box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+                border:none;
+              }
+              .wrapper-cat input[type=checkbox]+label:before {
+                background: url("/static/img/icon/ic-checkbok-cat.png") no-repeat 0 0 !important;
+                background-size: 20px;
+              }
               .wrapper-cat label {
                 font-size: 1rem;
               }
+              .badge-category {
+                font-size: 1rem;
+                font-weight: normal;
+                background-color: #E1E6EA;
+                border-radius: 50px;
+                padding: 5px 15px 5px 10px;
+              }
+              .badge-category label {
+                margin-bottom: 0;
+              }
+              @media screen and (max-width: 767px) {
+                .item-list {
+                  border-bottom: 1px solid #DFDFDF;
+                }
+                .item-list:last-child {
+                  border-bottom: 0;
+                }
+              }
+             
               @media screen and (min-width: 768px) {
                 .wrapper-cat label {
                   font-size: 1.15rem;
