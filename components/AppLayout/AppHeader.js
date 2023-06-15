@@ -34,7 +34,7 @@ function AppHeader({
                 <h1>{i18n.t('realOrFake')}</h1>
               </a>
             </Link>
-            <div className="ml-auto d-flex d-md-none align-items-end flex-column">
+            <div className="ml-auto d-flex d-lg-none align-items-end flex-column">
             <ul className="header-social">
               <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
               <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
@@ -122,7 +122,7 @@ function AppHeader({
                 </div>
               </nav>
             </div>
-            <div className="ml-auto d-none d-md-block">
+            <div className="ml-auto d-none d-lg-block">
               <div className="d-flex justify-content-end mb-2">
                 <ul className="nav-top align-items-center"> 
                   <li>
@@ -237,7 +237,7 @@ function AppHeader({
         }
         .logo img { width: 70px; }
 
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 992px) {
           .logo img {
             width: 95px;
           }
@@ -248,7 +248,7 @@ function AppHeader({
           
           margin-right: 2rem;
         }
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 992px) {
           .nav {
             border-top: 1px solid #DFDFDF;
             padding-top: 0.75rem;
@@ -262,7 +262,7 @@ function AppHeader({
         .nav-item.active {
           text-decoration: underline !important;
         }
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 992px) {
           .nav-item {
             margin-left: 1.5rem;
             color: #fff;
@@ -285,7 +285,7 @@ function AppHeader({
         
 
         .navbar {
-          padding: 1rem;
+          padding: 1rem 1rem 0;
         }
 
         /* menu toggle */
@@ -295,7 +295,7 @@ function AppHeader({
             position: relative;
             top: 0;
             right: 0;
-            padding: 20px 0;
+            padding: 20px 0 0;
             z-index: 1;
             -webkit-user-select: none;
             user-select: none;

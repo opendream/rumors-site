@@ -101,7 +101,7 @@ class Articles extends ListPage {
       query: { q },
     } = this.props;
     return (
-      <div className="row justify-content-md-center my-2 my-md-4 my-lg-5">
+      <div className="row justify-content-md-center mt-2 mb-3 mt-xl-4 mb-md-4">
         <div className={`col`}>
           <div className="search-form">
             <div className="row no-gutters justify-content-center">
@@ -331,12 +331,12 @@ class Articles extends ListPage {
                   Component="div"
                   className="d-flex align-items-center"
                 >
-                  <div className="flex mr-4 md-d-none">
+                  <div className="flex mr-4 d-none d-xl-block">
                     <span className="my-2">
                       ประเด็นที่ต้องการค้นหา
                     </span>
                   </div>
-                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-md-row">
+                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-lg-row">
                   {groupTags.map((group, ii) => (
                     <div className="flex-grow-1 item-list">
                       <div className="btn-group w-full p-1">
@@ -418,12 +418,24 @@ class Articles extends ListPage {
                 box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
                 border:none;
               }
-              .wrapper-cat input[type=checkbox]+label:before {
+              .wrapper-cat .dropdown-item input[type=checkbox]+label:before {
                 background: url("/static/img/icon/ic-checkbok-cat.png") no-repeat 0 0 !important;
                 background-size: 20px;
               }
               .wrapper-cat label {
                 font-size: 1rem;
+              }
+              .wrapper-cat input[type=checkbox]+label:before {
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin: 0 .5em 0 0;
+                background: url("/static/img/icon/ic-check-cat.png") no-repeat 0 0 !important;
+                background-size: 20px;
+                vertical-align: bottom;
+                position: relative;
+                bottom: 2px;
               }
               .badge-category {
                 font-size: 1rem;
@@ -435,7 +447,11 @@ class Articles extends ListPage {
               .badge-category label {
                 margin-bottom: 0;
               }
-              @media screen and (max-width: 767px) {
+              @media screen and (max-width: 991px) {
+                .wrapper-cat .dropdown-toggle {
+                  padding-left: 0;
+                  padding-right: 0;
+                }
                 .item-list {
                   border-bottom: 1px solid #DFDFDF;
                 }

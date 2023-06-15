@@ -313,7 +313,13 @@ class AppLayout extends React.Component {
             position: relative;
             bottom: 2px;
           }
-
+          .wrapper-cat .dropdown-item input[type=checkbox]+label:before {
+            background: url("/static/img/icon/ic-check-cat.png") no-repeat 0 0;
+            background-size: 20px;
+          }
+          .wrapper-cat .dropdown-item input[type=checkbox]:checked+label:before {
+            background-position: 0 -20px;
+          }
           .btn-group-link .btn {
             margin-right: 0.5rem;
           }
