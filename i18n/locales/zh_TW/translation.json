@@ -59,7 +59,7 @@
   "signup": "Sign Up",
   "searchFor": "Search for",
   "orderBy": "Order by",
-  "users": "ีusers",
+  "users": "users",
   "newestFirst": "newest first",
   "oldestFirst": "oldest first",
   "name": "Name",
@@ -100,7 +100,7 @@
 
   "replyComponent": {
     "referToScope": "查證範圍請參考",
-    "userGuide": "《使用者指南》",  
+    "userGuide": "《使用者指南》",
     "unhelpfulReason": "使用者覺得沒有幫助的原因",
     "commonReplyTemplate": "常用回應樣板",
     "editingRules": "《Cofacts 編輯規則》",
