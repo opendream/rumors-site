@@ -108,7 +108,7 @@ export default function ArticleItem({
                 {article.get('categories') ? (
                   <div className={`mt-1 mb-1`}>
                     {article.get('categories').map((item, i) => (
-                      <span key={i} className="badge badge-primary mr-2">
+                      <span key={i} className="badge badge-primary mr-2 mb-1">
                         {item}
                       </span>
                     ))}

@@ -102,7 +102,7 @@ class HowtoPage extends React.Component {
                                     />
                                 </div>
                             </li>
-                            <li>หากท่านค้นหาข่าวลวงในระบบแล้วไม่พบ แสดงว่ายังไม่มีใครพูดถึงในประเด็นนี้ เราขอชวนคุณเข้าไป Post ตั้งหัวข้อใหม่ที่ <a href="https://cofact.org" target="_blank">https://cofact.org</a></li>
+                            <li>หากท่านค้นหาข่าวลวงในระบบแล้วไม่พบ แสดงว่ายังไม่มีใครพูดถึงในประเด็นนี้ เราขอชวนคุณเข้าไป Post ตั้งหัวข้อใหม่ที่ <a href="https://cofact.org/articles" target="_blank">https://cofact.org/articles</a></li>
                         </ol>
                     </div>
                     <hr />
@@ -111,7 +111,7 @@ class HowtoPage extends React.Component {
                         <ol>
                             <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a></li>
                             <li>กดปุ่ม สมัครสมาชิก ที่อยู่มุมขวาบน  
-                                <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
+                                <div className="col-12 p-0 m-0">
                                     <img 
                                         src={`${require('/static/img/howto/howto-web-00.png')}`}
                                         className={`img-fluid my-3 shadow`}
@@ -125,6 +125,10 @@ class HowtoPage extends React.Component {
                                         className={`img-fluid my-3 shadow`}
                                     />
                                 </div>
+                                <p>
+                                ** กรณีลืมรหัสผ่านให้ติดต่อ <a href="mailto:cofactcoform@gmail.com">cofactcoform@gmail.com</a> เพื่อ reset รหัสผ่านใหม่ให้
+                                </p>
+
                             </li>
                             <li>
                             ใส่คำค้นหา หากคำที่ค้นหาไม่ตรงกับที่มีในระบบ ให้กดปุ่ม สร้างข้อความ ซึ่งจะอยู่ส่วนล่างของหน้าเว็บ <br />
