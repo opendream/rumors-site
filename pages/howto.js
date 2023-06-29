@@ -6,6 +6,10 @@ import i18n from '../i18n';
 
 class HowtoPage extends React.Component {
   render() {
+    if (typeof(window) !== "undefined") {
+      window.location.href = "https://blog.cofact.org/howto";
+    }
+
     return (
       <div className={`howto`}>
         <AppLayout>
@@ -44,27 +48,27 @@ class HowtoPage extends React.Component {
                         <ol>
                             <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a></li>
                             <li><strong>พิมพ์ข้อความที่คุณต้องการตรวจสอบในกล่องค้นหา</strong> แล้วกด <strong>ค้นหา</strong> <br />
-                            <img 
+                            <img
                                 src={`${require('/static/img/howto/howto-01.png')}`}
                                 className={`img-fluid my-3 shadow`}
                             /></li>
-                        <li>สามารถ <strong>ค้นหาตามหมวดหมู่</strong> โดยการคลิกเลือกหมวดหมู่ที่ถูกนำเสนอไว้ เช่น โควิด 2019 
+                        <li>สามารถ <strong>ค้นหาตามหมวดหมู่</strong> โดยการคลิกเลือกหมวดหมู่ที่ถูกนำเสนอไว้ เช่น โควิด 2019
                             หากมีผู้ใช้ท่านอื่นพูดถึงเรื่องที่ท่านสนใจผ่านการ Post และ Comment ไว้ในระบบแล้ว เรื่องนั้นจะถูกดึงขึ้นมา<br />
-                            <img 
+                            <img
                                 src={`${require('/static/img/howto/howto-02.png')}`}
                                 className={`img-fluid my-3 shadow`}
                             />
                         </li>
-                        <li>กดเข้าไปดูรายละเอียดข้อความนั้น จะมีความคิดเห็นต่าง ๆ เพื่อให้ผู้อ่านได้ตัดสินใจเพิ่มเติมได้ และสังเกตที่มาตรวัดระดับ 
+                        <li>กดเข้าไปดูรายละเอียดข้อความนั้น จะมีความคิดเห็นต่าง ๆ เพื่อให้ผู้อ่านได้ตัดสินใจเพิ่มเติมได้ และสังเกตที่มาตรวัดระดับ
                             จะมีลูกศรีชึ้ (จากแดงไปเขียว หมายถึงข้อความลวงไปถึงความข้อความจริง)
-                            <img 
+                            <img
                                 src={`${require('/static/img/howto/howto-03.png')}`}
                                 className={`img-fluid my-3 shadow`}
                             />
                         </li>
 
                         </ol>
-                       
+
                     </div>
                     <hr />
                     <div className="py-4">
@@ -72,7 +76,7 @@ class HowtoPage extends React.Component {
                         <ol>
                             <li>เปิดเเอปพลิเคชันไลน์ จากนั้นทำการค้นหาเพื่อน พิมพ์ช่อง LINE ID ว่า <strong>@cofact</strong> จะปรากฎ "Cofact" ให้เพิ่มเพื่อนทันที
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-line-01.png')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -80,7 +84,7 @@ class HowtoPage extends React.Component {
                             </li>
                             <li>ในช่องเเชทจะปรากฎข้อความเเสดงการทักทาย คุณสามารถส่งข้อความ ที่คุณสงสัยลงในระบบได้เลย Cofact จะทำการดึงข้อมูลที่เคยมีคนกล่าวถึงไว้ในระบบออกมาให้ท่านตรวจสอบ
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-line-02.png')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -88,7 +92,7 @@ class HowtoPage extends React.Component {
                             </li>
                             <li>ถ้าใน Cofact มีข้อความคล้ายกับที่สงสัย จะปรากฏตัวอย่างข้อความให้เลือก เลื่อนไปดูข้อความที่สนใจ ถ้าต้องการดูรายละเอียด กด <strong>เลือกอันนี้</strong>
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-line-03.jpg')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -96,7 +100,7 @@ class HowtoPage extends React.Component {
                             </li>
                             <li>แชทบอทจะสรุปให้ดูว่าข้อความที่เลือกนี้ มีคนให้ความเห็นว่าจริงหรือหลอกลวงกี่ความเห็น และมีตัวอย่างแต่ละความเห็นให้ดู หากต้องการอ่านความเห็นใด กด <strong>อ่านความเห็นนี้</strong>
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-line-04.jpg')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -110,9 +114,9 @@ class HowtoPage extends React.Component {
                         <h3 id="post">วิธี Post ข่าวที่ต้องการตรวจสอบบนเว็บไซต์</h3>
                         <ol>
                             <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a></li>
-                            <li>กดปุ่ม สมัครสมาชิก ที่อยู่มุมขวาบน  
+                            <li>กดปุ่ม สมัครสมาชิก ที่อยู่มุมขวาบน
                                 <div className="col-12 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-web-00.png')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -120,7 +124,7 @@ class HowtoPage extends React.Component {
                             </li>
                             <li>ใส่อีเมล และพาสเวิร์ด กดปุ่ม สมัครสมาชิก หรือจะเชื่อมต่อผ่าน Facebook ก็ได้เช่นกัน
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
-                                    <img 
+                                    <img
                                         src={`${require('/static/img/howto/howto-web-01.png')}`}
                                         className={`img-fluid my-3 shadow`}
                                     />
@@ -132,12 +136,12 @@ class HowtoPage extends React.Component {
                             </li>
                             <li>
                             ใส่คำค้นหา หากคำที่ค้นหาไม่ตรงกับที่มีในระบบ ให้กดปุ่ม สร้างข้อความ ซึ่งจะอยู่ส่วนล่างของหน้าเว็บ <br />
-                            <img 
+                            <img
                                 src={`${require('/static/img/howto/howto-post-01.png')}`}
                                 className={`img-fluid my-3 shadow`}
                             /><br />
                             ท่านจะสามารถเข้าไปสร้าง Post ใหม่ ซึ่งมี 4 ส่วน คือ<br />
-                            <img 
+                            <img
                                 src={`${require('/static/img/howto/howto-post-02.png')}`}
                                 className={`img-fluid my-3 shadow`}
                             /><br />
@@ -150,7 +154,7 @@ class HowtoPage extends React.Component {
                                 เมื่อใส่ครบทั้ง 4 ส่วนนี้แล้ว ขอแนะนำให้คุณใช้เวลาตรวจทานอย่างรอบคอบ เช่น ตรวจการสะกดคำ แล้วจึงกดปุ่ม <strong><u>ส่งข้อความใหม่</u></strong> จะปรากฏ Post ใหม่ของท่านในระบบ และรอให้คนมา Comment เพื่อให้ข้อมูลหรือแสดงความคิดเห็น
                             </li>
                         </ol>
-       
+
                     </div>
                     <hr />
                     <div className="py-4">
@@ -158,7 +162,7 @@ class HowtoPage extends React.Component {
                         <ol>
                             <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a> และ เข้าสู่ระบบ (หากยังไม่เป็นสมาชิกต้องสมัครสมาชิกก่อน)</li>
                             <li>ค้นหาเรื่องที่ต้องการ เมื่อค้นหาเรื่องที่สนใจพบแล้ว คลิกเข้าไปอ่าน และเลื่อนลงมาส่วนล่างสุด จะเห็นส่วน <strong>เพิ่มความเห็นใหม่ </strong>
-                                <img 
+                                <img
                                     src={`${require('/static/img/howto/howto-comment-01.png')}`}
                                     className={`img-fluid my-3 shadow`}
                                 />
@@ -175,9 +179,9 @@ class HowtoPage extends React.Component {
                                 <strong>จากนั้นใส่ความเห็น และลิงก์ที่มาของข้อมูลที่เราอ้างอิงสำหรับความเห็นนี้</strong> ที่กล่องใส่ข้อความ ตรวจทานดีแล้ว จึงกดปุ่ม <strong>ส่งความเห็น</strong>
                             </li>
                         </ol>
-       
 
-                        
+
+
                     </div>
 
                   </div>
