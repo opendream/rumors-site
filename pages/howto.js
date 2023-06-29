@@ -42,7 +42,7 @@ class HowtoPage extends React.Component {
                     <div className="py-2">
                         <h3 id="website">วิธีตรวจสอบข่าวลวงบนเว็บไซต์ cofact.org</h3>
                         <ol>
-                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org" target="_blank">https://cofact.org</a></li>
+                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a></li>
                             <li><strong>พิมพ์ข้อความที่คุณต้องการตรวจสอบในกล่องค้นหา</strong> แล้วกด <strong>ค้นหา</strong> <br />
                             <img 
                                 src={`${require('/static/img/howto/howto-01.png')}`}
@@ -109,7 +109,7 @@ class HowtoPage extends React.Component {
                     <div className="py-4">
                         <h3 id="post">วิธี Post ข่าวที่ต้องการตรวจสอบบนเว็บไซต์</h3>
                         <ol>
-                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org" target="_blank">https://cofact.org</a></li>
+                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a></li>
                             <li>กดปุ่ม สมัครสมาชิก ที่อยู่มุมขวาบน  
                                 <div className="col-12 col-sm-8 col-md-5 p-0 m-0">
                                     <img 
@@ -152,7 +152,7 @@ class HowtoPage extends React.Component {
                     <div className="py-4">
                         <h3 id="comment">วิธี Comment ข่าวหรือข้อความบนเว็บไซต์</h3>
                         <ol>
-                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org" target="_blank">https://cofact.org</a> และ เข้าสู่ระบบ (หากยังไม่เป็นสมาชิกต้องสมัครสมาชิกก่อน)</li>
+                            <li>เข้าไปที่เว็บไซต์ <a href="https://cofact.org/articles" target="_blank">cofact.org/articles</a> และ เข้าสู่ระบบ (หากยังไม่เป็นสมาชิกต้องสมัครสมาชิกก่อน)</li>
                             <li>ค้นหาเรื่องที่ต้องการ เมื่อค้นหาเรื่องที่สนใจพบแล้ว คลิกเข้าไปอ่าน และเลื่อนลงมาส่วนล่างสุด จะเห็นส่วน <strong>เพิ่มความเห็นใหม่ </strong>
                                 <img 
                                     src={`${require('/static/img/howto/howto-comment-01.png')}`}

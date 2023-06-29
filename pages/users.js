@@ -399,12 +399,14 @@ class UserList extends ListPage {
           <Head>
             <title>{i18n.t("pageUsers.userList")}</title>
           </Head>
-          <h2>{i18n.t("pageUsers.userList")}</h2>
-          {/* {this.renderSearch()} */}
-          <br />
-          {i18n.t('orderBy')}:
-          {this.renderOrderBy()}
-          {isLoading ? <p>Loading...</p> : this.renderList()}
+          <div className="container mt-5">
+            <h2>{i18n.t("pageUsers.userList")}</h2>
+            {/* {this.renderSearch()} */}
+            <br />
+            {i18n.t('orderBy')}:&nbsp;&nbsp;
+            {this.renderOrderBy()}
+            {isLoading ? <p>Loading...</p> : this.renderList()}
+          </div>
           <style jsx>{mainStyle}</style>
         </main>
       </AppLayout>
