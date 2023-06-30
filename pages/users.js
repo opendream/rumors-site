@@ -391,7 +391,9 @@ class UserList extends ListPage {
   };
 
   render() {
-    const { isLoading = false } = this.props;
+    const { isLoading = false, isStaff=false, query } = this.props;
+
+    let q = query.q;
 
     return (
       <AppLayout>
@@ -402,6 +404,17 @@ class UserList extends ListPage {
           <div className="container mt-5">
             <h2>{i18n.t("pageUsers.userList")}</h2>
             {/* {this.renderSearch()} */}
+            {isStaff? <form action="/users" method="get">
+              <div className="well">
+                <div className="" style={{"display": "flex"}}>
+                  <input className="" type="text" name="q" defaultValue={q}/>
+                  <div className="input-group-append" >
+                    <button className="btn btn-outline-secondary" type="submit">{i18n.t('search')}</button>
+                  </div>
+                </div>
+              </div>
+            </form>: <div/>}
+
             <br />
             {i18n.t('orderBy')}:&nbsp;&nbsp;
             {this.renderOrderBy()}
