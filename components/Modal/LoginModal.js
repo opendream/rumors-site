@@ -101,6 +101,9 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
           <div className="mt-3 text-center">
             {i18n.t('or')} <a className="btn-link" onClick={onSwitchClick}> {switchTarget}</a>
           </div>
+          <div className="text-center">
+            <small>กรณีลืมรหัสผ่านให้ติดต่อ <a href="mailto:cofactcoform@gmail.com">cofactcoform@gmail.com</a>  เพื่อ reset รหัสผ่านใหม่ให้</small>
+          </div>
         </div>
     <hr />
         <div className={`text-center mt-2 mb-1`}>
