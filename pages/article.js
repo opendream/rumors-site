@@ -359,18 +359,18 @@ class ArticlePage extends React.Component {
     let renderText = article.get('text')
     if (renderText.startsWith('$image__')) {
       const fileId = renderText.split('__')[2]
-      renderText = <img className={`image-content my-2`} src={`https://drive.google.com/uc?id=${fileId}`} style={{maxWidth: '100%'}} />
+      renderText = (<div>
+        <iframe style={{'border': 0, 'height': '600px'}} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
+      </div>)
     } else if (renderText.startsWith('$video')) {
       const fileId = renderText.split('__')[2]
       renderText = (
         <div className={`position-relative d-inline-block`}>
-          <video style={{maxWidth: '100%'}} controls={true} onClick={e => e.stopPropagation()}>
-            <source src={`https://drive.google.com/uc?id=${fileId}`} />
-          </video>
+          <iframe style={{'border': 0, 'height': '300px'}}  src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
         </div>
       )
     } else {
-      isMedia = false
+      isMedia = false;
     }
 
     let articleTitle = article.get('title') || (isMedia ? 'เรื่องที่มีคนสงสัย': article.get('text') )
@@ -398,7 +398,7 @@ class ArticlePage extends React.Component {
           : ``}
 
           <div className={`${article.get('status') == 'DELETED'? `d-none`: ``}`}>
-            
+
             <section className="section ">
               <header className="header">
                 {/* <h2>{i18n.t('originalMessage')}</h2> */}
@@ -422,7 +422,7 @@ class ArticlePage extends React.Component {
                   :``}
 
                 </div>
-                
+
                 <div className="card-body d-md-flex justify-content-md-between pt-0">
                   <div className="card-body-left  d-flex flex-column justify-content-between">
                     <article className="content" onClick={this.onArticleClick}>
@@ -441,13 +441,13 @@ class ArticlePage extends React.Component {
                         hyperlinkLoading={aticleHyperlinkLoading}
                       />
                     </article>
-                    
+
                     <div className="d-flex mt-3">
                       <span className={"postCreator item-createBy"}> {article.getIn(['user', 'name']) || `ไม่ระบุชื่อ`}</span>
                       <ArticleInfo article={article} />
                       <FlaggedReplyInfomation replyConnections={replyConnections} />
                     </div>
-                
+
                     {expanded
                       ? article.get('replyRequests').map((replyRequest, index) => {
                           return (
@@ -467,17 +467,17 @@ class ArticlePage extends React.Component {
                   </div>
                   <div className="card-body-right">
                     <div className="d-flex flex-column align-items-center h-100 justify-content-end">
-                    
+
                       <ArticleTruthMeter avgRadian={meterDegree} />
                       <div className="replyCount item-replyAmount">{replyConnections.filter(r => (r.get('reply').get('type') == 'NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR_NOT_RUMOR' || r.get('reply').get('type') == 'RUMOR')).size} ความเห็น</div>
                     </div>
                   </div>
                 </div>
-                  
-              
+
+
               </div>
 
-              
+
               <div className={`mt-3`}>
                 {categoriesEditMode ? (
                   <div className={`card card-secondary`}>
@@ -574,9 +574,9 @@ class ArticlePage extends React.Component {
                   </h4>
                 )}
               </div>
-            
 
-              
+
+
             </section>
             <section
               id="current-replies"
@@ -630,7 +630,7 @@ class ArticlePage extends React.Component {
               )}
             </section>
             {relatedArticles.size ? (
-              
+
               <section className="section">
                 <hr className="mb-2 mb-md-4" />
                 <h3 className="pb-2 pb-md-4">{i18n.t('sentence.similarArticles')}</h3>

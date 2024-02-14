@@ -37,7 +37,7 @@ function UsedArticleItem({ article, replyConnection }) {
           {i18n.t("at")} <span title={createdAt.format('lll')}>
             {createdAt.fromNow()}
           </span>{' '}
-          
+
           {otherReplyCount ? ` · ${i18n.t("another")} ${otherReplyCount} ${i18n.t("reply")}` : ''}
         </div>
 
@@ -207,34 +207,34 @@ class ReplyPage extends React.Component {
 
     if (renderText.startsWith('$image__')) {
       const fileId = renderText.split('__')[2]
-      renderText = <img className={`image-content mb-2`} src={`https://drive.google.com/uc?id=${fileId}`} style={{maxHeight: 300, maxWidth: '100%'}} />
+      renderText = (<div>
+          <iframe style={{'border': 0, 'height': '300px'}} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
+        </div>)
     } else if (renderText.startsWith('$video')) {
       const fileId = renderText.split('__')[2]
       renderText = (
         <div className={`position-relative d-inline-block`}>
-          <video style={{maxWidth: '100%'}} controls>
-            <source src={`https://drive.google.com/uc?id=${fileId}`} />
-          </video>
+          <iframe height={300} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
           <style jsx>{`
-            .video-play-icon {
-              color: #FFF;
-              top: 50%;
-              left: 50%;
-              margin-top: -30px;
-              margin-left: -30px;
-              border: solid 2px;
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              background-color: rgb(0, 0, 0, .5);
-              font-size: 30px;
-              padding: 7px 0 0 17px;
-            }
+              .video-play-icon {
+                  color: #FFF;
+                  top: 50%;
+                  left: 50%;
+                  margin-top: -30px;
+                  margin-left: -30px;
+                  border: solid 2px;
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background-color: rgb(0, 0, 0, .5);
+                  font-size: 30px;
+                  padding: 7px 0 0 17px;
+              }
           `}</style>
         </div>
       )
 
-      console.log(`https://drive.google.com/uc?id=${fileId}`);
+      console.log(`https://drive.google.com/thumbnail?sz=1000&export=download&id=${fileId}`);
     } else {
       isMedia = false
     }
@@ -269,9 +269,9 @@ class ReplyPage extends React.Component {
                     )}
                   </div>}
 
-                  <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} /> 
+                  <Hyperlinks hyperlinks={originalArticle.get('hyperlinks')} />
                 </div>
-                
+
               </div>
             </section>
 
@@ -282,7 +282,7 @@ class ReplyPage extends React.Component {
           </div>
         </AppLayout>
       </div>
-      
+
     );
   }
 }
