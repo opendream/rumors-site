@@ -25,11 +25,11 @@ class UserBelongToForm extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.  state = {
+    this.state = {
       mode: 'display',
       belongTo: props.user.get('belongTo')
     }
-  
+
   }
 
   handleSubmit = e => {
@@ -109,7 +109,7 @@ class UserBelongToForm extends PureComponent {
       )
     } else {
 
-      
+
       return (
         <form onSubmit={this.handleSubmit}>
           <input
@@ -139,6 +139,129 @@ class UserBelongToForm extends PureComponent {
     }
   }
 }
+
+
+
+class UserPasswordForm extends PureComponent {
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      mode: 'display',
+      password: '***'
+    }
+
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const {user} = this.props;
+
+    if (!this.inputEl) return;
+    const password = this.inputEl.value;
+
+    gql`
+      mutation($password: String!, $id: String) {
+        UpdateUserPassword(password: $password, id: $id) {
+          name
+          password
+        }
+      }
+    `({
+      id: user.get('id'),
+      password: password,
+    }).then(resp => {
+      this.setState({password: '***', mode: 'display'})
+    })
+
+  }
+
+  handleEdit = e => {
+    e.preventDefault();
+    this.setState({mode: 'edit'});
+
+    setTimeout(() => {
+      if (this.inputEl) {
+        this.inputEl.select();
+      }
+    }, 0);
+  }
+
+  onCancel = e => {
+    e.preventDefault();
+    this.setState({mode: 'display'});
+  }
+
+  render() {
+    const { user } = this.props;
+    const { mode, password } = this.state;
+
+    if (mode == 'display') {
+      return (
+        <div>
+          {password}
+          <button className="edit" onClick={this.handleEdit}>
+            <img
+              src={require('../components/AppLayout/images/edit.svg')}
+              width={12}
+              height={12}
+              alt="edit"
+            />
+          </button>
+          <style jsx>{`
+
+            .edit {
+              padding: 4px;
+              margin: 0 12px 0 4px;
+              opacity: 0.4;
+              cursor: pointer;
+              border: 0;
+              background: transparent;
+              margin-right: auto;
+            }
+
+            .edit:hover {
+              opacity: 0.7;
+            }
+          `}</style>
+        </div>
+      )
+    } else {
+
+
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="name-input"
+            type="password"
+            defaultValue={user.get('belongTo')}
+            ref={el => (this.inputEl = el)}
+          />
+          <button className="submit" type="submit">
+            Save
+          </button>
+          <button type="button" onClick={this.onCancel}>
+            Cancel
+          </button>
+
+          <style jsx>{`
+            .name-input {
+              width: 6em;
+            }
+
+            .submit {
+              margin: 0 8px;
+            }
+          `}</style>
+        </form>
+      )
+    }
+  }
+}
+
 
 class UserList extends ListPage {
   static async getInitialProps({ store, query, isServer }) {
@@ -218,6 +341,7 @@ class UserList extends ListPage {
   renderList = () => {
     const {
       users = null,
+      isStaff=false,
       totalCount,
     } = this.props;
     return (
@@ -231,6 +355,7 @@ class UserList extends ListPage {
               <th scope="col">{i18n.t('email')}</th>
               <th scope="col">{i18n.t('createdAt')}</th>
               <th scope="col">{i18n.t('belongTo')}</th>
+              <th scope="col">{i18n.t('password')}</th>
             </tr>
           </thead>
           <tbody>
@@ -246,7 +371,10 @@ class UserList extends ListPage {
                   {moment(user.get('createdAt')).fromNow()}
                 </td>
                 <td>
-                  <UserBelongToForm user={user} />
+                  {isStaff? <UserBelongToForm user={user} />: <div/>}
+                </td>
+                <td>
+                  {isStaff? <UserPasswordForm user={user} />: <div/>}
                 </td>
               </tr>
             ))}
@@ -263,7 +391,9 @@ class UserList extends ListPage {
   };
 
   render() {
-    const { isLoading = false } = this.props;
+    const { isLoading = false, isStaff=false, query } = this.props;
+
+    let q = query.q;
 
     return (
       <AppLayout>
@@ -271,12 +401,25 @@ class UserList extends ListPage {
           <Head>
             <title>{i18n.t("pageUsers.userList")}</title>
           </Head>
-          <h2>{i18n.t("pageUsers.userList")}</h2>
-          {/* {this.renderSearch()} */}
-          <br />
-          {i18n.t('orderBy')}:
-          {this.renderOrderBy()}
-          {isLoading ? <p>Loading...</p> : this.renderList()}
+          <div className="container mt-5">
+            <h2>{i18n.t("pageUsers.userList")}</h2>
+            {/* {this.renderSearch()} */}
+            {isStaff? <form action="/users" method="get">
+              <div className="well">
+                <div className="" style={{"display": "flex"}}>
+                  <input className="" type="text" name="q" defaultValue={q}/>
+                  <div className="input-group-append" >
+                    <button className="btn btn-outline-secondary" type="submit">{i18n.t('search')}</button>
+                  </div>
+                </div>
+              </div>
+            </form>: <div/>}
+
+            <br />
+            {i18n.t('orderBy')}:&nbsp;&nbsp;
+            {this.renderOrderBy()}
+            {isLoading ? <p>Loading...</p> : this.renderList()}
+          </div>
           <style jsx>{mainStyle}</style>
         </main>
       </AppLayout>
@@ -288,6 +431,7 @@ function mapStateToProps({ userList, auth }) {
   return {
     isLoggedIn: !!auth.get('user'),
     isLoading: userList.getIn(['state', 'isLoading']),
+    isStaff: !!auth.get('user') && (auth.get('user') && auth.get('user').get('isStaff')),
     users: (userList.get('edges') || List()).map(edge => edge.get('node')),
     totalCount: userList.get('totalCount'),
     firstCursor: userList.get('firstCursor'),

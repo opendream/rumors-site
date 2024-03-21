@@ -295,7 +295,7 @@ function AppHeader({
             position: relative;
             top: 0;
             right: 0;
-            padding: 20px 0 0;
+            padding: 20px 0 0px;
             z-index: 1;
             -webkit-user-select: none;
             user-select: none;

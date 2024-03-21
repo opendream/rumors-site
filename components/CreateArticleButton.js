@@ -20,7 +20,7 @@ export default class CreateArticleButton extends React.Component {
       );
     } else {
       return (
-        <a className={`btn btn-secondary btn-sm`} onClick={e => {
+        <a className={`btn btn-secondary btn-create d-inline-flex align-items-center text-white`} onClick={e => {
           e.preventDefault();
           this.onLoginClick(i18n.t('signup'));
         }}>

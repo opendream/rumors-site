@@ -16,6 +16,7 @@ const SET_STATE = defineType('SET_STATE');
 export const setState = createAction(SET_STATE);
 
 export const load = ({
+  q = '',
   orderBy = 'createdAt_DESC',
   before,
   after,
@@ -29,11 +30,13 @@ export const load = ({
 
   dispatch(setState({ key: 'isLoading', value: true }));
   return gql`query(
+    $filter: ListUserFilter,
     $orderBy: [ListUserOrderBy],
     $before: String,
     $after: String,
   ) {
     ListUsers(
+      filter: $filter,
       orderBy: $orderBy
       before: $before
       after: $after
@@ -59,6 +62,9 @@ export const load = ({
 
     }
   }`({
+    filter: {
+      "emailContains": q
+    },
     orderBy: orderByArray,
     before,
     after,

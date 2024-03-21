@@ -313,6 +313,10 @@ class AppLayout extends React.Component {
             position: relative;
             bottom: 2px;
           }
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 833f6edd63f3a6c7f38e6b128ebf316e0f125956
           .wrapper-cat .dropdown-item input[type=checkbox]+label:before {
             background: url("/static/img/icon/ic-check-cat.png") no-repeat 0 0;
             background-size: 20px;
@@ -320,6 +324,10 @@ class AppLayout extends React.Component {
           .wrapper-cat .dropdown-item input[type=checkbox]:checked+label:before {
             background-position: 0 -20px;
           }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 833f6edd63f3a6c7f38e6b128ebf316e0f125956
           .btn-group-link .btn {
             margin-right: 0.5rem;
           }

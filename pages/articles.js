@@ -389,7 +389,7 @@ class Articles extends ListPage {
             </div>
           </div>
           <style jsx>
-            {`
+          {`
               .wrapper-cat {
                 border-top: 1px solid #DFDFDF;
                 border-bottom: 1px solid #DFDFDF;
