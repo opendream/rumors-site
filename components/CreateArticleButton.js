@@ -22,7 +22,7 @@ export default class CreateArticleButton extends React.Component {
       return (
         <a className={`btn btn-secondary btn-create d-inline-flex align-items-center text-white`} onClick={e => {
           e.preventDefault();
-          this.onLoginClick(i18n.t('signup'));
+          this.onLoginClick(i18n.t('login'));
         }}>
           {i18n.t('createArticle')}
         </a>
