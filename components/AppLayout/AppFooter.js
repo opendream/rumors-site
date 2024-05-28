@@ -16,20 +16,20 @@ export default function AppFooter() {
               </div>
             </a>
           </Link>
-          <ul className="menu-footer">
-            <li><a href="https://cofact.org/articles">{i18n.t('articles')}</a></li>
+          <ul className='menu-footer'>
+            <li><a href='https://cofact.org/articles'>{i18n.t('articles')}</a></li>
             {/* <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li> */}
-            <li><a href="https://blog.cofact.org/e-learning">{i18n.t('e-Learning')}</a></li>
-            <li><a href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a></li>
-            <li><a href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a></li>
-            <li><a href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a></li>
-            <li><a href="https://blog.cofact.org/category/fake-news">{i18n.t('Fake News')}</a></li>
-            <li><a href="https://blog.cofact.org/category/infographic">อินโฟกราฟิก</a></li>
-            <li><a href="https://blog.cofact.org/vocabulary">แนะนำคำศัพท์</a></li>
-            <li><a href="https://cofact.org/howto">{i18n.t('How to use')}</a></li>
-            <li><a href="https://cofact.org/policy">{i18n.t('Policy')}</a></li>
-            <li><a href="https://blog.cofact.org/about" target="_blank">{i18n.t('About Us')}</a></li>
-            <li><a href="https://cofact.org/about-us">About Us</a></li>
+            <li><a href='https://blog.cofact.org/e-learning'>{i18n.t('e-Learning')}</a></li>
+            <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
+            <li><a href='https://blog.cofact.org/category/articles'>{i18n.t('Blog')}</a></li>
+            <li><a href='https://blog.cofact.org/category/video'>{i18n.t('Video')}</a></li>
+            <li><a href='https://blog.cofact.org/category/fake-news'>{i18n.t('Fake News')}</a></li>
+            <li><a href='https://blog.cofact.org/category/infographic'>อินโฟกราฟิก</a></li>
+            <li><a href='https://blog.cofact.org/vocabulary'>แนะนำคำศัพท์</a></li>
+            <li><a href='https://cofact.org/howto'>{i18n.t('How to use')}</a></li>
+            <li><a href='https://cofact.org/policy'>{i18n.t('Policy')}</a></li>
+            <li><a href='https://blog.cofact.org/privacy-policy'>Privacy Policy</a></li>
+            <li><a href='https://blog.cofact.org/about' target='_blank'>{i18n.t('About Us')}</a></li>
           </ul>
           {/* <div className="ml-auto">
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
@@ -54,9 +54,9 @@ export default function AppFooter() {
           ・
           <a href={`mailto:${CONTACT_EMAIL}`}>{i18n.t("contactEmail")}</a>
         </p> */}
-        
+
       </div>
-      
+
       {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
