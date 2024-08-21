@@ -43,6 +43,8 @@ export default function AppFooter() {
               <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
               <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA">Cofact Coform</a></li>
               <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+              <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
+           
             </ul>
           </div>
         </div>
@@ -272,6 +274,10 @@ export default function AppFooter() {
           }
           .block-widget-footer ul li.ic-tiktok::before {
             background: url("/static/img/icon/ic-tiktok.png") no-repeat left center;
+            background-size: 27px;
+          }
+          .block-widget-footer ul li.ic-ig::before {
+            background: url("/static/img/icon/ic-ig-white.png") no-repeat left center;
             background-size: 27px;
           }
           @media (min-width: 576px) {

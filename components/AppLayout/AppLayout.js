@@ -159,14 +159,28 @@ class AppLayout extends React.Component {
             color: #000;
             box-shadow: 0 0 0 0.2rem rgb(255, 121, 172, 0.2) !important;
           }
+          .btn-create {
+            background: #f0b4d0;
+            border-color: #f0b4d0 !important;
+            color: #252525 !important;
+            padding: 10px 20px;
+            font-size: 1.15rem;
+            border-radius: 8px;
+          }
+
+          .btn-create:hover {
+            background: #ff79ac !important;
+            border-color: #ff79ac !important;
+          }
 
           .btn-create::before {
             content: "";
-            width: 20px;
-            height: 20px;
+            width: 14px;
+            height: 14px;
             background-size: cover !important;
-            background: url("/static/img/icon/btn-create@2x.png") no-repeat left center;
+            background: url("/static/img/ic-plus.svg") no-repeat left center;
             display: inline-block;
+            margin-right: 0.5rem;
           }
 
           .btn-link {
@@ -313,10 +327,7 @@ class AppLayout extends React.Component {
             position: relative;
             bottom: 2px;
           }
-<<<<<<< HEAD
-=======
           
->>>>>>> 833f6edd63f3a6c7f38e6b128ebf316e0f125956
           .wrapper-cat .dropdown-item input[type=checkbox]+label:before {
             background: url("/static/img/icon/ic-check-cat.png") no-repeat 0 0;
             background-size: 20px;
@@ -324,10 +335,6 @@ class AppLayout extends React.Component {
           .wrapper-cat .dropdown-item input[type=checkbox]:checked+label:before {
             background-position: 0 -20px;
           }
-<<<<<<< HEAD
-=======
-
->>>>>>> 833f6edd63f3a6c7f38e6b128ebf316e0f125956
           .btn-group-link .btn {
             margin-right: 0.5rem;
           }

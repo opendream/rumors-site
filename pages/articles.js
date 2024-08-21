@@ -668,16 +668,23 @@ class Articles extends ListPage {
           </div>
         ) : (
           <div className="">
-            <h4 className={`my-4`}>{i18n.t('notFoundSearchArticleResult')}</h4>
+            {/* <h4 className={`my-4`}>{i18n.t('notFoundSearchArticleResult')}</h4> */}
           </div>
         )}
 
         {q ? (
-          <div className="mb-3">
-            {totalCount > 0
-              ? i18n.t('createArticleLinkExistTeaser')
-              : i18n.t('createArticleLinkTeaser')}
-            &nbsp;<CreateArticleButton dispatch={dispatch} user={user} />
+          <div className="mb-3 mt-3 wrapper-search-notfound">
+            <div className="image">
+              <img src="/static/img/notfound-cofact.png" alt="Not Found" width={'100%'} />
+            </div>
+            <div className="content">
+              <h3 className={`mb-2`}>{i18n.t('notFoundSearchArticleResult')}</h3>
+              <p className={`mb-0 text-lg`}>{totalCount > 0
+                ? i18n.t('createArticleLinkExistTeaser')
+                : i18n.t('createArticleLinkTeaser')}</p>
+              <br /><CreateArticleButton dispatch={dispatch} user={user} />
+            </div>
+            
           </div>
         ) : (
           ``
@@ -696,6 +703,43 @@ class Articles extends ListPage {
               flex-direction: column;
               padding-left: 0;
               margin-bottom: 0;
+            }
+            .wrapper-search-notfound {
+              background-color: #fff;
+              padding: 50px 20px;
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+            }
+            .wrapper-search-notfound .text-lg {
+              font-size: 18px;
+            }
+            .wrapper-search-notfound .image {
+              margin: 0 auto 20px;
+              text-align: center;
+              width: 100%;
+            }
+            .wrapper-search-notfound .content {
+              width: 100%;
+              text-align: center;
+            }
+            .wrapper-search-notfound .image img {
+              max-width: 250px;
+            }
+            @media screen and (min-width: 768px) {
+              .wrapper-search-notfound .image {
+                margin: 0 20px 0 0;
+                width: 25%;
+                text-align: left;
+              }
+              
+              .wrapper-search-notfound .content {
+                width: 40%;
+                text-align: left;
+              }
+              .wrapper-search-notfound .text-lg {
+                font-size: 20px;
+              }
             }
           `}
         </style>

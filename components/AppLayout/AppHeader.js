@@ -41,6 +41,7 @@ function AppHeader({
               <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
               <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
               <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+              <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
             </ul>
               <nav role="navigation">
                 <div id="menuToggle">
@@ -131,11 +132,14 @@ function AppHeader({
                   <li>
                     <a href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
+                  </li>
+                  <li>
+                    <a href="https://blog.cofact.org/about/">เกี่ยวกับเรา</a>
                   </li>
                 </ul>
                 <div className="social-media-header justify-content-end d-flex">
@@ -145,11 +149,12 @@ function AppHeader({
                     <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
                     <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
                     <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+                    <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
                   </ul>
                 </div>
               </div>
               
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center justify-content-end">
               <div className="nav">
                 {user && (user.get('isStaff') || user.get('belongTo')) ? 
                 <Link href="https://cofact.org/create">
@@ -163,11 +168,13 @@ function AppHeader({
                   <a className={`nav-item ${pathname == 'https://cofact.org/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                 </Link> */}
                 {/* <a className="nav-item" href="https://blog.cofact.org/category/news/">{i18n.t('News')}</a> */}
+                <a className="nav-item" href="https://blog.cofact.org/quiz">{i18n.t('Quiz')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/e-learning">{i18n.t('e-Learning')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a>
+                <a className="nav-item" href="https://blog.cofact.org/category/event">{i18n.t('Event')}</a>
+                <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Media')}</a>
+                {/* <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a> */}
+                {/* <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a> */}
                 {/* <Link href="/about">
                   <a className={`nav-item ${pathname == '/about'? 'active': ''}`}>{i18n.t('About Us')}</a>
                 </Link> */}
@@ -455,6 +462,10 @@ function AppHeader({
         }
         ul.header-social li.ic-facebook a {
           background: url("/static/img/icon/ic-facebook-01.png") no-repeat center center;
+          background-size: contain;
+        }
+        ul.header-social li.ic-ig a {
+          background: url("/static/img/icon/ic-ig.png") no-repeat center center;
           background-size: contain;
         }
 
