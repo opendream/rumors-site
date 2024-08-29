@@ -156,7 +156,7 @@ function AppHeader({
 
               <div className="d-flex align-items-center justify-content-end">
               <div className="nav">
-                {user && (user.get('isStaff') || user.get('belongTo')) ?
+                {user && (user.get('isStaff') || user.get('belongTo') || true) ?
                 <Link href="https://cofact.org/create">
                   <a className={`nav-item ${pathname == 'https://cofact.org/create'? 'active': ''}`}>{i18n.t('createArticle')}</a>
                 </Link>
