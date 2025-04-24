@@ -17,7 +17,7 @@ function AppHeader({
   onUserNameUpdate,
   router: {pathname},
 }) {
-  
+
   return (
     <header className={`navbar navbar-expand-lg navbar-dark`}>
       <div className={`container-fluid`}>
@@ -53,7 +53,7 @@ function AppHeader({
 
                   <div id="menu">
                     <div className="nav">
-                      {user && (user.get('isStaff') || user.get('belongTo')) ? 
+                      {user && (user.get('isStaff') || user.get('belongTo') || true) ?
                       <Link href="https://cofact.org/create">
                         <a className={`nav-item ${pathname == 'https://cofact.org/create'? 'active': ''}`}>{i18n.t('createArticle')}</a>
                       </Link>
@@ -69,7 +69,7 @@ function AppHeader({
                       <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a>
                       <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a>
-                      
+
                       {/* <Link href="/about">
                         <a className={`nav-item ${pathname == '/about-us'? 'active': ''}`}>About Us</a>
                       </Link> */}
@@ -77,7 +77,7 @@ function AppHeader({
                       <a className="nav-item" href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
                       <a className="nav-item" href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
-                      {user && user.get('isStaff') ? 
+                      {user && user.get('isStaff') ?
                       <>
                         <Link href="https://cofact.org/users">
                           <a className={`nav-item ${pathname == 'https://cofact.org/users'? 'active': ''}`}>{i18n.t('users')}</a>
@@ -125,7 +125,7 @@ function AppHeader({
             </div>
             <div className="ml-auto d-none d-lg-block">
               <div className="d-flex justify-content-end mb-2">
-                <ul className="nav-top align-items-center"> 
+                <ul className="nav-top align-items-center">
                   <li>
                     <a href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
                   </li>
@@ -153,10 +153,10 @@ function AppHeader({
                   </ul>
                 </div>
               </div>
-              
+
               <div className="d-flex align-items-center justify-content-end">
               <div className="nav">
-                {user && (user.get('isStaff') || user.get('belongTo')) ? 
+                {user && (user.get('isStaff') || user.get('belongTo') || true) ?
                 <Link href="https://cofact.org/create">
                   <a className={`nav-item ${pathname == 'https://cofact.org/create'? 'active': ''}`}>{i18n.t('createArticle')}</a>
                 </Link>
