@@ -64,7 +64,7 @@ function AppHeader({
                       {/* <Link href="https://cofact.org/replies">
                         <a className={`nav-item ${pathname == 'https://cofact.org/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link> */}
-                      <a className="nav-item" href="https://blog.cofact.org/e-learning">{i18n.t('e-Learning')}</a>
+                      <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13">{i18n.t('e-Learning')}</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a>
@@ -169,7 +169,7 @@ function AppHeader({
                 </Link> */}
                 {/* <a className="nav-item" href="https://blog.cofact.org/category/news/">{i18n.t('News')}</a> */}
                 <a className="nav-item" href="https://blog.cofact.org/quiz">{i18n.t('Quiz')}</a>
-                <a className="nav-item" href="https://blog.cofact.org/e-learning">{i18n.t('e-Learning')}</a>
+                <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13" target='_blank'>{i18n.t('e-Learning')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/event">{i18n.t('Event')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Media')}</a>

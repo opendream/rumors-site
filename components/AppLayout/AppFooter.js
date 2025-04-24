@@ -19,7 +19,7 @@ export default function AppFooter() {
           <ul className='menu-footer'>
             <li><a href='https://cofact.org/articles'>{i18n.t('articles')}</a></li>
             {/* <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li> */}
-            <li><a href='https://blog.cofact.org/e-learning'>{i18n.t('e-Learning')}</a></li>
+            <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('e-Learning')}</a></li>
             <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
             <li><a href='https://blog.cofact.org/category/articles'>{i18n.t('Blog')}</a></li>
             <li><a href='https://blog.cofact.org/category/video'>{i18n.t('Video')}</a></li>
