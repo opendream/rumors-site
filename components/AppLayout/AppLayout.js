@@ -72,6 +72,50 @@ class AppLayout extends React.Component {
           <AppFooter />
         </div>
         <style jsx global>{`
+        @font-face {
+            font-family: 'LINE Seed Sans TH';
+            src: url('/static/fonts/subset-LINESeedSansTH-Regular.woff2') format('woff2'),
+                url('/static/fonts/subset-LINESeedSansTH-Regular.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LINE Seed Sans TH';
+            src: url('/static/fonts/subset-LINESeedSansTH-ExtraBold.woff2') format('woff2'),
+                url('/static/fonts/subset-LINESeedSansTH-ExtraBold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LINE Seed Sans TH';
+            src: url('/static/fonts/subset-LINESeedSansTH-Bold.woff2') format('woff2'),
+                url('/static/fonts/subset-LINESeedSansTH-Bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LINE Seed Sans TH';
+            src: url('/static/fonts/subset-LINESeedSansTH-Heavy.woff2') format('woff2'),
+                url('/static/fonts/subset-LINESeedSansTH-Heavy.woff') format('woff');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'LINE Seed Sans TH';
+            src: url('/static/fonts/subset-LINESeedSansTH-Thin.woff2') format('woff2'),
+                url('/static/fonts/subset-LINESeedSansTH-Thin.woff') format('woff');
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
           body {
             font-family: 'LINE Seed Sans TH', sans-serif;
             background: #F6F8FA;
@@ -80,7 +124,7 @@ class AppLayout extends React.Component {
             word-wrap: break-word;
           }
           div:not(.home) header.navbar {
-            max-width: 1140px !important;
+            // max-width: 1140px !important;
             margin: 0 auto;
           }
           div:not(.home) .wrapper-page {
