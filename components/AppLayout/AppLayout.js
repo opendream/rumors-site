@@ -73,9 +73,9 @@ class AppLayout extends React.Component {
         </div>
         <style jsx global>{`
           body {
-            font-family: 'Kanit', sans-serif;
+            font-family: 'LINE Seed Sans TH', sans-serif;
             background: #F6F8FA;
-            font-weight: 300;
+            font-weight: 400;
             word-break: break-word;
             word-wrap: break-word;
           }

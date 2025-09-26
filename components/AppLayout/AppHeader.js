@@ -20,15 +20,15 @@ function AppHeader({
 
   return (
     <header className={`navbar navbar-expand-lg navbar-dark`}>
-      <div className={`container-fluid`}>
+      <div className={`container`}>
         <div className={`d-flex align-items-start w-100`}>
           <div className={`head-left d-flex w-100`}>
             <Link href="/">
               <a className="logo" href="/">
                 <div>
                   <img
-                    src={`${require('./images/logo.png')}`}
-                    className={`img-fluid`}
+                    src={`${require('./images/logo-cofact.png')}`}
+                    className={`img-fluid `}
                   />
                 </div>
                 <h1>{i18n.t('realOrFake')}</h1>
@@ -73,10 +73,10 @@ function AppHeader({
                       {/* <Link href="/about">
                         <a className={`nav-item ${pathname == '/about-us'? 'active': ''}`}>About Us</a>
                       </Link> */}
-                      <a className="nav-item" href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
-                      <a className="nav-item" href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
+                      {/* <a className="nav-item" href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a> */}
+                      {/* <a className="nav-item" href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
                       <a className="nav-item" href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
-                      <a className="nav-item" href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
+                      <a className="nav-item" href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a> */}
                       {user && user.get('isStaff') ?
                       <>
                         <Link href="https://cofact.org/users">
@@ -126,32 +126,23 @@ function AppHeader({
             <div className="ml-auto d-none d-lg-block">
               <div className="d-flex justify-content-end mb-2">
                 <ul className="nav-top align-items-center">
-                  <li>
+                  {/* <li>
                     <a href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <a href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
                   </li> */}
-                  <li>
+                  {/* <li>
                     <a href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
                   </li>
                   <li>
                     <a href="https://blog.cofact.org/about/">เกี่ยวกับเรา</a>
-                  </li>
+                  </li> */}
                 </ul>
-                <div className="social-media-header justify-content-end d-flex">
-                  <ul className="header-social">
-                    <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
-                    <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
-                    <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
-                    <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
-                    <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
-                    <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
-                  </ul>
-                </div>
+                <div className="social-media-header justify-content-end d-flex"></div>
               </div>
 
               <div className="d-flex align-items-center justify-content-end">
@@ -222,6 +213,16 @@ function AppHeader({
                 onLogoutClick={onLogoutClick}
                 onUpdate={onUserNameUpdate}
               />
+                <div className="social-media-header justify-content-end d-flex">
+                  <ul className="header-social">
+                    <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
+                    <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
+                    <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
+                    <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
+                    <li className="ic-tiktok"><a href="https://www.tiktok.com/@cofactthailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+                    <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -239,14 +240,12 @@ function AppHeader({
           height: 0;
           margin: 0;
         }
-        .logo {
-          width: 95px;
-        }
-        .logo img { width: 70px; }
+
+        .logo img { width: 40px; }
 
         @media screen and (min-width: 992px) {
           .logo img {
-            width: 95px;
+            width: 50px;
           }
         }
      
@@ -257,8 +256,6 @@ function AppHeader({
         }
         @media screen and (min-width: 992px) {
           .nav {
-            border-top: 1px solid #DFDFDF;
-            padding-top: 0.75rem;
           }
         }
         .nav-item:hover, 
@@ -292,6 +289,7 @@ function AppHeader({
         
 
         .navbar {
+          background: #fff;
           padding: 1rem 1rem 0;
         }
 
