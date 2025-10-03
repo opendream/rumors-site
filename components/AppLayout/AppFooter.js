@@ -9,15 +9,8 @@ export default function AppFooter() {
     <footer>
       <div className="container p-0">
         <div className="d-flex flex-wrap wrapper-footer">
-          <Link route="index">
-            <a className="logo text-left" href="/">
-              <div>
-                <img src={`${require('./images/logo.png')}`} className={`img-fluid logo-footer`} />
-              </div>
-            </a>
-          </Link>
           <ul className='menu-footer'>
-            <li><a href='https://cofact.org/articles'>{i18n.t('articles')}</a></li>
+            <li><a href='https://cofact.org/articles'>ตรวจสอบข่าว</a></li>
             {/* <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li> */}
             <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('e-Learning')}</a></li>
             <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
@@ -35,7 +28,7 @@ export default function AppFooter() {
             <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
           </div> */}
           <div className="block-widget-footer">
-            <h3>ติดต่อเรา</h3>
+            <h3>ติดตามเรา</h3>
             <ul>
               <li className="ic-mail"><a href="mailto:cofactcoform@gmail.com">cofactcoform@gmail.com</a></li>
               <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
@@ -62,13 +55,14 @@ export default function AppFooter() {
       {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
-          // background: #343A40;
-          background: #343A40 url("/static/img/bg-fill-footer@2x.png") no-repeat 180% -15px;
-          background-size: 70%;
+          background: #FAFAFA;
           padding: 3rem 2rem;
           text-align: center;
-          color: white;
+          color: #000;
         }
+          footer a {
+            color: #000 !important;
+          }
         .logo {
           // flex: 0 0 100%;
           // flex: 0 0 auto;
@@ -149,7 +143,7 @@ export default function AppFooter() {
 
         @media screen and (min-width: 768px) {
           footer {
-            background: #343A40 url("/static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
+            background: #FAFAFA url("/static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
             background-size: 200px;
           }
           .menu-footer {

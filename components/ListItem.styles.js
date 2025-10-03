@@ -85,6 +85,7 @@ export const listItemStyle = css`
   
 
   .card-body-left {
+    font-family: "Bai Jamjuree", sans-serif;
     width: 100%;
     padding-top: 1rem;
   }

@@ -102,6 +102,7 @@ export const detailStyle = css`
 .card-body-left {
   width: 100%;
   margin-bottom: 1rem;
+  font-family: "Bai Jamjuree", sans-serif;
 }
 .card-body-right {
   width: 100%;
