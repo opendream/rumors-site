@@ -67,61 +67,23 @@ class AppLayout extends React.Component {
       <Fragment>
         <div>
           <AppHeader />
-          {children}
+          <div className="container-fluid">
+            <h1 className="h2 text-center mt-5 mb-3">{i18n.t('articles')}</h1>
+            {children}</div>
           <LoginModal />
           <AppFooter />
         </div>
         <style jsx global>{`
-        @font-face {
-            font-family: 'LINE Seed Sans TH';
-            src: url('/static/fonts/subset-LINESeedSansTH-Regular.woff2') format('woff2'),
-                url('/static/fonts/subset-LINESeedSansTH-Regular.woff') format('woff');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'LINE Seed Sans TH';
-            src: url('/static/fonts/subset-LINESeedSansTH-ExtraBold.woff2') format('woff2'),
-                url('/static/fonts/subset-LINESeedSansTH-ExtraBold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'LINE Seed Sans TH';
-            src: url('/static/fonts/subset-LINESeedSansTH-Bold.woff2') format('woff2'),
-                url('/static/fonts/subset-LINESeedSansTH-Bold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'LINE Seed Sans TH';
-            src: url('/static/fonts/subset-LINESeedSansTH-Heavy.woff2') format('woff2'),
-                url('/static/fonts/subset-LINESeedSansTH-Heavy.woff') format('woff');
-            font-weight: 900;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'LINE Seed Sans TH';
-            src: url('/static/fonts/subset-LINESeedSansTH-Thin.woff2') format('woff2'),
-                url('/static/fonts/subset-LINESeedSansTH-Thin.woff') format('woff');
-            font-weight: 100;
-            font-style: normal;
-            font-display: swap;
-        }
           body {
-            font-family: 'LINE Seed Sans TH', sans-serif;
-            background: #F6F8FA;
+            font-family: 'LINE Seed Sans TH', sans-serif !important;
+            background: #F5F5F5 !important;
+            font-size: 16px;
             font-weight: 400;
             word-break: break-word;
             word-wrap: break-word;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            font-weight: 600 !important;
           }
           div:not(.home) header.navbar {
             // max-width: 1140px !important;
@@ -133,16 +95,21 @@ class AppLayout extends React.Component {
           div:not(.home) .nav-item {
             color: #000 !important;
           }
+          div:not(.home) .nav-item:hover,
+          div:not(.home) .nav-item:focus,
+          div:not(.home) .nav-item:active {
+            color: #E469A2 !important;
+          }
           div:not(.home) .link-group {
             // border: 1px solid #000 !important;
 
           }
-          div:not(.home) .link-list {
-            border-right: 1px solid #000 !important;
-            color: #000 !important;
-          }
+          // div:not(.home) .link-list {
+          //   border-right: 1px solid #000 !important;
+          //   color: #000 !important;
+          // }
 
-          a { color: #FF6DAD; }
+          a { color: #E469A2; }
           a:hover, a:active, a:focus {
             color: #B4195D;
           }
@@ -171,14 +138,15 @@ class AppLayout extends React.Component {
           }
 
           .btn-primary {
-            background-color: #f0b4d0;
-            border-color: #f0b4d0;
-            font-size: 16px;
+            background-color: #f0b4d0 !important;
+            border-color: #f0b4d0 !important;
+            font-weight: 600;
+            font-size: 1.15rem !important;
             color: #000;
             border-radius: 10px;
           }
           .btn.btn-sm.btn-primary {
-            font-size: 1.1rem !important;
+            font-size: 14px !important;
           }
 
           .btn.btn-sm {
@@ -228,9 +196,8 @@ class AppLayout extends React.Component {
           }
 
           .btn-link {
-            color: #000;
+            color: #E469A2 !important;
             text-decoration: underline;
-            
           }
           .btn-link:hover,
           .btn-link:active,
@@ -239,42 +206,44 @@ class AppLayout extends React.Component {
           }
 
           .badge {
-            white-space: pre-wrap
+            white-space: pre-wrap;
           }
 
           .badge-primary {
             background-color: #F0B4D0 !important;
           }
 
-          .bubble
-            {
-              display: inline-block;
-              position: relative;
-              background: #F6F8FA;
-              padding: 0.5rem 1rem;
-              border-radius: 8px;
-              border: #C9D4DA solid 1px;
-              border-top-left-radius: 0;
-              margin: 1rem 0;
-              max-width: 100%;
-            }
+          .bubble {
+            display: inline-block;
+            position: relative;
+            background: #F6F8FA;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: #C9D4DA solid 1px;
+            border-top-left-radius: 0;
+            margin: 1rem 0;
+            max-width: 100%;
+          }  
+          .bubble a {
+            color: #E469A2;
+          }
+          .bubble a:hover {
+            color: #DF5595;
+          }
+          .bubble:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 0 10px 14px 0;
+            border-color: #F6F8FA transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+            top: -14px;
+            left: 0px;
+          }
             
-            .bubble:after
-            {
-              content: '';
-              position: absolute;
-              border-style: solid;
-              border-width: 0 10px 14px 0;
-              border-color: #F6F8FA transparent;
-              display: block;
-              width: 0;
-              z-index: 1;
-              top: -14px;
-              left: 0px;
-            }
-            
-            .bubble:before
-            {
+            .bubble:before {
               content: '';
               position: absolute;
               border-style: solid;
@@ -336,7 +305,7 @@ class AppLayout extends React.Component {
           }
 
           .wrapper-main {
-            padding: 0.5rem 1rem !important;
+            background: #F5F5F5;
             max-width: 1140px !important;
             margin: 0 auto;
           }
@@ -399,53 +368,52 @@ class AppLayout extends React.Component {
               text-align: left;
             }
           }
-         
           
-          .input-group {
-            background: url(/static/img/icon/ic-select@2x.png) no-repeat left center;
-            background-size: 20px;
-            padding-left: 20px;
-            border-bottom: 1px solid #000;
-            min-width: 200px;
-            max-width: 95%;
-          }
-          .custom-select {
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 300;
-          }
-          @media screen and (min-width: 768px) {
-            .custom-select {
-              font-size: 1.15rem;
-            }
-          }
-          .input-group .caret {
-            position: absolute;
-            right: 15px;
-            bottom: 50%;
-            transform: translate(-50%,0);
-          }
+          // .input-group {
+          //   background: url(/static/img/icon/ic-select@2x.png) no-repeat left center;
+          //   background-size: 20px;
+          //   padding-left: 20px;
+          //   border-bottom: 1px solid #000;
+          //   min-width: 200px;
+          //   max-width: 95%;
+          // }
+          // .custom-select {
+          //   background: none;
+          //   border: none;
+          //   font-size: 1rem;
+          //   font-weight: 300;
+          // }
+          // @media screen and (min-width: 768px) {
+          //   .custom-select {
+          //     font-size: 1.15rem;
+          //   }
+          // }
+          // .input-group .caret {
+          //   position: absolute;
+          //   right: 15px;
+          //   bottom: 50%;
+          //   transform: translate(-50%,0);
+          // }
           
-          .input-group .caret:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-top: 7px solid #252525;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-          }
+          // .input-group .caret:before {
+          //   content: '';
+          //   position: absolute;
+          //   top: 0;
+          //   left: 0;
+          //   border-top: 7px solid #252525;
+          //   border-left: 7px solid transparent;
+          //   border-right: 7px solid transparent;
+          // }
           
-          .input-group .caret:after {
-            content: '';
-            position: absolute;
-            left: 2px;
-            top: 0;
-            border-top: 5px solid #F6F8FA;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-          }
+          // .input-group .caret:after {
+          //   content: '';
+          //   position: absolute;
+          //   left: 2px;
+          //   top: 0;
+          //   border-top: 5px solid #F6F8FA;
+          //   border-left: 5px solid transparent;
+          //   border-right: 5px solid transparent;
+          // }
           
         `}</style>
         

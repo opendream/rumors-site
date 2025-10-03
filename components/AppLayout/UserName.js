@@ -182,13 +182,13 @@ class UserName extends PureComponent {
     const { onLoginClick } = this.props;
 
     return <>
-				<div className={`link-group`}>
-					<a className={`link link-list`} onClick={() => onLoginClick(i18n.t("login"))}>
+				<div className={`nav`}>
+					<a className={`nav-item`} onClick={() => onLoginClick(i18n.t("login"))}>
 						{i18n.t("login")}
 					</a>
-					<a className={`link link-list`} onClick={() => onLoginClick(i18n.t("signup"))}>
+					{/* <a className={`link link-list`} onClick={() => onLoginClick(i18n.t("signup"))}>
 						{i18n.t("signup")}
-					</a>
+					</a> */}
 					<style jsx>{`
 						.link-group {
 							list-style: none;
@@ -196,23 +196,25 @@ class UserName extends PureComponent {
               font-weight: 300;
               justify-content: center;
               align-items: center;
-              min-width: 190px;
+              // min-width: 190px;
               padding: 0.5rem;
               border-radius: 8px;
               background-color: #e0e6ea;
               border: none;
               box-sizing: border-box;
 						}
-						.link-list {
+						.nav-item {
+              font-size: 1rem;
               cursor: pointer;
-							margin-right: 10px;
-							padding-right: 10px;
+              margin-right: 1rem;
+              border-bottom: 2px solid transparent;
 						}
-						.link-list:last-child {
-							border-right: 0 !important;
-							padding: 0;
-							margin: 0;
-						}`}</style>
+            .nav-item:hover {
+              text-decoration: underline;
+              border-bottom: 2px solid currentColor;
+              -webkit-text-decoration: none !important;
+              text-decoration: none !important;}
+            `}</style>
 				</div>
 			</>;
   };

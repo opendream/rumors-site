@@ -62,7 +62,7 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
   return (
     <Modal onClose={onModalClose}>
       <div className="root">
-        <h4 className={`mb-4`}>
+        <h4 className={`mb-4 title text-center`}>
           {title}
         </h4>
 
@@ -141,7 +141,7 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
         .btn-facebook {
           background-color: #1877f2;
           border-color: #1877f2;
-          color: white;
+          color: white !important;
           padding: 10px;
         }
         .btn-facebook:hover {
@@ -151,6 +151,10 @@ function LoginModal({ isDialogShown, onModalClose, onModalSwitch }) {
         a {
           cursor: pointer;
           
+        }
+        h4.title {
+          font-weight: 600;
+          margin-bottom: 1.5rem;
         }
       `}</style>
     </Modal>

@@ -22,7 +22,7 @@ function AppHeader({
     <header className={`navbar navbar-expand-lg navbar-dark`}>
       <div className={`container`}>
         <div className={`d-flex align-items-start w-100`}>
-          <div className={`head-left d-flex w-100`}>
+          <div className={`head-left d-flex w-100 align-items-center`}>
             <Link href="/">
               <a className="logo" href="/">
                 <div>
@@ -124,24 +124,7 @@ function AppHeader({
               </nav>
             </div>
             <div className="ml-auto d-none d-lg-block">
-              <div className="d-flex justify-content-end mb-2">
-                <ul className="nav-top align-items-center">
-                  {/* <li>
-                    <a href="https://blog.cofact.org/category/fact-checks/">Top Fact Checks</a>
-                  </li> */}
-                  {/* <li>
-                    <a href="https://blog.cofact.org/fake-news/">ข่าวลวงที่พบบ่อย</a>
-                  </li> */}
-                  {/* <li>
-                    <a href="https://blog.cofact.org/category/infographic/">อินโฟกราฟิก</a>
-                  </li> */}
-                  {/* <li>
-                    <a href="https://blog.cofact.org/vocabulary/">แนะนำคำศัพท์</a>
-                  </li>
-                  <li>
-                    <a href="https://blog.cofact.org/about/">เกี่ยวกับเรา</a>
-                  </li> */}
-                </ul>
+              <div className="">
                 <div className="social-media-header justify-content-end d-flex"></div>
               </div>
 
@@ -230,8 +213,6 @@ function AppHeader({
       </div>
 
       <style jsx>{`
-
-
         h1 {
           display: block;
           text-indent: -999em;
@@ -250,8 +231,7 @@ function AppHeader({
         }
      
         .nav {
-          font-size: 1.2rem;
-          
+          font-size: 1rem;
           margin-right: 2rem;
         }
         @media screen and (min-width: 992px) {
@@ -268,8 +248,7 @@ function AppHeader({
         }
         @media screen and (min-width: 992px) {
           .nav-item {
-            margin-left: 1.5rem;
-            color: #fff;
+            margin-left: 2rem;
             border-bottom: 2px solid transparent;
           }
           .nav-item:first-child {
@@ -290,7 +269,7 @@ function AppHeader({
 
         .navbar {
           background: #fff;
-          padding: 1rem 1rem 0;
+          padding: 1rem 1rem;
         }
 
         /* menu toggle */
@@ -423,7 +402,7 @@ function AppHeader({
         ul.header-social {
           list-style: none;
           margin: 0;
-          padding: 0;
+          padding: 5px 0 0;
           display: flex;
         }
         ul.header-social li {

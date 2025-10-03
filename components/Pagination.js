@@ -17,7 +17,7 @@ export default function Pagination({
             query: { ...query, before: firstCursorOfPage, after: undefined },
           })}
         >
-          <a className="btn btn-sm btn-secondary mr-auto"> &laquo; ย้อนกลับ</a>
+          <a className="btn btn-sm mr-auto"> &laquo; ย้อนกลับ</a>
         </Link>
       ) : (
         ''
@@ -28,14 +28,14 @@ export default function Pagination({
             query: { ...query, after: lastCursorOfPage, before: undefined },
           })}
         >
-          <a className="btn btn-sm btn-secondary ml-auto">ต่อไป &raquo;</a>
+          <a className="btn btn-sm ml-auto">ต่อไป &raquo;</a>
         </Link>
       ) : (
         ''
       )}
       <style jsx>{`
         .wrapper-pager { 
-          margin: 0.5rem 0;
+          margin: 1.5rem 0 0.5rem;
           text-align: right;
           display: flex;
           justify-content: space-between;

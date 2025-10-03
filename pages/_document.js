@@ -55,6 +55,10 @@ class MyDocument extends Document {
           <meta property="og:description" content="คนใกล้ชิดของคุณ อาจตกเป็นเหยื่อของข่าวลวง หรือ ส่งต่อข่าวลวงบนอินเทอร์เน็ตโดยไม่รู้ตัว" />
           <link rel="icon" href="/static/img/favicon.png" type="image/png" sizes="32x32"></link>
           
+          {/* Font Preloads for LINE Seed Sans TH */}
+          <link rel="preload" href="/static/fonts/subset-LINESeedSansTH-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+          <link rel="preload" href="/static/fonts/subset-LINESeedSansTH-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+          
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap" rel="stylesheet"></link>
           <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>

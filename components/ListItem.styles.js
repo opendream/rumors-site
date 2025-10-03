@@ -3,28 +3,32 @@ import css from 'styled-jsx/css'; // eslint-disable-line import/no-unresolved
 export const listItemStyle = css`
 
   .card {
-    box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
+    // box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
     border: 0;
-    border-radius: 10px;
+    border-radius: 15px;
+  }
+  .card a:hover {
+    text-decoration: none;
+    color: inherit;
   }
   .card-header {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    background: #CCD5D9;
-    border-color: #CCD5D9;
+    border-top-right-radius: 15px !important;
+    border-top-left-radius: 15px !important;
+    background: #E8E8E8;
+    border-color: #E8E8E8;
     margin-bottom: 0 !important
   }
   .card-header .item-title,
   .card-header .item-text,
   .card-notitle .item-text {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: bold;
   }
   @media screen and (min-width: 576px) {
     .card-header .item-title,
     .card-header .item-text,
-    .card-notitle .item-text  {
-      font-size: 1.25rem;
+    .card-notitle .item-text {
+      font-size: 1.15rem;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -35,18 +39,15 @@ export const listItemStyle = css`
   @media screen and (min-width: 1024px) {
     .card-header .item-title,
     .card-header .item-text,
-    .card-notitle .item-text  {
+    .card-notitle .item-text {
       max-width: 85%;
     }
   }
- 
- 
 
   .card-header.bg-white {
     border-color: #fff;
   }
-  .card-body { padding: 1rem; }
-
+  .card-body {padding: 1rem;}
 
 
   .badge {
@@ -55,12 +56,14 @@ export const listItemStyle = css`
     min-width: 60px;
     font-size: 90%;
   }
-
+  .item-replyRequestCount {
+    font-size: 0.85rem;
+  }
   .item-replyRequestCount::before {
     content: "";
     padding-right: 30px;
     background: url(/static/img/icon/ic-que@2x.png) no-repeat left center;
-    background-size: 25px;
+    background-size: contain;
   }
   .item-createBy {
     color: #9E9E9E;

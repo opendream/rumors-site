@@ -220,7 +220,7 @@ class MembershipPage extends React.Component {
                 .btn-facebook {
                   background-color: #1877f2;
                   border-color: #1877f2;
-                  color: white;
+                  color: white !important;
                   padding: 10px;
                 }
                 .btn-facebook:hover {

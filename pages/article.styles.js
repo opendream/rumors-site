@@ -4,9 +4,9 @@ export const detailStyle = css`
 
 
 .card {
-  box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
+  // box-shadow: 0 7px 15px 0 rgba(0,0,0,0.15);
   border: 0;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .card-secondary {
   background-color: #E9EDF0;
@@ -14,10 +14,10 @@ export const detailStyle = css`
   box-shadow: none;
 }
 .card-header {
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  background: #CCD5D9;
-  border-color: #CCD5D9;
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+  background: #E8E8E8;
+  border-color: #E8E8E8;
 }
 .card-header .item-title,
 .card-header .item-text {
@@ -47,12 +47,14 @@ export const detailStyle = css`
   min-width: 60px;
   font-size: 14px;
 }
-
+.item-replyRequestCount {
+    font-size: 0.85rem;
+}
 .item-replyRequestCount::before {
   content: "";
   padding-right: 30px;
   background: url(/static/img/icon/ic-que@2x.png) no-repeat left center;
-  background-size: 25px;
+  background-size: contain;
 }
 .item-createBy {
   color: #9E9E9E;
@@ -138,6 +140,9 @@ article.content a {
   }
   .section {
     margin-bottom: 64px;
+  }
+  .section a {
+    color: #E469A2;
   }
   .header {
     display: flex;

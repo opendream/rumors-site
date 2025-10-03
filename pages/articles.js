@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import { List } from 'immutable';
 import { Link } from '../routes';
-import { RadioGroup, Radio } from 'react-radio-group';
 import { CheckboxGroup, Checkbox } from 'react-checkbox-group';
 
 import AppLayout from 'components/AppLayout';
@@ -101,80 +100,67 @@ class Articles extends ListPage {
       query: { q },
     } = this.props;
     return (
-      <div className="row justify-content-md-center mt-2 mb-3 mt-xl-4 mb-md-4">
-        <div className={`col`}>
-          <div className="search-form">
-            <div className="row no-gutters justify-content-center">
-              <div className="pr-2 col-9 col-md-10">
-                <input
-                  className="form-control text-field"
-                  placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ"
-                  type="search"
-                  onBlur={this.handleKeywordChange}
-                  onKeyUp={this.handleKeywordKeyup}
-                  defaultValue={q}
-                />
-              </div>
-              <div className="col-3 col-md-2">
-                <button type="submit" className="btn btn-primary w-100">
-                  ค้นหา
-                </button>
+      <div className={``}>
+        <div className="row justify-content-md-center mt-2 mb-3 mt-xl-4 mb-md-2">
+          <div className={`col`}>
+            <div className="search-form">
+              <div className="row no-gutters justify-content-center">
+                <div className="col-12 col-lg-8">
+                  <input
+                    className="form-control text-field"
+                    placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ?"
+                    type="search"
+                    onBlur={this.handleKeywordChange}
+                    onKeyUp={this.handleKeywordKeyup}
+                    defaultValue={q}
+                  />
+                  <button type="submit" className="btn btn-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11 2C6.30558 2 2.5 5.80558 2.5 10.5C2.5 15.1944 6.30558 19 11 19C12.9864 19 14.8149 18.3176 16.2617 17.176L21.0858 22C21.4764 22.3905 22.1095 22.3905 22.5001 22C22.8906 21.6095 22.8906 20.9763 22.5001 20.5858L17.676 15.7618C18.8176 14.3149 19.5001 12.4865 19.5001 10.5C19.5001 5.80558 15.6944 2 11 2ZM4.5 10.5C4.5 6.91015 7.41015 4 11 4C14.5898 4 17.5001 6.91015 17.5001 10.5C17.5001 12.2952 16.7735 13.9188 15.5961 15.0962C14.4188 16.2736 12.7952 17 11 17C7.41015 17 4.5 14.0899 4.5 10.5Z" fill="black"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      
         <style jsx>
           {`
             .search-form .form-inline .form-control,
             .search-form .text-field {
-              padding: 15px;
-              font-size: 16px;
-              height: auto;
-              font-weight: 300;
-              border-radius: 10px;
-              border-color: #fff;
-              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
+              border-radius: var(--rounded-full, 9999px);
+              border: 1px solid #9BA5B7;
+              padding: 12px 50px 12px 20px;
+              background: #FFF;
+              position: relative;
             }
             .search-form .text-field::placeholder {
-              font-style: italic;
-              font-size: 90%;
+              font-size: 80%;
             }
             @media screen and (min-width: 768px) {
               .search-form .text-field {
                 font-size: 20px;
               }
             }
-            .search-form .form-inline .form-control {
-              width: 79%;
-              margin-right: 1%;
-            }
             .search-form .btn {
-              padding: 15px;
+              position: absolute;
+              right: 3px;
+              top: 50%;
+              transform: translate(0%, -50%);
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              padding: 0;
             }
             .search-form .form-inline .btn {
               width: 20%;
               padding: 15px;
             }
-            .search-form .btn-primary {
-              background-color: #f0b4d0;
-              border-color: #f0b4d0;
-              font-size: 16px;
-              font-weight: 500;
-              color: #000;
-              border-radius: 10px;
-              box-shadow: 0 12px 25px 0 rgba(0, 0, 0, 0.15);
-            }
             @media screen and (min-width: 768px) {
               .search-form .btn-primary {
                 font-size: 20px;
               }
-            }
-            .search-form .btn-primary:hover,
-            .search-form .btn-primary:active,
-            .search-form .btn-primary:focus {
-              background-color: #ff79ac !important;
-              border-color: #ff79ac !important;
-              color: #000;
             }
           `}
         </style>
@@ -254,12 +240,12 @@ class Articles extends ListPage {
 
     return (
       <div className="text-md-right float-md-right">
-        <div className="input-group">
+        <div className="dropdown-cat">
           <div className="caret"></div>
           <select
             onChange={this.handleOrderByChange}
             value={orderBy || 'createdAt'}
-            className="custom-select"
+            className="cat-toggle"
           >
             <option value="createdAt">{i18n.t('mostRecentlyAsked')}</option>
             <option value="replyRequestCount">{i18n.t('mostAsked')}</option>
@@ -267,9 +253,34 @@ class Articles extends ListPage {
         </div>
         <style jsx>
           {`
-            .custom-selectl {
-              max-width: 330px;
-            }
+          .dropdown-cat {
+            position: relative;
+          }
+          .dropdown-cat .cat-toggle {
+            -webkit-appearance: none;    
+            -moz-appearance: none;
+            padding: 5px 30px 5px 10px;
+            font-size: 1rem;
+            text-align: left;;
+            border-radius: 50px;
+            border: 1px solid #9BA5B7;
+            background: #FFF;
+            color: #545F71;
+          }
+          .dropdown-cat .caret {
+            position: absolute !important;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            z-index: 1;
+            vertical-align: middle;
+            content: "";
+            background: url("/static/img/icon/caret-down.svg") no-repeat center center;
+            background-size: 10px;
+            position: relative;
+            width: 15px;
+            height: 15px;
+          }
           `}
         </style>
       </div>
@@ -317,9 +328,9 @@ class Articles extends ListPage {
 
     return (
       <div>
-        <div className="row">
-          <div className={`col-12`}>
-            <div className={`wrapper-cat py-1 mb-2`}>
+        <div className="row no-gutters justify-content-center">
+          <div className={`col-12 col-lg-8`}>
+            <div className={`wrapper-cat mb-2`}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
 
@@ -331,11 +342,6 @@ class Articles extends ListPage {
                   Component="div"
                   className="d-flex align-items-center"
                 >
-                  <div className="flex mr-4 d-none d-xl-block">
-                    <span className="my-2">
-                      ประเด็นที่ต้องการค้นหา
-                    </span>
-                  </div>
                   <div className="flex-grow-1 d-flex flex-column flex-wrap flex-lg-row">
                   {groupTags.map((group, ii) => (
                     <div className="flex-grow-1 item-list">
@@ -365,7 +371,7 @@ class Articles extends ListPage {
               </div>
             </div>
           </div>
-          <div className={`col-12`}>
+          <div className={`col-12 col-lg-8`}>
             <div className={``}>
               <div className={``}>
                 {/* <h5>{i18n.t('categories')}</h5> */}
@@ -376,7 +382,7 @@ class Articles extends ListPage {
                             className="badge-category badge mr-2 mb-2"
                       >
                         <label className="mx-1 pr-1 color-white " htmlFor={"category_" + item}>
-                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L0.46967 8.46967ZM5.53033 5.53033C5.82322 5.23744 5.82322 4.76256 5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967L5.53033 5.53033ZM4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033L4.46967 4.46967ZM9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L9.53033 1.53033ZM5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033L5.53033 4.46967ZM8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L8.46967 9.53033ZM4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033C5.82322 5.23744 5.82322 4.76256 5.53033 4.46967L4.46967 5.53033ZM1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L1.53033 0.46967ZM1.53033 9.53033L5.53033 5.53033L4.46967 4.46967L0.46967 8.46967L1.53033 9.53033ZM5.53033 5.53033L9.53033 1.53033L8.46967 0.46967L4.46967 4.46967L5.53033 5.53033ZM4.46967 5.53033L8.46967 9.53033L9.53033 8.46967L5.53033 4.46967L4.46967 5.53033ZM5.53033 4.46967L1.53033 0.46967L0.46967 1.53033L4.46967 5.53033L5.53033 4.46967Z" fill="black"/>
                           </svg>
                         </label>
@@ -390,19 +396,28 @@ class Articles extends ListPage {
           </div>
           <style jsx>
           {`
-              .wrapper-cat {
-                border-top: 1px solid #DFDFDF;
-                border-bottom: 1px solid #DFDFDF;
-              }
+              // .wrapper-cat {
+              //   border-top: 1px solid #DFDFDF;
+              //   border-bottom: 1px solid #DFDFDF;
+              // }
               .wrapper-cat .dropdown-toggle {
-                font-size: 1.15rem;
+                font-size: 1rem;
                 text-align: left;
+                position: relative;
+                border-radius: 999999px;
+                border: 1px solid #9BA5B7;
+                background: #FFF;
+                color: #545F71;
               }
               .wrapper-cat .dropdown-toggle::after {
                 display: none;
               }
               .wrapper-cat .dropdown-toggle::before {
-                display: inline-block;
+                position: absolute !important;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                z-index: 1;
                 margin-left: 0.5em;
                 margin-right: 0.5em;
                 vertical-align: middle;
@@ -437,12 +452,15 @@ class Articles extends ListPage {
                 position: relative;
                 bottom: 2px;
               }
+              .wrapper-cat .dropdown-item.active, 
+              .wrapper-cat .dropdown-item:active {
+              background-color: #F0B4D0;}
               .badge-category {
-                font-size: 1rem;
-                font-weight: normal;
-                background-color: #E1E6EA;
+                font-size: 0.85rem;
+                font-weight: bold;
+                background-color: #E3E3E3;
                 border-radius: 50px;
-                padding: 5px 15px 5px 10px;
+                padding: 5px 20px 5px 10px;
               }
               .badge-category label {
                 margin-bottom: 0;
@@ -462,7 +480,7 @@ class Articles extends ListPage {
              
               @media screen and (min-width: 768px) {
                 .wrapper-cat label {
-                  font-size: 1.15rem;
+                  font-size: 1rem;
                 }
               }
               .badge-light {
@@ -486,37 +504,65 @@ class Articles extends ListPage {
             `}
           </style>
         </div>
-        <div className="row align-items-center">
-          <div className={`col-12 col-md-8 mb-3 mb-md-0`}>
-            {/* <h5>{i18n.t('reply')}</h5> */}
-            <RadioGroup
-              onChange={this.handleFilterChange}
-              selectedValue={filter || 'all'}
-              Component="div"
-              className="btn-group btn-group-toggle"
-            >
-
-              <label className="link">
-                <Radio value="all" />
-                <span className="btn btn-outline-dark btn-first">{i18n.t('all')}</span>
-              </label>
-              <label className="link">
-                <Radio value="unsolved" />
-                <span className="btn btn-outline-dark btn-middle">{i18n.t('notRepliedYet')}</span>
-              </label>
-              <label className="link">
-                <Radio value="solved" />
-                <span className="btn btn-outline-dark btn-last">{i18n.t('replied')}</span>
-              </label>
-
-            </RadioGroup>
+        <div className="d-flex justify-content-between align-items-center mt-5">
+          <div className="">
+            <h3 className="header-title-link"><span>ข่าวที่ส่ง</span>มาตรวจสอบ</h3>
           </div>
-          <div className="col-12 col-sm-8 col-md-4 text-md-right">
-            {/* {i18n.t('pageArticles.orderBy')}: */}
-            {this.renderOrderBy()}
+          <div className="d-flex align-items-center">
+            <div className="">
+              <div className="">
+                <div className="dropdown-cat">
+                  <div className="caret"></div>
+                  <select
+                    onChange={e => this.handleFilterChange(e.target.value)}
+                    value={filter || 'all'}
+                    className="cat-toggle"
+                  >
+                    <option value="all">ข้อความทั้งหมด</option>
+                    <option value="unsolved">{i18n.t('notRepliedYet')}</option>
+                    <option value="solved">{i18n.t('replied')}</option>
+                  </select>
+                </div>
+                <style jsx>
+                  {`
+                    .dropdown-cat {
+                      position: relative;
+                    }
+                    .dropdown-cat .cat-toggle {
+                      -webkit-appearance: none;
+                      -moz-appearance: none;
+                      padding: 5px 30px 5px 10px;
+                      font-size: 1rem;
+                      text-align: left;
+                      border-radius: 50px;
+                      border: 1px solid #9BA5B7;
+                      background: #FFF;
+                      color: #545F71;
+                    }
+                    .dropdown-cat .caret {
+                      position: absolute !important;
+                      top: 50%;
+                      right: 5px;
+                      transform: translateY(-50%);
+                      z-index: 1;
+                      vertical-align: middle;
+                      content: "";
+                      background: url("/static/img/icon/caret-down.svg") no-repeat center center;
+                      background-size: 10px;
+                      position: relative;
+                      width: 15px;
+                      height: 15px;
+                    }
+                  `}
+                </style>
+              </div>
+            </div>
+            <div className="ml-2">
+              {this.renderOrderBy()}
+            </div>
           </div>
         </div>
-        <div className={`row mt-3`}>
+        {/* <div className={`row mt-3`}>
           <div className={`col-12`}>
             <input
               type="checkbox"
@@ -531,10 +577,24 @@ class Articles extends ListPage {
               {i18n.t('pageArticles.listArticlesIncludeOne')}
             </label>
           </div>
-        </div>
+        </div> */}
         <style>
           {`
-            
+            .header-title-link span {
+              position: relative;
+              z-index: 1;
+            }
+            .header-title-link span::after {
+                content: "";
+                background-color: #F0B4D0;
+                display: block;
+                width: 100%;
+                height: 10px;
+                position: absolute;
+                bottom: 0.5rem;
+                z-index: -1;
+                right: 0;
+            }
             .reply-request-count {
               width: 2em;
             }
@@ -546,7 +606,8 @@ class Articles extends ListPage {
             ul li input {
               margin-right: 0.5rem;
             }
-
+            .btn-group-toggle {
+            }
             .btn-group-toggle input {
               display: none;
             }
@@ -555,7 +616,7 @@ class Articles extends ListPage {
               margin-bottom: 0;
             }
             .btn-group-toggle .btn {
-              border-radius: .75rem;
+              border-radius: 40px;
             }
 
             .btn-group-toggle .btn.btn-first {
@@ -579,23 +640,12 @@ class Articles extends ListPage {
             }
             @media screen and (min-width: 375px) {
               .btn-group-toggle .btn {
-                padding: 0.5rem 0.75rem;
-                font-size: 1rem;
-                font-weight: 300;
+                padding: 0.25rem 0.75rem;
+                font-size: 15px;
+                font-weight: 500;
               }
             }
-            @media screen and (min-width: 425px) {
-              .btn-group-toggle .btn {
-                padding: 0.5rem 1rem;
-                font-size: 1.1rem;
-              }
-            }
-            @media screen and (min-width: 768px) {
-              .btn-group-toggle .btn {
-                font-size: 1.25rem;
-                padding: 0.5rem 1.25rem;
-              }
-            }
+            
         `}
         </style>
       </div>
@@ -638,8 +688,8 @@ class Articles extends ListPage {
         {totalCount > 0 ? (
           <div>
             <div className="d-flex justify-content-between align-items-center mb-2">
-              <div className="text-muted">
-                {totalCount} {i18n.t('pageArticles.articles')}
+              <div className="small font-weight-bold">
+                ({totalCount} {i18n.t('pageArticles.articles')})
               </div>
 
             </div>
@@ -757,7 +807,7 @@ class Articles extends ListPage {
 
     return (
       <AppLayout>
-        <main className="wrapper-main" >
+        <main className="wrapper-main">
           <Head>
             <title>{i18n.t('pageArticles.reallyFake')}</title>
           </Head>
