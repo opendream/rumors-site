@@ -53,7 +53,7 @@ class MyDocument extends Document {
           <meta property="og:url" content="	https://cofact.org/" />
           <meta property="og:image" content="/static/img/cofact-fb-share.jpg" />
           <meta property="og:description" content="คนใกล้ชิดของคุณ อาจตกเป็นเหยื่อของข่าวลวง หรือ ส่งต่อข่าวลวงบนอินเทอร์เน็ตโดยไม่รู้ตัว" />
-          <link rel="icon" href="/static/img/favicon.png" type="image/png" sizes="32x32"></link>
+          <link rel="icon" href="/static/img/favicon-cofact.png" type="image/png" sizes="32x32"></link>
           
           {/* Font Preloads for LINE Seed Sans TH */}
           <link rel="preload" href="/static/fonts/subset-LINESeedSansTH-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

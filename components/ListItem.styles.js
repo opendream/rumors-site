@@ -154,12 +154,11 @@ export const listItemStyle = css`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    line-height: 1.35;
+    line-height: 1.65;
   }
   .card-body-left .item-text {
     font-size: 1.15rem;
   }
-  
   a {
     text-decoration: none;
     color: inherit;

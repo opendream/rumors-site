@@ -342,7 +342,7 @@ class Articles extends ListPage {
                   Component="div"
                   className="d-flex align-items-center"
                 >
-                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-lg-row">
+                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-md-row">
                   {groupTags.map((group, ii) => (
                     <div className="flex-grow-1 item-list">
                       <div className="btn-group w-full p-1">
@@ -400,6 +400,9 @@ class Articles extends ListPage {
               //   border-top: 1px solid #DFDFDF;
               //   border-bottom: 1px solid #DFDFDF;
               // }
+              .wrapper-cat {
+                z-index: 1;
+              }
               .wrapper-cat .dropdown-toggle {
                 font-size: 1rem;
                 text-align: left;
@@ -465,18 +468,7 @@ class Articles extends ListPage {
               .badge-category label {
                 margin-bottom: 0;
               }
-              @media screen and (max-width: 991px) {
-                .wrapper-cat .dropdown-toggle {
-                  padding-left: 0;
-                  padding-right: 0;
-                }
-                .item-list {
-                  border-bottom: 1px solid #DFDFDF;
-                }
-                .item-list:last-child {
-                  border-bottom: 0;
-                }
-              }
+              
              
               @media screen and (min-width: 768px) {
                 .wrapper-cat label {
@@ -504,11 +496,11 @@ class Articles extends ListPage {
             `}
           </style>
         </div>
-        <div className="d-flex justify-content-between align-items-center mt-5">
-          <div className="">
+        <div className="d-flex flex-wrap justify-content-between align-items-center mt-5">
+          <div className="mb-2">
             <h3 className="header-title-link"><span>ข่าวที่ส่ง</span>มาตรวจสอบ</h3>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center mb-2">
             <div className="">
               <div className="">
                 <div className="dropdown-cat">

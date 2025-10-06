@@ -22,13 +22,13 @@ export const detailStyle = css`
 .card-header .item-title,
 .card-header .item-text {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 @media screen and (min-width: 576px) {
   .card-header .item-title,
   .card-header .item-text {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 600;
     flex: 0 0 85%;
   }
   .card-body .item-text {

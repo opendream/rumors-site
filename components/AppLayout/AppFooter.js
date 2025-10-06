@@ -11,22 +11,21 @@ export default function AppFooter() {
         <div className="d-flex flex-wrap wrapper-footer">
           <ul className='menu-footer'>
             <li><a href='https://cofact.org/articles'>ตรวจสอบข่าว</a></li>
-            {/* <li><a href="https://cofact.org/replies">{i18n.t('replies')}</a></li> */}
-            <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('e-Learning')}</a></li>
-            <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
+            <li><a href='http://blog.cofact.org/category/what-check'>วันนี้ Cofact เช็คอะไร?</a></li>
+            <li><a href='http://blog.cofact.org/category/true-false/'>จริงหรือไม่</a></li>
+            <li><a href='http://blog.cofact.org/category/weekly-recommand/'>ข่าวลวงประจำสัปดาห์</a></li>
+            <li><a href='http://blog.cofact.org/category/articles/event/'>กิจกรรม</a></li>
             <li><a href='https://blog.cofact.org/category/articles'>{i18n.t('Blog')}</a></li>
             <li><a href='https://blog.cofact.org/category/video'>{i18n.t('Video')}</a></li>
-            <li><a href='https://blog.cofact.org/category/fake-news'>{i18n.t('Fake News')}</a></li>
+            <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
             <li><a href='https://blog.cofact.org/category/infographic'>อินโฟกราฟิก</a></li>
+            <li><a href='https://blog.cofact.org/quiz'>Quiz</a></li>
+            <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('e-Learning')}</a></li>
             <li><a href='https://blog.cofact.org/vocabulary'>แนะนำคำศัพท์</a></li>
             <li><a href='https://cofact.org/howto'>{i18n.t('How to use')}</a></li>
-            <li><a href='https://cofact.org/policy'>{i18n.t('Policy')}</a></li>
-            <li><a href='https://blog.cofact.org/privacy-policy'>Privacy Policy</a></li>
             <li><a href='https://blog.cofact.org/about' target='_blank'>{i18n.t('About Us')}</a></li>
+            <li><a href='https://blog.cofact.org/privacy-policy'>Privacy Policy</a></li>
           </ul>
-          {/* <div className="ml-auto">
-            <img src={`${require('static/img/powerby-g@2x.png')}`} className={`logo-powerby img-fluid d-none`} />
-          </div> */}
           <div className="block-widget-footer">
             <h3>ติดตามเรา</h3>
             <ul>
@@ -51,11 +50,24 @@ export default function AppFooter() {
         </p> */}
 
       </div>
+      
+      <div className="footer-logo">
+					<div className="d-flex align-items-end mb-2">
+						<a className="logo" href="https://cofact.org/">Cofact 2025</a>
+						<div className="ml-auto small">
+							<span className="mr-3">© Cofact2025</span>
+						</div>
+					</div>
+					
+
+					<img src="/static/img/footer-everyone-is-a-fact-checker.png" alt="cofact" class="img-fluid d-none d-md-block" />
+					<img src="/static/img/footer-slogan-sm.png" alt="cofact" class="img-fluid d-block d-md-none" />
+			</div>
 
       {/* <GoogleWebsiteTranslator /> */}
       <style jsx>{`
         footer {
-          background: #FAFAFA;
+          background: #f5f5f5;
           padding: 3rem 2rem;
           text-align: center;
           color: #000;
@@ -78,7 +90,7 @@ export default function AppFooter() {
         }
         .menu-footer li {
           width: calc((100% / 2) - 20px);
-          margin: 1rem 1rem 1rem 0rem;
+          margin: 1rem 1rem 0.5rem 0rem;
         }
         .wrapper-footer {
           display: flex;
@@ -94,12 +106,7 @@ export default function AppFooter() {
           .logo-footer {
             width: 100px;
             margin-right: 1rem;
-            
           }
-          .menu-footer {
-            max-width: 80%;
-          }
-          
         }
         @media (min-width: 1024px) {
           .wrapper-footer {
@@ -116,7 +123,7 @@ export default function AppFooter() {
         }
         @media (min-width: 1280px) {
             .menu-footer {
-                max-width: 55%;
+                max-width: 65%;
             }
         }
 
@@ -132,7 +139,8 @@ export default function AppFooter() {
         }
         .menu-footer li {
           display: block;
-          font-size: 1.15rem;
+          font-size: 1rem;
+          margin-top: 0.25rem;
           margin-bottom: 0.25rem;
           text-align: left;
           
@@ -143,7 +151,7 @@ export default function AppFooter() {
 
         @media screen and (min-width: 768px) {
           footer {
-            background: #FAFAFA url("/static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
+            background: #f5f5f5 url("/static/img/bg-fill-footer@2x.png") no-repeat 85% -15px;
             background-size: 200px;
           }
           .menu-footer {
@@ -152,8 +160,8 @@ export default function AppFooter() {
           }
           .menu-footer li {
             display: inline-block;
-            width: calc((100% / 3) - 20px);
-            margin: 0rem 1rem 1rem 1rem;
+            width: calc((100% / 3) - 40px);
+            margin: 0rem 1rem 0.75rem 1rem;
             font-size: 1rem;
           }
         }
@@ -161,7 +169,6 @@ export default function AppFooter() {
         @media screen and (min-width: 1024px) {
           .menu-footer {
             text-align: left;
-            
           }
           .menu-footer li {
             text-align: left;
@@ -193,24 +200,26 @@ export default function AppFooter() {
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            font-size: 1rem;
-            font-weight: 300;
+            font-size: 12px;
+            font-weight: 400;
             
           }
           @media (min-width: 768px) {
             .block-widget-footer ul {
-              font-size: 1rem;
+              font-size: 12px;
             }
           }
           .block-widget-footer ul li {
             flex: 0 0 100%;
             text-align: left;
-            margin: 0 0 1rem;
             min-height: 35px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
           }
           @media (min-width: 576px) {
             .block-widget-footer ul li {
-              flex: 0 0 50%;
+              flex: 0 0 65%;
             }
           }
           .block-widget-footer ul li::before {
@@ -281,10 +290,28 @@ export default function AppFooter() {
           }
           .block-widget-footer ul li a {
             color: #fff;
-            font-weight: 300;
+            font-weight: 400;
             padding-left: 35px;
           }
-
+          .footer-logo {
+            margin-top: 3rem;
+          }
+          .footer-logo a.logo {
+              display: block;
+              background: url("/static/img/cofact-logo-black.png") no-repeat center center;
+              text-indent: -999em;
+              width: 60px;
+              height: 60px;
+              margin-left: -3px;
+              background-repeat: no-repeat;
+              background-size: 100%;
+          }
+          @media (max-width: 768px) {
+              .footer-logo a {
+                  width: 40px;
+                  height: 40px;
+              }  
+          }
 
       `}</style>
     </footer>

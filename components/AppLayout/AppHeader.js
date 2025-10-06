@@ -35,15 +35,15 @@ function AppHeader({
               </a>
             </Link>
             <div className="ml-auto d-flex d-lg-none align-items-end flex-column">
-            <ul className="header-social">
-              <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
-              <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
-              <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
-              <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
-              <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
-              <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
-            </ul>
-              <nav role="navigation">
+              <nav role="navigation" className="mobile-nav">
+                <ul className="header-social">
+                  <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
+                  <li className="ic-facebook"><a href="https://www.facebook.com/CofactThailand">Cofact โคแฟค</a></li>
+                  <li className="ic-twitter"><a href="https://twitter.com/CofactThailand" target="_blank" rel="noopener">@CofactThailand</a></li>
+                  <li className="ic-youtube"><a href="https://www.youtube.com/channel/UC5BY-W7O3bByf5z-17M7GQA" target="_blank" rel="noopener">Cofact Coform</a></li>
+                  <li className="ic-tiktok"><a href="https://www.tiktok.com/@CoFactThailand" target="_blank" rel="noopener">CoFactThailand</a></li>
+                  <li className="ic-ig"><a href="https://www.instagram.com/cofactthailand/" target="_blank" rel="noopener">@cofactthailand</a></li>
+                </ul>
                 <div id="menuToggle">
                   <input type="checkbox" />
 
@@ -269,24 +269,29 @@ function AppHeader({
 
         .navbar {
           background: #fff;
-          padding: 1rem 1rem;
+          padding: 0.75rem;
         }
 
         /* menu toggle */
-
+          .mobile-nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1rem;
+          }
           #menuToggle {
             display: block;
             position: relative;
             top: 0;
             right: 0;
-            padding: 20px 0 0px;
+            padding: 12px 0 0;
             z-index: 1;
             -webkit-user-select: none;
             user-select: none;
           }
           #menuToggle .nav { margin-bottom: 1rem; }
           #menuToggle .nav .nav-item {
-            font-size: 18px !important;
+            font-size: 16px !important;
           }
           
           #menuToggle a {
@@ -317,7 +322,7 @@ function AppHeader({
            */
           #menuToggle span {
             display: block;
-            width: 30px;
+            width: 28px;
             height: 3px;
             margin-bottom: 5px;
             position: relative;
@@ -349,7 +354,7 @@ function AppHeader({
           }
           
           #menuToggle input:checked ~ span:nth-last-child(2) {
-            transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(1px, -2px);
           }
           
           /*
@@ -373,7 +378,7 @@ function AppHeader({
             transform-origin: 0% 0%;
             transform: translate(0, -100%);
             
-            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+            transition: transform 0.5s;
           }
           
           #menu .nav .nav-item {
@@ -455,7 +460,9 @@ function AppHeader({
           margin: 0 0 0 1.5rem;
           font-size: 1.05rem;
         }
-        .nav-top a { color: #686868}
+        .nav-top a { color: #686868}\
+
+        
       `}</style>
     </header>
   );
