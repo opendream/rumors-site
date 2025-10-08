@@ -20,7 +20,7 @@ export default function AppFooter() {
             <li><a href='https://blog.cofact.org/category/journal'>{i18n.t('Journal')}</a></li>
             <li><a href='https://blog.cofact.org/category/infographic'>อินโฟกราฟิก</a></li>
             <li><a href='https://blog.cofact.org/quiz'>Quiz</a></li>
-            <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('e-Learning')}</a></li>
+            <li><a href='https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13' target='_blank'>{i18n.t('E-Learning')}</a></li>
             <li><a href='https://blog.cofact.org/vocabulary'>แนะนำคำศัพท์</a></li>
             <li><a href='https://cofact.org/howto'>{i18n.t('How to use')}</a></li>
             <li><a href='https://blog.cofact.org/about' target='_blank'>{i18n.t('About Us')}</a></li>

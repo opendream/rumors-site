@@ -203,17 +203,33 @@ class UserName extends PureComponent {
               border: none;
               box-sizing: border-box;
 						}
-						.nav-item {
-              font-size: 1rem;
-              cursor: pointer;
-              margin-right: 1rem;
-              border-bottom: 2px solid transparent;
-						}
-            .nav-item:hover {
-              text-decoration: underline;
-              border-bottom: 2px solid currentColor;
-              -webkit-text-decoration: none !important;
-              text-decoration: none !important;}
+              @media screen and (min-width: 992px) {
+              .nav-item {
+                  font-size: 1rem;
+                  cursor: pointer;
+                  margin-right: 1rem;
+                  border-bottom: 2px solid transparent;
+                }
+              .nav-item:hover {
+                  text-decoration: underline;
+                  border-bottom: 2px solid currentColor;
+                  -webkit-text-decoration: none !important;
+                  text-decoration: none !important;
+                }
+              }
+            
+
+            @media screen and (max-width: 991px) {
+               .nav {
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+               }
+               .nav-item {
+                padding: 10px 15px;
+                font-size: 18px;
+               }
+            }
+						
             `}</style>
 				</div>
 			</>;

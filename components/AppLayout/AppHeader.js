@@ -20,7 +20,7 @@ function AppHeader({
 
   return (
     <header className={`navbar navbar-expand-lg navbar-dark`}>
-      <div className={`container`}>
+      <div className={`container-fluid`}>
         <div className={`d-flex align-items-start w-100`}>
           <div className={`head-left d-flex w-100 align-items-center`}>
             <Link href="/">
@@ -34,7 +34,7 @@ function AppHeader({
                 <h1>{i18n.t('realOrFake')}</h1>
               </a>
             </Link>
-            <div className="ml-auto d-flex d-lg-none align-items-end flex-column">
+            <div className="ml-auto d-flex d-lg-none align-items-end flex-column z-2">
               <nav role="navigation" className="mobile-nav">
                 <ul className="header-social">
                   <li className="ic-line"><a href="https://line.me/R/ti/p/%40Cofact" target="_blank" rel="noopener">@cofact</a></li>
@@ -64,11 +64,13 @@ function AppHeader({
                       {/* <Link href="https://cofact.org/replies">
                         <a className={`nav-item ${pathname == 'https://cofact.org/replies'? 'active': ''}`}>{i18n.t('replies')}</a>
                       </Link> */}
-                      <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13">{i18n.t('e-Learning')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Video')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a>
-                      <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a>
+                     <a className="nav-item" href="https://blog.cofact.org/quiz">{i18n.t('Quiz')}</a>
+                     <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13" target='_blank'>{i18n.t('E-Learning')}</a>
+                     <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
+                     <a className="nav-item" href="https://blog.cofact.org/category/event">{i18n.t('Event')}</a>
+                     <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Media')}</a>
+                     {/* <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a> */}
+                     <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a>
 
                       {/* <Link href="/about">
                         <a className={`nav-item ${pathname == '/about-us'? 'active': ''}`}>About Us</a>
@@ -143,15 +145,13 @@ function AppHeader({
                 </Link> */}
                 {/* <a className="nav-item" href="https://blog.cofact.org/category/news/">{i18n.t('News')}</a> */}
                 <a className="nav-item" href="https://blog.cofact.org/quiz">{i18n.t('Quiz')}</a>
-                <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13" target='_blank'>{i18n.t('e-Learning')}</a>
+                <a className="nav-item" href="https://elearning.cofact.org/share/course/828c9526-c54a-4b4b-a6b1-733ea9455d13" target='_blank'>{i18n.t('E-Learning')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/articles">{i18n.t('Blog')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/event">{i18n.t('Event')}</a>
                 <a className="nav-item" href="https://blog.cofact.org/category/video">{i18n.t('Media')}</a>
                 {/* <a className="nav-item" href="https://blog.cofact.org/category/journal">{i18n.t('Journal')}</a> */}
-                {/* <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a> */}
-                {/* <Link href="/about">
-                  <a className={`nav-item ${pathname == '/about'? 'active': ''}`}>{i18n.t('About Us')}</a>
-                </Link> */}
+                <a className="nav-item" href="https://blog.cofact.org/about">{i18n.t('About Us')}</a>
+              
                 {user && user.get('isStaff') ? (
                 <>
                   <Link href="https://cofact.org/users">
@@ -213,6 +213,7 @@ function AppHeader({
       </div>
 
       <style jsx>{`
+        .z-2 { z-index: 2; }
         h1 {
           display: block;
           text-indent: -999em;
@@ -232,10 +233,11 @@ function AppHeader({
      
         .nav {
           font-size: 1rem;
-          margin-right: 2rem;
+          
         }
         @media screen and (min-width: 992px) {
           .nav {
+            margin-right: 2rem;
           }
         }
         .nav-item:hover, 
@@ -284,14 +286,14 @@ function AppHeader({
             position: relative;
             top: 0;
             right: 0;
-            padding: 12px 0 0;
+            padding: 0 0 0;
             z-index: 1;
             -webkit-user-select: none;
             user-select: none;
           }
-          #menuToggle .nav { margin-bottom: 1rem; }
+          #menuToggle .nav { margin-bottom: 0; }
           #menuToggle .nav .nav-item {
-            font-size: 16px !important;
+            font-size: 18px !important;
           }
           
           #menuToggle a {
@@ -341,6 +343,7 @@ function AppHeader({
           
           #menuToggle span:nth-last-child(2) {
             transform-origin: 0% 100%;
+            margin-bottom: 0;
           }
           
           #menuToggle input:checked ~ span {
@@ -364,27 +367,28 @@ function AppHeader({
           #menu {
             visibility: hidden;
             position: absolute;
-            width: 290px;
+            width: 350px;
+            min-height: 100vh;
             margin: 0;
-            padding: 15px;
-            top: 0;
-            right: 0;
-            
+            padding: 50px 0 0;
+            top: -10px;
+            right: -10px;
             background: #fff;
             list-style-type: none;
-            -webkit-font-smoothing: antialiased;
+            // -webkit-font-smoothing: antialiased;
             /* to stop flickering of text in safari */
             
             transform-origin: 0% 0%;
             transform: translate(0, -100%);
-            
-            transition: transform 0.5s;
+
+            transition: transform 0.5s, right 0.5s;
           }
           
           #menu .nav .nav-item {
-            padding: 10px 0 0;
+            padding: 10px 15px;
             font-size: 22px;
             display: block;
+            border-top: 1px solid #d3d3d3;
           }
           #menu .nav {
             padding: 0;
@@ -407,7 +411,7 @@ function AppHeader({
         ul.header-social {
           list-style: none;
           margin: 0;
-          padding: 5px 0 0;
+          padding: 0;
           display: flex;
         }
         ul.header-social li {
