@@ -113,7 +113,7 @@ export default function AppFooter() {
             flex-direction: row;
           }
           .menu-footer {
-              max-width: 47%;
+              max-width: 62%;
           }
           .wrapper-footer .logo, 
           .wrapper-footer .menu-footer {

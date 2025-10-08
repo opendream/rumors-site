@@ -233,7 +233,7 @@ function AppHeader({
      
         .nav {
           font-size: 1rem;
-          
+          justify-content: flex-end;
         }
         @media screen and (min-width: 992px) {
           .nav {
