@@ -118,15 +118,14 @@ class UserName extends PureComponent {
       <div className="user">
         <Link route="/replies?mine=1">
           <a>
-            {user.get('name')} <br />
-            <span>
-              {user.get('belongTo')?
-              `(${user.get('belongTo')})`
-              : ``}
-            </span>
+            {user.get('name')} 
           </a>
-          
         </Link>
+        <span>
+          {user.get('belongTo')?
+          `(${user.get('belongTo')})`
+          : ``}
+        </span>
         <button className="edit" onClick={this.handleEdit}>
           <img
             src={require('/static/img/icon/ic-edit@2x.png')}
@@ -155,7 +154,7 @@ class UserName extends PureComponent {
           .user a {
             color: #000;
             font-weight: 500;
-            width: 50px;
+            max-width: 120px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -334,10 +333,14 @@ class UserName extends PureComponent {
             // box-shadow: 1px 1px 4px -3px #000000;
             box-sizing: border-box;
             font-size: 13px;
-            position: fixed;
-            right: 15px;
-            top: 85px;
-            z-index: 1;
+          }
+          @media screen and (min-width: 992px) {
+             .user-profile {
+                position: fixed;
+                right: 15px;
+                top: 85px;
+                z-index: 1;
+             }
           }
           @media screen and (max-width: 575px) {
             width: 100%;

@@ -238,7 +238,7 @@ function AppHeader({
         @media screen and (min-width: 992px) {
           .nav {
             margin-right: 1rem;
-            max-width: 700px;
+            // max-width: 700px;
           }
         }
         @media screen and (min-width: 1100px) {
