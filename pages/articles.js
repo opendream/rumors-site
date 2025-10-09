@@ -101,7 +101,7 @@ class Articles extends ListPage {
     } = this.props;
     return (
       <div className={``}>
-        <div className="row justify-content-md-center mt-2 mb-3 mt-xl-4 mb-md-2">
+        <div className="row justify-content-md-center mt-2 mb-2 mt-xl-4">
           <div className={`col`}>
             <div className="search-form">
               <div className="row no-gutters justify-content-center">
@@ -134,6 +134,7 @@ class Articles extends ListPage {
               padding: 12px 50px 12px 20px;
               background: #FFF;
               position: relative;
+              font-size: 1.25rem;
             }
             .search-form .text-field::placeholder {
               font-size: 80%;
@@ -342,9 +343,9 @@ class Articles extends ListPage {
                   Component="div"
                   className="d-flex align-items-center"
                 >
-                  <div className="flex-grow-1 d-flex flex-column flex-wrap flex-md-row">
+                  <div className="flex-grow-1 d-flex flex-row flex-wrap row no-gutters">
                   {groupTags.map((group, ii) => (
-                    <div className="flex-grow-1 item-list">
+                    <div className="col-6 col-sm-3 item-list">
                       <div className="btn-group w-full p-1">
                         <a className="btn btn-outilne dropdown-toggle" role="button" id={'dropdownMenu_'+ ii}
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={(e) => this.handleGroupName(group)}>

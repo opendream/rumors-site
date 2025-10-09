@@ -27,7 +27,7 @@ function AppHeader({
               <a className="logo" href="/">
                 <div>
                   <img
-                    src={`${require('./images/logo-cofact.png')}`}
+                    src={`${require('./images/cofact-logo.png')}`}
                     className={`img-fluid `}
                   />
                 </div>
@@ -238,6 +238,7 @@ function AppHeader({
         @media screen and (min-width: 992px) {
           .nav {
             margin-right: 2rem;
+            max-width: 700px;
           }
         }
         .nav-item:hover, 
