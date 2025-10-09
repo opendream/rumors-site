@@ -237,8 +237,13 @@ function AppHeader({
         }
         @media screen and (min-width: 992px) {
           .nav {
-            margin-right: 2rem;
+            margin-right: 1rem;
             max-width: 700px;
+          }
+        }
+        @media screen and (min-width: 1100px) {
+          .nav {
+            margin-right: 2rem;
           }
         }
         .nav-item:hover, 
@@ -249,10 +254,18 @@ function AppHeader({
         .nav-item.active {
           text-decoration: underline !important;
         }
-        @media screen and (min-width: 992px) {
+        @media screen and (min-width: 991px) {
           .nav-item {
-            margin-left: 2rem;
+            font-size: 14px;
+            margin-left: 1rem;
             border-bottom: 2px solid transparent;
+          }
+        }
+        @media screen and (min-width: 1100px) {
+          .nav-item {
+          font-size: 16px;
+            margin-left: 2rem;
+           
           }
           .nav-item:first-child {
             margin-left: 0;
