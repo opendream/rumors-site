@@ -58,10 +58,8 @@ export default function AppFooter() {
 							<span className="mr-3">© Cofact2025</span>
 						</div>
 					</div>
-					
-
-					<img src="/static/img/footer-everyone-is-a-fact-checker.png" alt="cofact" class="img-fluid d-none d-md-block" />
-					<img src="/static/img/footer-slogan-sm.png" alt="cofact" class="img-fluid d-block d-md-none" />
+					<img src="/static/img/footer-everyone-is-a-fact-checker.png" alt="cofact everyone is a fact checker" className='img-fluid d-none d-md-block' />
+					<img src="/static/img/footer-slogan-sm.png" alt="cofact everyone is a fact checker" className='img-fluid d-block d-md-none' />
 			</div>
 
       {/* <GoogleWebsiteTranslator /> */}

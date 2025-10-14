@@ -657,7 +657,7 @@ class ArticlePage extends React.Component {
               border-bottom-right-radius: 10px;
             }
             .form-check-item {
-              min-width: 130px;
+              min-width: 160px;
               margin-bottom: 5px;
             }
           `}</style>

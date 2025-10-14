@@ -41,13 +41,13 @@ export default function ArticleItem({
   if (renderText.startsWith('$image__')) {
     const fileId = renderText.split('__')[2]
     renderText = (<div>
-      <iframe height={200} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
+      <iframe style={{ border: 'none' }} height={200} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
     </div>)
   } else if (renderText.startsWith('$video')) {
     const fileId = renderText.split('__')[2]
     renderText = (
       <div className={`position-relative d-inline-block`}>
-        <iframe height={200} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
+        <iframe style={{ border: 'none' }} height={200} src={`https://drive.google.com/file/d/${fileId}/preview`}></iframe>
         <style jsx>{`
             .video-play-icon {
                 color: #FFF;

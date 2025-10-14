@@ -36,6 +36,7 @@ const WidgetItem = ({
           padding: 0.75em;
           transition: transform 0.1s ease-out;
           opacity: 0;
+          font-size: 10px;
         }
         /* the description tooltip */
         li::after,

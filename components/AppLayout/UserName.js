@@ -343,8 +343,10 @@ class UserName extends PureComponent {
              }
           }
           @media screen and (max-width: 575px) {
-            width: 100%;
-            margin-top: 0;
+          .user-profile {
+              width: calc(100% - 30px);
+              margin: 0 15px;
+            }
           }
           `}</style>
         </div>
