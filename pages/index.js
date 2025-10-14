@@ -22,22 +22,17 @@ class IndexPage extends React.Component {
             </Head>
 
             {/*Section#1*/}
-            <div className="jumbotron text-light">
+            <div className="jumbotron text-light relative">
               <div className="text-center">
                 <h1 className="mb-3">
                   Cofact - พื้นที่เปิดให้ทุกคนมาช่วยกันตรวจสอบข่าวลวง
                 </h1>
-                <h2 className="mt-3 mb-5">
-                  คนใกล้ชิดของคุณ อาจ<em className="emphasis">
-                    ตกเป็นเหยื่อของข่าวลวง
-                  </em>{' '}
-                  หรือ <br className={`d-none d-md-block`} />
-                  <em className="emphasis">
-                    ส่งต่อข่าวลวง
-                  </em>บนอินเทอร์เน็ตโดยไม่รู้ตัว
-                </h2>
+                <div className="hero-banner-wording">
+                  <div className="banner">ไม่แน่ใจว่าเรื่องไหน จริง ?</div>
+                  <div className="description">ค้นหาเพื่อเช็กข้อเท็จจริงได้ที่นี่ ?</div>
+                </div>
                 <div className="row justify-content-md-center">
-                  <div className={`col col-lg-8 col-xl-6`}>
+                  <div className={`col col-lg-8 col-xl-7`}>
                     <div id="SearchQueryField">
                       <AutoCompleteSearchBox />
                     </div>
@@ -47,7 +42,7 @@ class IndexPage extends React.Component {
             </div>
           </div>
           {/*Section#2*/}
-          <div className="section section-line">
+          {/* <div className="section section-line">
             <div className="container">
               <div className="content">
                 <div className="row">
@@ -222,9 +217,9 @@ class IndexPage extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/*Section#3*/}
-          <div className="section section-partner py-3 py-lg-4 bg-white">
+          {/* <div className="section section-partner py-3 py-lg-4 bg-white">
             <h2 className="text-center my-4">Partners</h2>
             <div className="container">
               <ul className="partner-list">
@@ -302,7 +297,7 @@ class IndexPage extends React.Component {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
           <style> {sectionStyle} </style>
 
@@ -417,7 +412,6 @@ class IndexPage extends React.Component {
               .jumbotron {
                 background-color: transparent;
                 color: #fff;
-                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
                 border-radius: 0;
                 margin-bottom: 0;
               }
@@ -430,6 +424,7 @@ class IndexPage extends React.Component {
               @media screen and (min-width: 768px) {
                 .jumbotron {
                   padding: 6rem 2rem;
+                  width: 100%;
                 }
                 .jumbotron h1 {
                   font-size: 2.5rem;
@@ -446,6 +441,26 @@ class IndexPage extends React.Component {
               .jumbotron h2 {
                 font-weight: 400;
               }
+
+              .hero-banner-wording .banner {
+                font-size: 3rem;
+                font-weight: 600;
+              }
+
+              .hero-banner-wording .description {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+              }
+              @media screen and (max-width: 768px) {
+                .hero-banner-wording .banner {
+                  font-size: 1.75rem;
+                }
+                .hero-banner-wording .description {
+                  font-size: 1rem;
+                }
+              }
+
 
               /* Section LINE */
 
@@ -693,25 +708,25 @@ class IndexPage extends React.Component {
                 width: 20%;
                 padding: 15px;
               }
-              #SearchQueryField .btn-primary {
-                background-color: #f0b4d0;
-                border-color: #f0b4d0;
-                font-size: 16px;
-                color: #000;
-                border-radius: 10px;
-              }
+              // #SearchQueryField .btn-primary {
+              //   background-color: #f0b4d0;
+              //   border-color: #f0b4d0;
+              //   font-size: 16px;
+              //   color: #000;
+              //   border-radius: 10px;
+              // }
               @media screen and (min-width: 768px) {
                 #SearchQueryField .btn-primary {
                   font-size: 20px;
                 }
               }
-              #SearchQueryField .btn-primary:hover,
-              #SearchQueryField .btn-primary:active,
-              #SearchQueryField .btn-primary:focus {
-                background-color: #ff79ac !important;
-                border-color: #ff79ac !important;
-                color: #000;
-              }
+              // #SearchQueryField .btn-primary:hover,
+              // #SearchQueryField .btn-primary:active,
+              // #SearchQueryField .btn-primary:focus {
+              //   background-color: #ff79ac !important;
+              //   border-color: #ff79ac !important;
+              //   color: #000;
+              // }
             `}
           </style>
         </AppLayout>

@@ -262,31 +262,44 @@ class AppLayout extends React.Component {
           div.home header.navbar {
             max-width: 100% !important;
           }
+
+          div.home .container-fluid {
+            padding: 0;
+            background: white;
+          }
+
+          div.home h1 {
+            display: none;
+          }
         
           div.home .wrapper-page {
-            background: url("/static/img/bg-banner@2x.jpg") no-repeat center center !important;
+            background: url("/static/img/banner-cofact-cover.jpg") no-repeat center center !important;
             background-size: cover !important;
-            margin: -120px 0 0;
-            padding: 120px 0 0px;
+            border-radius: 20px;
+            margin: 0 20px 20px;
+            min-height: 430px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
           }
           @media screen and (min-width: 769px) {
             div.home .wrapper-page {
-              background: url("/static/img/bg-banner@2x.jpg") no-repeat top center !important;
+              background: url("/static/img/banner-cofact-cover.jpg") no-repeat top center !important;
               background-size: cover !important;
-              margin: -160px 0 0;
-              padding: 160px 0 0px;
+              min-height: 540px;
+              border-radius: 50px;
             }
           }
-          div.home .nav-item {
-            color: #fff !important;
-          }
-          div.home .link-group {
-            border: 1px solid #fff !important;
-          }
-          div.home .link-list {
-            border-right: 1px solid #fff !important;
-            color: #fff !important;
-          }
+          // div.home .nav-item {
+          //   color: #fff !important;
+          // }
+          // div.home .link-group {
+          //   border: 1px solid #fff !important;
+          // }
+          // div.home .link-list {
+          //   border-right: 1px solid #fff !important;
+          //   color: #fff !important;
+          // }
           div.home #menuToggle a {
             color: #000 !important;
           }

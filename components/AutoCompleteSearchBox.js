@@ -154,12 +154,12 @@ export default class AutoCompleteSearchBox extends React.Component {
     const { queryText } = this.state;
     return (
       <div className="align-items-center">
-        <div id="SearchQueryField" className="AutoCompleteSearchBox">
+        <div id="SearchQueryField" className="AutoCompleteSearchBox search-form">
           <form
             onSubmit={this.handleSubmit}
             className="row no-gutters justify-content-center"
           >
-            <div className="pr-2 col-9 col-md-10">
+            <div className="col col-12 col-lg-8">
               <input
                 className="form-control text-field "
                 type="text"
@@ -172,12 +172,12 @@ export default class AutoCompleteSearchBox extends React.Component {
                 spellCheck="off"
                 placeholder="พิมพ์ข้อความที่ต้องการตรวจสอบ"
               />
-              {this.renderSuggestion()}
-            </div>
-            <div className="col-3 col-md-2">
-              <button className="btn btn-primary w-100" type="submit">
-                ค้นหา
+              <button type="submit" className="btn btn-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 2C6.30558 2 2.5 5.80558 2.5 10.5C2.5 15.1944 6.30558 19 11 19C12.9864 19 14.8149 18.3176 16.2617 17.176L21.0858 22C21.4764 22.3905 22.1095 22.3905 22.5001 22C22.8906 21.6095 22.8906 20.9763 22.5001 20.5858L17.676 15.7618C18.8176 14.3149 19.5001 12.4865 19.5001 10.5C19.5001 5.80558 15.6944 2 11 2ZM4.5 10.5C4.5 6.91015 7.41015 4 11 4C14.5898 4 17.5001 6.91015 17.5001 10.5C17.5001 12.2952 16.7735 13.9188 15.5961 15.0962C14.4188 16.2736 12.7952 17 11 17C7.41015 17 4.5 14.0899 4.5 10.5Z" fill="black"/>
+                </svg>
               </button>
+               {this.renderSuggestion()}
             </div>
           </form>
         </div>
@@ -193,13 +193,13 @@ export default class AutoCompleteSearchBox extends React.Component {
               padding: 15px;
               font-size: 16px;
               height: auto;
-              font-weight: 300;
-              border-radius: 10px;
+              font-weight: 400;
+              border-radius: 50px;
               border: 0;
             }
             @media screen and (min-width: 768px) {
               .text-field {
-                font-size: 20px;
+                font-size: 16px;
               }
             }
             .form-inline .form-control {
@@ -232,6 +232,25 @@ export default class AutoCompleteSearchBox extends React.Component {
               background-color: #ff79ac !important;
               border-color: #ff79ac !important;
               color: #000;
+            }
+            .search-form .btn {
+              position: absolute;
+              right: 3px;
+              top: 50%;
+              transform: translate(0%, -50%);
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              padding: 0;
+            }
+            .search-form .form-inline .btn {
+              width: 20%;
+              padding: 15px;
+            }
+            @media screen and (min-width: 768px) {
+              .search-form .btn-primary {
+                font-size: 20px;
+              }
             }
           `}
         </style>
