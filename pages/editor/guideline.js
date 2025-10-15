@@ -48,85 +48,6 @@ class GuidelinePage extends React.Component {
             </div>
           </div>
           {/*Section#3*/}
-          <div className="section section-partner py-3 py-lg-4 bg-white">
-            <h2 className="text-center my-4">Partners</h2>
-            <div className="container">
-              <ul className="partner-list">
-                <li>
-                  <a href="https://www.thaihealth.or.th/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-thaihealth@2x.png"
-                      alt="สสส."
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.hdcentre.org/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-hd@2x.png"
-                      alt="HD Centre"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://thailand.fnst.org/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-f@2x.png"
-                      alt="มูลนิธิฟรีดริช เนามัน"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="http://www.thaimediafund.or.th/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-tmf@2x.png"
-                      alt="THAI MEDIA FUND"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://changefusion.org/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-cf@2x.png"
-                      alt="CHANGEFUSION"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.opendream.co.th/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-od@2x.png"
-                      alt="OPENDREAM"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="http://khonthaifoundation.org/th/causes/กองทุนสื่อเพื่อความยุต/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-กองทุนสื่อ.jpg"
-                      alt="กองทุนสื่อเพื่อความยุติธรรมในสังคม"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.consumerthai.org/" target="_blank">
-                    <img
-                      src="/static/img/partner/logo-ffc@2x.png"
-                      alt="มูลนิธิเพื่อผู้บริโภค"
-                      className="img-fluid"
-                    />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
 
           <style> {sectionStyle} </style>
 
@@ -136,7 +57,7 @@ class GuidelinePage extends React.Component {
               /* Section LINE */
 
               .section-line {
-                background: #f0b4d0 url('static/img/bg-gp-cofact.png') no-repeat
+                // background: #f0b4d0 url('static/img/bg-gp-cofact.png') no-repeat
                   left center;
                 background-size: 90%;
                 margin: 1rem 0 0;
@@ -155,7 +76,7 @@ class GuidelinePage extends React.Component {
 
               .content p {
                 font-size: 1.25rem;
-                font-weight: 300;
+                font-weight: 400;
               }
 
 
